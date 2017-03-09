@@ -67,7 +67,7 @@
                                     Entrar
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Olvido su contraseña?
                                 </a>
                             </div>
