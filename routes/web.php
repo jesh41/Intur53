@@ -17,4 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+	//pagina inicio
+	Route::get('/home', 'HomeController@index');
+	//modulo administracion de usuarios
+	Route::get('/admin', 'HomeController@listadouser');
+	///Modulo Book
+	Route::get('/book','BookController@index');
+
+  
+   
+
+});

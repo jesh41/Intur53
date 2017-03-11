@@ -12,9 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -79,14 +79,11 @@
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
  
                 <li class="active">
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashcube fa-stack-1x "></i></span>Dashboard</a>
+                    <a href="/home"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashcube fa-stack-1x "></i></span>Dashboard</a>
                        
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Libros</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                     
-                    </ul>
+                    <a href="/book"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Libros</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cubes fa-stack-1x "></i></span>Reportes</a>
@@ -94,7 +91,7 @@
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-gear fa-stack-1x"></i></span>Configuracion</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Perfil</a></li>
+                        <li><a href="/admin"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Perfil</a></li>
                         <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>link2</a></li>
  
                     </ul>

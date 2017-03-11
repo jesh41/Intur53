@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'INTUR') }}</title>
+    <title>Intur-Hotel</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -27,8 +27,7 @@
       
         @yield('content')
     
-   
-    <script src="{{asset('js/app.js') }}"></script>
+
    <script src="{{asset('js/sidebar_menu.js') }}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
