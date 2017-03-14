@@ -27,7 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/admin', 'HomeController@listadouser');
 	///Modulo Book
 	Route::get('/book','BookController@index');
-
+	//modulo reporteria
+	Route::get('/report','ReportController@index');
   
    
 
