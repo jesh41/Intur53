@@ -15,6 +15,8 @@
    <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/skin-blue.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plusis.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -22,6 +24,25 @@
         ]) !!};
     </script>
 </head>
+
+<body class="skin-blue sidebar-mini">
+
+<div style="display: none;" id="cargador_empresa" align="center">
+        <br>
+         <label style="color:#FFF; background-color:#ABB6BA; text-align:center">&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label>
+
+         <img src="{{ url('/img/cargando.gif') }}" align="middle" alt="cargador"> &nbsp;<label style="color:#ABB6BA">Realizando tarea solicitada ...</label>
+
+          <br>
+         <hr style="color:#003" width="50%">
+         <br>
+</div>
+<input type="hidden"  id="url_raiz_proyecto" value="{{ url("/") }}" />
+
+<div id="capa_modal" class="div_modal" style="display: none;"></div>
+<div id="capa_formularios" class="div_contenido" style="display: none;"></div>
+
+
 <body>
    
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
@@ -91,7 +112,7 @@
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-gear fa-stack-1x"></i></span>Configuracion</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="/admin"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Perfil</a></li>
+                        <li><a href="/listado_usuarios"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Perfil</a></li>
                         <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>link2</a></li>
  
                     </ul>
@@ -107,5 +128,6 @@
  <script src="{{asset('js/app.js') }}"></script>
    <script src="{{asset('js/sidebar_menu.js') }}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
 </body>
 </html>

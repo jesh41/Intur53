@@ -37,6 +37,12 @@
                     </button>
 
                  </div> 
+
+
+                 <input type="hidden"  id="url_raiz_proyecto" value="{{ url("/") }}" />
+
+<div id="capa_modal" class="div_modal" style="display: none;"></div>
+<div id="capa_formularios" class="div_contenido" style="display: none;"></div>
 @if (Auth::guest())
 
 @else            

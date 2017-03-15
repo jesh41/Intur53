@@ -24,12 +24,18 @@ Route::group(['middleware' => 'auth'], function () {
 	//pagina inicio
 	Route::get('/home', 'HomeController@index');
 	//modulo administracion de usuarios
-	Route::get('/admin', 'HomeController@listadouser');
+	Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
+	//creacion nuevo usuario
+	Route::post('crear_usuario', 'AdminController@crear_usuario');
+	Route::get('form_nuevo_usuario', 'AdminController@form_nuevo_usuario');
+	
+
+
 	///Modulo Book
 	Route::get('/book','BookController@index');
 	//modulo reporteria
 	Route::get('/report','ReportController@index');
-  
+  	//
    
 
 });

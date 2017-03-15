@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Validator;
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -26,10 +30,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-     public function listadouser()
-    {
-        return view('/admin/list');
-    }
+    
 
 
 }
