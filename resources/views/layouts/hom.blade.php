@@ -107,7 +107,7 @@
                     <a href="/book"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Libros</a>
                 </li>
                 <li>
-                    <a href="/report"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cubes fa-stack-1x "></i></span>Reportes</a>
+                    <a href="/reports"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cubes fa-stack-1x "></i></span>Reportes</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-gear fa-stack-1x"></i></span>Configuracion</a>

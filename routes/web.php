@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 	///Modulo Book
 	Route::get('/book','BookController@index');
 	//modulo reporteria
-	Route::get('/report','ReportController@index');
+	Route::get('/reports','ReportController@index');
   	//
    
 
