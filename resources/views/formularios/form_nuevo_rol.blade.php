@@ -1,4 +1,4 @@
-@role('administrador')
+<!--@role('administrador')-->
 <section  >
 <div class="col-md-12">
 
@@ -95,7 +95,7 @@
 
 
 </section>
-@else
+<!--@else
 	 <br/><div class='rechazado'><label style='color:#FA206A'>NO TIENE PERMISO PARA AGREGAR ROL</label>  </div> 
-@endrole
+@endrole-->
 
