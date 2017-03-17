@@ -27,8 +27,5 @@
       
         @yield('content')
     
-
-   <script src="{{asset('js/sidebar_menu.js') }}"></script>
-  <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>

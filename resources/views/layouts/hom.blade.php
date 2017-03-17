@@ -8,20 +8,27 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'INTUR') }}</title>
+    <title>Intur-Hotel</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/barra-nueva.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+   <!-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/skin-blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plusis.css') }}" rel="stylesheet">
+     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
     <!-- Scripts -->
+   
     <script>
+
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+
+
     </script>
 </head>
 
@@ -46,19 +53,9 @@
 <body>
    
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-         
-                                   
-                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;"/> </a>  
-                
-
-                <div class="nav navbar-nav navbar-left">
-                     <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <i class="fa fa-bars"></i></button></li>  
-                </div>
-
-
-
-             <div class="container">
-                             
+                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;"/> </a>             
+           <div class="container">
+                      
                     <ul class="nav navbar-nav navbar-right">
                       
                         @if (Auth::guest())
@@ -67,7 +64,7 @@
                         @else
                             
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -92,42 +89,58 @@
             </div> 
         </nav>
         
-    
+
   
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+ <div id="wrapper">
  
-                <li class="active">
-                    <a href="/home"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashcube fa-stack-1x "></i></span>Dashboard</a>
-                       
-                </li>
-                <li>
-                    <a href="/book"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Libros</a>
-                </li>
-                <li>
-                    <a href="/reports"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cubes fa-stack-1x "></i></span>Reportes</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-gear fa-stack-1x"></i></span>Configuracion</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="/listado_usuarios"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Perfil</a></li>
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>link2</a></li>
+<div class="nav-side-menu" style="margin-top: 50px;" >
  
-                    </ul>
+ 
+        <div class="menu-list" >
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a href="/home">  <i class="fa fa-dashboard fa-lg"></i> Dashboard</a>
                 </li>
-                       
-            </ul>
-        </div>
-    </div>
+
+                <li>
+                  <a href="/book"><i class="fa fa-book fa-lg"></i> Libros </a>
+                </li>
+                 <li >
+                  <a href="/reports"><i class="fa fa-cubes fa-lg"></i> Reportes </a>
+                </li>  
+                   <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a href="#"><i class="fa fa-car fa-lg"></i> Ejemplo <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                  <li>Nuevo 1</li>
+                  <li>Nuevo 2</li>
+                  <li>Nuevo 3</li>
+                </ul>
+                 <li data-toggle="collapse" data-target="#config" class="collapsed">
+                  <a href="#"><i class="fa fa-gear fa-lg"></i>Configuracion<span class="arrow"></span></a>
+                 </li>
+                 <ul class="sub-menu collapse" id="config">
+                     <li>
+                        <a href="/listado_usuarios"> <i class="fa fa-users fa-lg"></i> Usuarios</a>              
+                     </li>
+                 </ul>
+             </ul>
+     </div>
+</div>
+</div>
 
 
  @yield('content')
-    <!-- Scripts -->
- <script src="{{asset('js/app.js') }}"></script>
-   <script src="{{asset('js/sidebar_menu.js') }}"></script>
-  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
+
+
+
+<!-- Then include bootstrap js -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  
+  <script src="{{asset('js/app.js') }}"></script>
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
 </body>
 </html>
