@@ -56,6 +56,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	///Modulo Book
 	Route::get('/book','BookController@index');
+
+	Route::get('form_cargar_books', 'BookController@form_cargar_libros');
+	Route::post('cargar_datos', 'BookController@cargar_libros');
+
+
 	//modulo reporteria
 	Route::get('/reports','ReportController@index');
   	//

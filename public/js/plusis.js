@@ -43,10 +43,12 @@ function cargar_formulario(arg){
    $("#capa_formularios").html($("#cargador_empresa").html());
    if(arg==1){ var miurl=urlraiz+"/form_nuevo_usuario"; }//listo
    if(arg==2){ var miurl=urlraiz+"/form_nuevo_rol"; }//listo
-   if(arg==3){ var miurl=urlraiz+"/form_nuevo_permiso"; }
+   if(arg==3){ var miurl=urlraiz+"/form_nuevo_permiso"; }//listo
+   if(arg==4){ var miurl=urlraiz+"/form_cargar_books"; }//falta este
 
     $.ajax({
     url: miurl
+
     }).done( function(resul) 
     {
      $("#capa_formularios").html(resul);
@@ -215,3 +217,48 @@ function borrar_rol(idrol){
 
 
 }
+
+
+
+
+$(document).on("submit",".formarchivo",function(e){
+
+     
+        e.preventDefault();
+        var formu=$(this);
+        var nombreform=$(this).attr("id");
+
+        
+        if(nombreform=="f_cargar_books" ){ var miurl="cargar_datos";  var divresul="notificacion_resul_fcdu"}
+
+        //información del formulario
+        var formData = new FormData($("#"+nombreform+"")[0]);
+
+        //hacemos la petición ajax   
+        $.ajax({
+            url: miurl,  
+            type: 'POST',
+     
+            // Form data
+            //datos del formulario
+            data: formData,
+            //necesario para subir archivos via ajax
+            cache: false,
+            contentType: false,
+            processData: false,
+            //mientras enviamos el archivo
+            beforeSend: function(){
+              $("#"+divresul+"").html($("#cargador_empresa").html());                
+            },
+            //una vez finalizado correctamente
+            success: function(data){
+              $("#"+divresul+"").html(data);
+              $("#fotografia_usuario").attr('src', $("#fotografia_usuario").attr('src') + '?' + Math.random() );               
+            },
+            //si ha ocurrido un error
+            error: function(data){
+               alert("ha ocurrido un error") ;
+                
+            }
+        });
+    });

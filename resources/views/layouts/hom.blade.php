@@ -93,7 +93,7 @@
   
  <div id="wrapper">
  
-<div class="nav-side-menu" style="margin-top: 50px;" >
+<div class="nav-side-menu" style="margin-top: 50px;width:" >
  
  
         <div class="menu-list" >
@@ -104,8 +104,9 @@
                 </li>
 
                 <li>
+                  
                   <a href="/book"><i class="fa fa-book fa-lg"></i> Libros </a>
-                </li>
+                
                  <li >
                   <a href="/reports"><i class="fa fa-cubes fa-lg"></i> Reportes </a>
                 </li>  
@@ -137,10 +138,11 @@
 
 
 <!-- Then include bootstrap js -->
+  <script src="{{asset('js/app.js') }}"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  
-  <script src="{{asset('js/app.js') }}"></script>
+
+ <script src="{{asset('js/app.js') }}"></script>
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
 </body>
 </html>
