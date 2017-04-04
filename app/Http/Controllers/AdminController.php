@@ -120,6 +120,7 @@ class AdminController extends Controller
             return view("mensajes.mensaje_error")->with("msj","..Hubo un error al agregar ; intentarlo nuevamente..");
         }
         }
+        
     public function form_borrado_usuario($id){
   $usuario=User::find($id);
   return view("formularios.form_borrado_usuario")->with("usuario",$usuario);

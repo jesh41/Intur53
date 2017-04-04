@@ -59,7 +59,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('form_cargar_books', 'BookController@form_cargar_libros');
 	Route::post('cargar_datos', 'BookController@cargar_libros');
-
+	//anulacion
+	Route::post('anular_libro', 'bookController@anular_libro');
+	Route::get('confirmacion_anular_libro/{idusuario}', 'BookController@confirmacion_anular_libro');
+	Route::get('form_anular_libro/{idusu}', 'BookController@form_anular_libro');
 
 	//modulo reporteria
 	Route::get('/reports','ReportController@index');

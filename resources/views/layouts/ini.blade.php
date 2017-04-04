@@ -26,6 +26,9 @@
    
       
         @yield('content')
-    
+    <!-- Scripts -->
+       <script src="{{asset('js/app.js') }}"></script>
+   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>

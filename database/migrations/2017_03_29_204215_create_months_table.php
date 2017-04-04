@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUsers extends Migration
+class CreateMonthsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class UpdateUsers extends Migration
      */
     public function up()
     {
-         
-
-         Schema::table('users', function ($table) {
-             $table->string('nombre', 60);
+        Schema::create('months', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('mes');
             
         });
-
-
     }
 
     /**
@@ -30,6 +27,6 @@ class UpdateUsers extends Migration
      */
     public function down()
     {
-        //
+       Schema::dropIfExists('months');
     }
 }

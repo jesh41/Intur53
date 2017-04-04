@@ -74,6 +74,8 @@ $(document).on("submit",".formentrada",function(e){
   if(quien=="f_editar_acceso"){  var varurl=$(this).attr("action");  var div_resul="notificacion_E3";  }//listo
   if(quien=="f_borrar_usuario"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }//listo
   if(quien=="f_asignar_permiso"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
+  if(quien=="f_asignar_permiso"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
+
   
   $("#"+div_resul+"").html( $("#cargador_empresa").html());
   
@@ -160,6 +162,31 @@ function borrado_usuario(idusu){
    $("#capa_formularios").css('top', screenTop);
    $("#capa_formularios").html($("#cargador_empresa").html());
    var miurl=urlraiz+"/form_borrado_usuario/"+idusu+""; 
+  
+
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+
+
+}
+
+function anular_libro(idusu){
+
+   var urlraiz=$("#url_raiz_proyecto").val();
+   $("#capa_modal").show();
+   $("#capa_formularios").show();
+   var screenTop = $(document).scrollTop();
+   $("#capa_formularios").css('top', screenTop);
+   $("#capa_formularios").html($("#cargador_empresa").html());
+   var miurl=urlraiz+"/form_anular_libro/"+idusu+""; 
   
 
     $.ajax({

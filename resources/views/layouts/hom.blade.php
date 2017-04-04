@@ -53,7 +53,7 @@
 <body>
    
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;"/> </a>             
+                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;position:absolute;top: 10%;left:0%;"/> </a>             
            <div class="container">
                       
                     <ul class="nav navbar-nav navbar-right">
@@ -141,8 +141,7 @@
   <script src="{{asset('js/app.js') }}"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
- <script src="{{asset('js/app.js') }}"></script>
+  <script src="{{asset('js/app.js') }}"></script>
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
 </body>
 </html>

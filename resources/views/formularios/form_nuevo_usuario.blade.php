@@ -21,11 +21,8 @@
                     <div class="col-sm-10" >
                       <input type="text" class="form-control" id="nombres" name="nombres"  required   >
                        </div>
-                   </div><!-- /.form-group -->
-
-           
-
-          </div><!-- /.col -->
+                    </div>
+          </div>
 
                 
         <div class="col-md-6">
