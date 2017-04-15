@@ -298,6 +298,7 @@ class ComposerStaticInited622da6b8b0e8eeb9f0e9772b0135c7
 
     public static $classMap = array (
         'AddSpecialRoleColumn' => __DIR__ . '/../..' . '/database/migrations/2015_12_04_003040_add_special_role_column.php',
+        'CreateAnnulmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_05_205138_create_annulments_table.php',
         'CreateBookdetailsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_22_091808_create_bookdetails_table.php',
         'CreateBooksTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_22_091006_create_books_table.php',
         'CreateMonthsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_29_204215_create_months_table.php',

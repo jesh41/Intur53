@@ -53,7 +53,7 @@
 <body>
    
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;position:absolute;top: 10%;left:0%;"/> </a>             
+                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;position:absolute;top: 10%;left:1%;"/> </a>             
            <div class="container">
                       
                     <ul class="nav navbar-nav navbar-right">
@@ -125,6 +125,9 @@
                      <li>
                         <a href="/listado_usuarios"> <i class="fa fa-users fa-lg"></i> Usuarios</a>              
                      </li>
+                      <li>
+                        <a href="/bitacora"> <i class="fa fa-compass fa-lg"></i> Bitacora</a>              
+                     </li>
                  </ul>
              </ul>
      </div>
@@ -138,7 +141,7 @@
 
 
 <!-- Then include bootstrap js -->
-  <script src="{{asset('js/app.js') }}"></script>
+
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="{{asset('js/app.js') }}"></script>

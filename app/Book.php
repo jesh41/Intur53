@@ -24,4 +24,9 @@ class Book extends Model
         return $this->hasMany('App\Bookdetail');
     }
 
+    public function annulment()
+    {
+        return $this->belongsTo('App\Annulment');
+    }
+
 }

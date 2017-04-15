@@ -6,7 +6,7 @@
   background-color: #2e353d;
   position: fixed;
   top: 0px;
-  width: 200px;
+  width: 300px;
   height: 100%;
   color: #e1ffff;
 }
@@ -138,7 +138,12 @@
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
+  #main {
+    width:calc(100% - 300px);
+    float: right;
+  }
 }
+
 body {
   margin: 0px;
   padding: 0px;

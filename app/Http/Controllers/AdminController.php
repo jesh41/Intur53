@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Annulment;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -35,7 +36,7 @@ class AdminController extends Controller
     public function listado_usuarios()
     {
     //presenta un listado de usuarios paginados de 25 a 25
-    $usuarios=User::paginate(25);
+    $usuarios=User::paginate(10);
     return view("/admin/list")->with("usuarios",$usuarios);
     }
 
@@ -252,6 +253,12 @@ class AdminController extends Controller
 
 
 
-
+//bitacora
+     public function bitacora()
+    {
+        
+        $annulments=Annulment::all();
+        return view('/admin/bitacora')->with("annulments",$annulments);
+    }
 
 }

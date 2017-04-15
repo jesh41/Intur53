@@ -15,12 +15,27 @@
               <div class="box-footer">
 
               <form method="post" action="{{ url('anular_libro') }}" id="f_borrar_usuario" class="formentrada" >
+         
+
+
+            <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-2" for="nombre">Motivo*</label>
+                    <div class="col-sm-10" >
+                   <select class="form-control"  name="observacion" id="observacion">
+                    <option>archivo incorrecto</option>
+                    <option>Informacion vieja</option>
+                  </select>
+                    </div>
+                  </div>
+            </div>
 
                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <input type="hidden" name="id_book" value="{{ $book->id }}">
 
                 <button type="button" class="btn btn-default" onclick="javascript:$('.div_modal').click();" >Cancelar</button>
-                <button type="submit" class="btn btn-danger" style="margin-left:20px;" >Anular libro</button> </form>
+                <button type="submit" class="btn btn-danger" style="margin-left:20px;" >Anular libro</button>
+                 </form>
               </div>
 
 

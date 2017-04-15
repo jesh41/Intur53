@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddSpecialRoleColumn' => $baseDir . '/database/migrations/2015_12_04_003040_add_special_role_column.php',
+    'CreateAnnulmentsTable' => $baseDir . '/database/migrations/2017_04_05_205138_create_annulments_table.php',
     'CreateBookdetailsTable' => $baseDir . '/database/migrations/2017_03_22_091808_create_bookdetails_table.php',
     'CreateBooksTable' => $baseDir . '/database/migrations/2017_03_22_091006_create_books_table.php',
     'CreateMonthsTable' => $baseDir . '/database/migrations/2017_03_29_204215_create_months_table.php',

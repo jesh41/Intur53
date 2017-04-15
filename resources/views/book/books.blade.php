@@ -60,7 +60,7 @@
 </div>
 
 
-
+{{ $books->links() }}
 
 
 </div>

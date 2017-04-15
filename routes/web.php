@@ -66,7 +66,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//modulo reporteria
 	Route::get('/reports','ReportController@index');
-  	//
+  	//bitacora
+  	Route::get('/bitacora','AdminController@bitacora');
    
 
 });

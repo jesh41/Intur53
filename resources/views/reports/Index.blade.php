@@ -8,7 +8,7 @@
                 <div class="panel-heading">Modulo administracion de Reporte</div>
 
                 <div class="panel-body">
-                   seccion Reporteria de indicadores
+                   Seccion reporteria de indicadores
                 </div>
             </div>
         </div>

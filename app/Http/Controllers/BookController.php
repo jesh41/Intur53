@@ -9,6 +9,7 @@ use App\User;
 use App\Book;
 use App\Bookdetail;
 use App\Month;
+use App\Annulment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
@@ -28,10 +29,8 @@ class BookController extends Controller
 
    public function index()
     {
-      $books=Book::all();
-    
-     
-        return view('/book/books')->with("books",$books);
+      $books=Book::paginate(10);
+      return view('/book/books')->with("books",$books);
     }
    
 public function anular_libro(Request $request){
@@ -39,10 +38,13 @@ public function anular_libro(Request $request){
         
         $book=Book::find($idbook);
         $book->estado='U';
-        
-
-
+      
        if($book->save()){
+        $annnulment=new Annulment;
+        $annnulment->book_id=$idbook;
+        $annnulment->observacion=$request->input("observacion");
+        $annnulment->elaborado = Auth::user()->name;
+        $annnulment->save();
              return view("mensajes.msj_libro_anulado")->with("msj","Libro Anulado Correctamente") ;
         }
         else
@@ -50,6 +52,8 @@ public function anular_libro(Request $request){
             return view("mensajes.mensaje_error")->with("msj","..Hubo un error al agregar ; intentarlo nuevamente..");
         }
        }
+
+
 
    public function form_anular_libro($id){
   $book=Book::find($id);
