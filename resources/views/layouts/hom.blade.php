@@ -93,7 +93,7 @@
   
  <div id="wrapper">
  
-<div class="nav-side-menu" style="margin-top: 50px;width:" >
+<div class="nav-side-menu" style="margin-top:50px;" >
  
  
         <div class="menu-list" >
@@ -110,14 +110,7 @@
                  <li >
                   <a href="/reports"><i class="fa fa-cubes fa-lg"></i> Reportes </a>
                 </li>  
-                   <li data-toggle="collapse" data-target="#new" class="collapsed">
-                  <a href="#"><i class="fa fa-car fa-lg"></i> Ejemplo <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="new">
-                  <li>Nuevo 1</li>
-                  <li>Nuevo 2</li>
-                  <li>Nuevo 3</li>
-                </ul>
+                  
                  <li data-toggle="collapse" data-target="#config" class="collapsed">
                   <a href="#"><i class="fa fa-gear fa-lg"></i>Configuracion<span class="arrow"></span></a>
                  </li>
@@ -142,9 +135,10 @@
 
 <!-- Then include bootstrap js -->
 
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="{{asset('js/app.js') }}"></script>
+  
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
 </body>
 </html>
