@@ -204,6 +204,30 @@ function anular_libro(idusu){
 }
 
 
+function previ_libro(idusu){
+
+   var urlraiz=$("#url_raiz_proyecto").val();
+   $("#capa_modal").show();
+   $("#capa_formularios").show();
+   var screenTop = $(document).scrollTop();
+   $("#capa_formularios").css('top', screenTop);
+   $("#capa_formularios").html($("#cargador_empresa").html());
+   var miurl=urlraiz+"/form_prev_libro/"+idusu+""; 
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+
+
+}
+
+
 function borrar_permiso(idrol,idper){
 
      var urlraiz=$("#url_raiz_proyecto").val();

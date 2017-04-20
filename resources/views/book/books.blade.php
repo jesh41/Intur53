@@ -40,10 +40,13 @@
             
             <td>{{ $book->user->name}}</td>
             @if ($book->estado=='U')
-                <td></td>
+                <td>
+                    <button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
+                </td>
             @else
             <td>
-            <button type="button"  class="btn  btn-danger btn-xs"  onclick="anular_libro({{$book->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
+             <button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
+            <button type="button"  class="btn  btn-danger btn-xs"  title="anular" onclick="anular_libro({{$book->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
             </td>
            @endif
             

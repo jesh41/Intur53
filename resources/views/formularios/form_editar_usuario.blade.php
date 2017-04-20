@@ -1,12 +1,7 @@
 
 <section >
-
-
-
 <div class="row" >
-
 <div class="col-md-12">
-
   <div class="box box-primary box-gris">
     <div class="box-header with-border my-box-header">
         <h3 class="box-title"><strong>Asignar rol</strong></h3>
@@ -99,20 +94,10 @@
                 <button type="submit" class="btn btn-primary">Actualizar Datos</button>
           </div>
 
-          </form>
-
-        
-                
-                    
+          </form>                   
       </div>
                     
     </div>
-
-
-
-
-
-
 
   <div class="box box-primary   box-gris" style="margin-bottom: 200px;">
     <div class="box-header with-border my-box-header">

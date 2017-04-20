@@ -105,7 +105,7 @@
 
                 <li>
                   
-                  <a href="/book"><i class="fa fa-book fa-lg"></i> Libros </a>
+                  <a href="/book"><i class="fa fa-book fa-lg"></i> Libros de Huespedes </a>
                 
                  <li >
                   <a href="/reports"><i class="fa fa-cubes fa-lg"></i> Reportes </a>
