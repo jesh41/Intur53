@@ -214,7 +214,7 @@ function previ_libro(idusu){
    $("#capa_formularios").html($("#cargador_empresa").html());
    var miurl=urlraiz+"/form_prev_libro/"+idusu+""; 
     $.ajax({
-    url: miurl
+   url: miurl
     }).done( function(resul) 
     {
      $("#capa_formularios").html(resul);
@@ -272,6 +272,8 @@ function borrar_rol(idrol){
 
 
 
+
+
 $(document).on("submit",".formarchivo",function(e){
 
      
@@ -313,3 +315,12 @@ $(document).on("submit",".formarchivo",function(e){
             }
         });
     });
+
+
+
+
+/* off-canvas sidebar toggle */
+$('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+    $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
+});

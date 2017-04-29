@@ -32,7 +32,8 @@
       @endforeach
     </tbody>
     </table>
-
-  </div>
 </div>
 </section>
+{{ $detalle->links() }}
+  </div>
+

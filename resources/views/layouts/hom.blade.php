@@ -11,11 +11,11 @@
     <title>Intur-Hotel</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   <link href="{{ asset('css/barra-nueva.css') }}" rel="stylesheet">
+  <!--  <link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+  <!-- <link href="{{ asset('css/barra-nueva.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
    <!-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">-->
-    <link href="{{ asset('css/skin-blue.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/skin-blue.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/plusis.css') }}" rel="stylesheet">
      <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -32,7 +32,7 @@
     </script>
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body >
 
 <div style="display: none;" id="cargador_empresa" align="center">
         <br>
@@ -53,7 +53,8 @@
 <body>
    
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-                  <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;position:absolute;top: 10%;left:1%;"/> </a>             
+        <a href="#" data-toggle="offcanvas" style="position:absolute;top: 20%;left:1%;"><i class="fa fa-navicon fa-2x"></i></a>
+        <a class="navbar-brand" ><img src="{{asset('images/Logo.png') }}" style="width:135px;height:40px;position:absolute;top: 10%;left:3%;"/> </a>             
            <div class="container">
                       
                     <ul class="nav navbar-nav navbar-right">
@@ -91,44 +92,37 @@
         
 
   
- <div id="wrapper">
+ <div id="wrapper" style="height:93%;">
  
-<div class="nav-side-menu" style="margin-top:50px;" >
- 
- 
-        <div class="menu-list" >
-  
-            <ul id="menu-content" class="menu-content collapse out">
+ <div class="row row-offcanvas row-offcanvas-left">
+        <!-- sidebar -->
+        <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+            <ul class="nav" id="menu" style="margin-left: 5%;">
+                <li><a href="/home"><i class="fa fa-dashboard fa-lg"></i> <span class="collapse in hidden-xs">Dashboard</span></a></li>
+               <li><a href="/book"><i class="fa fa-book fa-lg"></i> <span class="collapse in hidden-xs">Libros de Huespedes</span></a></li>
+               <li><a href="/reports"><i class="fa fa-cubes fa-lg"></i> <span class="collapse in hidden-xs"> Reportes</span></a></li>
                 <li>
-                  <a href="/home">  <i class="fa fa-dashboard fa-lg"></i> Dashboard</a>
+                    <a href="#" data-target="#item2" data-toggle="collapse"><i class="fa fa-gear fa-lg"></i> <span class="collapse in hidden-xs">Configuracion<span class="caret"></span></span></a>
+                    <ul class="nav nav-stacked collapse" id="item2">
+                        <li><a href="/listado_usuarios"><i class="fa fa-users fa-lg"></i> Usuarios</a></li>
+                        <li><a href="/bitacora"><i class="fa fa-compass fa-lg"></i> Bitacora</a></li>
+                    </ul>
                 </li>
+            </ul>
+        </div>
+        <!-- /sidebar -->
 
-                <li>
-                  
-                  <a href="/book"><i class="fa fa-book fa-lg"></i> Libros de Huespedes </a>
-                
-                 <li >
-                  <a href="/reports"><i class="fa fa-cubes fa-lg"></i> Reportes </a>
-                </li>  
-                  
-                 <li data-toggle="collapse" data-target="#config" class="collapsed">
-                  <a href="#"><i class="fa fa-gear fa-lg"></i>Configuracion<span class="arrow"></span></a>
-                 </li>
-                 <ul class="sub-menu collapse" id="config">
-                     <li>
-                        <a href="/listado_usuarios"> <i class="fa fa-users fa-lg"></i> Usuarios</a>              
-                     </li>
-                      <li>
-                        <a href="/bitacora"> <i class="fa fa-compass fa-lg"></i> Bitacora</a>              
-                     </li>
-                 </ul>
-             </ul>
-     </div>
-</div>
+        <!-- main right col -->
+        <div class="column col-sm-9 col-xs-11" id="main">
+           
+             @yield('content')
+        </div>
+        <!-- /main -->
+ </div>
 </div>
 
 
- @yield('content')
+<!-- @yield('content')-->
 
 
 

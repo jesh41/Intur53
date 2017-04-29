@@ -41,7 +41,7 @@
             <td>{{ $book->user->name}}</td>
             @if ($book->estado=='U')
                 <td>
-                    <button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
+                    <button type="button" class="btn  btn-default btn-xs" title="previsualizar"  onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
                 </td>
             @else
             <td>

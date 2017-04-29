@@ -55,7 +55,7 @@ public function anular_libro(Request $request){
 
 
 public function  form_prev_libro($id){
-      $detalle=Bookdetail::where('book_id',$id)->get();//paginate(5);
+      $detalle=Bookdetail::where('book_id',$id)->paginate(5);
       return view("formularios.form_previ_libro")->with("detalle",$detalle);
 }
 
