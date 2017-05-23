@@ -1,18 +1,41 @@
 @extends('layouts.hom')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-success">
-                <div class="panel-heading">Modulo administracion de Reporte</div>
-
-                <div class="panel-body">
-                   Seccion reporteria de indicadores
-                </div>
+<div class="row">
+            <div class="col-xs-12">
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">REPORTES DEL SISTEMA</h3>
+                  <div class="box-tools">
+                 <!--   <div class="input-group" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div> /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                   
+                    <thead><tr>
+                      <th>ID</th>
+                      <th>reporte</th>
+                      <th>ver</th>
+                      <th>descargar</th>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Numero de Huespedes por mes y por residencia</td>
+                      <td><a href="crear_reporte_1/1" target="_blank" ><button class="btn btn-block btn-primary btn-xs">Ver</button></a></td>
+                      <td><a href="crear_reporte_1/2" target="_blank" ><button class="btn btn-block btn-success btn-xs">Descargar</button></a></td>
+                    
+                    </tr>
+                   
+                  </tbody></table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
             </div>
-        </div>
-    </div>
-</div>
-
+ </div>
 @endsection

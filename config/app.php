@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Shinobi' => Caffeinated\Shinobi\Facades\Shinobi::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

@@ -270,7 +270,10 @@ function borrar_rol(idrol){
 }
 
 
-
+function cancelar(){
+  document.getElementById('#capa_formularios').style.display = "none";
+   document.getElementById('#capa_modal').style.display = "none";
+}
 
 
 
@@ -316,6 +319,21 @@ $(document).on("submit",".formarchivo",function(e){
         });
     });
 
+
+function cargarlistado(listado){
+
+    //funcion para cargar los diferentes  en general
+if(listado==1){ var url = "listado_usuarios"; }
+if(listado==2){ var url = "listado_publicaciones/0"; }
+if(listado==3){ var url = "/reports"; }
+
+$("#contenido_principal").html($("#cargador_empresa").html());
+$.get(url,function(resul){
+
+        $("#contenido_principal").html(resul); 
+})
+
+}
 
 
 

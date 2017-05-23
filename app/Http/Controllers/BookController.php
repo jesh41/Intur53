@@ -55,7 +55,7 @@ public function anular_libro(Request $request){
 
 
 public function  form_prev_libro($id){
-      $detalle=Bookdetail::where('book_id',$id)->paginate(5);
+      $detalle=Bookdetail::where('book_id',$id)->paginate(10);
       return view("formularios.form_previ_libro")->with("detalle",$detalle);
 }
 
@@ -84,8 +84,8 @@ public function  form_prev_libro($id){
            $ruta  =  storage_path('archivos') ."/". $nombre_original;
          
            $libro=new Book;
-           $libro->Mes='Marzo';
-           $libro->Observacion='prueba';
+           $libro->Mes='Abril';
+          
            $libro->anio='2017';
            $libro->estado='A';
            $libro->Observacion=$request->input("observacion");
