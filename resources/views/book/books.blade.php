@@ -33,7 +33,7 @@
          @foreach($books as $book)
         <tr role="row" class="odd">
             <td>{{ $book->id }}</td>
-            <td>{{ $book->Mes }}</td>
+            <td>{{ $book->month->mes}}</td>
             <td>{{ $book->estado }}</td>
             <td>{{ $book->Anio }}</td>
             <td>{{ $book->FechaElaborado}}</td>

@@ -44,7 +44,7 @@ function cargar_formulario(arg){
    if(arg==1){ var miurl=urlraiz+"/form_nuevo_usuario"; }//listo
    if(arg==2){ var miurl=urlraiz+"/form_nuevo_rol"; }//listo
    if(arg==3){ var miurl=urlraiz+"/form_nuevo_permiso"; }//listo
-   if(arg==4){ var miurl=urlraiz+"/form_cargar_books"; }//falta este
+   if(arg==4){ var miurl=urlraiz+"/form_cargar_books"; }//listo
 
     $.ajax({
     url: miurl
@@ -270,21 +270,10 @@ function borrar_rol(idrol){
 }
 
 
-function cancelar(){
-  document.getElementById('#capa_formularios').style.display = "none";
-   document.getElementById('#capa_modal').style.display = "none";
-}
-
-
-
-$(document).on("submit",".formarchivo",function(e){
-
-     
+$(document).on("submit",".formarchivo",function(e){ 
         e.preventDefault();
         var formu=$(this);
-        var nombreform=$(this).attr("id");
-
-        
+        var nombreform=$(this).attr("id"); 
         if(nombreform=="f_cargar_books" ){ var miurl="cargar_datos";  var divresul="notificacion_resul_fcdu"}
 
         //información del formulario

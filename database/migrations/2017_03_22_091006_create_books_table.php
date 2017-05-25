@@ -16,12 +16,14 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Observacion');
-            $table->string('Mes');
+            $table->integer('Mes_id')->unsigned()->index();
+            $table->foreign('Mes_id')->references('id')->on('months');
             $table->integer('Anio');
             $table->char('estado');
             $table->date('FechaElaborado');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
+
 
             $table->timestamps();
         });

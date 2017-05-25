@@ -18,8 +18,6 @@ use Caffeinated\Shinobi\Models\Permission;
 class BookController extends Controller
 {
     //
-
-
       public function __construct()
     {
         $this->middleware('auth');
@@ -66,8 +64,7 @@ public function  form_prev_libro($id){
 
 	public function form_cargar_libros(){
         $months=Month::all();
-       return view("formularios.form_cargar_books",compact('months'));
-
+  return view("formularios.form_cargar_books")->with("months",$months);
 	 }
 
  	public function cargar_libros(Request $request)
@@ -84,8 +81,7 @@ public function  form_prev_libro($id){
            $ruta  =  storage_path('archivos') ."/". $nombre_original;
          
            $libro=new Book;
-           $libro->Mes='Abril';
-          
+           $libro->Mes_id=$request->input("mes");   
            $libro->anio='2017';
            $libro->estado='A';
            $libro->Observacion=$request->input("observacion");

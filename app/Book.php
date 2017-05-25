@@ -29,4 +29,10 @@ class Book extends Model
         return $this->belongsTo('App\Annulment');
     }
 
+    public function month()
+    {
+        return $this->hasOne('App\Month','id','Mes_id');
+    }
+
+
 }
