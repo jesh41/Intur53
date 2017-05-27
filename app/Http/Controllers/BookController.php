@@ -98,22 +98,22 @@ public function  form_prev_libro($id){
                               //obtiene idbook
                               $ultimo=Book::all()->pluck('id')->last();
                               //convierte el campo fecha
-                              $fechaentrada = str_replace('/','-', $fila->fechaentrada);
+                              $fechaentrada = str_replace('/','-', $fila->F_ENTRADA);
                               $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
-                              $fechasalida = str_replace('/','-', $fila->fechasalida);
+                              $fechasalida = str_replace('/','-', $fila->F_SALIDA);
                               $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-                              if(!empty($fila->identificacion )){
+                              if(!empty($fila->IDENTIFICACION )){
                                 $librodet=new Bookdetail;
-                                $librodet->Identificacion= $fila->identificacion;
-                                $librodet->Nombre= $fila->nombre;
+                                $librodet->Identificacion= $fila->IDENTIFICACION;
+                                $librodet->Nombre= $fila->NOMBRE_Y_APELLIDO;
                               //  $pais=Country::where('country',$fila->nombre);
-                              $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
+                              $pais=Country::where('country','LIKE','%'.$fila->PAIS.'%')->get();
                                 $librodet->pais_id= $pais[0]->id;//ila->pais;
-                                $librodet->Sexo= $fila->sexo;
+                                $librodet->Sexo= $fila->SEXO;
                                 $librodet->Fechaentrada=$fechaentrada;
                                 $librodet->Fechasalida=$fechasalida;
-                                $librodet->Noches= $fila->nochesdormidas;
-                                $librodet->Motivo= $fila->motivo;
+                                $librodet->Noches= $fila->N_DORMIDAS;
+                                $librodet->Motivo= $fila->MOTIVOS;
                                 $librodet->book_id=$ultimo;
                                 $librodet->save();
                               }
