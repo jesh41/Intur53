@@ -21,7 +21,7 @@ class Bookdetail extends Model
     public function pais()
     {
 
-        return $this->hasOne('App\country','id','pais_id');
+        return $this->hasOne('App\Country','id','pais_id');
    	
     }
 }
