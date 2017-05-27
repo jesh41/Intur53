@@ -10,6 +10,7 @@ use App\Book;
 use App\Bookdetail;
 use App\Month;
 use App\Annulment;
+use App\Country;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
@@ -105,7 +106,9 @@ public function  form_prev_libro($id){
                                 $librodet=new Bookdetail;
                                 $librodet->Identificacion= $fila->identificacion;
                                 $librodet->Nombre= $fila->nombre;
-                                $librodet->Pais= $fila->pais;
+                              //  $pais=Country::where('country',$fila->nombre);
+                              $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
+                                $librodet->pais_id= $pais[0]->id;//ila->pais;
                                 $librodet->Sexo= $fila->sexo;
                                 $librodet->Fechaentrada=$fechaentrada;
                                 $librodet->Fechasalida=$fechasalida;

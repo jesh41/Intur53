@@ -17,7 +17,8 @@ class CreateBookdetailsTable extends Migration
             $table->increments('id');
             $table->string('Identificacion');
             $table->string('Nombre');
-            $table->string('Pais');
+            $table->integer('pais_id')->unsigned()->index();
+            $table->foreign('pais_id')->references('id')->on('country');
             $table->string('Sexo');
             $table->date('FechaEntrada');
             $table->date('FechaSalida');

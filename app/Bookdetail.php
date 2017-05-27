@@ -10,11 +10,18 @@ use Illuminate\Database\Eloquent\Model;
 class Bookdetail extends Model
 {
     //
-      protected $fillable = ['Identificacion','Pais','Sexo','FechaEntrada','FechaSalida','Noches','Motivo',];
+      protected $fillable = ['Identificacion','pais_id','Sexo','FechaEntrada','FechaSalida','Noches','Motivo',];
 
 
        public function book()
     {
         return $this->belongsTo('App\Book');
+    }
+
+    public function pais()
+    {
+
+        return $this->hasOne('App\country','id','pais_id');
+   	
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Month extends Model
 {
     
-     protected $fillable = ['id','Mes',];
+     protected $fillable = ['Mes',];
 
   
 }

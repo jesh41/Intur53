@@ -22,7 +22,7 @@
       <td>{{ $detalles->id }}</td>
       <td>{{ $detalles->Identificacion }}</td>
       <td>{{ $detalles->Nombre }}</td>
-      <td>{{ $detalles->Pais }}</td>
+      <td>{{ $detalles->pais->country }}</td>
       <td>{{ $detalles->Sexo }}</td>
       <td>{{ $detalles->FechaEntrada }}</td>
       <td>{{ $detalles->FechaSalida }}</td>
