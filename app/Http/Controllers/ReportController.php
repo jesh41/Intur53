@@ -45,8 +45,9 @@ class ReportController extends Controller
 
     public function crear_reporte_porpais($tipo){
       //url
+        $year=2017;
      $vistaurl="/reports/report1";
-     $detalle=DB::select("call indicador1general()");
+     $detalle=DB::select("call indicador1general(2017)");
      //consulta
     // $detalle=Bookdetail::all();
      //$detalle->Book->where('estado','A')->get();

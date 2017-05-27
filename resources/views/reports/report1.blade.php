@@ -124,10 +124,10 @@ table {
                   <?php foreach($data as $dato){ ?>
                  
                     <tr>
-                      <td><?= $dato->anio; ?></td>
-                      <td><?= $dato->mes; ?></td>
-                      <td><?= $dato->Extranjero; ?></td>
-                      <td><?= $dato->Nacional; ?></td>
+                      <td><?= $dato->Anio; ?></td>
+                      <td><?= $dato->Mes; ?></td>
+                      <td><?= $dato->Extranjeros; ?></td>
+                      <td><?= $dato->Nacionales; ?></td>
                     </tr>
                     
                     <?php  } ?>
