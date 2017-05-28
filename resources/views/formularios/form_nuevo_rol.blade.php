@@ -48,6 +48,7 @@
 
                 <div class="box-footer col-xs-12 box-gris ">
                         <button type="submit" class="btn btn-primary">Crear Nuevo Rol</button>
+                        <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();">Cancelar</a>
                 </div>
             </form>
                     

@@ -33,6 +33,12 @@
     </tbody>
     </table>
 </div>
+<div class="col-md-12">     
+    <div class="box-footer">
+        <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();">Cancelar</a>
+  </div>
+</div>
+
 </section>
 {{ $detalle->links() }}
   </div>
