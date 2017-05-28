@@ -46,7 +46,7 @@ class ResetPassword extends Notification
     {
         return (new MailMessage)
             ->line('Tu estas recibiendo este email porque nosotros recibimos una solitud de reseteo de contraseña de tu cuenta.')
-            ->action('Reseteo de password', url('password/reset', $this->token))
+            ->action('Reseteo de contraseña', url('password/reset', $this->token))
             ->line('Si tu no hiciste la solicitud del reseteo de Contraseña entonces hacer caso omiso al correo.');
     }
 }
