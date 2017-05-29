@@ -61,7 +61,7 @@
 
 
 .table-bordered {
-    border: 1px solid #f4f4f4;
+    border: 2px solid #f4f4f4;
 }
 
 
@@ -69,6 +69,7 @@
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
+    border-color: black;
 }
 
 table {
@@ -76,7 +77,7 @@ table {
 }
 
  .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
-    border: 1px solid #f4f4f4;
+    border: 2px solid #f4f4f4;
 }
 
 
@@ -104,7 +105,9 @@ table {
 	  
 </head>
 <body>
-
+<?php $sumanac=0;
+$sumaext=0;
+ ?>
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
@@ -129,9 +132,15 @@ table {
                       <td><?= $dato->Extranjeros; ?></td>
                       <td><?= $dato->Nacionales; ?></td>
                     </tr>
-                    
+                     <?php $sumaext=$sumaext+$dato->Extranjeros; ?>
+                      <?php $sumanac=$sumanac+$dato->Nacionales; ?>
                     <?php  } ?>
-                    
+                    <tr>
+                      <td colspan="2" align="center">GRAN TOTAL</td>
+                      
+                      <td> <?php echo $sumaext; ?></td>
+                      <td> <?php echo $sumanac; ?></td>
+                    </tr>
                   </tbody>
 
                   </table>
