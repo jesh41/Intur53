@@ -47,7 +47,7 @@
 <div class="col-md-12">     
     <div class="box-footer">
         <button type="submit" class="btn btn-primary" >Cargar Datos</button>
-        <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();">Cancelar</a>
+        <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();" a href="/book">Cancelar</a>
       </div>
       </div>
 

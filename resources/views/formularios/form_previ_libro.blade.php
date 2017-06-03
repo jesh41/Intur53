@@ -24,8 +24,9 @@
       <td>{{ $detalles->Nombre }}</td>
       <td>{{ $detalles->pais->country }}</td>
       <td>{{ $detalles->Sexo }}</td>
-      <td>{{ $detalles->FechaEntrada }}</td>
-      <td>{{ $detalles->FechaSalida }}</td>
+       
+      <td>{{Carbon\Carbon::parse($detalles->FechaEntrada)->format('d-m-Y') }}</td>
+      <td>{{Carbon\Carbon::parse($detalles->FechaSalida )->format('d-m-Y') }}</td>
       <td>{{ $detalles->Noches }}</td>
       <td>{{ $detalles->Motivo }}</td>
     </tr>

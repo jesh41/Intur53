@@ -12,6 +12,7 @@ use App\Month;
 use App\Annulment;
 use App\Country;
 use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -28,7 +29,8 @@ class BookController extends Controller
 
    public function index()
     {
-      $books=Book::paginate(10);
+      $books=Book::where('user_id',Auth::user()->id)->paginate(10);
+     
       return view('/book/books')->with("books",$books);
     }
    
@@ -98,22 +100,29 @@ public function  form_prev_libro($id){
                               //obtiene idbook
                               $ultimo=Book::all()->pluck('id')->last();
                               //convierte el campo fecha
-                              $fechaentrada = str_replace('/','-', $fila->F_ENTRADA);
+
+                            $fechaentrada= str_replace('/','-', $fila->fentrada);
+                            // $nfechaentrada = carbon::createFromFormat('Y-m-d',$fila->fentrada);
+                             // $p1= date('Y-m-d', strtotime($fechaentrada));//Carbon::parse($fechaentrada)->format('Y-m-d');//str_replace('/','-', $fila->fentrada);
+                               // $nfechaentrada = Carbon::parse($p1)->format('Y-m-d');                       
                               $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
-                              $fechasalida = str_replace('/','-', $fila->F_SALIDA);
+                             $fechasalida =str_replace('/','-', $fila->fsalida);
+                           //$p2= date('Y-m-d', strtotime($fechasalida));
+                           //$nfechasalida =Carbon::parse($p2)->format('Y-m-d');
+                             // $nfechasalida =Carbon::createFromFormat( 'd/m/Y',$fechasalida);// Carbon::parse($fechasalida)->format('Y-m-d');//str_replace('/','-', $fila->fsalida);
                               $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-                              if(!empty($fila->IDENTIFICACION )){
+                              if(!empty($fila->identificacion )){
                                 $librodet=new Bookdetail;
-                                $librodet->Identificacion= $fila->IDENTIFICACION;
-                                $librodet->Nombre= $fila->NOMBRE_Y_APELLIDO;
-                              //  $pais=Country::where('country',$fila->nombre);
-                              $pais=Country::where('country','LIKE','%'.$fila->PAIS.'%')->get();
+                                $librodet->Identificacion= $fila->identificacion;
+                                $librodet->Nombre= $fila->nombre;
+                              
+                              $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
                                 $librodet->pais_id= $pais[0]->id;//ila->pais;
-                                $librodet->Sexo= $fila->SEXO;
+                                $librodet->Sexo= $fila->sexo;
                                 $librodet->Fechaentrada=$fechaentrada;
                                 $librodet->Fechasalida=$fechasalida;
-                                $librodet->Noches= $fila->N_DORMIDAS;
-                                $librodet->Motivo= $fila->MOTIVOS;
+                                $librodet->Noches= $fila->ndormidas;
+                                $librodet->Motivo= $fila->motivo;
                                 $librodet->book_id=$ultimo;
                                 $librodet->save();
                               }

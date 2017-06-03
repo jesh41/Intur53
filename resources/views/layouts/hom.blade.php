@@ -99,8 +99,13 @@
         <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
             <ul class="nav" id="menu" style="margin-left: 5%;">
                 <li><a href="/home"><i class="fa fa-dashboard fa-lg"></i> <span class="collapse in hidden-xs">Dashboard</span></a></li>
+              @can('subir')
                <li><a href="/book"><i class="fa fa-book fa-lg"></i> <span class="collapse in hidden-xs">Libros de Huespedes</span></a></li>
+             @endcan
+             @can('reportes')
                <li><a href="/reports"><i class="fa fa-cubes fa-lg"></i> <span class="collapse in hidden-xs"> Reportes</span></a></li>
+               @endcan
+               @can('configuracion')
                 <li>
                     <a href="#" data-target="#item2" data-toggle="collapse"><i class="fa fa-gear fa-lg"></i> <span class="collapse in hidden-xs">Configuracion<span class="caret"></span></span></a>
                     <ul class="nav nav-stacked collapse" id="item2">
@@ -108,6 +113,8 @@
                         <li><a href="/bitacora"><i class="fa fa-compass fa-lg"></i> Bitacora</a></li>
                     </ul>
                 </li>
+                
+                @endcan
             </ul>
         </div>
         <!-- /sidebar -->

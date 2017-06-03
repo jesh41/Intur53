@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	 //modulo roles
 	//roles creacion
-	Route::post('crear_rol', 'AdminController@crear_rol');
+	Route::post('crear_rol', 'AdminController@crear_rol');//->middleware('roleshinobi:Administrador')
 	Route::get('form_nuevo_rol', 'AdminController@form_nuevo_rol');
 	//rol borrado
 	Route::get('borrar_rol/{idrol}', 'AdminController@borrar_rol');
@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	///Modulo Book
-	Route::get('/book','BookController@index');
+	Route::get('/book','BookController@index');//->middleware('roleshinobi:Administrador');
 
 	Route::get('form_cargar_books', 'BookController@form_cargar_libros');
 	Route::post('cargar_datos', 'BookController@cargar_libros');
