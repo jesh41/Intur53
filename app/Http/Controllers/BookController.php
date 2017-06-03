@@ -29,8 +29,18 @@ class BookController extends Controller
 
    public function index()
     {
-      $books=Book::where('user_id',Auth::user()->id)->paginate(10);
+
+      if (Auth::user()->isRole('administrador')) 
+        {
+         $books=Book::paginate(10);
+        }
+        else
+        {
+           $books=Book::where('user_id',Auth::user()->id)->paginate(10);
+        }
      
+     
+       
       return view('/book/books')->with("books",$books);
     }
    
