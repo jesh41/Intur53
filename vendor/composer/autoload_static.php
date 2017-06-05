@@ -337,9 +337,11 @@ class ComposerStaticInited622da6b8b0e8eeb9f0e9772b0135c7
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePermissionRoleTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_24_080433_create_permission_role_table.php',
         'CreatePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_24_080208_create_permissions_table.php',
+        'CreateReasonTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_03_181235_create_reason_table.php',
         'CreateRegionTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_224916_create_region_table.php',
         'CreateRoleUserTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_20_084525_create_role_user_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2015_01_20_084450_create_roles_table.php',
+        'CreateSexTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_390931_create_sex_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -908,7 +910,8 @@ class ComposerStaticInited622da6b8b0e8eeb9f0e9772b0135c7
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UpdateUsers' => __DIR__ . '/../..' . '/database/migrations/2017_02_18_194922_update_users.php.php',
         'catmestableseeder' => __DIR__ . '/../..' . '/database/seeds/catmestableseeder.php',
-        'countryseeder' => __DIR__ . '/../..' . '/database/seeds/countryseeder.php',
+        'catreason' => __DIR__ . '/../..' . '/database/seeds/catreason.php',
+        'catsex' => __DIR__ . '/../..' . '/database/seeds/catsex.php',
         'regionseeder' => __DIR__ . '/../..' . '/database/seeds/regionseeder.php',
     );
 

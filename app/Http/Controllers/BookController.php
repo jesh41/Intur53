@@ -12,7 +12,8 @@ use App\Month;
 use App\Annulment;
 use App\Country;
 use Carbon\Carbon;
-
+use App\Sex;
+use App\Reason;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -46,7 +47,6 @@ class BookController extends Controller
    
 public function anular_libro(Request $request){
         $idbook=$request->input("id_book");
-        
         $book=Book::find($idbook);
         $book->estado='U';
       
@@ -82,8 +82,7 @@ public function  form_prev_libro($id){
 
  	public function cargar_libros(Request $request)
 	{
-       $archivo = $request->file('archivo');
-       
+       $archivo = $request->file('archivo');      
        $extension=$archivo->getClientOriginalExtension();
 
           if ($extension=='xlsx')
@@ -91,26 +90,26 @@ public function  form_prev_libro($id){
            $autor = Auth::user()->id;
           $nombre_original='user'.$autor.'.'.$extension;//'Excel '+$archivo->getClientOriginalName()+$autor;
            $r1=Storage::disk('archivos')->put($nombre_original,  \File::get($archivo) );
-           $ruta  =  storage_path('archivos') ."/". $nombre_original;
-         
-           $libro=new Book;
-           $libro->Mes_id=$request->input("mes");   
-           $libro->anio='2017';
-           $libro->estado='A';
-           $libro->Observacion=$request->input("observacion");
-           $libro->FechaElaborado= date("Y-m-d");
-           $libro->user_id=$autor;
-           $libro->save();
+           $ruta=storage_path('archivos') ."/". $nombre_original;      
+             $libro=new Book;
+             $libro->Mes_id=$request->input("mes");
+             $libro->anio='2017';
+             $libro->estado='A';
+             $libro->Observacion=$request->input("observacion");
+             $libro->FechaElaborado= date("Y-m-d");
+             $libro->user_id=$autor;  
+             $libro->save();
+
+
            if($r1){
-                   
-                   Excel::selectSheetsByIndex(0)->load($ruta, function($hoja) {
+                  
+                   Excel::selectSheetsByIndex(0)->load($ruta, function($hoja)  {
                       
-                            $hoja->each(function($fila) {
+                            $hoja->each(function($fila)   {
                               //if(!empty($data) && $data->count())
                               //obtiene idbook
                               $ultimo=Book::all()->pluck('id')->last();
                               //convierte el campo fecha
-
                             $fechaentrada= str_replace('/','-', $fila->fentrada);
                             // $nfechaentrada = carbon::createFromFormat('Y-m-d',$fila->fentrada);
                              // $p1= date('Y-m-d', strtotime($fechaentrada));//Carbon::parse($fechaentrada)->format('Y-m-d');//str_replace('/','-', $fila->fentrada);
@@ -125,22 +124,25 @@ public function  form_prev_libro($id){
                                 $librodet=new Bookdetail;
                                 $librodet->Identificacion= $fila->identificacion;
                                 $librodet->Nombre= $fila->nombre;
-                              
-                              $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
+                                $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
                                 $librodet->pais_id= $pais[0]->id;//ila->pais;
-                                $librodet->Sexo= $fila->sexo;
+                                $s=Sex::where('sexo','LIKE','%'.$fila->sexo.'%')->get();
+                                $librodet->Sexo_id= $s[0]->id;
                                 $librodet->Fechaentrada=$fechaentrada;
                                 $librodet->Fechasalida=$fechasalida;
                                 $librodet->Noches= $fila->ndormidas;
-                                $librodet->Motivo= $fila->motivo;
+
+                                $mot=Reason::where('motivo','LIKE','%'.$fila->motivo.'%')->get();
+                                $librodet->motivo_id= $mot[0]->id;
                                 $librodet->book_id=$ultimo;
                                 $librodet->save();
-                              }
-                                
+                                 }
+                             
                                });
 
                             });
-
+                                
+                            
                             return view("mensajes.msj_correcto")->with("msj"," Libro cargado Correctamente");
                       
                        }
@@ -149,19 +151,11 @@ public function  form_prev_libro($id){
                             return view("mensajes.msj_rechazado")->with("msj","Error al subir el archivo, revise que cumpla con el formato");
                        }
 
-           
-
-
-
-
+                       
         }
         else
         {
-
-
-                      
-                      
-                return view("mensajes.msj_rechazado")->with("msj","Favor solo subir archivo excel ");
+            return view("mensajes.msj_rechazado")->with("msj","Favor solo subir archivo excel ");
         }
 
       }

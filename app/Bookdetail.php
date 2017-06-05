@@ -24,4 +24,20 @@ class Bookdetail extends Model
         return $this->hasOne('App\Country','id','pais_id');
    	
     }
+
+      public function sexo()
+    {
+
+        return $this->hasOne('App\Sex','id','sexo_id');
+    
+    }
+
+       public function motivo()
+    {
+
+        return $this->hasOne('App\Reason','id','motivo_id');
+    
+    }
+
+
 }

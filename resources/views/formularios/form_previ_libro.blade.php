@@ -23,12 +23,12 @@
       <td>{{ $detalles->Identificacion }}</td>
       <td>{{ $detalles->Nombre }}</td>
       <td>{{ $detalles->pais->country }}</td>
-      <td>{{ $detalles->Sexo }}</td>
+      <td>{{ $detalles->Sexo->sexo }}</td>
        
       <td>{{Carbon\Carbon::parse($detalles->FechaEntrada)->format('d-m-Y') }}</td>
       <td>{{Carbon\Carbon::parse($detalles->FechaSalida )->format('d-m-Y') }}</td>
       <td>{{ $detalles->Noches }}</td>
-      <td>{{ $detalles->Motivo }}</td>
+      <td>{{ $detalles->motivo->motivo }}</td>
     </tr>
       @endforeach
     </tbody>

@@ -19,11 +19,13 @@ class CreateBookdetailsTable extends Migration
             $table->string('Nombre');
             $table->integer('pais_id')->unsigned()->index();
             $table->foreign('pais_id')->references('id')->on('country');
-            $table->string('Sexo');
+            $table->integer('sexo_id')->unsigned()->index();
+            $table->foreign('sexo_id')->references('id')->on('sex');
             $table->date('FechaEntrada');
             $table->date('FechaSalida');
             $table->integer('Noches');
-            $table->string('Motivo');
+            $table->integer('motivo_id')->unsigned()->index();
+            $table->foreign('motivo_id')->references('id')->on('reason');
             $table->integer('book_id')->unsigned()->index();
             $table->foreign('book_id')->references('id')->on('books');
             $table->timestamps();
