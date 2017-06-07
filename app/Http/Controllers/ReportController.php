@@ -44,21 +44,28 @@ class ReportController extends Controller
     }
 
     public function crear_reporte_porpais($tipo){
-      //url
-        $year=2017;
+      //falta capturar y mandar el parametro
+     $year=2017;
      $vistaurl="/reports/report1";
      $detalle=DB::select("call indicador1general(2017)");
-     //consulta
-    // $detalle=Bookdetail::all();
-     //$detalle->Book->where('estado','A')->get();
-     //$detalle = Bookdetail::with(['Book' => function ($query) {
-    //$query->where('estado','A');
-      //}])->get();
-     //$detalle=Bookdetail::where('estado','A');
-     //$detalle=Bookdetail::all();
      return $this->crearPDF($detalle, $vistaurl,$tipo);
     }
 
+     public function crear_reporte_por_sexo($tipo){
+      //falta capturar y mandar el parametro
+     $year=2017;
+     $vistaurl="/reports/report2";
+     $detalle=DB::select("call indicador2(2017)");
+     return $this->crearPDF($detalle, $vistaurl,$tipo);
+    }
+
+      public function crear_reporte_por_region($tipo){
+      //falta capturar y mandar el parametro
+     $year=2017;
+     $vistaurl="/reports/report3";
+     $detalle=DB::select("call indicador3(2017)");
+     return $this->crearPDF($detalle, $vistaurl,$tipo);
+    }
 
 
     
