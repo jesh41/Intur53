@@ -43,10 +43,12 @@
             <td>{{ $book->user->name}}</td>
             @if ($book->estado=='U')
                 <td>
-                    <button type="button" class="btn  btn-default btn-xs" title="previsualizar"  onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
+                <a href="{{url("descargar/$book->id")}}"><button type="button" class="btn  btn-default btn-xs" title="Descargar"><i class="fa fa-cloud-download"></a></i></button>
+                <button type="button" class="btn  btn-default btn-xs" title="previsualizar"  onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
                 </td>
             @else
             <td>
+            <a href="{{url("descargar/$book->id")}}" target="_blank" ><button type="button" class="btn  btn-default btn-xs" title="Descargar" ><i class="fa fa-cloud-download"></a></i></button>
              <button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
             <button type="button"  class="btn  btn-danger btn-xs"  title="anular" onclick="anular_libro({{$book->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
             </td>

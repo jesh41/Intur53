@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//Route::get('confirmacion_anular_libro/{idusuario}', 'BookController@confirmacion_anular_libro');
 	Route::get('form_anular_libro/{idusu}', 'BookController@form_anular_libro');
 	Route::get('form_prev_libro/{idusu}','BookController@form_prev_libro');
+	//descarga
+	Route::get('descargar/{idusu}','BookController@descargar_libro');
 
 	//modulo reporteria
 	Route::get('/reports','ReportController@index');

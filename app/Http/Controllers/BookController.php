@@ -159,4 +159,35 @@ public function  form_prev_libro($id){
         }
 
       }
+
+public function descargar_libro($id){
+       
+   Excel::create('Huespedes', function($excel) use($id) {
+ 
+            $excel->sheet('Huespedes', function($sheet) use($id) {
+                
+                $sheet->row(1,['Identificacion','Nombre','Pais','Sexo','Fechaentrada','Fechasalida','Noches','Motivo']);
+                $datos =Bookdetail::where('book_id',$id)->get();
+                $data=[];
+                foreach ($datos as $d) {
+                  $row=[];
+                  $row[0]=$d->Identificacion;
+                  $row[1]=$d->Nombre;
+                  $row[2]=$d->pais->country;
+                  $row[3]=$d->Sexo->sexo;
+                  $row[4]=$d->FechaEntrada;
+                  $row[5]=$d->FechaSalida;
+                  $row[6]=$d->Noches;
+                  $row[7]=$d->motivo->motivo;
+                  $sheet->appendrow($row);
+                }
+                
+                $sheet->setOrientation('landscape');
+ 
+            });
+        })->download('xls');
+   }
+
+
+
 }

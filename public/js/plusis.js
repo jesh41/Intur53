@@ -223,9 +223,9 @@ function previ_libro(idusu){
    {
     $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
    }) ;
-
-
 }
+
+
 
 
 function borrar_permiso(idrol,idper){
