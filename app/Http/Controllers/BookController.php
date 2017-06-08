@@ -37,7 +37,7 @@ class BookController extends Controller
         }
         else
         {
-           $books=Book::where('user_id',Auth::user()->id)->paginate(10);
+           $books=Book::where('user_id',Auth::user()->id)->paginate(12);
         }
      
      
