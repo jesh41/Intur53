@@ -67,6 +67,14 @@ class ReportController extends Controller
      return $this->crearPDF($detalle, $vistaurl,$tipo);
     }
 
+    public function crear_reporte_por_estadia($tipo){
+      //falta capturar y mandar el parametro
+     $year=2017;
+     $vistaurl="/reports/report4";
+     $detalle=DB::select("call indicador4(2017)");
+     return $this->crearPDF($detalle, $vistaurl,$tipo);
+    }
+
 
     
 

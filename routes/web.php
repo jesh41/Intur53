@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/crear_reporte_1/{tipo}', 'ReportController@crear_reporte_porpais');
 	Route::get('/crear_reporte_2/{tipo}', 'ReportController@crear_reporte_por_sexo');
 	Route::get('/crear_reporte_3/{tipo}', 'ReportController@crear_reporte_por_region');
+	Route::get('/crear_reporte_4/{tipo}', 'ReportController@crear_reporte_por_estadia');
 
 
 

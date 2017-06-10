@@ -38,11 +38,13 @@
                     </tr>
                      <tr>
                       <td>4</td>
-                      <td>Estadia promedio de Huespedes Extrajeros por mes y pais de residencia</td>
+                      <td>Estadia promedio de Huespedes Extrajeros/Nacionales por año y mes</td>
+                      <td><a href="crear_reporte_4/1" target="_blank" ><button class="btn btn-block btn-primary btn-xs">Ver</button></a></td>
+                      <td><a href="crear_reporte_4/2" target="_blank" ><button class="btn btn-block btn-success btn-xs">Descargar</button></a></td>
                     </tr>
                     <tr>
                       <td>5</td>
-                      <td>Estadia promedio de huespedes nacionales por mes y departamento</td>
+                      <td>Estadia promedio de huespedes nacionales por año y mes</td>
                     </tr>
                    
                   </tbody></table>
