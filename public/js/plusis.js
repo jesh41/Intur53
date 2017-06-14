@@ -204,28 +204,6 @@ function anular_libro(idusu){
 }
 
 
-function previ_libro(idusu){
-
-   var urlraiz=$("#url_raiz_proyecto").val();
-   $("#capa_modal").show();
-   $("#capa_formularios").show();
-   var screenTop = $(document).scrollTop();
-   $("#capa_formularios").css('top', screenTop);
-   $("#capa_formularios").html($("#cargador_empresa").html());
-   var miurl=urlraiz+"/form_prev_libro/"+idusu+""; 
-    $.ajax({
-   url: miurl
-    }).done( function(resul) 
-    {
-     $("#capa_formularios").html(resul);
-   
-    }).fail( function() 
-   {
-    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-   }) ;
-}
-
-
 
 
 function borrar_permiso(idrol,idper){
@@ -313,7 +291,7 @@ function cargarlistado(listado){
 
     //funcion para cargar los diferentes  en general
 if(listado==1){ var url = "listado_usuarios"; }
-if(listado==2){ var url = "listado_publicaciones/0"; }
+if(listado==2){ var url = "/form_prev_libro/"; }
 if(listado==3){ var url = "/reports"; }
 
 $("#contenido_principal").html($("#cargador_empresa").html());
@@ -323,6 +301,30 @@ $.get(url,function(resul){
 })
 
 }
+
+
+function previ_libro(idusu){
+
+   var urlraiz=$("#url_raiz_proyecto").val();
+   $("#capa_modal").show();
+   $("#capa_formularios").show();
+   var screenTop = $(document).scrollTop();
+   $("#capa_formularios").css('top', screenTop);
+   $("#capa_formularios").html($("#cargador_empresa").html());
+   var miurl=urlraiz+"/form_prev_libro/"+idusu+""; 
+    $.ajax({
+   url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+}
+
+
 
 
 

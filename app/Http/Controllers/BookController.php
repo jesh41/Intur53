@@ -33,11 +33,11 @@ class BookController extends Controller
 
       if (Auth::user()->isRole('administrador')) 
         {
-         $books=Book::paginate(10);
+         $books=Book::paginate(4);
         }
         else
         {
-           $books=Book::where('user_id',Auth::user()->id)->paginate(12);
+           $books=Book::where('user_id',Auth::user()->id)->paginate(4);
         }
      
      
@@ -69,6 +69,7 @@ public function  form_prev_libro($id){
       $detalle=Bookdetail::where('book_id',$id)->paginate(10);
       return view("formularios.form_previ_libro")->with("detalle",$detalle);
 }
+
 
    public function form_anular_libro($id){
   $book=Book::find($id);

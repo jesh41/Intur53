@@ -41,6 +41,19 @@
 </div>
 
 </section>
+
+
+
+
 {{ $detalle->links() }}
+
+<script src="{{asset('js/pagin.js') }}" async="async"></script>
+
+<!---
+{{ $detalle->links() }} echo str_replace('/?', '?', $detalle ->render() )  ;
+ <script src="{{asset('js/pagin.js') }}" async="async"></script>
+-->
+  
   </div>
+
 

@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>Numero de huespedes por region y sexo anual</td>
+                      <td>Numero de huespedes por region y sexo</td>
                        <td><a href="crear_reporte_2/1" target="_blank" ><button class="btn btn-block btn-primary btn-xs">Ver</button></a></td>
                       <td><a href="crear_reporte_2/2" target="_blank" ><button class="btn btn-block btn-success btn-xs">Descargar</button></a></td>
                     </tr>
