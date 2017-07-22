@@ -74,7 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/crear_reporte_3/{tipo}', 'ReportController@crear_reporte_por_region');
 	Route::get('/crear_reporte_4/{tipo}', 'ReportController@crear_reporte_por_estadia');
 
-
+	//modulo graficas
+	Route::get('/crear_grafica_1', 'ReportController@crear_grafica_porpais');
 
 
   	//bitacora

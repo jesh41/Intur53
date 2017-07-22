@@ -14,9 +14,12 @@ use App\Month;
 use App\Annulment;
 use Carbon\Carbon;
 use DB;
+use View;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+
+
 class ReportController extends Controller
 {
       public function __construct()
@@ -74,6 +77,27 @@ class ReportController extends Controller
      $detalle=DB::select("call indicador4(2017)");
      return $this->crearPDF($detalle, $vistaurl,$tipo);
     }
+
+    public function crear_grafica_porpais(){
+
+
+    $viewer =DB::select("call indicador1general(2017)");
+    
+$viewer = array_map(function ($viewer) {
+    return (array)$viewer;
+}, $viewer);
+
+    $nacionales = array_column($viewer, 'Nacionales');
+
+    //$click = DB::select("call grafica2(2017)")->get();
+    $extranjeros = array_column($viewer, 'Extranjeros');
+    return view('/reports/report1grafica')->with('viewer',json_encode($extranjeros,JSON_NUMERIC_CHECK))
+    ->with('click',json_encode($nacionales,JSON_NUMERIC_CHECK));
+    }
+
+
+
+
 
 
     
