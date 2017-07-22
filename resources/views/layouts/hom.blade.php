@@ -139,7 +139,8 @@
   
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="{{asset('js/app.js') }}"></script>
-  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="{{asset('js/highcharts.js') }}"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
 </body>
 </html>
