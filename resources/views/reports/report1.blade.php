@@ -175,10 +175,6 @@ $sumaext=0;
   </div>
 
 
- 
-  <script src="{{asset('js/highcharts.js') }}"></script>
-  <script src="{{asset('js/graficas.js') }}"></script>
-
    
 </body>
 </html>

@@ -96,8 +96,6 @@ class ReportController extends Controller
         }, $viewer);
 
         $nacionales = array_column($viewer, 'Nacionales');
-
-        //$click = DB::select("call grafica2(2017)")->get();
         $extranjeros = array_column($viewer, 'Extranjeros');
 
         return view('/reports/report1grafica')->with('viewer', json_encode($extranjeros, JSON_NUMERIC_CHECK))->with('click', json_encode($nacionales, JSON_NUMERIC_CHECK));
