@@ -46,7 +46,7 @@
                                             <button class="btn  btn-default btn-xs"><i
                                                         class="fa fa-cloud-download fa-lg"></i>
                                         </a></button></td>
-                                    <td><a href="">
+                                    <td><a href="crear_grafica_2">
                                             <button class="btn  btn-default btn-xs"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
@@ -61,7 +61,7 @@
                                             <button class="btn  btn-default btn-xs"><i
                                                         class="fa fa-cloud-download fa-lg"></i>
                                         </a></button></td>
-                                    <td><a href="">
+                                    <td><a href="crear_grafica_3">
                                             <button class="btn  btn-default btn-xs"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
@@ -76,7 +76,7 @@
                                             <button class="btn  btn-default btn-xs"><i
                                                         class="fa fa-cloud-download fa-lg"></i>
                                         </a></button></td>
-                                    <td><a href="">
+                                    <td><a href="crear_grafica_4">
                                             <button class="btn  btn-default btn-xs"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
