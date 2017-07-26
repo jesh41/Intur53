@@ -109,7 +109,8 @@ table {
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Reporte de estadia promedio por mes, residencia y total -Fecha <?=  $date; ?></h3>
+                    <h3 class="box-title">Reporte de estadia promedio por mes, residencia y total -Generado
+                        Fecha <?=  $date; ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
@@ -120,7 +121,7 @@ table {
                       <th>Estadia promedio Extranjero</th>
                       <th>Estadia promedio Nacional</th>
                       <th>Estadia promedio general</th>
-                    
+
                     </tr>
                   </thead>
                     <tbody>
@@ -129,9 +130,10 @@ table {
                     <tr>
                       <td><?= $dato->Anio; ?></td>
                       <td><?= $dato->Mes; ?></td>
-                      <td><?= $dato->estadiaext; ?></td>
-                      <td><?= $dato->estadianac; ?></td>
-                       <td><?= $dato->pro_general; ?></td>
+                        <td><?= round($dato->estadiaext); ?></td>
+                        <td><?= round($dato->estadianac); ?></td>
+                        <td><?= round($dato->pro_general); ?></td>
+
                     </tr>
                    
                     <?php  } ?>

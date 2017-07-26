@@ -125,6 +125,7 @@ $sumaO=0;
                       <th>Congresos</th>
                       <th>Negocios</th>
                       <th>Otros</th>
+                         <th>Total</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -137,6 +138,7 @@ $sumaO=0;
                       <td><?= $dato->Congresos; ?></td>
                        <td><?= $dato->Negocios; ?></td>
                       <td><?= $dato->Otros; ?></td>
+                        <td><?= $dato->Turismo + $dato->Congresos + $dato->Negocios + $dato->Otros; ?></td>
                     </tr>
                      <?php $sumaT=$sumaT+$dato->Turismo; ?>
                       <?php $sumaC=$sumaC+$dato->Congresos; ?>
@@ -150,6 +152,7 @@ $sumaO=0;
                       <td> <?php echo $sumaC; ?></td>
                       <td> <?php echo $sumaN; ?></td>
                       <td> <?php echo $sumaO; ?></td>
+                        <td> <?php echo $sumaT + $sumaN + $sumaC + $sumaO; ?></td>
                     </tr>
                   </tbody>
 

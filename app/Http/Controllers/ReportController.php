@@ -131,8 +131,8 @@ class ReportController extends Controller
         $viewer = array_map(function ($viewer) {
             return (array) $viewer;
         }, $viewer);
-        $nacional = array_column($viewer, 'estadiaext');
-        $extranjero = array_column($viewer, 'estadianac');
+        $extranjero = array_column($viewer, 'estadiaext');
+        $nacional = array_column($viewer, 'estadianac');
         $general = array_column($viewer, 'pro_general');
 
         return view('/reports/report4grafica')->with('EX', json_encode($extranjero, JSON_NUMERIC_CHECK))->with('NA', json_encode($nacional, JSON_NUMERIC_CHECK))->with('GE', json_encode($general, JSON_NUMERIC_CHECK));

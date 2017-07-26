@@ -99,8 +99,6 @@ table {
 .bg-red {
     background-color: #dd4b39 !important;
 }
-
-
 </style>
 	  
 </head>
@@ -111,7 +109,8 @@ $sumaext=0;
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Reporte por Huespedes Nacionales y Extranjeros -Fecha <?=  $date; ?></h3>
+                    <h3 class="box-title">Reporte por Huespedes Nacionales y Extranjeros -Generado
+                        Fecha <?=  $date; ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
@@ -121,16 +120,18 @@ $sumaext=0;
                       <th>Mes</th>
                       <th>Extranjeros</th>
                       <th>Nacionales</th>
+                         <th>Total</th>
                     </tr>
                   </thead>
                     <tbody>
                   <?php foreach($data as $dato){ ?>
-                 
+                  <?php $s = $dato->Nacionales + $dato->Extranjeros; ?>
                     <tr>
                       <td><?= $dato->Anio; ?></td>
                       <td><?= $dato->Mes; ?></td>
                       <td><?= $dato->Extranjeros; ?></td>
                       <td><?= $dato->Nacionales; ?></td>
+                        <td><?= $s; ?> </td>
                     </tr>
                      <?php $sumaext=$sumaext+$dato->Extranjeros; ?>
                       <?php $sumanac=$sumanac+$dato->Nacionales; ?>
@@ -140,6 +141,7 @@ $sumaext=0;
                       
                       <td> <?php echo $sumaext; ?></td>
                       <td> <?php echo $sumanac; ?></td>
+                        <td> <?php echo $sumanac + $sumaext; ?></td>
                     </tr>
                   </tbody>
 

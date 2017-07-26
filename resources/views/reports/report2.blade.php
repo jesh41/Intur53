@@ -111,7 +111,7 @@ $sumaM=0;
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Reporte Por Region y sexo -Fecha <?=  $date; ?></h3>
+                    <h3 class="box-title">Reporte Por Region y sexo -Generado Fecha <?=  $date; ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
@@ -121,6 +121,7 @@ $sumaM=0;
                       <th>Region</th>
                       <th>Femenino</th>
                       <th>Masculino</th>
+                         <th>Total</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -131,15 +132,18 @@ $sumaM=0;
                       <td><?= $dato->Region; ?></td>
                       <td><?= $dato->Femenino; ?></td>
                       <td><?= $dato->Masculino; ?></td>
+                        <td><?= $dato->Femenino + $dato->Masculino; ?></td>
                     </tr>
                      <?php $sumaF=$sumaF+$dato->Femenino; ?>
                       <?php $sumaM=$sumaM+$dato->Masculino; ?>
+
                     <?php  } ?>
                     <tr>
                       <td colspan="2" align="center">GRAN TOTAL</td>
                       
                       <td> <?php echo $sumaF; ?></td>
                       <td> <?php echo $sumaM; ?></td>
+                        <td> <?php echo $sumaM + $sumaF; ?> </td>
                     </tr>
                   </tbody>
 
