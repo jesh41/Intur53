@@ -148,36 +148,13 @@ $sumaext=0;
                   </table>
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                  
+                    Generado {{date("Y-m-d H:i:s")}}
                 </div>
               </div><!-- /.box -->
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
 
 </div>
 
 
-
-
-
-              
-  </div>
-
-
-   
 </body>
 </html>
 

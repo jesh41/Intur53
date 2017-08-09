@@ -54,6 +54,6 @@
  <script src="{{asset('js/pagin.js') }}" async="async"></script>
 -->
   
-  </div>
+
 
 

@@ -67,8 +67,15 @@ Route::group(['middleware' => 'auth'], function () {
 	//descarga
 	Route::get('descargar/{idusu}','BookController@descargar_libro');
 
-	//modulo reporteria
-	Route::get('/reports','ReportController@index');
+    //modulo reporteria
+    Route::get('/reports', 'ReportController@index');
+    //reporteria parametro
+    Route::get('form_year/{tipo}', 'ReportController@form_year');
+    //reporteria web
+    Route::post('/reporte/{tipo}', 'ReportController@web_reporte');
+
+    //modulo reporteria pdf
+
 	Route::get('/crear_reporte_1/{tipo}', 'ReportController@crear_reporte_porpais');
 	Route::get('/crear_reporte_2/{tipo}', 'ReportController@crear_reporte_por_sexo');
 	Route::get('/crear_reporte_3/{tipo}', 'ReportController@crear_reporte_por_region');

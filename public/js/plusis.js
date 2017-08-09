@@ -29,6 +29,8 @@ $(document).on("click",".div_modal", function(e){
   $(this).hide();
   $("#capa_formularios").hide();
   $("#capa_formularios").html("");
+    $("#capa_test").hide();
+    $("#capa_test").html("");
 })
 
 
@@ -46,6 +48,7 @@ function cargar_formulario(arg){
    if(arg==3){ var miurl=urlraiz+"/form_nuevo_permiso"; }//listo
    if(arg==4){ var miurl=urlraiz+"/form_cargar_books"; }//listo
 
+
     $.ajax({
     url: miurl
 
@@ -59,6 +62,29 @@ function cargar_formulario(arg){
    }) ;
 
 }
+
+
+function parametro(arg) {
+
+    var urlraiz = $("#url_raiz_proyecto").val();
+    $("#capa_modal").show();
+    $("#capa_test").show();
+    var screenTop = $(document).scrollTop();
+    $("#capa_test").css('top', screenTop);
+    // $("#capa_test").html($("#cargador_empresa").html());
+    var miurl = urlraiz + "/form_year/" + arg;
+    $.ajax({
+        url: miurl
+    }).done(function (resul) {
+        $("#capa_test").html(resul);
+
+    }).fail(function () {
+        $("#capa_test").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+    });
+}
+
+
+
 
 
 

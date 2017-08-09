@@ -47,12 +47,49 @@ class ReportController extends Controller
         }
     }
 
+    public function form_year($arg)
+    {
+
+        //carga el formulario
+        $dato = $arg;
+
+        return view("formularios.form_year")->with("arg", $dato);
+    }
+
+    public function web_reporte(Request $request, $dato)
+    {
+        //falta capturar y mandar el parametro
+        $y = $request->input("year");
+
+        if ($dato == 1) {
+            $detalle = DB::select("call indicador1general($y)");
+
+            return view('/reports/report1web')->with("data", $detalle);
+        }
+        if ($dato == 2) {
+            $detalle = DB::select("call indicador2($y)");
+
+            return view('/reports/report2web')->with("data", $detalle);
+        }
+        if ($dato == 3) {
+            $detalle = DB::select("call indicador3($y)");
+
+            return view('/reports/report3web')->with("data", $detalle);
+        }
+        if ($dato == 4) {
+            $detalle = DB::select("call indicador4($y)");
+
+            return view('/reports/report4web')->with("data", $detalle);
+        }
+    }
+
+
     public function crear_reporte_porpais($tipo)
     {
         //falta capturar y mandar el parametro
         $year = 2017;
         $vistaurl = "/reports/report1";
-        $detalle = DB::select("call indicador1general(2017)");
+        $detalle = DB::select("call indicador1general($year)");
 
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
@@ -62,7 +99,7 @@ class ReportController extends Controller
         //falta capturar y mandar el parametro
         $year = 2017;
         $vistaurl = "/reports/report2";
-        $detalle = DB::select("call indicador2(2017)");
+        $detalle = DB::select("call indicador2($year)");
 
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
@@ -72,7 +109,7 @@ class ReportController extends Controller
         //falta capturar y mandar el parametro
         $year = 2017;
         $vistaurl = "/reports/report3";
-        $detalle = DB::select("call indicador3(2017)");
+        $detalle = DB::select("call indicador3($year)");
 
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
@@ -82,14 +119,15 @@ class ReportController extends Controller
         //falta capturar y mandar el parametro
         $year = 2017;
         $vistaurl = "/reports/report4";
-        $detalle = DB::select("call indicador4(2017)");
+        $detalle = DB::select("call indicador4($year)");
 
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
 
     public function grafica_por_pais()
     {
-        $viewer = DB::select("call indicador1general(2017)");
+        $year = 2017;
+        $viewer = DB::select("call indicador1general($year)");
         $viewer = array_map(function ($viewer) {
             return (array) $viewer;
         }, $viewer);
@@ -101,7 +139,8 @@ class ReportController extends Controller
 
     public function grafica_por_sexo()
     {
-        $viewer = DB::select("call indicador2(2017)");
+        $year = 2017;
+        $viewer = DB::select("call indicador2($year)");
         $viewer = array_map(function ($viewer) {
             return (array) $viewer;
         }, $viewer);
@@ -113,7 +152,8 @@ class ReportController extends Controller
 
     public function grafica_por_motivo()
     {
-        $viewer = DB::select("call indicador3(2017)");
+        $year = 2017;
+        $viewer = DB::select("call indicador3($year)");
         $viewer = array_map(function ($viewer) {
             return (array) $viewer;
         }, $viewer);
@@ -127,7 +167,8 @@ class ReportController extends Controller
 
     public function grafica_por_estadia()
     {
-        $viewer = DB::select("call indicador4(2017)");
+        $year = 2017;
+        $viewer = DB::select("call indicador4($year)");
         $viewer = array_map(function ($viewer) {
             return (array) $viewer;
         }, $viewer);

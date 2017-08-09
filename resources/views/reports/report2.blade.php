@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Reporte Por region y sexo</title>
 <style>
- 
+
  .col-md-12 {
     width: 100%;
-} 
+ }
 
 .box {
     position: relative;
@@ -102,7 +102,11 @@ table {
 
 
 </style>
-	  
+
+    <h1 style="text-align: center;"><img src="{{ url('/images/Nic.png') }}" width="131" height="85" alt="lOGO">SISTEMA
+        DE ESTADISTICAS DE HOTELES EN MANAGUA <img src="{{ url('/images/Statistics512.png') }}" width="81"
+                                                   height="99"></span></span></h1>
+
 </head>
 <body>
 <?php $sumaF=0;
@@ -111,7 +115,7 @@ $sumaM=0;
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Reporte Por Region y sexo -Generado Fecha <?=  $date; ?></h3>
+                    <h3 class="box-title">Reporte Por Region y sexo </h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
@@ -150,7 +154,9 @@ $sumaM=0;
                   </table>
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                  
+                    <p> Fuente: INTUR con los datos de los hoteles de Managua</p>
+                    <p> Informe: 01.Huespedes Mes y Tipo de Residencia</p>
+                    Generado {{date("Y-m-d H:i:s")}}
                 </div>
               </div><!-- /.box -->
 
