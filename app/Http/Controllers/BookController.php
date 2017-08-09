@@ -33,11 +33,11 @@ class BookController extends Controller
 
       if (Auth::user()->isRole('administrador')) 
         {
-         $books=Book::paginate(4);
+            $books = Book::paginate(10);
         }
         else
         {
-           $books=Book::where('user_id',Auth::user()->id)->paginate(4);
+            $books = Book::where('user_id', Auth::user()->id)->paginate(10);
         }
      
      
