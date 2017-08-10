@@ -49,8 +49,8 @@
                                             <button class="btn  btn-default btn-xs" onclick="parametro(2);"><i
                                                         class="fa  fa-eye fa-lg"></i>
                                         </a></button></td>
-                                    <td><a href="crear_grafica_2">
-                                            <button class="btn  btn-default btn-xs"><i
+                                    <td><a href="javascript:void(0);">
+                                            <button class="btn  btn-default btn-xs" onclick="parametro(22);"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
                                 </tr>
@@ -64,8 +64,8 @@
                                             <button class="btn  btn-default btn-xs" onclick="parametro(3);"><i
                                                         class="fa  fa-eye fa-lg"></i>
                                         </a></button></td>
-                                    <td><a href="crear_grafica_3">
-                                            <button class="btn  btn-default btn-xs"><i
+                                    <td><a href="javascript:void(0);">
+                                            <button class="btn  btn-default btn-xs" onclick="parametro(33);"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
                                 </tr>
@@ -79,8 +79,8 @@
                                             <button class="btn  btn-default btn-xs" onclick="parametro(4);"><i
                                                         class="fa  fa-eye fa-lg"></i>
                                         </a></button></td>
-                                    <td><a href="crear_grafica_4">
-                                            <button class="btn  btn-default btn-xs"><i
+                                    <td><a href="javascript:void(0);">
+                                            <button class="btn  btn-default btn-xs" onclick="parametro(4);"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
                                 </tr>
