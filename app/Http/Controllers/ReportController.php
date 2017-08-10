@@ -49,16 +49,18 @@ class ReportController extends Controller
 
     public function form_year($arg)
     {
-
         //carga el formulario
         $dato = $arg;
-
         return view("formularios.form_year")->with("arg", $dato);
     }
 
     public function web_reporte(Request $request, $dato)
     {
-        //falta capturar y mandar el parametro
+
+        $this->validate($request, [
+            'year' => 'required|min:4|max:4',
+        ]);
+
         $y = $request->input("year");
 
         if ($dato == 1) {
