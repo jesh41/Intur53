@@ -76,16 +76,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     //modulo reporteria pdf
 
-    Route::get('crear_reporte_1/{tipo}', 'ReportController@crear_reporte_porpais');
+    Route::get('/crear_reporte_1/{tipo}', 'ReportController@crear_reporte_porpais');
 	Route::get('/crear_reporte_2/{tipo}', 'ReportController@crear_reporte_por_sexo');
 	Route::get('/crear_reporte_3/{tipo}', 'ReportController@crear_reporte_por_region');
 	Route::get('/crear_reporte_4/{tipo}', 'ReportController@crear_reporte_por_estadia');
 
 	//modulo graficas
-    Route::get('/crear_grafica_1', 'ReportController@grafica_por_pais');
-    Route::get('/crear_grafica_2', 'ReportController@grafica_por_sexo');
-    Route::get('/crear_grafica_3', 'ReportController@grafica_por_motivo');
-    Route::get('/crear_grafica_4', 'ReportController@grafica_por_estadia');
+    // Route::get('/crear_grafica_1', 'ReportController@grafica_por_pais');
+    //Route::get('/crear_grafica_2', 'ReportController@grafica_por_sexo');
+    //Route::get('/crear_grafica_3', 'ReportController@grafica_por_motivo');
+    //Route::get('/crear_grafica_4', 'ReportController@grafica_por_estadia');
 
 
   	//bitacora
