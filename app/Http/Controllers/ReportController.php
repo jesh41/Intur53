@@ -58,7 +58,7 @@ class ReportController extends Controller
     {
 
         $this->validate($request, [
-            'year' => 'required|min:4|max:4',
+            'year' => 'required|digits_between:4,4',
         ]);
 
         $y = $request->input("year");
