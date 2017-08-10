@@ -34,8 +34,8 @@
                                                         class="fa  fa-eye fa-lg"></i>
                                         </a></button></td>
 
-                                    <td><a href="crear_grafica_1">
-                                            <button class="btn  btn-default btn-xs"><i
+                                    <td><a href="javascript:void(0);">
+                                            <button class="btn  btn-default btn-xs" onclick="parametro(11);"><i
                                                         class="fa fa-line-chart fa-lg"></i>
                                         </a></button></td>
                                 </tr>

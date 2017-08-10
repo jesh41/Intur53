@@ -6,10 +6,11 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Reporte de estadia promedio por mes, residencia y total  <!--<a href="" target="_blank">
+                    <div class="panel-heading">Reporte de estadia promedio por mes, residencia y total <a
+                                href="/crear_reporte_4/1" target="_blank">
                             <button class="btn  btn-default btn-xs" title="Descargar"><i
                                         class="fa fa-cloud-download fa-lg"></i>
-                        </a></button> --> </div>
+                        </a></button>  </div>
                     <div class="panel-body">
                         <table class="table table-bordered">
                             <thead>
