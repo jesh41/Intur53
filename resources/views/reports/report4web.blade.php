@@ -6,11 +6,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Reporte de estadia promedio por mes, residencia y total <a
-                                href="/crear_reporte_4/1" target="_blank">
-                            <button class="btn  btn-default btn-xs" title="Descargar"><i
-                                        class="fa fa-cloud-download fa-lg"></i>
-                        </a></button>  </div>
+                    <div class="panel-heading">Reporte de estadia promedio por mes, residencia y total</div>
                     <div class="panel-body">
                         <table class="table table-bordered">
                             <thead>
@@ -32,6 +28,7 @@
                                 <td><?= round($dato->estadiaext); ?></td>
                                 <td><?= round($dato->estadianac); ?></td>
                                 <td><?= round($dato->pro_general); ?></td>
+                                <?php $Anio = $dato->Anio; ?>
 
                             </tr>
 
@@ -42,7 +39,12 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}} </div>
+                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}}
+                    <a href="/crear_reporte_4/1/{{$Anio}}"
+                       target="_blank">
+                        <button class="btn  btn-default btn-xs" title="Descargar"><i
+                                    class="fa fa-cloud-download fa-lg"></i>
+                    </a></button></div>
             </div>
         </div>
     </div>

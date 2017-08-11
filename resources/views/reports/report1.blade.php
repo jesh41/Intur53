@@ -111,8 +111,7 @@ $sumaext=0;
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Reporte por Huespedes Nacionales y Extranjeros -Generado
-                        Fecha <?=  $date; ?></h3>
+                    <h3 class="box-title">Reporte por Huespedes Nacionales y Extranjeros</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">

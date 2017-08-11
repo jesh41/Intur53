@@ -13,11 +13,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Reporte Por region y motivo de viaje <a href="/crear_reporte_3/1"
-                                                                                       target="_blank">
-                            <button class="btn  btn-default btn-xs" title="Descargar"><i
-                                        class="fa fa-cloud-download fa-lg"></i>
-                        </a></button>  </div>
+                    <div class="panel-heading">Reporte Por region y motivo de viaje</div>
                     <div class="panel-body">
                         <table class="table table-bordered">
                             <thead>
@@ -47,6 +43,7 @@
                             <?php $sumaC = $sumaC + $dato->Congresos; ?>
                             <?php $sumaN = $sumaN + $dato->Negocios; ?>
                             <?php $sumaO = $sumaO + $dato->Otros; ?>
+                            <?php $Anio = $dato->Anio; ?>
                             <?php  } ?>
                             <tr>
                                 <td colspan="2" align="center">GRAN TOTAL</td>
@@ -62,7 +59,12 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}} </div>
+                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}}
+                    <a href="/crear_reporte_3/1/{{$Anio}}"
+                       target="_blank">
+                        <button class="btn  btn-default btn-xs" title="Descargar"><i
+                                    class="fa fa-cloud-download fa-lg"></i>
+                    </a></button> </div>
             </div>
         </div>
     </div>

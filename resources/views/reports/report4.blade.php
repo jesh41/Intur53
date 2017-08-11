@@ -111,8 +111,7 @@ table {
 <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Reporte de estadia promedio por mes, residencia y total -Generado
-                        Fecha <?=  $date; ?></h3>
+                    <h3 class="box-title">Reporte de estadia promedio por mes, residencia y total </h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
