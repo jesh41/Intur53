@@ -155,7 +155,7 @@ $sumaM=0;
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
                     <p> Fuente: INTUR con los datos de los hoteles de Managua</p>
-                    <p> Informe: 01.Huespedes Mes y Tipo de Residencia</p>
+                    <p> Informe: 02.Huespedes por region y sexo</p>
                     Generado {{date("Y-m-d H:i:s")}}
                 </div>
               </div><!-- /.box -->

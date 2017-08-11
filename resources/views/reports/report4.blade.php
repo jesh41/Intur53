@@ -102,7 +102,9 @@ table {
 
 
 </style>
-	  
+    <h1 style="text-align: center;"><img src="{{ url('/images/Nic.png') }}" width="131" height="85" alt="lOGO">SISTEMA
+        DE ESTADISTICAS DE HOTELES EN MANAGUA <img src="{{ url('/images/Statistics512.png') }}" width="81"
+                                                   height="99"></span></span></h1>
 </head>
 <body>
 
@@ -143,7 +145,9 @@ table {
                   </table>
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                  
+                    <p> Fuente: INTUR con los datos de los hoteles de Managua</p>
+                    <p> Informe: 02.Estadia promedio Nacionales y Extranjero por mes</p>
+                    Generado {{date("Y-m-d H:i:s")}}
                 </div>
               </div><!-- /.box -->
 

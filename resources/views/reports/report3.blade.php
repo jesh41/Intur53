@@ -102,7 +102,9 @@ table {
 
 
 </style>
-	  
+    <h1 style="text-align: center;"><img src="{{ url('/images/Nic.png') }}" width="131" height="85" alt="lOGO">SISTEMA
+        DE ESTADISTICAS DE HOTELES EN MANAGUA <img src="{{ url('/images/Statistics512.png') }}" width="81"
+                                                   height="99"></span></span></h1>
 </head>
 <body>
 <?php $sumaT=0;
@@ -159,7 +161,9 @@ $sumaO=0;
                   </table>
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                  
+                    <p> Fuente: INTUR con los datos de los hoteles de Managua</p>
+                    <p> Informe: 03 Huespedes por region y motivo de viaje</p>
+                    Generado {{date("Y-m-d H:i:s")}}
                 </div>
               </div><!-- /.box -->
 
