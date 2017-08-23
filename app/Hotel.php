@@ -13,6 +13,23 @@ class Hotel extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'id', 'id_user');
     }
+
+    public function catactivity()
+    {
+        return $this->hasOne('App\Catactivity', 'id', 'id_catactivity');
+    }
+
+    public function city()
+    {
+        return $this->hasOne('App\City', 'id', 'id_city');
+    }
+
+    public function cathotel()
+    {
+        return $this->hasOne('App\Cathotel', 'id', 'id_cathotel');
+    }
+
+
 }
