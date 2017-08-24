@@ -4,18 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivityTable extends Migration
+class CreateMunicipioTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('activity', function (Blueprint $table) {
+        Schema::create('municipio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('actividad');
+            $table->string('municipio');
+            $table->integer('id_city')->unsigned()->index();
+            $table->foreign('id_city')->references('id')->on('city');
         });
     }
 
@@ -26,6 +23,6 @@ class CreateActivityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activity');
+        Schema::dropIfExists('municipio');
     }
 }
