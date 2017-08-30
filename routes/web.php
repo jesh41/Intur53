@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Input;
+
 Route::get('/', function () {
     return view('/auth/login');
 });
@@ -24,6 +26,12 @@ Route::group(['middleware' => 'auth'], function () {
 	//creacion nuevo usuario
 	Route::post('crear_usuario', 'AdminController@crear_usuario');
 	Route::get('form_nuevo_usuario', 'AdminController@form_nuevo_usuario');
+    route::get('/ajax-subcat', function () {
+        $dep_id = Input::get('cat_id');
+        $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
+
+        return Response::json($muni);
+    });
 	//busqueda usuarios
 	 Route::post('buscar_usuario', 'AdminController@buscar_usuario');
 	 //editar usuario

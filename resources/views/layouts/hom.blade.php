@@ -141,24 +141,6 @@
 <!-- Then include bootstrap js -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!--
-        <script src="{{asset('js/moment-with-locales.js') }}"></script>
-        <script src="{{asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-        <script src="{{asset('js/bootstrap-datetimepicker.es.js') }}"></script>
-        <script type="text/javascript">
-            $('#datetimepicker').datetimepicker({
-                    format: 'YYYY',
-                viewMode: 'years',
-                minViewMode: 'years'
-            });
-
-        </script>
-
-
-     <!--
-        </script>-->
-
-
 
   <script src="{{asset('js/app.js') }}"></script>
   <script src="{{asset('js/highcharts.js') }}"></script>

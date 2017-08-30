@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Annulment;
+use App\City;
+use App\Municipio;
+use App\Catactivity;
+use App\Cathotel;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -44,24 +48,34 @@ class AdminController extends Controller
     public function form_nuevo_usuario(){
     //carga el formulario para agregar un nuevo usuario
    $roles=Role::all();
-    return view("formularios.form_nuevo_usuario")->with("roles",$roles);
+        $departamento = City::all();
+        $catho = Cathotel::all();
+        $acti = Catactivity::all();
+
+        return view("formularios.form_nuevo_usuario")->with("roles", $roles)->with("depto", $departamento)->with("catho", $catho)->with("acti", $acti);
 	}
 
 	//crea un nuevo usuario
 	public function crear_usuario(Request $request){
   	$reglas=[  'password' => 'required|min:8',
-	             'email' => 'required|email|unique:users', ];
+        'email' => 'required|email|unique:users',
+        'telefono' => 'required|digits_between:8,8',
+    ];
 	$mensajes=[  'password.min' => 'El password debe tener al menos 8 caracteres',
-	             'email.unique' => 'El email ya se encuentra registrado en la base de datos', ];
+        'email.unique' => 'El email ya se encuentra registrado en la base de datos',
+        'telefono.digits_between' => 'Maximo 8 digitos',
+    ];
 	$validator = Validator::make( $request->all(),$reglas,$mensajes );
 	if( $validator->fails() ){ 
 	  	return view("mensajes.mensaje_error")->with("msj","...Existen errores...")
 	  	                                    ->withErrors($validator->errors());         
 	}
 	$usuario=new User;
-	$usuario->name=( $request->input("nombres")." ".$request->input("apellidos") ) ;
+        $usuario->name = $request->input("nombres");
 	$usuario->email=$request->input("email");
-	$usuario->password= bcrypt( $request->input("password") ); 
+        $usuario->password = bcrypt($request->input("password"));
+
+
     if($usuario->save())
     {
       return view("mensajes.msj_usuario_creado")->with("msj","Usuario agregado correctamente") ;
