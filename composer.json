@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "barryvdh/laravel-ide-helper": "^2.4",
         "caffeinated/shinobi": "^3.0.6",
         "caouecs/laravel-lang": "~3.0",
         "illuminate/config": "5.3.*",
@@ -16,13 +15,14 @@
         "laravel/framework": "5.3.*"
     },
     "require-dev": {
+      "barryvdh/laravel-dompdf": "0.8.*",
+      "barryvdh/laravel-ide-helper": "^2.4",
         "fzaninotto/faker": "~1.4",
+      "maatwebsite/excel": "~2.1.0",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
-        "maatwebsite/excel": "~2.1.0",
-        "barryvdh/laravel-dompdf": "0.8.*"
+      "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [
