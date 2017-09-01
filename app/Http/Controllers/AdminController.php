@@ -51,7 +51,6 @@ class AdminController extends Controller
         $departamento = City::all();
         $catho = Cathotel::all();
         $acti = Catactivity::all();
-
         return view("formularios.form_nuevo_usuario")->with("roles", $roles)->with("depto", $departamento)->with("catho", $catho)->with("acti", $acti);
 	}
 
@@ -70,11 +69,23 @@ class AdminController extends Controller
 	  	return view("mensajes.mensaje_error")->with("msj","...Existen errores...")
 	  	                                    ->withErrors($validator->errors());         
 	}
+        $ultimo = User::all()->pluck('id')->last();
 	$usuario=new User;
         $usuario->name = $request->input("nombres");
 	$usuario->email=$request->input("email");
         $usuario->password = bcrypt($request->input("password"));
-
+        if ($request->input("tipo-usuario") == 2) {
+            $hotel = new Cathotel;
+            $hotel->nombre = $request->input("nombre-hotel");
+            $hotel->direccion = $request->input("direccion");
+            $hotel->telefono = $request->input("telefono");
+            $hotel->id_city = $request->input("departamento");
+            $hotel->id_municipio = $request->input("municipio");
+            $hotel->id_cathotel = $request->input("categoria");
+            $hotel->id_catactivity = $request->input("actividad");
+            $hotel->id_user = $ultimo;
+            $hotel->save();
+        }
 
     if($usuario->save())
     {

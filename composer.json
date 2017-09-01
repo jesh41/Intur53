@@ -6,14 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "caffeinated/shinobi": "^3.0.6",
         "caouecs/laravel-lang": "~3.0",
-        "laravel/framework": "5.3.*",
-         "caffeinated/shinobi": "^3.0.6",
+        "illuminate/config": "5.3.*",
         "illuminate/database": "5.3.*",
-        "illuminate/support": "5.3.*",
         "illuminate/filesystem": "5.3.*",
-        "illuminate/config": "5.3.*"
-
+        "illuminate/support": "5.3.*",
+        "laravel/framework": "5.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

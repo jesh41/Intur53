@@ -109,7 +109,7 @@
                         <div class="form-group">
                             <label class="col-sm-4" for="nombre">Nombre Hotel</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="hotel" name="hotel" required>
+                                <input type="text" class="form-control" id="nombre-hotel" name="nombre-hotel" required>
                             </div>
                         </div>
                     </div>
