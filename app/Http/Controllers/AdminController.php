@@ -74,6 +74,8 @@ class AdminController extends Controller
         $usuario->name = $request->input("nombres");
 	$usuario->email=$request->input("email");
         $usuario->password = bcrypt($request->input("password"));
+
+
         if ($request->input("tipo-usuario") == 2) {
             $hotel = new Cathotel;
             $hotel->nombre = $request->input("nombre-hotel");
