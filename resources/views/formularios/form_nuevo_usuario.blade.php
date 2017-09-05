@@ -25,6 +25,16 @@
                         </div>
                     </div>
 
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4" for="email">Nombre</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="col-sm-4" for="email">Contraseña</label>
@@ -84,7 +94,7 @@
                                 <select class="form-control" id="actividad" name="actividad">
                                     <option selected></option>
                                     @foreach ($acti as $ac)
-                                        <option value={{$ac->id}}}>{{$ac->actividad}}</option>
+                                        <option value={{$ac->id}}>{{$ac->actividad}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -98,7 +108,7 @@
                                 <select class="form-control" id="categoria" name="categoria">
                                     <option selected></option>
                                     @foreach ($catho as $cath)
-                                        <option value={{$cath->id}}}>{{$cath->categoria}}</option>
+                                        <option value={{$cath->id}}>{{$cath->categoria}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -148,7 +158,7 @@
 
     <script>
         $("#departamento").on('change', function (e) {
-            console.log(e);
+            //console.log(e);
             var cat_id = e.target.value;
             //ajax
             $.get('/ajax-subcat?cat_id=' + cat_id, function (data) {

@@ -9,6 +9,7 @@ use App\City;
 use App\Municipio;
 use App\Catactivity;
 use App\Cathotel;
+use App\hotel;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -58,26 +59,28 @@ class AdminController extends Controller
 	public function crear_usuario(Request $request){
   	$reglas=[  'password' => 'required|min:8',
         'email' => 'required|email|unique:users',
-        'telefono' => 'required|digits_between:8,8',
+
     ];
 	$mensajes=[  'password.min' => 'El password debe tener al menos 8 caracteres',
         'email.unique' => 'El email ya se encuentra registrado en la base de datos',
-        'telefono.digits_between' => 'Maximo 8 digitos',
+
     ];
 	$validator = Validator::make( $request->all(),$reglas,$mensajes );
 	if( $validator->fails() ){ 
 	  	return view("mensajes.mensaje_error")->with("msj","...Existen errores...")
 	  	                                    ->withErrors($validator->errors());         
 	}
-        $ultimo = User::all()->pluck('id')->last();
-	$usuario=new User;
-        $usuario->name = $request->input("nombres");
+
+        $usuario=new User;
+        $usuario->name = $request->input("name");
 	$usuario->email=$request->input("email");
         $usuario->password = bcrypt($request->input("password"));
+        $bandera = Role::find($request->input("tipo-usuario"));
+        if ($usuario->save()) {
 
-
-        if ($request->input("tipo-usuario") == 2) {
-            $hotel = new Cathotel;
+            if ($bandera->name == 'hotel' || $bandera->name == 'Hotel') {
+                $ultimo = User::all()->pluck('id')->last();
+                $hotel = new hotel;
             $hotel->nombre = $request->input("nombre-hotel");
             $hotel->direccion = $request->input("direccion");
             $hotel->telefono = $request->input("telefono");
@@ -86,17 +89,17 @@ class AdminController extends Controller
             $hotel->id_cathotel = $request->input("categoria");
             $hotel->id_catactivity = $request->input("actividad");
             $hotel->id_user = $ultimo;
-            $hotel->save();
+                if ($hotel->save()) {
+                    return view("mensajes.msj_usuario_creado")->with("msj", "Hotel agregado correctamente");
+                } else {
+                    return view("mensajes.msj_usuario_creado")->with("msj", "Ocurrio un problema");
+                }
+            } else {
+                return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
+            }
+    } else {
+            return view("mensajes.mensaje_error")->with("msj", "...Hubo un error al agregar ;...");
         }
-
-    if($usuario->save())
-    {
-      return view("mensajes.msj_usuario_creado")->with("msj","Usuario agregado correctamente") ;
-    }
-    else
-    {
-        return view("mensajes.mensaje_error")->with("msj","...Hubo un error al agregar ;...") ;
-    }
 
 	}
 
