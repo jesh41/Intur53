@@ -29,6 +29,7 @@
             <a href="{{ route('login') }}">
                 <img class="img-responsive center-block" style="width: 25%; height: 25%"
                      src="{{asset('images/Logo.png') }}" alt="">
+
             </a>
         </div>
     </div>
