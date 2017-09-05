@@ -28,7 +28,7 @@
         <div class="col-md-4 col-md-offset-4">
             <a href="{{ route('login') }}">
                 <img class="img-responsive center-block" style="width: 25%; height: 25%"
-                     src="{{asset('images/logo.png') }}" alt="">
+                     src="{{asset('images/Logo.png') }}" alt="">
             </a>
         </div>
     </div>
