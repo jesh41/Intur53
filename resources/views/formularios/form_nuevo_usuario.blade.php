@@ -160,7 +160,7 @@
             });
         });
         $("#tipo-usuario").on('change', function (e) {
-            console.log(e);
+            //console.log(e);
             var id = e.target.options[e.target.selectedIndex].text;
             if (id == 'Hotel' || id == 'hotel') {
                 document.getElementById('text-departamento').style.visibility = 'visible';
