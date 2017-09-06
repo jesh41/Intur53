@@ -33,10 +33,7 @@ class AdminController extends Controller
      */
   
 
-     public function listadouser()
-    {
-        return view('/admin/list');
-    }
+
     
     public function listado_usuarios()
     {
@@ -101,7 +98,14 @@ class AdminController extends Controller
                 //asignacion rol
                 $usuario = User::find($ultimo);
                 $usuario->assignRole($request->input("tipo-usuario"));
-                return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
+                $notificacion = [
+                    'message' => 'Usuario guardado guardado',
+                    'alert-type' => 'success',
+                ];
+                $usuarios = User::paginate(10);
+
+                return view("/admin/list")->with($notificacion)->with("usuarios", $usuarios);
+                //  return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
             }
     } else {
             return view("mensajes.mensaje_error")->with("msj", "...Hubo un error al agregar ;...");

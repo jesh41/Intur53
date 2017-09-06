@@ -18,7 +18,8 @@
     <!--<link href="{{ asset('css/skin-blue.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/plusis.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">-->
+
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 
 
 
@@ -146,6 +147,26 @@
   <script src="{{asset('js/highcharts.js') }}"></script>
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/toastr.js') }}"></script>
+        <script>
+                    @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}";
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+            @endif
+        </script>
 
 
 </body>

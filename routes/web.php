@@ -29,7 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('/ajax-subcat', function () {
         $dep_id = Input::get('cat_id');
         $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
-
         return Response::json($muni);
     });
 	//busqueda usuarios
