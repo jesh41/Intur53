@@ -73,13 +73,13 @@ class AdminController extends Controller
 
         $usuario=new User;
         $usuario->name = $request->input("name");
-	$usuario->email=$request->input("email");
+        $usuario->email = $request->input("email");
         $usuario->password = bcrypt($request->input("password"));
         $bandera = Role::find($request->input("tipo-usuario"));
         if ($usuario->save()) {
-
+            $ultimo = User::all()->pluck('id')->last();
             if ($bandera->name == 'hotel' || $bandera->name == 'Hotel') {
-                $ultimo = User::all()->pluck('id')->last();
+
                 $hotel = new hotel;
             $hotel->nombre = $request->input("nombre-hotel");
             $hotel->direccion = $request->input("direccion");
@@ -90,11 +90,17 @@ class AdminController extends Controller
             $hotel->id_catactivity = $request->input("actividad");
             $hotel->id_user = $ultimo;
                 if ($hotel->save()) {
+                    //asignacion rol
+                    $usuario = User::find($ultimo);
+                    $usuario->assignRole($request->input("tipo-usuario"));
                     return view("mensajes.msj_usuario_creado")->with("msj", "Hotel agregado correctamente");
                 } else {
                     return view("mensajes.msj_usuario_creado")->with("msj", "Ocurrio un problema");
                 }
             } else {
+                //asignacion rol
+                $usuario = User::find($ultimo);
+                $usuario->assignRole($request->input("tipo-usuario"));
                 return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
             }
     } else {
@@ -109,7 +115,8 @@ class AdminController extends Controller
 	$usuarios=User::where("name","like","%".$dato."%")->paginate(25);
 	return view('admin.listado_usuarios')->with("usuarios",$usuarios);
       }
-	public function form_editar_usuario($id){
+
+    public function form_editar_usuario($id){
     $usuario=User::find($id);
     $roles=Role::all();
     return view("formularios.form_editar_usuario")->with("usuario",$usuario)
@@ -205,7 +212,8 @@ class AdminController extends Controller
     $role->delete();
     return "ok";
 	}
-	//asignar rol
+
+    //asignar rol
 	public function asignar_rol($idusu,$idrol){
 
         $usuario=User::find($idusu);
