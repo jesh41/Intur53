@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//modulo administracion de usuarios
 	Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
 	//creacion nuevo usuario
-	Route::post('crear_usuario', 'AdminController@crear_usuario');
+    Route::post('/crear_usuario', 'AdminController@crear_usuario');
 	Route::get('form_nuevo_usuario', 'AdminController@form_nuevo_usuario');
     route::get('/ajax-subcat', function () {
         $dep_id = Input::get('cat_id');

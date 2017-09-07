@@ -42,7 +42,7 @@ function cargar_formulario(arg){
    $("#capa_formularios").show();
    var screenTop = $(document).scrollTop();
    $("#capa_formularios").css('top', screenTop);
-   $("#capa_formularios").html($("#cargador_empresa").html());
+    //  $("#capa_formularios").html($("#cargador_empresa").html());
    if(arg==1){ var miurl=urlraiz+"/form_nuevo_usuario"; }//listo
    if(arg==2){ var miurl=urlraiz+"/form_nuevo_rol"; }//listo
    if(arg==3){ var miurl=urlraiz+"/form_nuevo_permiso"; }//listo
@@ -93,7 +93,7 @@ $(document).on("submit",".formentrada",function(e){
   var quien=$(this).attr("id");
   var formu=$(this);
   var varurl="";
-  if(quien=="f_crear_usuario"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }//listo
+//  if(quien=="f_crear_usuario"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }//listo
   if(quien=="f_crear_rol"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }//listo
   if(quien=="f_crear_permiso"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }//listo
   if(quien=="f_editar_usuario"){  var varurl=$(this).attr("action");  var div_resul="notificacion_E2";  }//listo

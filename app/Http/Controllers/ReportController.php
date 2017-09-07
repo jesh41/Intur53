@@ -100,7 +100,7 @@ class ReportController extends Controller
             return view('/reports/report2grafica')->with('viewer', json_encode($mujer, JSON_NUMERIC_CHECK))->with('click', json_encode($hombre, JSON_NUMERIC_CHECK));
         }
         if ($dato == 33) {
-            $year = 2017;
+
             $viewer = DB::select("call indicador3($y)");
             $viewer = array_map(function ($viewer) {
                 return (array) $viewer;

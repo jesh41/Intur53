@@ -4,7 +4,15 @@
 <section  class="container"  id="contenido_principal">
 
 <div class="col-md-8 col-md-offset-2">
-
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
      <div class="box-header">
         <h4 class="box-title">Usuarios</h4>         
         <form   action="{{ url('buscar_usuario') }}"  method="post"  >
@@ -74,24 +82,6 @@
 </div>
 
 {{ $usuarios->links() }}
-
-@if(count($usuarios)==0)
-
-
-<div class="box box-primary col-xs-12">
-
-<div class='aprobado' style="margin-top:70px; text-align: center">
- 
-<label style='color:#177F6B'>
-              ... no se encontraron resultados para su busqueda...
-</label> 
-
-</div>
-
- </div> 
-
-
-@endif
 
 
 

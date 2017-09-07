@@ -1,20 +1,10 @@
-<section class="content">
 
-    <div class="col-md-12">
-
-        <div class="box box-primary  box-gris">
-
-            <div class="box-header with-border my-box-header">
-                <h3 class="box-title"><strong>Nuevo Usuario</strong></h3>
-            </div>
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-            <hr style="border-color:white;"/>
 
             <div class="box-body">
-
-                <form action="{{url('crear_usuario')}}" method="post" id="f_crear_usuario" class="formentrada">
-                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
+                <div class="box-header with-border my-box-header">
+                    <h3 class="box-title"><strong>Nuevo Usuario</strong></h3>
+                </div>
+                <form method="post" action="/crear_usuario" id="f_crear_usuario">
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -44,10 +34,6 @@
                         </div>
                     </div>
 
-                    <!--  <div class="box-header with-border my-box-header col-md-12"
-                           style="margin-bottom:2px;margin-top: 2px;">
-                          <h3 class="box-title">Tipo de usuario </h3>
-                      </div>-->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Tipo de usuario</label>
@@ -143,6 +129,7 @@
 
 
                     <div class="box-footer col-xs-12 box-gris ">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                         <button type="submit" class="btn btn-primary">Crear Nuevo Usuario</button>
                         <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();">Cancelar</a>
                     </div>
@@ -152,11 +139,8 @@
 
             </div>
 
-        </div>
 
-    </div>
-
-    <script>
+            <script>
         $("#departamento").on('change', function (e) {
             //console.log(e);
             var cat_id = e.target.value;
@@ -206,6 +190,6 @@
             }
         });
     </script>
-</section>
+
 
 

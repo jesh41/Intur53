@@ -54,19 +54,12 @@ class AdminController extends Controller
 
 	//crea un nuevo usuario
 	public function crear_usuario(Request $request){
-  	$reglas=[  'password' => 'required|min:8',
-        'email' => 'required|email|unique:users',
 
-    ];
-	$mensajes=[  'password.min' => 'El password debe tener al menos 8 caracteres',
-        'email.unique' => 'El email ya se encuentra registrado en la base de datos',
+        $this->validate($request, [
+            'email' => 'required|email|unique:users',
+        ]);
 
-    ];
-	$validator = Validator::make( $request->all(),$reglas,$mensajes );
-	if( $validator->fails() ){ 
-	  	return view("mensajes.mensaje_error")->with("msj","...Existen errores...")
-	  	                                    ->withErrors($validator->errors());         
-	}
+
 
         $usuario=new User;
         $usuario->name = $request->input("name");
@@ -90,25 +83,42 @@ class AdminController extends Controller
                     //asignacion rol
                     $usuario = User::find($ultimo);
                     $usuario->assignRole($request->input("tipo-usuario"));
-                    return view("mensajes.msj_usuario_creado")->with("msj", "Hotel agregado correctamente");
+                    $notificacion = [
+                        'message' => 'Hotel guardado',
+                        'alert-type' => 'success',
+                    ];
+
+                    return back()->with($notificacion);
                 } else {
-                    return view("mensajes.msj_usuario_creado")->with("msj", "Ocurrio un problema");
+
+                    $notificacion = [
+                        'message' => 'Ha ocurrido un error',
+                        'alert-type' => 'error',
+                    ];
+
+                    return back()->with($notificacion);
                 }
             } else {
                 //asignacion rol
                 $usuario = User::find($ultimo);
                 $usuario->assignRole($request->input("tipo-usuario"));
                 $notificacion = [
-                    'message' => 'Usuario guardado guardado',
+                    'message' => 'Usuario guardado',
                     'alert-type' => 'success',
                 ];
-                $usuarios = User::paginate(10);
 
-                return view("/admin/list")->with($notificacion)->with("usuarios", $usuarios);
-                //  return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
+                return back()->with($notificacion);
+                // return view('/home')->with($notificacion);
+                //return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
             }
     } else {
-            return view("mensajes.mensaje_error")->with("msj", "...Hubo un error al agregar ;...");
+
+            $notificacion = [
+                'message' => 'Ha ocurrido un error',
+                'alert-type' => 'error',
+            ];
+
+            return back()->with($notificacion);
         }
 
 	}
