@@ -31,10 +31,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
 
-
-    
     public function listado_usuarios()
     {
     //presenta un listado de usuarios paginados de 25 a 25
@@ -42,10 +39,9 @@ class AdminController extends Controller
     return view("/admin/list")->with("usuarios",$usuarios);
     }
 
-    //formulario nuevo usuario
+    //carga el formulario de un nuevo usuario
     public function form_nuevo_usuario(){
-    //carga el formulario para agregar un nuevo usuario
-   $roles=Role::all();
+        $roles = Role::all();
         $departamento = City::all();
         $catho = Cathotel::all();
         $acti = Catactivity::all();
@@ -58,8 +54,6 @@ class AdminController extends Controller
         $this->validate($request, [
             'email' => 'required|email|unique:users',
         ]);
-
-
 
         $usuario=new User;
         $usuario->name = $request->input("name");
@@ -123,7 +117,7 @@ class AdminController extends Controller
 
 	}
 
-	//busqueda usuarios
+    //busqueda usuarios
 	public function buscar_usuario(Request $request){
 	$dato=$request->input("dato_buscado");
 	$usuarios=User::where("name","like","%".$dato."%")->paginate(25);

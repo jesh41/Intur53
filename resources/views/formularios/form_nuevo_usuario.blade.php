@@ -1,5 +1,4 @@
 
-
             <div class="box-body">
                 <div class="box-header with-border my-box-header">
                     <h3 class="box-title"><strong>Nuevo Usuario</strong></h3>
