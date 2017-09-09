@@ -1,3 +1,4 @@
+
 <form method="post" action="/reporte/{{$arg}}">
 
     <div class="modal-dialog modal-sm">
@@ -22,6 +23,7 @@
             </div>
         </div>
     </div>
+
 </form>
 
 

@@ -29,7 +29,10 @@
 
 
         <div class="margin" id="botones_control">
-              <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(1);">Agregar Usuario</a>
+            <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="formularios(1);">Agregar Usuario</a>
+            <!-- <a id="modal-829890" href="#modal-container-829890" role="button" class="btn" data-toggle="modal">Launch demo modal</a>-->
+            <a class="btn btn-xs btn-primary" data-toggle="modal" href="/form_nuevo_usuario"
+               data-target="#modal-container-829890">Agregar Usuario</a>
               <a href="{{ url("/listado_usuarios") }}"  class="btn btn-xs btn-primary" >Listado Usuarios</a> 
               <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(2);">Roles</a> 
               <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(3);" >Permisos</a>                                 
