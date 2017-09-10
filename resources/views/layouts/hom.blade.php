@@ -10,8 +10,12 @@
 
     <title>Intur-Hotel</title>
 
+    <!-- Styles -->
+<!--  <link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+<!-- <link href="{{ asset('css/barra-nueva.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-
+<!-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">-->
+<!--<link href="{{ asset('css/skin-blue.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/plusis.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -49,15 +53,7 @@
 
 <div id="capa_modal" class="div_modal" style="display: none;"></div>
 <div id="capa_formularios" class="div_contenido" style="display: none;"></div>
-
 <div id="capa_test" class="div_test" style="display: none;"></div>
-
-<div class="modal fade" id="modal-container-829890" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
 
 <body>
    
@@ -144,13 +140,13 @@
 
 
 <!-- Then include bootstrap js -->
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="{{asset('js/app.js') }}"></script>
+
+        <script src="{{asset('js/app.js') }}"></script>
   <script src="{{asset('js/highcharts.js') }}"></script>
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
   <script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>
-
-
         <script src="{{ asset('js/toastr.js') }}"></script>
         <script>
                     @if(Session::has('message'))
@@ -170,7 +166,6 @@
                     break;
             }
             @endif
-
         </script>
 
 

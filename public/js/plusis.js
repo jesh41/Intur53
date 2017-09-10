@@ -64,33 +64,8 @@ function cargar_formulario(arg){
 }
 
 
-function formularios(arg) {
-    var urlraiz = $("#url_raiz_proyecto").val();
-    //$("#capa_modal").show();
-    //$('#modal-container-829890').modal(options)
-    //$('#modal-container-829890').modal('toggle');
-    //$("#modal-container-829890").show();
-
-    // $('#modal-container-829890').modal('hide');
-    var screenTop = $(document).scrollTop();
-    // $("#modal-container-829890").css('top', screenTop);
-    if (arg == 1) {
-        var miurl = urlraiz + "/form_nuevo_usuario";
-    }//listo
-
-    $.ajax({
-        url: miurl
-    }).done(function (resul) {
-        $("#modal-container-829890").html(resul);
-
-    }).fail(function () {
-        $("#modal-container-829890").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-    });
-}
-
-
-
 function parametro(arg) {
+
     var urlraiz = $("#url_raiz_proyecto").val();
     $("#capa_modal").show();
     $("#capa_test").show();
