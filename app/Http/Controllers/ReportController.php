@@ -47,7 +47,6 @@ class ReportController extends Controller
         }
     }
 
-    //optimizado
     public function form_year($arg)
     {
         //carga el formulario

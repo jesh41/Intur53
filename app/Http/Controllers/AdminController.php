@@ -39,8 +39,9 @@ class AdminController extends Controller
     return view("/admin/list")->with("usuarios",$usuarios);
     }
 
-    //carga el formulario de un nuevo usuario
+    //formulario nuevo usuario
     public function form_nuevo_usuario(){
+        //carga el formulario para agregar un nuevo usuario
         $roles = Role::all();
         $departamento = City::all();
         $catho = Cathotel::all();
