@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Database\Eloquent\Model;
 
+//reparado
 class Annulment extends Model
 {
   protected $fillable = ['Obersevacion',];   
