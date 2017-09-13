@@ -50,7 +50,7 @@
         <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();" a href="/book">Cancelar</a>
       </div>
       </div>
-
+      </div>
       </form>
 
       </div>

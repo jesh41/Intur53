@@ -14,6 +14,7 @@ use App\Country;
 use Carbon\Carbon;
 use App\Sex;
 use App\Reason;
+use DB;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -77,7 +78,12 @@ public function  form_prev_libro($id){
   }
 
 	public function form_cargar_libros(){
-        $months=Month::all();
+        // $months=Month::all();
+        $usuario = Auth::user()->id;
+        $mes_actual = date('m');
+        $año_actual = date('Y');
+        //  $months=Month::where('id','<=',$mes_actual)->get();
+        $months = DB::select("call validacion_mes($año_actual,$usuario,$mes_actual)");
   return view("formularios.form_cargar_books")->with("months",$months);
 	 }
 
