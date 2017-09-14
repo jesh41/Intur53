@@ -26,6 +26,19 @@ Route::group(['middleware' => 'auth'], function () {
 	//creacion nuevo usuario
     Route::post('/crear_usuario', 'AdminController@crear_usuario');
 	Route::get('form_nuevo_usuario', 'AdminController@form_nuevo_usuario');
+    route::get('/ajax-submes', function () {
+        $año_seleccionado = Input::get('id');
+        $usuario = Auth::user()->id;
+        $mes_actual = date('m');
+        if ($año_seleccionado == date('Y')) {
+            $months = DB::select("call validacion_mes($año_seleccionado,$usuario,$mes_actual)");
+        } else {
+            $months = DB::select("call validacion_anio($año_seleccionado,$usuario,$mes_actual)");
+        }
+
+        return Response::json($months);
+    });
+
     route::get('/ajax-subcat', function () {
         $dep_id = Input::get('cat_id');
         $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();

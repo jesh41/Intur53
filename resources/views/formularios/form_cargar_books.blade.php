@@ -1,4 +1,4 @@
-  <section>
+
   <div class="col-md-12">
 
 
@@ -29,22 +29,32 @@
                     </div>
                     </div>
       </div>
-             
-       <div class="col-md-6">
+          <div class="col-md-6">
+              <div class="form-group">
+                  <label class="col-sm-3" for="nombre">Año *</label>
+                  <div class="col-sm-4">
+                      <select class="form-control" name="anio" id="anio" required>
+                          <option selected></option>
+                          <option value="2016">2016</option>
+                          <option value="2017">2017</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-6">
                  <div class="form-group">
                   <label  class="col-sm-3" for="nombre">Mes *</label>
                    <div class="col-sm-4" >
-                  <select class="form-control" name="mes" id="mes">
-                  <?php foreach($months as $dato){ ?>
-                      <option value="<?= $dato->id; ?>" required><?= $dato->mes; ?></option>
-                    <?php  } ?>
+                       <select class="form-control" name="mes" id="mes" required>
+                           <option selected></option>
                     </select>
                     </div>
                  </div>
-      </div>   
-                 
+          </div>
 
-<div class="col-md-12">     
+
+          <div class="col-md-12">
     <div class="box-footer">
         <button type="submit" class="btn btn-primary" >Cargar Datos</button>
         <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();" a href="/book">Cancelar</a>
@@ -56,4 +66,21 @@
       </div>
 
   </div>
-  </section>
+
+
+  <script>
+
+      $("#anio").on('change', function (e) {
+          //console.log(e);
+          var id = e.target.value;
+          //ajax
+          $.get('/ajax-submes?id=' + id, function (data) {
+              //success data
+              $("#mes").empty();
+              $.each(data, function (index, subcatObj) {
+                  $("#mes").append('<option value="' + subcatObj.id + '">' + subcatObj.mes + '</option>');
+              });
+          });
+      });
+
+  </script>

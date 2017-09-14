@@ -40,9 +40,7 @@ class BookController extends Controller
         {
             $books = Book::where('user_id', Auth::user()->id)->paginate(12);
         }
-     
-     
-       
+
       return view('/book/books')->with("books",$books);
     }
    
@@ -78,13 +76,13 @@ public function  form_prev_libro($id){
   }
 
 	public function form_cargar_libros(){
-        // $months=Month::all();
-        $usuario = Auth::user()->id;
-        $mes_actual = date('m');
-        $año_actual = date('Y');
+
+        // $usuario = Auth::user()->id;
+        //  $mes_actual = date('m');
+        //   $año_actual = date('Y');
         //  $months=Month::where('id','<=',$mes_actual)->get();
-        $months = DB::select("call validacion_mes($año_actual,$usuario,$mes_actual)");
-  return view("formularios.form_cargar_books")->with("months",$months);
+        //    $months = DB::select("call validacion_mes($año_actual,$usuario,$mes_actual)");
+        return view("formularios.form_cargar_books");//->with("months",$months);
 	 }
 
  	public function cargar_libros(Request $request)
@@ -100,7 +98,7 @@ public function  form_prev_libro($id){
            $ruta=storage_path('archivos') ."/". $nombre_original;      
              $libro=new Book;
              $libro->Mes_id=$request->input("mes");
-             $libro->anio='2017';
+            $libro->anio = $request->input("anio");;
              $libro->estado='A';
              $libro->Observacion=$request->input("observacion");
              $libro->FechaElaborado= date("Y-m-d");
