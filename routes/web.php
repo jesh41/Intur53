@@ -13,8 +13,11 @@
 
 use Illuminate\Support\Facades\Input;
 
+
 Route::get('/', function () {
-    return view('/auth/login');
+    if (Auth::guest()) return view('/auth/login'); else {
+        return view('home');
+    }
 });
 
 Auth::routes();
@@ -75,7 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	///Modulo Book
-	Route::get('/book','BookController@index');//->middleware('roleshinobi:Administrador');
+    Route::get('/book', 'BookController@index')->middleware('roleshinobi:Administrador');
 
 	Route::get('form_cargar_books', 'BookController@form_cargar_libros');
 	Route::post('cargar_datos', 'BookController@cargar_libros');
@@ -86,16 +89,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('form_prev_libro/{idusu}/{page?}','BookController@form_prev_libro');
 	//descarga
 	Route::get('descargar/{idusu}','BookController@descargar_libro');
-
     //modulo reporteria
     Route::get('/reports', 'ReportController@index');
     //reporteria parametro
     Route::get('form_year/{tipo}', 'ReportController@form_year');
     //reporteria web
     Route::post('/reporte/{tipo}', 'ReportController@web_reporte');
-
     //modulo reporteria pdf
-
     Route::get('/crear_reporte_1/{tipo}/{anio}', 'ReportController@crear_reporte_porpais');
     Route::get('/crear_reporte_2/{tipo}/{anio}', 'ReportController@crear_reporte_por_sexo');
     Route::get('/crear_reporte_3/{tipo}/{anio}', 'ReportController@crear_reporte_por_region');
@@ -106,7 +106,6 @@ Route::group(['middleware' => 'auth'], function () {
   	//bitacora
   	Route::get('/bitacora','AdminController@bitacora');
    
-
 
 
 });
