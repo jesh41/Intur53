@@ -46,22 +46,28 @@ class BookController extends Controller
    
 public function anular_libro(Request $request){
         $idbook=$request->input("id_book");
-        $book=Book::find($idbook);
-        $book->estado='U';
-      
-       if($book->save()){
-        $annnulment=new Annulment;
-        $annnulment->book_id=$idbook;
-        $annnulment->observacion=$request->input("observacion");
-        $annnulment->elaborado = Auth::user()->name;
-        $annnulment->save();
-             return view("mensajes.msj_libro_anulado")->with("msj","Libro Anulado Correctamente") ;
+    $user = Auth::user()->id;
+    $valido = DB::select("call ultimo_libro($user)");
+    if ($valido == $idbook) {
+        $book = Book::find($idbook);
+        $book->estado = 'U';
+        if ($book->save()) {
+            $annnulment = new Annulment;
+            $annnulment->book_id = $idbook;
+            $annnulment->observacion = $request->input("observacion");
+            $annnulment->elaborado = Auth::user()->name;
+            $annnulment->save();
+
+            return view("mensajes.msj_libro_anulado")->with("msj", "Libro Anulado Correctamente");
+        } else {
+            return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
+        }
         }
         else
         {
-            return view("mensajes.mensaje_error")->with("msj","..Hubo un error al agregar ; intentarlo nuevamente..");
+            return view("mensajes.mensaje_error")->with("msj", "NO SE PUEDE ANULAR ESTE LIBRO");
         }
-       }
+}
 
 
 public function  form_prev_libro($id){

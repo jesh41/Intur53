@@ -37,9 +37,7 @@
             <td>{{ $book->month->mes}}</td>
             <td>{{ $book->estado }}</td>
             <td>{{ $book->Anio }}</td>
-
             <td>{{ Carbon\Carbon::parse($book->FechaElaborado)->format('d-m-Y')}}</td>
-            
             <td>{{ $book->user->name}}</td>
             @if ($book->estado=='U')
                 <td>
