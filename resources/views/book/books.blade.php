@@ -5,13 +5,12 @@
 
 <div class="col-md-8 col-md-offset-2">
      <div class="box-header">
-        <h4 class="box-title">Libros</h4>         
-    
-
+         <h4 class="box-title">Libros</h4>
+         @can('subir')
         <div class="margin" id="botones_control">
             <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(4);" >SUBIR</a>  
         </div>
-
+         @endcan
     </div>
 
 
@@ -48,7 +47,10 @@
             <td>
             <a href="{{url("descargar/$book->id")}}" target="_blank" ><button type="button" class="btn  btn-default btn-xs" title="Descargar" ><i class="fa fa-cloud-download"></a></i></button>
              <button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
-            <button type="button"  class="btn  btn-danger btn-xs"  title="anular" onclick="anular_libro({{$book->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
+                @can('subir')
+                    <button type="button" class="btn  btn-danger btn-xs" title="anular"
+                            onclick="anular_libro({{$book->id }});"><i class="fa fa-fw fa-remove"></i></button>
+                @endcan
             </td>
            @endif
             

@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
         route::get('/ajax-subcat', function () {
             $dep_id = Input::get('cat_id');
             $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
-
             return Response::json($muni);
         });
         //busqueda usuarios
@@ -76,9 +75,6 @@ Route::group(['middleware' => 'auth'], function () {
         //bitacora
         Route::get('/bitacora', 'AdminController@bitacora');
     });
-    //modulo administracion de usuarios->middleware('roleshinobi:Administrador')
-    //Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
-    //creacion de usuarios
 
     Route::group(['middleware' => 'permissionshinobi:book'], function () {
         ///Modulo Book

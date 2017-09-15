@@ -104,7 +104,7 @@
         <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
             <ul class="nav" id="menu" style="margin-left: 5%;">
                 <li><a href="/home"><i class="fa fa-dashboard fa-lg"></i> <span class="collapse in hidden-xs">Dashboard</span></a></li>
-              @can('subir')
+                @can('book')
                <li><a href="/book"><i class="fa fa-book fa-lg"></i> <span class="collapse in hidden-xs">Libros de Huespedes</span></a></li>
              @endcan
              @can('reportes')
