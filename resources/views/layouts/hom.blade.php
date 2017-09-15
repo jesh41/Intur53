@@ -110,7 +110,7 @@
              @can('reportes')
                <li><a href="/reports"><i class="fa fa-cubes fa-lg"></i> <span class="collapse in hidden-xs"> Reportes</span></a></li>
                @endcan
-               @can('configuracion')
+                @role('administrador')
                 <li>
                     <a href="#" data-target="#item2" data-toggle="collapse"><i class="fa fa-gear fa-lg"></i> <span class="collapse in hidden-xs">Configuracion<span class="caret"></span></span></a>
                     <ul class="nav nav-stacked collapse" id="item2">
@@ -118,8 +118,7 @@
                         <li><a href="/bitacora"><i class="fa fa-compass fa-lg"></i> Bitacora</a></li>
                     </ul>
                 </li>
-                
-                @endcan
+                @endrole
             </ul>
         </div>
         <!-- /sidebar -->
