@@ -45,11 +45,30 @@ class BookController extends Controller
     }
    
 public function anular_libro(Request $request){
-        $idbook=$request->input("id_book");
+    $idbook = $request->input("id_book");
     $user = Auth::user()->id;
     $consulta = DB::select("call ultimo_libro($user)");
     $valido = $consulta[0];
-    if ($valido->id == $idbook) {
+    if (Auth::user()->isRole('hotel')) {
+        if ($valido->id == $idbook) {
+            $book = Book::find($idbook);
+            $book->estado = 'U';
+            if ($book->save()) {
+                $annnulment = new Annulment;
+                $annnulment->book_id = $idbook;
+                $annnulment->observacion = $request->input("observacion");
+                $annnulment->elaborado = Auth::user()->name;
+                $annnulment->save();
+
+                return view("mensajes.msj_libro_anulado")->with("msj", "Libro Anulado Correctamente");
+            } else {
+                return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
+            }
+        } else {
+            return view("mensajes.mensaje_error")->with("msj", "NO SE PUEDE ANULAR ESTE LIBRO");
+        }
+    }
+    if (Auth::user()->isRole('administrador')) {
         $book = Book::find($idbook);
         $book->estado = 'U';
         if ($book->save()) {
@@ -63,11 +82,11 @@ public function anular_libro(Request $request){
         } else {
             return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
         }
-        }
-        else
-        {
-            return view("mensajes.mensaje_error")->with("msj", "NO SE PUEDE ANULAR ESTE LIBRO");
-        }
+    }
+
+    if (Auth::user()->isRole('intur')) {
+        return view("mensajes.mensaje_error")->with("msj", "NO TIENE PERMISO DE ANULACION");
+    }
 }
 
 
