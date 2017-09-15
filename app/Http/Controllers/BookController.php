@@ -47,8 +47,9 @@ class BookController extends Controller
 public function anular_libro(Request $request){
         $idbook=$request->input("id_book");
     $user = Auth::user()->id;
-    $valido = DB::select("call ultimo_libro($user)");
-    if ($valido == $idbook) {
+    $consulta = DB::select("call ultimo_libro($user)");
+    $valido = $consulta[0];
+    if ($valido->id == $idbook) {
         $book = Book::find($idbook);
         $book->estado = 'U';
         if ($book->save()) {
