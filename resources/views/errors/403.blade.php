@@ -40,7 +40,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">NO TIENE PERMISO.</div>
+        <div class="title">ERROR 403</div>
     </div>
 </div>
 </body>

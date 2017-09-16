@@ -40,7 +40,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">ERROR 401</div>
+        <div class="title">ERROR 500</div>
     </div>
 </div>
 </body>
