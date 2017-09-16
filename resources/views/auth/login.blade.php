@@ -58,11 +58,11 @@
                             </div>
                         </form>
                     </div>
-                    <div class="panel-footer text-center">
+                <!-- <div class="panel-footer text-center">
                         <a class="btn btn-link" href="{{ route('register') }}">
                             Solicita tu cuenta de usuario!
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

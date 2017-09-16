@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 use App\Annulment;
 use App\City;
 use App\Municipio;
@@ -308,4 +309,17 @@ class AdminController extends Controller
         return view('/admin/bitacora')->with("annulments",$annulments);
     }
 
+    //usuario
+    public function edituser()
+    {
+        $usuario = User::find(Auth::user()->id);
+        if (Auth::user()->isRole('hotel')) {
+            $datos = Hotel::find($usuario->hotel->id);
+
+            return view('admin.edit')->with('h', $datos)->with('u', $usuario);
+        } else {
+
+            return view('admin.edit')->with('u', $usuario);
+        }
+    }
 }

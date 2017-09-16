@@ -119,6 +119,8 @@
                     </ul>
                 </li>
                 @endrole
+                <li><a href="/user"><i class="fa fa-user-circle fa-lg"></i> <span class="collapse in hidden-xs">Mi cuenta</span></a>
+                </li>
             </ul>
         </div>
         <!-- /sidebar -->

@@ -11,7 +11,7 @@ class category extends Seeder
      */
     public function run()
     {
-        $array = ["Una Estrella", "Dos Estrellas", "Tres Estrellas", "cuatro Estrellas", "Cinco Estrellas"];
+        $array = ["Una Estrella", "Dos Estrellas", "Tres Estrellas", "Cuatro Estrellas", "Cinco Estrellas"];
 
         for ($i = 0; $i < 5; $i++) {
             DB::table('category')->insert([

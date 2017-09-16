@@ -35,5 +35,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Book');
     }
 
+    public function hotel()
+    {
+        return $this->hasOne('App\Hotel', 'id_user', 'id');
+    }
+
+
   
 }

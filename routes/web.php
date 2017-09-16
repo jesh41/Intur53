@@ -26,6 +26,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	//pagina inicio
 	Route::get('/home', 'HomeController@index');
+    Route::get('/user', 'AdminController@edituser');
+
 
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
