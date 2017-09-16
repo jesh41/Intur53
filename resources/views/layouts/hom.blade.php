@@ -76,6 +76,10 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="/user"><i class="fa fa-user-circle fa-xl"></i> <span
+                                                    class="collapse in hidden-xs">Mi cuenta</span></a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -119,8 +123,7 @@
                     </ul>
                 </li>
                 @endrole
-                <li><a href="/user"><i class="fa fa-user-circle fa-lg"></i> <span class="collapse in hidden-xs">Mi cuenta</span></a>
-                </li>
+
             </ul>
         </div>
         <!-- /sidebar -->
