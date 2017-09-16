@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
         //bitacora
         Route::get('/bitacora', 'AdminController@bitacora');
     });
-
+//grupos
     Route::group(['middleware' => 'permissionshinobi:book'], function () {
         ///Modulo Book
         Route::get('/book', 'BookController@index');
