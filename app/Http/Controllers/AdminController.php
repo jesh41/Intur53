@@ -9,7 +9,7 @@ use App\City;
 use App\Municipio;
 use App\Catactivity;
 use App\Cathotel;
-use App\hotel;
+use App\Hotel;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -31,7 +31,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    
     public function listado_usuarios()
     {
     //presenta un listado de usuarios paginados de 25 a 25
@@ -41,8 +41,8 @@ class AdminController extends Controller
 
     //formulario nuevo usuario
     public function form_nuevo_usuario(){
-        //carga el formulario para agregar un nuevo usuario
-        $roles = Role::all();
+    //carga el formulario para agregar un nuevo usuario
+   $roles=Role::all();
         $departamento = City::all();
         $catho = Cathotel::all();
         $acti = Catactivity::all();
@@ -51,11 +51,11 @@ class AdminController extends Controller
 
 	//crea un nuevo usuario
 	public function crear_usuario(Request $request){
-
+    //jkhjhjkjhj
         $this->validate($request, [
             'email' => 'required|email|unique:users',
         ]);
-
+        //test
         $usuario=new User;
         $usuario->name = $request->input("name");
         $usuario->email = $request->input("email");
@@ -118,7 +118,7 @@ class AdminController extends Controller
 
 	}
 
-    //busqueda usuarios
+	//busqueda usuarios
 	public function buscar_usuario(Request $request){
 	$dato=$request->input("dato_buscado");
 	$usuarios=User::where("name","like","%".$dato."%")->paginate(25);
