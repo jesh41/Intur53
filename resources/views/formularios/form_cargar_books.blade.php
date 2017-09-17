@@ -1,8 +1,6 @@
 
   <div class="col-md-12">
 
-
-
       <div class="box box-primary">
                       <div class="box-header">
                         <h3 class="box-title">Cargar Datos de Usuarios</h3>
@@ -10,11 +8,10 @@
      
       <div id="notificacion_resul_fcdu"></div>
 
-      <form  id="f_cargar_books" name="f_cargar_books" method="post"  action="cargar_datos" class="formarchivo" enctype="multipart/form-data" >                
-       <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>"> 
-      <div class="box-body">
+          <form method="post" action="cargar_datos" id="f_cargar_books" class="formarchivo"
+                enctype="multipart/form-data">
 
-     
+              <div class="box-body">
 
       <div class="form-group col-xs-12"  >
              <label>Agregar Archivo de Excel </label>
@@ -56,6 +53,7 @@
 
           <div class="col-md-12">
     <div class="box-footer">
+        <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
         <button type="submit" class="btn btn-primary" >Cargar Datos</button>
         <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();" a href="/book">Cancelar</a>
       </div>

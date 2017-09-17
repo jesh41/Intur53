@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use App\Sex;
 use App\Reason;
 use DB;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -118,12 +119,13 @@ public function  form_prev_libro($id){
        $archivo = $request->file('archivo');      
        $extension=$archivo->getClientOriginalExtension();
 
-          if ($extension=='xlsx')
+        if ($extension == 'xlsx')//valido el tipo de archivo
         {
-           $autor = Auth::user()->id;
-          $nombre_original='user'.$autor.'.'.$extension;//'Excel '+$archivo->getClientOriginalName()+$autor;
-           $r1=Storage::disk('archivos')->put($nombre_original,  \File::get($archivo) );
-           $ruta=storage_path('archivos') ."/". $nombre_original;      
+            $autor = Auth::user()->id;//id del login actual
+            $nombre_original = 'user'.$autor.'.'.$extension;//renombra el archivo subido
+            $r1 = Storage::disk('archivos')->put($nombre_original, \File::get($archivo));//guardar en el disco
+            $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
+            //empieza la creacion del encabezado
              $libro=new Book;
              $libro->Mes_id=$request->input("mes");
             $libro->anio = $request->input("anio");;
@@ -133,51 +135,40 @@ public function  form_prev_libro($id){
              $libro->user_id=$autor;  
              $libro->save();
 
-
            if($r1){
-                  
-                   Excel::selectSheetsByIndex(0)->load($ruta, function($hoja)  {
-                      
+               $data = Excel::load($ruta, function ($reader) {
+               })->get();
+
+               Excel::selectSheets('intur')->load($ruta, function ($hoja) {
                             $hoja->each(function($fila)   {
-                              //if(!empty($data) && $data->count())
-                              //obtiene idbook
-                              $ultimo=Book::all()->pluck('id')->last();
-                              //convierte el campo fecha
-                            $fechaentrada= str_replace('/','-', $fila->fentrada);
-                            // $nfechaentrada = carbon::createFromFormat('Y-m-d',$fila->fentrada);
-                             // $p1= date('Y-m-d', strtotime($fechaentrada));//Carbon::parse($fechaentrada)->format('Y-m-d');//str_replace('/','-', $fila->fentrada);
-                               // $nfechaentrada = Carbon::parse($p1)->format('Y-m-d');                       
-                              $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
-                             $fechasalida =str_replace('/','-', $fila->fsalida);
-                           //$p2= date('Y-m-d', strtotime($fechasalida));
-                           //$nfechasalida =Carbon::parse($p2)->format('Y-m-d');
-                             // $nfechasalida =Carbon::createFromFormat( 'd/m/Y',$fechasalida);// Carbon::parse($fechasalida)->format('Y-m-d');//str_replace('/','-', $fila->fsalida);
-                              $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
+
+                                $ultimo = Book::all()->pluck('id')->last();
+                                $fechaentrada = str_replace('/', '-', $fila->fentrada);
+                                $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
+                                $fechasalida = str_replace('/', '-', $fila->fsalida);
+                                $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
+
                               if(!empty($fila->identificacion )){
                                 $librodet=new Bookdetail;
                                 $librodet->Identificacion= $fila->identificacion;
                                 $librodet->Nombre= $fila->nombre;
                                 $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
-                                $librodet->pais_id= $pais[0]->id;//ila->pais;
+                                  $librodet->pais_id = $pais[0]->id;
                                 $s=Sex::where('sexo','LIKE','%'.$fila->sexo.'%')->get();
                                 $librodet->Sexo_id= $s[0]->id;
                                 $librodet->Fechaentrada=$fechaentrada;
                                 $librodet->Fechasalida=$fechasalida;
                                 $librodet->Noches= $fila->ndormidas;
-
                                 $mot=Reason::where('motivo','LIKE','%'.$fila->motivo.'%')->get();
                                 $librodet->motivo_id= $mot[0]->id;
                                 $librodet->book_id=$ultimo;
                                 $librodet->save();
                                  }
-                             
-                               });
 
+                               });
                             });
-                                
-                            
-                            return view("mensajes.msj_correcto")->with("msj"," Libro cargado Correctamente");
-                      
+
+               return view("mensajes.msj_correcto")->with("msj"," Libro cargado Correctamente");
                        }
                        else
                        {
@@ -194,11 +185,12 @@ public function  form_prev_libro($id){
       }
 
 public function descargar_libro($id){
-       
-   Excel::create('Huespedes', function($excel) use($id) {
+    $bo = book::find($id);
+    $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
+    Excel::create($name, function ($excel) use ($id) {
  
             $excel->sheet('Huespedes', function($sheet) use($id) {
-                
+
                 $sheet->row(1,['Identificacion','Nombre','Pais','Sexo','Fechaentrada','Fechasalida','Noches','Motivo']);
                 $datos =Bookdetail::where('book_id',$id)->get();
                 $data=[];

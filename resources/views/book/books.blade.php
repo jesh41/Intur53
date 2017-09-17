@@ -31,7 +31,6 @@
         <tbody>
          @foreach($books as $book)
         <tr role="row" class="odd">
-        
             <td>{{ $book->id }}</td>
             <td>{{ $book->month->mes}}</td>
             <td>{{ $book->estado }}</td>
@@ -41,12 +40,12 @@
             @if ($book->estado=='U')
                 <td>
                 <a href="{{url("descargar/$book->id")}}"><button type="button" class="btn  btn-default btn-xs" title="Descargar"><i class="fa fa-cloud-download"></a></i></button>
-                <button type="button" class="btn  btn-default btn-xs" title="previsualizar"  onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
+                <!-- <button type="button" class="btn  btn-default btn-xs" title="previsualizar"  onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>-->
                 </td>
             @else
             <td>
             <a href="{{url("descargar/$book->id")}}" target="_blank" ><button type="button" class="btn  btn-default btn-xs" title="Descargar" ><i class="fa fa-cloud-download"></a></i></button>
-             <button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>
+            <!--<button type="button" class="btn  btn-default btn-xs" title="previsualizar" onclick="previ_libro({{$book->id }});" ><i class="fa fa-fw fa-eye"></i></button>-->
                 @can('subir')
                     <button type="button" class="btn  btn-danger btn-xs" title="anular"
                             onclick="anular_libro({{$book->id }});"><i class="fa fa-fw fa-remove"></i></button>
