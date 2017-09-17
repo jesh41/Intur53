@@ -270,43 +270,43 @@ function borrar_rol(idrol){
 }
 
 
-$(document).on("submit",".formarchivo",function(e){ 
-        e.preventDefault();
-        var formu=$(this);
-        var nombreform=$(this).attr("id"); 
-        if(nombreform=="f_cargar_books" ){ var miurl="cargar_datos";  var divresul="notificacion_resul_fcdu"}
+//$(document).on("submit",".formarchivo999",function(e){
+//      e.preventDefault();
+//    var formu=$(this);
+//  var nombreform=$(this).attr("id");
+//   if(nombreform=="f_cargar_books" ){ var miurl="cargar_datos";  var divresul="notificacion_resul_fcdu"}
 
         //información del formulario
-        var formData = new FormData($("#"+nombreform+"")[0]);
+//var formData = new FormData($("#"+nombreform+"")[0]);
 
         //hacemos la petición ajax   
-        $.ajax({
-            url: miurl,  
-            type: 'POST',
+//$.ajax({
+///  url: miurl,
+// type: 'POST',
      
             // Form data
             //datos del formulario
-            data: formData,
+//       data: formData,
             //necesario para subir archivos via ajax
-            cache: false,
-            contentType: false,
-            processData: false,
+//     cache: false,
+//   contentType: false,
+//  processData: false,
             //mientras enviamos el archivo
-            beforeSend: function(){
-              $("#"+divresul+"").html($("#cargador_empresa").html());                
-            },
+//beforeSend: function(){
+// $("#"+divresul+"").html($("#cargador_empresa").html());
+//  },
             //una vez finalizado correctamente
-            success: function(data){
-              $("#"+divresul+"").html(data);
-              $("#fotografia_usuario").attr('src', $("#fotografia_usuario").attr('src') + '?' + Math.random() );               
-            },
+//success: function(data){
+// $("#"+divresul+"").html(data);
+//$("#fotografia_usuario").attr('src', $("#fotografia_usuario").attr('src') + '?' + Math.random() );
+//},
             //si ha ocurrido un error
-            error: function(data){
-               alert("ha ocurrido un error") ;
-                
-            }
-        });
-    });
+// error: function(data){
+//  alert("ha ocurrido un error") ;
+
+// }
+// });
+//});
 
 
 function cargarlistado(listado){

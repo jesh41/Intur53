@@ -168,20 +168,25 @@ public function  form_prev_libro($id){
                                });
                             });
 
-               return view("mensajes.msj_correcto")->with("msj"," Libro cargado Correctamente");
                        }
                        else
                        {
-                            return view("mensajes.msj_rechazado")->with("msj","Error al subir el archivo, revise que cumpla con el formato");
+                           $notificacion = [
+                               'message' => 'Error al subir el libro,revise el formato',
+                               'alert-type' => 'error',
+                           ];
                        }
-
                        
         }
         else
         {
-            return view("mensajes.msj_rechazado")->with("msj","Favor solo subir archivo excel ");
+            $notificacion = [
+                'message' => 'ERROR Revisar que sea formato excel',
+                'alert-type' => 'error',
+            ];
         }
 
+        return back()->with($notificacion);
       }
 
 public function descargar_libro($id){

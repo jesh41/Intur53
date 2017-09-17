@@ -8,14 +8,17 @@
      
       <div id="notificacion_resul_fcdu"></div>
 
-          <form method="post" action="cargar_datos" id="f_cargar_books" class="formarchivo"
+          <form method="post" action="{{url('/cargar_datos')}}" id="f_cargar_books" class="formarchivo"
                 enctype="multipart/form-data">
 
               <div class="box-body">
 
       <div class="form-group col-xs-12"  >
              <label>Agregar Archivo de Excel </label>
-              <input name="archivo" id="archivo" type="file"   class="archivo form-control"  required/><br /><br />
+          <input name="archivo" id="archivo" type="file" class="archivo form-control" required/>
+
+          <br/><br/>
+
 
       </div>
       <div class="col-md-6">
@@ -55,11 +58,12 @@
     <div class="box-footer">
         <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
         <button type="submit" class="btn btn-primary" >Cargar Datos</button>
-        <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();" a href="/book">Cancelar</a>
+        <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();">Cancelar</a>
       </div>
       </div>
       </div>
-      </form>
+
+          </form>
 
       </div>
 
