@@ -120,7 +120,7 @@
             <div class="form-group">
                 <label class="col-sm-2" for="nombre">Direccion</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="direccion" name="direccion" maxlength="60">
+                    <input type="text" class="form-control" id="direccion" name="direccion" maxlength="120">
                             </div>
                         </div>
                     </div>

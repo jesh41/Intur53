@@ -136,8 +136,7 @@ public function  form_prev_libro($id){
              $libro->save();
 
            if($r1){
-               $data = Excel::load($ruta, function ($reader) {
-               })->get();
+
 
                Excel::selectSheets('intur')->load($ruta, function ($hoja) {
                             $hoja->each(function($fila)   {
