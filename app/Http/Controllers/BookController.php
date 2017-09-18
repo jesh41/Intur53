@@ -166,7 +166,10 @@ public function  form_prev_libro($id){
 
                                });
                             });
-
+               $notificacion = [
+                   'message' => 'LIBRO SUBIDO',
+                   'alert-type' => 'success',
+               ];
                        }
                        else
                        {
