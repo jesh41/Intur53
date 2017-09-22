@@ -154,7 +154,7 @@ public function  form_prev_libro($id){
                         $conteo = $data->count();
                         $ultimo = Book::all()->pluck('id')->last();
                         if (is_null($ultimo)) {
-                            $ultimo = 1;
+                            $ultimo = 0;
                         }
                         $mensaje = null;
                         $mensaje5 = null;
@@ -176,8 +176,6 @@ public function  form_prev_libro($id){
                         if (empty($mensaje)) {
                             foreach ($data->toArray() as $row) {
                                 if (! empty($row)) {
-
-
                                     $pais = Country::where('country', 'LIKE', '%'.$row['pais'].'%')->get()->first();
                                     $sexo = Sex::where('sexo', 'LIKE', '%'.$row['sexo'].'%')->get()->first();
                                     $motivo = Reason::where('motivo', 'LIKE', '%'.$row['motivo'].'%')->get()->first();
@@ -194,7 +192,7 @@ public function  form_prev_libro($id){
                                         'Fechasalida' => $fechasalida,
                                         'Noches' => $row['ndormidas'],
                                         'motivo_id' => $motivo->id,
-                                        'book_id' => $ultimo,
+                                        'book_id' => $ultimo + 1,
                                         'created_at' => date('Y-m-d H:i:s'),
                                     ];
                                     if ((is_null($pais))) {
