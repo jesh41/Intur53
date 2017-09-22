@@ -33,18 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
         Route::post('/crear_usuario', 'AdminController@crear_usuario');
         Route::get('form_nuevo_usuario', 'AdminController@form_nuevo_usuario');
-        route::get('/ajax-submes', function () {
-            $año_seleccionado = Input::get('id');
-            $usuario = Auth::user()->id;
-            $mes_actual = date('m');
-            if ($año_seleccionado == date('Y')) {
-                $months = DB::select("call validacion_mes($año_seleccionado,$usuario,$mes_actual)");
-            } else {
-                $months = DB::select("call validacion_anio($año_seleccionado,$usuario,$mes_actual)");
-            }
 
-            return Response::json($months);
-        });
         route::get('/ajax-subcat', function () {
             $dep_id = Input::get('cat_id');
             $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
@@ -92,6 +81,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/cargar_datos', 'BookController@cargar_libros');
         Route::post('anular_libro', 'BookController@anular_libro');
         Route::get('form_anular_libro/{idusu}', 'BookController@form_anular_libro');
+        route::get('/ajax-submes', function () {
+            $año_seleccionado = Input::get('id');
+            $usuario = Auth::user()->id;
+            $mes_actual = date('m');
+            if ($año_seleccionado == date('Y')) {
+                $months = DB::select("call validacion_mes($año_seleccionado,$usuario,$mes_actual)");
+            } else {
+                $months = DB::select("call validacion_anio($año_seleccionado,$usuario,$mes_actual)");
+            }
+
+            return Response::json($months);
+        });
     });
 
     Route::group(['middleware' => 'permissionshinobi:reportes'], function () {
