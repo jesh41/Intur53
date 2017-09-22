@@ -126,55 +126,173 @@ public function  form_prev_libro($id){
             $r1 = Storage::disk('archivos')->put($nombre_original, \File::get($archivo));//guardar en el disco
             $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
             //empieza la creacion del encabezado
-             $libro=new Book;
-             $libro->Mes_id=$request->input("mes");
-            $libro->anio = $request->input("anio");;
-             $libro->estado='A';
-             $libro->Observacion=$request->input("observacion");
-             $libro->FechaElaborado= date("Y-m-d");
-             $libro->user_id=$autor;  
-             $libro->save();
+            /// $libro=new Book;
+            /// $libro->Mes_id=$request->input("mes");
+            /// $libro->anio = $request->input("anio");;
+            /// $libro->estado='A';
+            ///$libro->Observacion=$request->input("observacion");
+            /// $libro->FechaElaborado= date("Y-m-d");
+            ///$libro->user_id=$autor;
+            ///$libro->save();
+            if ($r1) {
+                //data esta leyendo 3 filas null
+                $data = Excel::selectSheets('INTUR')->load($ruta, function ($reader) {
+                })->get();
+                if (! empty($data) && $data->count()) {
+                    $excelheader = $data->first()->keys()->toArray();
+                    $encabezados = [
+                        "identificacion",
+                        "nombre",
+                        "pais",
+                        "sexo",
+                        "fentrada",
+                        "fsalida",
+                        "ndormidas",
+                        "motivo",
+                    ];
+                    if ($encabezados == $excelheader) {
+                        $conteo = $data->count();
+                        $ultimo = Book::all()->pluck('id')->last();
+                        if (is_null($ultimo)) {
+                            $ultimo = 1;
+                        }
+                        $mensaje = null;
+                        $mensaje5 = null;
+                        $mensaje3 = null;
+                        $mensaje4 = null;
+                        $t = 0;
+                        $d = 0;
+                        foreach ($data->toArray() as $row) {
+                            if (! empty($row)) {
+                                if (empty($row['identificacion']) || (empty($row['nombre'])) || (empty($row['pais'])) || (empty($row['sexo'])) || (empty($row['fentrada'])) || (empty($row['fsalida'])) || (empty($row['ndormidas'])) || (empty($row['motivo']))) {
+                                    $c2[] = (string) $t + 2;
+                                    $cadena = implode(',', $c2);
+                                    $mensaje = "EXISTEN VALORES NULOS, REVISAR FILA $cadena";
+                                    $notificacion = ['message' => $mensaje, 'alert-type' => 'error',];
+                                }
+                                $t++;
+                            }
+                        }
+                        if (empty($mensaje)) {
+                            foreach ($data->toArray() as $row) {
+                                if (! empty($row)) {
 
-           if($r1){
 
+                                    $pais = Country::where('country', 'LIKE', '%'.$row['pais'].'%')->get()->first();
+                                    $sexo = Sex::where('sexo', 'LIKE', '%'.$row['sexo'].'%')->get()->first();
+                                    $motivo = Reason::where('motivo', 'LIKE', '%'.$row['motivo'].'%')->get()->first();
+                                    $fechaentrada = str_replace('/', '-', $row['fentrada']);
+                                    $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
+                                    $fechasalida = str_replace('/', '-', $row['fsalida']);
+                                    $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
+                                    $FilasArray[] = [
+                                        'Identificacion' => $row['identificacion'],
+                                        'Nombre' => $row['nombre'],
+                                        'pais_id' => $pais->id,
+                                        'Sexo_id' => $sexo->id,
+                                        'Fechaentrada' => $fechaentrada,
+                                        'Fechasalida' => $fechasalida,
+                                        'Noches' => $row['ndormidas'],
+                                        'motivo_id' => $motivo->id,
+                                        'book_id' => $ultimo,
+                                        'created_at' => date('Y-m-d H:i:s'),
+                                    ];
+                                    if ((is_null($pais))) {
+                                        $c3[] = (string) $d + 2;
+                                        $cadena3 = implode(',', $c3);
+                                        $mensaje3 = " PAIS FILA $cadena3";
+                                    }
+                                    if ((is_null($sexo))) {
+                                        $c4[] = (string) $d + 2;
+                                        $cadena4 = implode(',', $c4);
+                                        $mensaje4 = " SEXO FILA $cadena4";
+                                    }
+                                    if ((is_null($motivo))) {
+                                        $c5[] = (string) $d + 2;
+                                        $cadena5 = implode(',', $c5);
+                                        $mensaje5 = " MOTIVO FILA $cadena5";
+                                    }
+                                    $d++;
+                                }
+                            }
+                            if (! empty($c3) || ! empty($c4) || ! empty($c5)) {
 
-               Excel::selectSheets('intur')->load($ruta, function ($hoja) {
-                            $hoja->each(function($fila)   {
+                                $combo = "Revisar $mensaje3"."$mensaje4"."$mensaje5";
+                                $notificacion = ['message' => $combo, 'alert-type' => 'error',];
+                            } else {
+                                $notificacion = ['message' => 'LIBRO GUARDADO', 'alert-type' => 'success',];
+                                //aca guardar
+                                $libro = new Book;
+                                $libro->Mes_id = $request->input("mes");
+                                $libro->anio = $request->input("anio");;
+                                $libro->estado = 'A';
+                                $libro->Observacion = $request->input("observacion");
+                                $libro->FechaElaborado = date("Y-m-d");
+                                $libro->user_id = $autor;
+                                $libro->save();
 
-                                $ultimo = Book::all()->pluck('id')->last();
-                                $fechaentrada = str_replace('/', '-', $fila->fentrada);
-                                $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
-                                $fechasalida = str_replace('/', '-', $fila->fsalida);
-                                $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
+                                Bookdetail::insert($FilasArray);
+                            }
+                        }
+                    } else {
+                        $notificacion = [
+                            'message' => 'REVISAR ENCABEZADOS, NO CUMPLE EL FORMATO',
+                            'alert-type' => 'error',
+                        ];
+                    }
 
-                              if(!empty($fila->identificacion )){
-                                $librodet=new Bookdetail;
-                                $librodet->Identificacion= $fila->identificacion;
-                                $librodet->Nombre= $fila->nombre;
-                                $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
-                                  $librodet->pais_id = $pais[0]->id;
-                                $s=Sex::where('sexo','LIKE','%'.$fila->sexo.'%')->get();
-                                $librodet->Sexo_id= $s[0]->id;
-                                $librodet->Fechaentrada=$fechaentrada;
-                                $librodet->Fechasalida=$fechasalida;
-                                $librodet->Noches= $fila->ndormidas;
-                                $mot=Reason::where('motivo','LIKE','%'.$fila->motivo.'%')->get();
-                                $librodet->motivo_id= $mot[0]->id;
-                                $librodet->book_id=$ultimo;
-                                $librodet->save();
-                                 }
+                    // foreach ($data->toArray() as $row) {
+                    //   if (!empty($row)) {
+                    //     $dataArray[] = [
+                    //       'Identificacion' => $row['identificacion'],
+                    //     'Nombre' => $row['nombre'],
+                    //   'pais_id' => $row['pais'],
+                    // 'Sexo_id' => $row['sexo'],
+                    //      'Fechaentrada' => $row['fentrada'],
+                    //        'Fechasalida' => $row['fsalida'],
+                    //      'Noches' => $row['ndormidas'],
+                    //      'motivo_id' => $row['motivo']
+                    //  ];
+                    //}
+                    // }
+                } else {
+                    $notificacion = ['message' => 'NO EXISTE HOJA INTUR', 'alert-type' => 'error',];
+                }
 
-                               });
-                            });
-               $notificacion = [
-                   'message' => 'LIBRO SUBIDO',
-                   'alert-type' => 'success',
-               ];
-                       }
+                // Excel::selectSheets('INTUR')->load($ruta, function ($hoja) {
+                //            $hoja->each(function($fila)   {
+
+                ///  $ultimo = Book::all()->pluck('id')->last();
+                /// $fechaentrada = str_replace('/', '-', $fila->fentrada);
+                /// $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
+                /// $fechasalida = str_replace('/', '-', $fila->fsalida);
+                ///$fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
+
+                /// if(!empty($fila->identificacion )){
+                /// $librodet=new Bookdetail;
+                /// $librodet->Identificacion= $fila->identificacion;
+                /// $librodet->Nombre= $fila->nombre;
+                /// $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
+                ///   $librodet->pais_id = $pais[0]->id;
+                ///$s=Sex::where('sexo','LIKE','%'.$fila->sexo.'%')->get();
+                /// $librodet->Sexo_id= $s[0]->id;
+                /// $librodet->Fechaentrada=$fechaentrada;
+                /// $librodet->Fechasalida=$fechasalida;
+                /// $librodet->Noches= $fila->ndormidas;
+                ///$mot=Reason::where('motivo','LIKE','%'.$fila->motivo.'%')->get();
+                ///$librodet->motivo_id= $mot[0]->id;
+                ///$librodet->book_id=$ultimo;
+                ///$librodet->save();
+                ///}
+
+                //     });
+                // });
+
+            }
                        else
                        {
                            $notificacion = [
-                               'message' => 'Error al subir el libro,revise el formato',
+                               'message' => 'ERROR NO SE PUDO CARGAR EL ARCHIVO EN EL SERVIDOR',
                                'alert-type' => 'error',
                            ];
                        }

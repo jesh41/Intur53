@@ -10,7 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 class Bookdetail extends Model
 {
     //
-      protected $fillable = ['Identificacion','pais_id','Sexo','FechaEntrada','FechaSalida','Noches','Motivo',];
+    protected $fillable = [
+        'Identificacion',
+        'pais_id',
+        'Sexo',
+        'FechaEntrada',
+        'FechaSalida',
+        'Noches',
+        'Motivo',
+        'created_at',
+    ];
 
 
        public function book()
