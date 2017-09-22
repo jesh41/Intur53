@@ -125,15 +125,7 @@ public function  form_prev_libro($id){
             $nombre_original = 'user'.$autor.'.'.$extension;//renombra el archivo subido
             $r1 = Storage::disk('archivos')->put($nombre_original, \File::get($archivo));//guardar en el disco
             $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
-            //empieza la creacion del encabezado
-            /// $libro=new Book;
-            /// $libro->Mes_id=$request->input("mes");
-            /// $libro->anio = $request->input("anio");;
-            /// $libro->estado='A';
-            ///$libro->Observacion=$request->input("observacion");
-            /// $libro->FechaElaborado= date("Y-m-d");
-            ///$libro->user_id=$autor;
-            ///$libro->save();
+
             if ($r1) {
                 //data esta leyendo 3 filas null
                 $data = Excel::selectSheets('INTUR')->load($ruta, function ($reader) {
@@ -238,21 +230,6 @@ public function  form_prev_libro($id){
                             'alert-type' => 'error',
                         ];
                     }
-
-                    // foreach ($data->toArray() as $row) {
-                    //   if (!empty($row)) {
-                    //     $dataArray[] = [
-                    //       'Identificacion' => $row['identificacion'],
-                    //     'Nombre' => $row['nombre'],
-                    //   'pais_id' => $row['pais'],
-                    // 'Sexo_id' => $row['sexo'],
-                    //      'Fechaentrada' => $row['fentrada'],
-                    //        'Fechasalida' => $row['fsalida'],
-                    //      'Noches' => $row['ndormidas'],
-                    //      'motivo_id' => $row['motivo']
-                    //  ];
-                    //}
-                    // }
                 } else {
                     $notificacion = ['message' => 'NO EXISTE HOJA INTUR', 'alert-type' => 'error',];
                 }
