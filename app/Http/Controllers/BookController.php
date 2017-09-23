@@ -51,26 +51,34 @@ public function anular_libro(Request $request){
     $idbook = $request->input("id_book");
     $user = Auth::user()->id;
     $consulta = DB::select("call ultimo_libro($user)");
+    $horas = DB::select("call dias_ultimo_libro($user)");
     $valido = $consulta[0];
-    if (Auth::user()->isRole('hotel')) {
-        if ($valido->id == $idbook) {
-            $book = Book::find($idbook);
-            $book->estado = 'U';
-            if ($book->save()) {
-                $annnulment = new Annulment;
-                $annnulment->book_id = $idbook;
-                $annnulment->observacion = $request->input("observacion");
-                $annnulment->elaborado = Auth::user()->name;
-                $annnulment->save();
+    $hora = $horas[0];
+    if (Auth::user()->isRole('hotel') && ! empty($consulta)) {
 
-                return view("mensajes.msj_libro_anulado")->with("msj", "Libro Anulado Correctamente");
+        if ($valido->id == $idbook) {
+            if ($hora->horas < 24) {
+                $book = Book::find($idbook);
+                $book->estado = 'U';
+                if ($book->save()) {
+                    $annnulment = new Annulment;
+                    $annnulment->book_id = $idbook;
+                    $annnulment->observacion = $request->input("observacion");
+                    $annnulment->elaborado = Auth::user()->name;
+                    $annnulment->save();
+
+                    return view("mensajes.msj_libro_anulado")->with("msj", "Libro Anulado Correctamente");
+                } else {
+                    return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
+                }
             } else {
-                return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
+                return view("mensajes.mensaje_error")->with("msj", "NO PUEDE ANULAR UN LIBRO DESPUES DE 1 DIA");
             }
         } else {
             return view("mensajes.mensaje_error")->with("msj", "NO SE PUEDE ANULAR ESTE LIBRO");
         }
     }
+
     if (Auth::user()->isRole('administrador')) {
         $book = Book::find($idbook);
         $book->estado = 'U';
