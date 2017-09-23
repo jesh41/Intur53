@@ -60,24 +60,32 @@ class ReportController extends Controller
         $this->validate($request, [
             'year' => 'required|digits_between:4,4',
         ]);
-
+        $thoteles = DB::select("call count_user_rol(3)");
+        $thoteles = $thoteles[0]->conteo;
+        if (empty($thoteles)) {
+            $thoteles = 0;
+        }
         $y = $request->input("year");
 
         if ($dato == 1) {
             $detalle = DB::select("call indicador1general($y)");
-            return view('/reports/report1web')->with("data", $detalle);
+
+            return view('/reports/report1web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 2) {
             $detalle = DB::select("call indicador2($y)");
-            return view('/reports/report2web')->with("data", $detalle);
+
+            return view('/reports/report2web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 3) {
             $detalle = DB::select("call indicador3($y)");
-            return view('/reports/report3web')->with("data", $detalle);
+
+            return view('/reports/report3web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 4) {
             $detalle = DB::select("call indicador4($y)");
-            return view('/reports/report4web')->with("data", $detalle);
+
+            return view('/reports/report4web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 11) {
             $viewer = DB::select("call indicador1general($y)");

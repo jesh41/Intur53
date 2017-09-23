@@ -48,7 +48,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}}
+                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
                     <a href="/crear_reporte_1/1/{{$Anio}}" target="_blank">
                         <button class="btn  btn-default btn-xs" title="Descargar"><i
                                     class="fa fa-cloud-download fa-lg"></i>
