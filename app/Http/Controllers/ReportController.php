@@ -62,9 +62,9 @@ class ReportController extends Controller
         ]);
         $thoteles = DB::select("call count_user_rol(3)");
         $thoteles = $thoteles[0]->conteo;
-        if (empty($thoteles)) {
-            $thoteles = 0;
-        }
+        //  if (empty($thoteles)) {
+        //    $thoteles = 0;
+        //}
         $y = $request->input("year");
 
         if ($dato == 1) {
