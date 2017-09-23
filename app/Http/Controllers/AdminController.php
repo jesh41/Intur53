@@ -313,13 +313,16 @@ class AdminController extends Controller
     public function edituser()
     {
         $usuario = User::find(Auth::user()->id);
-        if (Auth::user()->isRole('hotel')) {
+        $indicador = false;
+        $hotel = Hotel::where('id_user', '=', $usuario->id)->get()->first();
+        if (Auth::user()->isRole('hotel') && ! empty($hotel)) {
             $datos = Hotel::find($usuario->hotel->id);
+            $indicador = true;
 
-            return view('admin.edit')->with('h', $datos)->with('u', $usuario);
+            return view('admin.edit')->with('h', $datos)->with('u', $usuario)->with('indicador', $indicador);
         } else {
 
-            return view('admin.edit')->with('u', $usuario);
+            return view('admin.edit')->with('u', $usuario)->with('indicador', $indicador);
         }
     }
 }

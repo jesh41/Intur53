@@ -16,7 +16,7 @@
                         Tipo de usuario:  {{  $roles }}
                     @endforeach
                 </div>
-                @if(Auth::user()->isRole('hotel'))
+                @if(Auth::user()->isRole('hotel')&& $indicador==true)
                     <div class="col-md-6">
                         Hotel:{{$h->nombre}}
                     </div>
