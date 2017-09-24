@@ -60,11 +60,13 @@ class ReportController extends Controller
         $this->validate($request, [
             'year' => 'required|digits_between:4,4',
         ]);
-        $thoteles = DB::select("call count_user_rol(3)");
+        $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+        $ro = $ro->id;
+        $thoteles = DB::select("call count_user_rol($ro)");
         $thoteles = $thoteles[0]->conteo;
-        //  if (empty($thoteles)) {
-        //    $thoteles = 0;
-        //}
+        if (empty($thoteles)) {
+            $thoteles = 0;
+        }
         $y = $request->input("year");
 
         if ($dato == 1) {
