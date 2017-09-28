@@ -1,6 +1,4 @@
 function  verinfo_usuario(arg){
-
-
   var urlraiz=$("#url_raiz_proyecto").val();
   var miurl =urlraiz+"/form_editar_usuario/"+arg+""; 
   $("#capa_modal").show();

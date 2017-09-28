@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'America/Costa_Rica',
+    'timezone' => 'America/Managua',
 
     /*
     |--------------------------------------------------------------------------
