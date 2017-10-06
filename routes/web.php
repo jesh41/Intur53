@@ -79,8 +79,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'permissionshinobi:subir'], function () {
         Route::get('form_cargar_books', 'BookController@form_cargar_libros');
         Route::post('/cargar_datos', 'BookController@cargar_libros');
-        Route::post('anular_libro', 'BookController@anular_libro');
-        Route::get('form_anular_libro/{idusu}', 'BookController@form_anular_libro');
+        Route::post('/anular_libro', 'BookController@anular_libro');
+        // Route::get('form_anular_libro/{idusu}', 'BookController@form_anular_libro');
         route::get('/ajax-submes', function () {
             $año_seleccionado = Input::get('id');
             $usuario = Auth::user()->id;

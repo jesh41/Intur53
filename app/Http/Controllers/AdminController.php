@@ -304,8 +304,8 @@ class AdminController extends Controller
 //bitacora
      public function bitacora()
     {
-        
-        $annulments=Annulment::all();
+
+        $annulments = Annulment::paginate(10);
         return view('/admin/bitacora')->with("annulments",$annulments);
     }
 

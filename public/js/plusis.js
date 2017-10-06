@@ -207,7 +207,6 @@ function anular_libro(idusu){
    $("#capa_formularios").css('top', screenTop);
    $("#capa_formularios").html($("#cargador_empresa").html());
    var miurl=urlraiz+"/form_anular_libro/"+idusu+""; 
-  
 
     $.ajax({
     url: miurl
@@ -348,9 +347,4 @@ function previ_libro(idusu){
 
 
 
-/* off-canvas sidebar toggle */
-$('[data-toggle=offcanvas]').click(function() {
-    $('.row-offcanvas').toggleClass('active');
-    $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
-});
 

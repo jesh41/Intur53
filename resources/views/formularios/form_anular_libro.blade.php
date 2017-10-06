@@ -14,15 +14,15 @@
          
               <div class="box-footer">
 
-              <form method="post" action="{{ url('anular_libro') }}" id="f_borrar_usuario" class="formentrada" >
-         
+                  <form method="post" action="/anular_libro" id="form_anular" class="formentrada">
 
 
-            <div class="col-md-6">
+                      <div class="col-md-6">
                   <div class="form-group">
                     <label class="col-sm-2" for="nombre">Motivo*</label>
                     <div class="col-sm-10" >
                    <select class="form-control"  name="observacion" id="observacion">
+                       <option selected></option>
                     <option>archivo incorrecto</option>
                     <option>Informacion vieja</option>
                   </select>

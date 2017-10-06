@@ -35,7 +35,7 @@ class BookController extends Controller
 
         if (Auth::user()->isRole('administrador'))
         {
-            $books = Book::paginate(12);
+            $books = Book::paginate(5);
         } elseif (Auth::user()->isRole('hotel'))
         {
             $books = Book::where('user_id', Auth::user()->id)->paginate(12);
@@ -75,7 +75,12 @@ public function anular_libro(Request $request){
                 return view("mensajes.mensaje_error")->with("msj", "NO PUEDE ANULAR UN LIBRO DESPUES DE 1 DIA");
             }
         } else {
-            return view("mensajes.mensaje_error")->with("msj", "NO SE PUEDE ANULAR ESTE LIBRO");
+            $notificacion = [
+                'message' => 'Ha ocurrido un error',
+                'alert-type' => 'error',
+            ];
+
+            return back()->with($notificacion);
         }
     }
 

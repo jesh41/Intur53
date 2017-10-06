@@ -97,7 +97,7 @@
 
 
 <script src="{{ asset('js/material-dashboard.js') }}"></script>
-<script src="{{ asset('js/demo.js') }}"></script>
+<!--<script src="{{ asset('js/demo.js') }}"></script>-->
 <script src="{{ asset('js/ern.js') }}"></script>
 <script type="text/javascript">
     $().ready(function () {

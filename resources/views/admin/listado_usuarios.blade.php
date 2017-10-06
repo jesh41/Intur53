@@ -1,44 +1,51 @@
-@extends('layouts.hom')
-
-
-
+@extends('layouts.new')
 @section('content')
-<section  class="container"  id="contenido_principal">
 
-	<div class="col-md-8 col-md-offset-2">
-
-     <div class="box-header">
-
-         <h4 class="box-title">Busqueda</h4>
-
-         <form   action="{{ url('buscar_usuario') }}"  method="post"  >
-				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-				<div class="input-group input-group-sm">
-					<input type="text" class="form-control" id="dato_buscado" name="dato_buscado" required>
-					<span class="input-group-btn">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <h4>Busqueda</h4>
+                    <form action="{{ url('buscar_usuario') }}" method="post">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" id="dato_buscado" name="dato_buscado" required>
+                            <span class="input-group-btn">
 					<input type="submit" class="btn btn-primary" value="buscar" >
 					</span>
+                        </div>
+                    </form>
 
-				</div>
-						
-        </form>
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">people</i> <h4 class="card-title">Usuarios</h4>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0);" class="btn btn-xs btn-primary"
+                               onclick="cargar_formulario(1);">Agregar Usuario</a>
+                            <a href="{{ url("/listado_usuarios") }}" class="btn btn-xs btn-primary">Listado Usuarios</a>
+                            <a href="javascript:void(0);" class="btn btn-xs btn-primary"
+                               onclick="cargar_formulario(2);">Roles</a>
+                            <a href="javascript:void(0);" class="btn btn-xs btn-primary"
+                               onclick="cargar_formulario(3);">Permisos</a>
+                        </div>
 
+                        <div class="card-content">
 
-		<div class="margin" id="botones_control">
-            <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(1);">Agregar
-                Usuario</a>
-              <a href="{{ url("/listado_usuarios") }}"  class="btn btn-xs btn-primary" >Listado Usuarios</a> 
-              <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(2);">Roles</a>
-            <a href="javascript:void(0);" class="btn btn-xs btn-primary" onclick="cargar_formulario(3);">Permisos</a>
-		</div>
-    </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active table-responsive ">
 
-<div class="box-body box-white">
-
-    <div class="table-responsive" >
-
-	    <table  class="table table-hover table-striped" cellspacing="0" width="100%">
-				<thead>
+                                    <table class="table table-hover table-striped" cellspacing="0" width="100%">
+                                        <thead role="row" class="text-primary">
 						<tr>    <th>codigo</th>
 								<th>Rol</th>
 								<th>Nombre</th>
@@ -74,15 +81,16 @@
 		</tbody>
 		</table>
 
-	</div>
-</div>
+                                </div>
+                            </div>
+                        </div>
+                        {{ $usuarios->links() }}
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
-
-
-{{ $usuarios->links() }}
-
-
-
-</div></section>
 @endsection

@@ -1,14 +1,19 @@
-@extends('layouts.hom')
-
-
+@extends('layouts.new')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="box box-info">
-                <div class="box-header">
-                    <h3 class="box-title">REPORTES DEL SISTEMA</h3>
-                    @if (count($errors) > 0)
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">show_chart</i>
+                        </div>
+
+                        <div class="card-content">
+                            <h4 class="title">Reportes del sistema</h4>
+
+                            @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -17,17 +22,14 @@
                             </ul>
                         </div>
                     @endif
-                </div>
 
-                <div class="box-tools">
-
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-
-                                <thead>
+                            <div class="tab-content">
+                                <div class="tab-pane active table-responsive ">
+                                    <table class="table table-hover table-striped" cellspacing="0" width="100%">
+                                        <thead role="row" class="text-primary">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>reporte</th>
+                                    <th>Id</th>
+                                    <th>Reporte</th>
                                     <th>Web</th>
                                     <th>Grafica</th>
                                 </tr>
@@ -36,73 +38,78 @@
                                 <tr>
                                     <td>1</td>
                                     <td>Numero de Huespedes por mes y residencia</td>
-                                    <!--<td><a href="/reporte_1" >
-                                            <button class="btn  btn-default btn-xs"><i class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>-->
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(1);"><i
-                                                        class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>
+                                    <td>
+                                        <button class="btn   btn-info btn-sm " onclick="parametro(1);"><i
+                                                    class="material-icons">remove_red_eye</i>
+                                        </button>
+                                    </td>
 
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(11);"><i
-                                                        class="fa fa-line-chart fa-lg"></i>
-                                        </a></button></td>
+                                    <td>
+                                        <button class="btn  btn-info btn-sm " onclick="parametro(11);"><i
+                                                    class="material-icons">multiline_chart</i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Numero de huespedes por region y sexo</td>
-                                    <!--  <td><a href="crear_reporte_2/1" target="_blank">
-                                              <button class="btn  btn-default btn-xs"><i class="fa  fa-eye fa-lg"></i>
-                                          </a></button></td>-->
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(2);"><i
-                                                        class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(22);"><i
-                                                        class="fa fa-line-chart fa-lg"></i>
-                                        </a></button></td>
+                                    <td>
+                                        <button class="btn   btn-info btn-sm " onclick="parametro(2);"><i
+                                                    class="material-icons">remove_red_eye</i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn   btn-info btn-sm " onclick="parametro(22);"><i
+                                                    class="material-icons">multiline_chart</i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>Numero de huespedes por region y motivo de viaje</td>
-                                    <!--<td><a href="crear_reporte_3/1" target="_blank">
-                                            <button class="btn  btn-default btn-xs"><i class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>-->
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(3);"><i
-                                                        class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(33);"><i
-                                                        class="fa fa-line-chart fa-lg"></i>
-                                        </a></button></td>
+
+                                    <td>
+                                        <button class="btn   btn-info btn-sm " onclick="parametro(3);"><i
+                                                    class="material-icons">remove_red_eye</i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn   btn-info btn-sm " onclick="parametro(33);"><i
+                                                    class="material-icons">multiline_chart</i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
                                     <td>Estadia promedio de Huespedes Extrajeros/Nacionales por año y mes</td>
-                                    <!--<td><a href="crear_reporte_4/1" target="_blank">
-                                            <button class="btn  btn-default btn-xs"><i class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>-->
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(4);"><i
-                                                        class="fa  fa-eye fa-lg"></i>
-                                        </a></button></td>
-                                    <td><a href="javascript:void(0);">
-                                            <button class="btn  btn-default btn-xs" onclick="parametro(4);"><i
-                                                        class="fa fa-line-chart fa-lg"></i>
-                                        </a></button></td>
+
+                                    <td>
+                                        <button class="btn  btn-info btn-sm " onclick="parametro(4);"><i
+                                                    class="material-icons">remove_red_eye</i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn   btn-info btn-sm " onclick="parametro(4);"><i
+                                                    class="material-icons">multiline_chart</i>
+                                        </button>
+                                    </td>
                                 </tr>
-                                <tr>
+
 
                                 </tr>
 
                                 </tbody>
                             </table>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
 
 @endsection
