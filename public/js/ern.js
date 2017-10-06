@@ -1,4 +1,4 @@
-$(document).on("submit", ".formentrada", function (e) {
+$(document).on("submit", ".formentrada999", function (e) {
     e.preventDefault();
     var quien = $(this).attr("id");
     var formu = $(this);
@@ -61,7 +61,7 @@ material = {
         } else if (type == 'anular') {
             swal({
                 title: 'Desea anular el libro ' + libro + '?',
-                html: '  <form method="post" action="/anular_libro" id="form_anular" class="formentrada" >' +
+                html: '  <form method="post" action="/anular_libro" id="form_anular999" class="formentrada" >' +
                 '   <select class="form-control"  name="observacion" id="observacion" required>\n' +
                 '                       <option selected></option>\n' +
                 '                    <option>archivo incorrecto</option>\n' +
@@ -77,9 +77,12 @@ material = {
                 allowEscapeKey: false,
                 cancelButtonClass: "btn btn-danger",
                 buttonsStyling: false
-            }).catch(swal.noop);
+            }).then(function () {
+                swal.close()
 
+            });
         }
+
     },
 
     showNotification: function (from, align) {

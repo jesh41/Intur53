@@ -76,9 +76,10 @@ public function anular_libro(Request $request){
             }
         } else {
             $notificacion = [
-                'message' => 'Ha ocurrido un error',
-                'alert-type' => 'error',
+                'message' => 'No puede anular libros viejos',
+                'alert-type' => 'danger',
             ];
+            session()->put('error', 'Item created successfully.');
 
             return back()->with($notificacion);
         }

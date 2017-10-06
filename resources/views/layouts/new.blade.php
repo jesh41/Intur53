@@ -42,7 +42,7 @@
 <div id="capa_modal" class="div_modal" style="display: none;"></div>
 <div id="capa_formularios" class="div_contenido" style="display: none;"></div>
 <div id="capa_test" class="div_test" style="display: none;"></div>
-<body>
+
 
 <div id="wrapper">
     <!-- Sidebar -->
@@ -214,27 +214,54 @@
 <script src="{{asset('js/highcharts.js') }}"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
-<script src="{{ asset('js/toastr.js') }}"></script>
+<!--<script src="{{ asset('js/toastr.js') }}"></script>-->
 <script>
-            @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch (type) {
-        case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
-        case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
-        case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
-        case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-    }
+
+    @if(Session::has('success'))
+    $.notify({
+        icon: "add_alert",
+        message: "{{ Session::get('success') }}",
+        type: 'success'
+    });
+    @php
+        Session::forget('success');
+    @endphp
     @endif
+
+    @if(Session::has('info'))
+    $.notify({
+        icon: "add_alert",
+        message: "{{ Session::get('info') }}",
+        type: 'info'
+    });
+    @php
+        Session::forget('info');
+    @endphp
+    @endif
+
+    @if(Session::has('warning'))
+    $.notify({
+        icon: "add_alert",
+        message: "{{ Session::get('warning') }}",
+        type: 'warning'
+    });
+    @php
+        Session::forget('warning');
+    @endphp
+    @endif
+
+    @if(Session::has('error'))
+    $.notify({
+        icon: "add_alert",
+        message: "{{ Session::get('error') }}",
+        type: 'danger'
+    });
+    @php
+        Session::forget('error');
+    @endphp
+    @endif
+
 </script>
 
 
-</body>
 </html>
