@@ -220,8 +220,10 @@
     @if(Session::has('success'))
     $.notify({
         icon: "add_alert",
-        message: "{{ Session::get('success') }}",
-        type: 'success'
+        message: "{{ Session::get('success') }}"
+    }, {
+        type: 'success',
+        timer: 4000,
     });
     @php
         Session::forget('success');
@@ -231,8 +233,10 @@
     @if(Session::has('info'))
     $.notify({
         icon: "add_alert",
-        message: "{{ Session::get('info') }}",
-        type: 'info'
+        message: "{{ Session::get('info') }}"
+    }, {
+        type: 'info',
+        timer: 4000,
     });
     @php
         Session::forget('info');
@@ -242,8 +246,10 @@
     @if(Session::has('warning'))
     $.notify({
         icon: "add_alert",
-        message: "{{ Session::get('warning') }}",
-        type: 'warning'
+        message: "{{ Session::get('warning') }}"
+    }, {
+        type: 'warning',
+        timer: 4000,
     });
     @php
         Session::forget('warning');
@@ -253,8 +259,10 @@
     @if(Session::has('error'))
     $.notify({
         icon: "add_alert",
-        message: "{{ Session::get('error') }}",
-        type: 'danger'
+        message: "{{ Session::get('error') }}"
+    }, {
+        type: 'danger',
+        timer: 4000,
     });
     @php
         Session::forget('error');
