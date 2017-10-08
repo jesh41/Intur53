@@ -47,12 +47,12 @@ class ReportController extends Controller
         }
     }
 
-    public function form_year($arg)
-    {
+    // public function form_year($arg)
+    //{
         //carga el formulario
-        $dato = $arg;
-        return view("formularios.form_year")->with("arg", $dato);
-    }
+    // $dato = $arg;
+    //   return view("formularios.form_year")->with("arg", $dato);
+    // }
 
     public function web_reporte(Request $request, $dato)
     {

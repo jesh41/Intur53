@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
@@ -43,10 +43,10 @@
                                 <div class="input-group">
 
 								<span class="input-group-addon">
-									<label>Año</label>
+									<i class="material-icons">today</i>
 								</span>
-                                    <select class="form-control" name="anio" id="anio" required>
-                                        <option selected></option>
+                                    <select class="btn btn-primary btn-round" name="anio" id="anio" required>
+                                        <option disabled selected>Escoger año</option>
                                         <option value="2016">2016</option>
                                         <option value="2017">2017</option>
                                     </select>
@@ -57,8 +57,8 @@
 								<span class="input-group-addon">
 									<i class="material-icons">date_range</i>
 								</span>
-                                    <select class="form-control" name="mes" id="mes" required>
-                                        <option selected></option>
+                                    <select class="btn btn-primary btn-round" name="mes" id="mes" required>
+                                        <option disabled selected>Escoger mes</option>
                                     </select>
                                 </div>
 
@@ -96,7 +96,7 @@
 
                                 <!--  <button class="btn btn-primary btn-sm btn-round"style="float: right" onclick="material.showSwal('subir','0','<?php echo csrf_token(); ?>')">-->
                                     <button class="btn btn-primary btn-sm btn-round" style="float: right"
-                                            data-toggle="modal" data-target="#loginModal">
+                                            data-toggle="modal" data-target="#uploadModal">
                                         <i class="material-icons">file_upload</i>Subir
                                 </button>
                             @endcan

@@ -85,12 +85,17 @@ Route::group(['middleware' => 'auth'], function () {
             $año_seleccionado = Input::get('id');
             $usuario = Auth::user()->id;
             $mes_actual = date('m');
-            if ($año_seleccionado == date('Y')) {
+
+            if ($año_seleccionado == date('Y') && ! empty($año_seleccionado)) {
                 $months = DB::select("call validacion_mes($año_seleccionado,$usuario,$mes_actual)");
             } else {
-                $months = DB::select("call validacion_anio($año_seleccionado,$usuario,$mes_actual)");
+                if (! empty($año_seleccionado)) {
+                    $months = DB::select("call validacion_anio($año_seleccionado,$usuario,$mes_actual)");
+                }
             }
-
+            if (empty($months)) {
+                $months = null;
+            }
             return Response::json($months);
         });
     });

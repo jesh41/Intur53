@@ -57,24 +57,41 @@ material = {
         } else if (type == 'anular') {
             swal({
                 title: 'Desea anular el libro ' + libro + '?',
-                html: '  <form method="post" action="/anular_libro" id="form_anular999" class="formentrada" >' +
-                '   <select class="form-control"  name="observacion" id="observacion" required>\n' +
-                '                       <option selected></option>\n' +
-                '                    <option>archivo incorrecto</option>\n' +
-                '                    <option>Informacion vieja</option>\n' +
-                '                  </select>' +
+                html: '  <form method="post" action="/anular_libro" id="form_anulacion"> ' +
                 '<input type="hidden" name="_token"  value=' + token + '>' +
-                '<input type="hidden" name="id_book" value=' + libro + '>' + '<button type="submit" class="btn btn-success">Anular</button>' +
+                '<input type="hidden" name="id_book" value=' + libro + '>' +
                 '</form>',
                 type: 'warning',
                 showCancelButton: true,
-                showConfirmButton: false,
+                showConfirmButton: true,
+                confirmButtonText: "ANULAR",
+                confirmButtonClass: 'btn btn-success',
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 cancelButtonClass: "btn btn-danger",
-                buttonsStyling: false
-            }).then(function () {
-                swal.close()
+                buttonsStyling: false,
+                input: 'select',
+                inputClass: 'dropdown-toggle btn btn-primary btn-round',
+                inputOptions: {
+                    'Incorrecto': 'Incorrecto',
+                    'Desactualizado': 'Informacion desactualizada'
+                },
+                inputPlaceholder: 'Motivo...',
+                inputValidator: function (value) {
+                    return new Promise(function (resolve, reject) {
+                        if (value == 'Incorrecto' || value == 'Desactualizado') {
+                            $('<input />').attr('type', 'hidden').attr('name', 'observacion')
+                                .attr('value', value)
+                                .appendTo('#form_anulacion');
+                            $('<input />').attr('type', 'hidden').attr('name', 'id_book')
+                                .attr('value', libro)
+                                .appendTo('#form_anulacion');
+                            $('form').submit();
+                        } else {
+                            reject('Digitar año')
+                        }
+                    })
+                }
             }).catch(swal.noop);
         } else if (type == 'reporte') {
             swal({
@@ -101,8 +118,7 @@ material = {
                 inputValidator: function (value) {
                     return new Promise(function (resolve, reject) {
                         if (value > 2000 && value < 3000) {
-                            $('<input />').attr('type', 'hidden').attr('name', 'year').attr('name', 'year')
-                                .attr('value', value)
+                            $('<input />').attr('type', 'hidden').attr('name', 'year').attr('value', value)
                                 .appendTo('#form_year');
                             $('form').submit();
                         } else {
