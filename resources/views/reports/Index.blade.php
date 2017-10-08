@@ -39,13 +39,17 @@
                                     <td>1</td>
                                     <td>Numero de Huespedes por mes y residencia</td>
                                     <td>
-                                        <button class="btn   btn-info btn-sm " onclick="parametro(1);"><i
+                                        <button class="btn   btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','1','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">remove_red_eye</i>
                                         </button>
                                     </td>
 
                                     <td>
-                                        <button class="btn  btn-info btn-sm " onclick="parametro(11);"><i
+                                        <button class="btn  btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">multiline_chart</i>
                                         </button>
                                     </td>
@@ -54,12 +58,16 @@
                                     <td>2</td>
                                     <td>Numero de huespedes por region y sexo</td>
                                     <td>
-                                        <button class="btn   btn-info btn-sm " onclick="parametro(2);"><i
+                                        <button class="btn   btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','2','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">remove_red_eye</i>
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="btn   btn-info btn-sm " onclick="parametro(22);"><i
+                                        <button class="btn   btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','22','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">multiline_chart</i>
                                         </button>
                                     </td>
@@ -69,12 +77,16 @@
                                     <td>Numero de huespedes por region y motivo de viaje</td>
 
                                     <td>
-                                        <button class="btn   btn-info btn-sm " onclick="parametro(3);"><i
+                                        <button class="btn   btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','3','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">remove_red_eye</i>
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="btn   btn-info btn-sm " onclick="parametro(33);"><i
+                                        <button class="btn   btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','33','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">multiline_chart</i>
                                         </button>
                                     </td>
@@ -84,12 +96,16 @@
                                     <td>Estadia promedio de Huespedes Extrajeros/Nacionales por año y mes</td>
 
                                     <td>
-                                        <button class="btn  btn-info btn-sm " onclick="parametro(4);"><i
+                                        <button class="btn  btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','4','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">remove_red_eye</i>
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="btn   btn-info btn-sm " onclick="parametro(4);"><i
+                                        <button class="btn   btn-info btn-sm "
+                                                onclick="material.showSwal('reporte','44','<?php echo csrf_token(); ?>')">
+                                            <i
                                                     class="material-icons">multiline_chart</i>
                                         </button>
                                     </td>

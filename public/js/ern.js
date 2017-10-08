@@ -75,29 +75,45 @@ material = {
                 buttonsStyling: false
             }).then(function () {
                 swal.close()
-            });
-        } else if (type == 'subir') {
+            }).catch(swal.noop);
+        } else if (type == 'reporte') {
             swal({
-                title: 'Desea anular el libro ' + libro + '?',
-                html: '  <form method="post" action="/anular_libro" id="form_anular999" class="formentrada" >' +
-                '   <select class="form-control"  name="observacion" id="observacion" required>\n' +
-                '                       <option selected></option>\n' +
-                '                    <option>archivo incorrecto</option>\n' +
-                '                    <option>Informacion vieja</option>\n' +
-                '                  </select>' +
+                title: 'Digitar Año',
+                html: '<form method="post" action="/reporte/' + libro + '" id="form_year">' +
                 '<input type="hidden" name="_token"  value=' + token + '>' +
-                '<input type="hidden" name="id_book" value=' + libro + '>' + '<button type="submit" class="btn btn-success">Anular</button>' +
                 '</form>',
-                type: 'warning',
+
+                type: 'question',
                 showCancelButton: true,
-                showConfirmButton: false,
+                showConfirmButton: true,
                 allowOutsideClick: false,
                 allowEscapeKey: false,
+                confirmButtonText: "Procesar",
+                confirmButtonClass: 'btn btn-success',
                 cancelButtonClass: "btn btn-danger",
-                buttonsStyling: false
-            }).then(function () {
-                swal.close()
-            });
+                buttonsStyling: false,
+                input: 'number',
+                inputAttributes: {
+                    'name': 'year',
+                    'id': 'year'
+                },
+                inputPlaceholder: '2016',
+                inputValidator: function (value) {
+                    return new Promise(function (resolve, reject) {
+                        if (value > 2000 && value < 3000) {
+                            $('<input />').attr('type', 'hidden').attr('name', 'year').attr('name', 'year')
+                                .attr('value', value)
+                                .appendTo('#form_year');
+                            $('form').submit();
+                        } else {
+                            reject('Digitar año')
+                        }
+                    })
+                }
+            }).catch(swal.noop);//.then(function () {
+            //    swal.close()
+            //});
+
         }
 
     },

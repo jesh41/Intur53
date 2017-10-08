@@ -1,15 +1,21 @@
-@extends('layouts.hom')
+@extends('layouts.new')
 
 @section('content')
-    <div class="container">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
 
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Reporte de estadia promedio por mes, residencia y total</div>
-                    <div class="panel-body">
-                        <table class="table table-bordered">
-                            <thead>
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">show_chart</i>
+                        </div>
+
+
+                        <div class="card-content">
+                            <h4 class="title">Reporte de estadia promedio por mes, residencia y total</h4>
+                            <table class="table table-hover table-striped" cellspacing="0" width="100%">
+                                <thead role="row" class="text-primary">
                             <tr>
                                 <th>Año</th>
                                 <th>Mes</th>
@@ -39,15 +45,20 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer clearfix">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
-                    <a href="/crear_reporte_4/1/{{$Anio}}"
-                       target="_blank">
-                        <button class="btn  btn-default btn-xs" title="Descargar"><i
-                                    class="fa fa-cloud-download fa-lg"></i>
-                    </a></button></div>
+                    <div class="card-footer">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
+                        <a href="/crear_reporte_4/1/{{$Anio}}" target="_blank">
+                            <button class="btn  btn-info btn-xs" rel="tooltip" data-placement="right" title="Descargar">
+                                <i
+                                        class="fa fa-cloud-download fa-lg"></i>
+                            </button>
+                        </a>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
-
+    </div>
 
 @endsection

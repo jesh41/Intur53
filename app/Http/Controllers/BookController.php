@@ -118,8 +118,7 @@ public function  form_prev_libro($id){
       return view("formularios.form_previ_libro")->with("detalle",$detalle);
 }
 
-
- 	public function cargar_libros(Request $request)
+    public function cargar_libros(Request $request)
 	{
        $archivo = $request->file('archivo');      
        $extension=$archivo->getClientOriginalExtension();

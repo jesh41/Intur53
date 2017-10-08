@@ -1,4 +1,4 @@
-@extends('layouts.hom')
+@extends('layouts.new')
 
 @section('content')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -32,18 +32,25 @@
             });
         });
     </script>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">GRAFICA HUESPEDES POR REGION Y SEXO</div>
-                    <div class="panel-body">
-                        <div id="container"></div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">show_chart</i>
+                        </div>
+
+                        <div class="card-content">
+                            <h4 class="title">GRAFICA HUESPEDES POR REGION Y SEXO</h4>
+                            <div id="container"></div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 @endsection
