@@ -42,8 +42,6 @@ class BookController extends Controller
         } elseif (Auth::user()->isRole('intur')) {
             $books = Book::paginate(12);
         }
-
-
       return view('/book/books')->with("books",$books);
     }
    
@@ -66,22 +64,25 @@ public function anular_libro(Request $request){
                     $annnulment->observacion = $request->input("observacion");
                     $annnulment->elaborado = Auth::user()->name;
                     $annnulment->save();
+                    session()->put('success', 'LIBRO ANULADO CORRECTAMENTE');
 
-                    return view("mensajes.msj_libro_anulado")->with("msj", "Libro Anulado Correctamente");
+                    return back();
                 } else {
-                    return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
+                    session()->put('error', 'HUBO UN ERROR EN LA ANULACION LLAME AL ADMINISTRADOR.');
+
+                    return back();
                 }
             } else {
-                return view("mensajes.mensaje_error")->with("msj", "NO PUEDE ANULAR UN LIBRO DESPUES DE 1 DIA");
+                session()->put('warning', 'NO PUEDE ANULAR LIBROS DESPUES DE 1 DIA.');
+
+                return back();
+
             }
         } else {
-            $notificacion = [
-                'message' => 'No puede anular libros viejos',
-                'alert-type' => 'danger',
-            ];
+
             session()->put('warning', 'NO PUEDE ANULAR LIBROS VIEJOS.');
 
-            return back()->with($notificacion);
+            return back();
         }
     }
 
@@ -94,15 +95,20 @@ public function anular_libro(Request $request){
             $annnulment->observacion = $request->input("observacion");
             $annnulment->elaborado = Auth::user()->name;
             $annnulment->save();
+            session()->put('success', 'LIBRO ANULADO CORRECTAMENTE');
 
-            return view("mensajes.msj_libro_anulado")->with("msj", "Libro Anulado Correctamente");
+            return back();
         } else {
-            return view("mensajes.mensaje_error")->with("msj", "..Hubo un error al agregar ; intentarlo nuevamente..");
+            session()->put('error', 'HUBO UN ERROR EN LA ANULACION LLAME AL ADMINISTRADOR.');
+
+            return back();
         }
     }
 
     if (Auth::user()->isRole('intur')) {
-        return view("mensajes.mensaje_error")->with("msj", "NO TIENE PERMISO DE ANULACION");
+        session()->put('error', 'HUBO UN ERROR EN LA ANULACION LLAME AL ADMINISTRADOR.');
+
+        return back();
     }
 }
 
@@ -112,21 +118,6 @@ public function  form_prev_libro($id){
       return view("formularios.form_previ_libro")->with("detalle",$detalle);
 }
 
-
-   public function form_anular_libro($id){
-  $book=Book::find($id);
-  return view("formularios.form_anular_libro")->with("book",$book);
-  }
-
-	public function form_cargar_libros(){
-
-        // $usuario = Auth::user()->id;
-        //  $mes_actual = date('m');
-        //   $año_actual = date('Y');
-        //  $months=Month::where('id','<=',$mes_actual)->get();
-        //    $months = DB::select("call validacion_mes($año_actual,$usuario,$mes_actual)");
-        return view("formularios.form_cargar_books");//->with("months",$months);
-	 }
 
  	public function cargar_libros(Request $request)
 	{
@@ -174,7 +165,7 @@ public function  form_prev_libro($id){
                                     $c2[] = (string) $t + 2;
                                     $cadena = implode(',', $c2);
                                     $mensaje = "EXISTEN VALORES NULOS, REVISAR FILA $cadena";
-                                    $notificacion = ['message' => $mensaje, 'alert-type' => 'error',];
+                                    session()->put('warning', $mensaje);
                                 }
                                 $t++;
                             }
@@ -222,9 +213,9 @@ public function  form_prev_libro($id){
                             if (! empty($c3) || ! empty($c4) || ! empty($c5)) {
 
                                 $combo = "Revisar $mensaje3"."$mensaje4"."$mensaje5";
-                                $notificacion = ['message' => $combo, 'alert-type' => 'error',];
+                                session()->put('warning', $combo);
                             } else {
-                                $notificacion = ['message' => 'LIBRO GUARDADO', 'alert-type' => 'success',];
+                                session()->put('success', 'LIBRO ANULADO CORRECTAMENTE');
                                 //aca guardar
                                 $libro = new Book;
                                 $libro->Mes_id = $request->input("mes");
@@ -239,63 +230,26 @@ public function  form_prev_libro($id){
                             }
                         }
                     } else {
-                        $notificacion = [
-                            'message' => 'REVISAR ENCABEZADOS, NO CUMPLE EL FORMATO',
-                            'alert-type' => 'error',
-                        ];
+                        session()->put('error', 'REVISAR ENCABEZADOS, NO CUMPLE EL FORMATO');
                     }
                 } else {
-                    $notificacion = ['message' => 'NO EXISTE HOJA INTUR', 'alert-type' => 'error',];
+                    session()->put('error', 'NO EXISTE HOJA INTUR');
                 }
 
-                // Excel::selectSheets('INTUR')->load($ruta, function ($hoja) {
-                //            $hoja->each(function($fila)   {
-
-                ///  $ultimo = Book::all()->pluck('id')->last();
-                /// $fechaentrada = str_replace('/', '-', $fila->fentrada);
-                /// $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
-                /// $fechasalida = str_replace('/', '-', $fila->fsalida);
-                ///$fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-
-                /// if(!empty($fila->identificacion )){
-                /// $librodet=new Bookdetail;
-                /// $librodet->Identificacion= $fila->identificacion;
-                /// $librodet->Nombre= $fila->nombre;
-                /// $pais=Country::where('country','LIKE','%'.$fila->pais.'%')->get();
-                ///   $librodet->pais_id = $pais[0]->id;
-                ///$s=Sex::where('sexo','LIKE','%'.$fila->sexo.'%')->get();
-                /// $librodet->Sexo_id= $s[0]->id;
-                /// $librodet->Fechaentrada=$fechaentrada;
-                /// $librodet->Fechasalida=$fechasalida;
-                /// $librodet->Noches= $fila->ndormidas;
-                ///$mot=Reason::where('motivo','LIKE','%'.$fila->motivo.'%')->get();
-                ///$librodet->motivo_id= $mot[0]->id;
-                ///$librodet->book_id=$ultimo;
-                ///$librodet->save();
-                ///}
-
-                //     });
-                // });
 
             }
                        else
                        {
-                           $notificacion = [
-                               'message' => 'ERROR NO SE PUDO CARGAR EL ARCHIVO EN EL SERVIDOR',
-                               'alert-type' => 'error',
-                           ];
+                           session()->put('error', 'ERROR NO SE PUDO CARGAR EL ARCHIVO EN EL SERVIDOR');
                        }
                        
         }
         else
         {
-            $notificacion = [
-                'message' => 'ERROR Revisar que sea formato excel',
-                'alert-type' => 'error',
-            ];
+            session()->put('warning', 'ERROR Revisar que sea formato excel');
         }
 
-        return back()->with($notificacion);
+        return back();
       }
 
 public function descargar_libro($id){

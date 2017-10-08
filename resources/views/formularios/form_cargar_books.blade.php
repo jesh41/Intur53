@@ -16,11 +16,9 @@
       <div class="form-group col-xs-12"  >
              <label>Agregar Archivo de Excel </label>
           <input name="archivo" id="archivo" type="file" class="archivo form-control" required/>
-
           <br/><br/>
-
-
       </div>
+
       <div class="col-md-6">
                   <div class="form-group">
                     <label class="col-sm-3" for="nombre">Observaciones *</label>
@@ -55,7 +53,7 @@
 
 
           <div class="col-md-12">
-    <div class="box-footer">
+              <div class="box-footer">
         <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
         <button type="submit" class="btn btn-primary" >Cargar Datos</button>
         <a class="btn btn-default btn-close" onclick="javascript:$('.div_modal').click();">Cancelar</a>

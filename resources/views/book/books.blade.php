@@ -1,6 +1,88 @@
 @extends('layouts.new')
 
 @section('content')
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="card card-signup card-plain" data-background-color="red">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                                    class="material-icons">clear</i></button>
+                        <div class="card-header  text-center " data-background-color="purple">
+                            <h4 class="card-title">Subir Libro</h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/cargar_datos" id="f_cargar_books" class="formarchivo"
+                              enctype="multipart/form-data">
+                            <div class="card-content">
+
+                                <div class="form-group form-file-upload">
+                                    <input type="file" name="archivo" id="archivo" required>
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">attach_file</i>
+                                        </span>
+                                        <input type="text" readonly name="archivo" id="archivo" class="form-control"
+                                               placeholder="Escoger libro">
+                                    </div>
+                                </div>
+
+
+                                <div class="input-group">
+
+								<span class="input-group-addon">
+									<i class="material-icons">short_text</i>
+								</span>
+                                    <input type="text" class="form-control" id="observacion" name="observacion"
+                                           placeholder="Observacion..." required>
+                                </div>
+
+                                <div class="input-group">
+
+								<span class="input-group-addon">
+									<label>Año</label>
+								</span>
+                                    <select class="form-control" name="anio" id="anio" required>
+                                        <option selected></option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+
+								<span class="input-group-addon">
+									<i class="material-icons">date_range</i>
+								</span>
+                                    <select class="form-control" name="mes" id="mes" required>
+                                        <option selected></option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer text-center">
+                                <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Cargar Datos
+                                </button>
+                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  End Modal -->
+
+
+
+
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -12,8 +94,10 @@
                         <div class="card-content">
                             @can('subir')
 
-                                <button href="javascript:void(0);" class="btn btn-primary btn-sm btn-round"
-                                        style="float: right" onclick="cargar_formulario(4);"><i class="material-icons">file_upload</i>Subir
+                                <!--  <button class="btn btn-primary btn-sm btn-round"style="float: right" onclick="material.showSwal('subir','0','<?php echo csrf_token(); ?>')">-->
+                                    <button class="btn btn-primary btn-sm btn-round" style="float: right"
+                                            data-toggle="modal" data-target="#loginModal">
+                                        <i class="material-icons">file_upload</i>Subir
                                 </button>
                             @endcan
                             <h4 class="card-title">Libros</h4>
@@ -50,7 +134,7 @@
                                                         <a onclick="{{url("descargar/$book->id")}}" type="button"
                                                            class="btn  btn-info btn-sm " title="Descargar"> <i
                                                                     class="material-icons">cloud_download</i></a>
-                                                        @can('subir') <!--onclick="anular_libro({{$book->id }});"-->
+                                                        @can('subir')
                                                         <button type="button" class="btn btn-danger btn-sm"
                                                                 title="anular"
                                                                 onclick="material.showSwal('anular','{{$book->id }}','<?php echo csrf_token(); ?>')">
@@ -71,6 +155,11 @@
             </div>
         </div>
     </div>
+
+
+
+
+
 @endsection
 
 

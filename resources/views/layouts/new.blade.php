@@ -215,6 +215,24 @@
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
+
+<script>
+
+    $("#anio").on('change', function (e) {
+        //console.log(e);
+        var id = e.target.value;
+        //ajax
+        $.get('/ajax-submes?id=' + id, function (data) {
+            //success data
+            $("#mes").empty();
+            $.each(data, function (index, subcatObj) {
+                $("#mes").append('<option value="' + subcatObj.id + '">' + subcatObj.mes + '</option>');
+            });
+        });
+    });
+
+</script>
+
 <script>
 
     @if(Session::has('success'))

@@ -24,16 +24,12 @@ $(document).on("submit", ".formentrada999", function (e) {
             //  showConfirmButton: false
             // }).catch(swal.noop);
             // material.showNotification('top','right')
-
-
         },
         error: function (xhr, status) {
             //  console.log(e);
             // swal("Error deleting!", "Please try again", "error");
         }
-
     });
-
 })
 
 
@@ -79,7 +75,28 @@ material = {
                 buttonsStyling: false
             }).then(function () {
                 swal.close()
-
+            });
+        } else if (type == 'subir') {
+            swal({
+                title: 'Desea anular el libro ' + libro + '?',
+                html: '  <form method="post" action="/anular_libro" id="form_anular999" class="formentrada" >' +
+                '   <select class="form-control"  name="observacion" id="observacion" required>\n' +
+                '                       <option selected></option>\n' +
+                '                    <option>archivo incorrecto</option>\n' +
+                '                    <option>Informacion vieja</option>\n' +
+                '                  </select>' +
+                '<input type="hidden" name="_token"  value=' + token + '>' +
+                '<input type="hidden" name="id_book" value=' + libro + '>' + '<button type="submit" class="btn btn-success">Anular</button>' +
+                '</form>',
+                type: 'warning',
+                showCancelButton: true,
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                cancelButtonClass: "btn btn-danger",
+                buttonsStyling: false
+            }).then(function () {
+                swal.close()
             });
         }
 
