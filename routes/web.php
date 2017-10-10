@@ -57,7 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('quitar_permiso/{idrol}/{idper}', 'AdminController@quitar_permiso');
         //roles
         Route::post('crear_rol', 'AdminController@crear_rol');//->middleware('roleshinobi:Administrador')
-        Route::get('form_nuevo_rol', 'AdminController@form_nuevo_rol');
+        Route::get('/roles', 'AdminController@rolindex');
         //rol borrado
         Route::get('borrar_rol/{idrol}', 'AdminController@borrar_rol');
         //asignar y quitar rol

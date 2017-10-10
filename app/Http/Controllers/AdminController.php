@@ -36,24 +36,14 @@ class AdminController extends Controller
     public function listado_usuarios()
     {
     //presenta un listado de usuarios paginados de 25 a 25
-    $usuarios=User::paginate(10);
+        $usuarios = User::all();
         $roles = Role::all();
         $departamento = City::all();
         $catho = Cathotel::all();
         $acti = Catactivity::all();
-
         return view("/admin/list")->with("usuarios", $usuarios)->with("roles", $roles)->with("depto", $departamento)->with("catho", $catho)->with("acti", $acti);
     }
 
-    //formulario nuevo usuario
-    public function form_nuevo_usuario(){
-    //carga el formulario para agregar un nuevo usuario
-   $roles=Role::all();
-        $departamento = City::all();
-        $catho = Cathotel::all();
-        $acti = Catactivity::all();
-        return view("formularios.form_nuevo_usuario")->with("roles", $roles)->with("depto", $departamento)->with("catho", $catho)->with("acti", $acti);
-	}
 
 	//crea un nuevo usuario
 	public function crear_usuario(Request $request){
@@ -183,10 +173,12 @@ class AdminController extends Controller
 	//funciones para roles
 
 	//carga el formulario para agregar un nuevo rol
-	public function form_nuevo_rol(){
-    
+    public function rolindex()
+    {
     $roles=Role::all();
-    return view("formularios.form_nuevo_rol")->with("roles",$roles);
+        $permisos = Permission::all();
+
+        return view("admin.roles")->with("roles", $roles)->with("permisos", $permisos);
 	}
 	//metodo crear rol
 	public function crear_rol(Request $request){
@@ -234,11 +226,6 @@ class AdminController extends Controller
 
 
 
-
-
-
-
-
 	//funciones para permisos
 	public function form_nuevo_permiso(){
     //carga el formulario para agregar un nuevo permiso
@@ -247,7 +234,7 @@ class AdminController extends Controller
     return view("formularios.form_nuevo_permiso")->with("roles",$roles)->with("permisos", $permisos);
 	}
 
-	public function crear_permiso(Request $request){
+    public function crear_permiso(Request $request){
 
   
    $permiso=new Permission;

@@ -199,14 +199,15 @@
 
                             <div class="tab-content">
                                 <div class="tab-pane active table-responsive ">
-                                    <table class="table table-hover table-striped" cellspacing="0" width="100%">
+                                    <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                           cellspacing="0" width="100%" style="width:100%">
                                         <thead role="row" class="text-primary">
                                         <tr>
-                                            <th>codigo</th>
+                                            <th class="text-center">Id</th>
                                             <th>Rol</th>
                                             <th>Nombre</th>
                                             <th>Email</th>
-                                            <th class="text-right">Acción</th>
+                                            <th>Acción</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -215,11 +216,11 @@
                                                 <td>{{ $usuario->id }}</td>
                                                 <td><span class="label label-default">
 
-             @foreach($usuario->getRoles() as $roles)
+                                                 @foreach($usuario->getRoles() as $roles)
                                                             {{  $roles.","  }}
                                                         @endforeach
 
-             </span>
+                                                    </span>
                                                 </td>
                                                 <td class="mailbox-messages mailbox-name"><a href="javascript:void(0);"
                                                                                              style="display:block"><i
@@ -244,7 +245,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{ $usuarios->links() }}
+
 
                     </div>
                 </div>

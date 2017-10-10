@@ -78,6 +78,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="/roles">
+                                    <i class="material-icons">verified_user</i>
+                                    <span class="sidebar-normal">Roles</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/bitacora">
                                     <i class="material-icons">track_changes</i>
                                     <span class="sidebar-normal">Bitacora</span>
@@ -199,7 +205,54 @@
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datatables').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "BUSQUEDA",
+                lengthMenu: "Mostrar _MENU_ usuario por pagina",
+                zeroRecords: "NO EXISTE EL REGISTRO SOLICITADO",
+                info: "pagina _PAGE_ de _PAGES_",
+                infoEmpty: "No hay registros",
+                infoFiltered: "(filtrado de _MAX_ total usuario)",
+                paginate: {
+                    first: "Primero",
+                    previous: "Ant..",
+                    next: "Sig..",
+                    last: "Ultimo"
+                }
+            }
+        });
+        var table = $('#datatables').DataTable();
+        // Edit record
+        table.on('click', '.edit', function () {
+            $tr = $(this).closest('tr');
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+        // Delete a record
+        table.on('click', '.remove', function (e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+        //ernestp
+        table.on('click', '.select', function (e) {
+            $tr = $(this).closest('tr');
+            //console.log($tr);
+        });
+        //Like record
 
+        $('.card .material-datatables label .pagination').addClass('form-group');
+    });
+</script>
 <script>
     $("#anio").on('change', function (e) {
         //console.log(e);

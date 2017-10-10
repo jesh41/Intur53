@@ -9,12 +9,9 @@
             </div><!-- /.box-header -->
                
             <hr style="border-color:white;" />
- 
             <div class="box-body">
-              
             <form   action="{{ url('crear_rol') }}"  method="post" id="f_crear_rol" class="formentrada"  >
-				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-                
+				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <div class="col-md-12">	  
 	                <div class="form-group">
 							<label class="col-sm-2" for="apellido">Nombre del Rol*</label>

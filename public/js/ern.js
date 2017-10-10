@@ -117,7 +117,7 @@ material = {
                 inputPlaceholder: '2016',
                 inputValidator: function (value) {
                     return new Promise(function (resolve, reject) {
-                        if (value > 2016 && value < 3000) {
+                        if (value >= 2016 && value < 3000) {
                             $('<input />').attr('type', 'hidden').attr('name', 'year').attr('value', value)
                                 .appendTo('#form_year');
                             $('form').submit();

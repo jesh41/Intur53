@@ -103,16 +103,14 @@
 <div class="col-md-12 box-white">
 
 @foreach($roles as $rol)
-
     <div class="table-responsive" >
-
 	    <table  class="table table-hover table-striped" cellspacing="0" width="100%">
-				
+
                 <thead>
                 <th colspan="5" style="text-align: center; background-color: #b8ccde;" >Permisos del Usuario {{ $rol->name }}</th>
                 </thead>
 				<thead>
-						    <th>codigo</th>
+				<th>codigo</th>
 								<th>nombre</th>
 								<th>slug</th>
 								<th>descripcion</th>
@@ -120,11 +118,7 @@
 						
 				</thead>
 	    <tbody>
-	 
-
 	    @foreach($rol->permissions as $permiso)
-		   
-        
 		 <tr role="row" class="odd" id="filaP_{{ $permiso->id }}">
 			<td>{{ $permiso->id }}</td>
 			<td><span class="label label-default">{{ $permiso->name or "Ninguno" }}</span></td>
@@ -134,11 +128,9 @@
 			<button type="button"  class="btn  btn-danger btn-xs"  onclick="borrar_permiso({{ $rol->id }},{{ $permiso->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
 			</td>
 		   </tr>
-	
 	    @endforeach
 		</tbody>
 		</table>
-
 	</div>
 @endforeach
 
