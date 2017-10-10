@@ -28,22 +28,6 @@
 
 <body>
 
-
-<div style="display: none;" id="cargador_empresa" align="center">
-    <br>
-    <label style="color:#FFF; background-color:#ABB6BA; text-align:center">&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label>
-    <img src="{{ url('/img/cargando.gif') }}" align="middle" alt="cargador"> &nbsp;<label style="color:#ABB6BA">Realizando
-        tarea solicitada ...</label>
-    <br>
-    <hr style="color:#003" width="50%">
-    <br>
-</div>
-<input type="hidden" id="url_raiz_proyecto" value="{{ url("/") }}"/>
-<div id="capa_modal" class="div_modal" style="display: none;"></div>
-<div id="capa_formularios" class="div_contenido" style="display: none;"></div>
-<div id="capa_test" class="div_test" style="display: none;"></div>
-
-
 <div id="wrapper">
     <!-- Sidebar -->
     <div class="sidebar" data-active-color="rose" data-background-color="white"> <!--DIV DE BARRA LATERAL-->
@@ -217,7 +201,6 @@
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
 
 <script>
-
     $("#anio").on('change', function (e) {
         //console.log(e);
         var id = e.target.value;
@@ -230,7 +213,58 @@
             });
         });
     });
+</script>
 
+<script>
+    $("#departamento").on('change', function (e) {
+        //console.log(e);
+        var cat_id = e.target.value;
+        //ajax
+        $.get('/ajax-subcat?cat_id=' + cat_id, function (data) {
+            //success data
+            $("#municipio").empty();
+            $.each(data, function (index, subcatObj) {
+                $("#municipio").append('<option value="' + subcatObj.id + '">' + subcatObj.municipio + '</option>');
+            });
+        });
+    });
+
+    $("#tipo-usuario").on('change', function (e) {
+        //console.log(e);
+        var id = e.target.options[e.target.selectedIndex].text;
+        if (id == 'Hotel' || id == 'hotel') {
+            document.getElementById('text-departamento').style.visibility = 'visible';
+            document.getElementById('text-direc').style.visibility = 'visible';
+            document.getElementById('text-municipio').style.visibility = 'visible';
+            document.getElementById('text-categoria').style.visibility = 'visible';
+            document.getElementById('text-actividad').style.visibility = 'visible';
+            document.getElementById('text-nombre').style.visibility = 'visible';
+            document.getElementById('text-telefono').style.visibility = 'visible';
+            $('#departamento').prop("required", true);
+            $('#direccion').prop("required", true);
+            $('#municipio').prop("required", true);
+            $('#categoria').prop("required", true);
+            $('#actividad').prop("required", true);
+            $('#nombre-hotel').prop("required", true);
+            $('#telefono').prop("required", true);
+        }
+        else {
+            document.getElementById('text-departamento').style.visibility = 'hidden';
+            document.getElementById('text-direc').style.visibility = 'hidden';
+            document.getElementById('text-municipio').style.visibility = 'hidden';
+            document.getElementById('text-categoria').style.visibility = 'hidden';
+            document.getElementById('text-actividad').style.visibility = 'hidden';
+            document.getElementById('text-nombre').style.visibility = 'hidden';
+            document.getElementById('text-telefono').style.visibility = 'hidden';
+            $('#departamento').removeAttr("required");
+            $('#direccion').removeAttr("required");
+            $('#municipio').removeAttr("required");
+            $('#categoria').removeAttr("required");
+            $('#actividad').removeAttr("required");
+            $('#nombre-hotel').removeAttr("required");
+            $('#telefono').removeAttr("required");
+        }
+    });
 </script>
 
 <script>

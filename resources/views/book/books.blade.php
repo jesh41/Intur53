@@ -19,6 +19,7 @@
                               enctype="multipart/form-data">
                             <div class="card-content">
 
+
                                 <div class="form-group form-file-upload">
                                     <input type="file" name="archivo" id="archivo" required>
                                     <div class="input-group">
@@ -32,7 +33,6 @@
 
 
                                 <div class="input-group">
-
 								<span class="input-group-addon">
 									<i class="material-icons">short_text</i>
 								</span>
@@ -40,25 +40,25 @@
                                            placeholder="Observacion..." required>
                                 </div>
 
-                                <div class="input-group">
 
+                                <div class="input-group">
 								<span class="input-group-addon">
 									<i class="material-icons">today</i>
 								</span>
                                     <select class="btn btn-primary btn-round" name="anio" id="anio" required>
-                                        <option disabled selected>Escoger año</option>
+                                        <option value="" selected disabled>Escoger año</option>
                                         <option value="2016">2016</option>
                                         <option value="2017">2017</option>
                                     </select>
                                 </div>
 
-                                <div class="input-group">
 
+                                <div class="input-group">
 								<span class="input-group-addon">
 									<i class="material-icons">date_range</i>
 								</span>
                                     <select class="btn btn-primary btn-round" name="mes" id="mes" required>
-                                        <option disabled selected>Escoger mes</option>
+                                        <option value="" selected disabled>Escoger mes</option>
                                     </select>
                                 </div>
 

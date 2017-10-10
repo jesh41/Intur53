@@ -168,7 +168,7 @@
                 $('#municipio').prop("required", true);
                 $('#categoria').prop("required", true);
                 $('#actividad').prop("required", true);
-                $('#nombres').prop("required", true);
+                $('#nombre-hotel').prop("required", true);
                 $('#telefono').prop("required", true);
             }
             else {
@@ -184,7 +184,7 @@
                 $('#municipio').removeAttr("required");
                 $('#categoria').removeAttr("required");
                 $('#actividad').removeAttr("required");
-                $('#nombres').removeAttr("required");
+                $('#nombre-hotel').removeAttr("required");
                 $('#telefono').removeAttr("required");
             }
         });

@@ -37,7 +37,12 @@ class AdminController extends Controller
     {
     //presenta un listado de usuarios paginados de 25 a 25
     $usuarios=User::paginate(10);
-    return view("/admin/list")->with("usuarios",$usuarios);
+        $roles = Role::all();
+        $departamento = City::all();
+        $catho = Cathotel::all();
+        $acti = Catactivity::all();
+
+        return view("/admin/list")->with("usuarios", $usuarios)->with("roles", $roles)->with("depto", $departamento)->with("catho", $catho)->with("acti", $acti);
     }
 
     //formulario nuevo usuario
@@ -65,7 +70,6 @@ class AdminController extends Controller
         if ($usuario->save()) {
             $ultimo = User::all()->pluck('id')->last();
             if ($bandera->name == 'hotel' || $bandera->name == 'Hotel') {
-
                 $hotel = new hotel;
             $hotel->nombre = $request->input("nombre-hotel");
             $hotel->direccion = $request->input("direccion");
@@ -79,42 +83,28 @@ class AdminController extends Controller
                     //asignacion rol
                     $usuario = User::find($ultimo);
                     $usuario->assignRole($request->input("tipo-usuario"));
-                    $notificacion = [
-                        'message' => 'Hotel guardado',
-                        'alert-type' => 'success',
-                    ];
+                    session()->put('success', 'HOTEL REGISTRADO');
 
-                    return back()->with($notificacion);
+                    return back();
                 } else {
 
-                    $notificacion = [
-                        'message' => 'Ha ocurrido un error',
-                        'alert-type' => 'error',
-                    ];
+                    session()->put('error', 'OCURRIO UN PROBLEMA CONTACTAR AL ADMINISTRADOR');
 
-                    return back()->with($notificacion);
+                    return back();
                 }
             } else {
                 //asignacion rol
                 $usuario = User::find($ultimo);
                 $usuario->assignRole($request->input("tipo-usuario"));
-                $notificacion = [
-                    'message' => 'Usuario guardado',
-                    'alert-type' => 'success',
-                ];
+                session()->put('success', 'USUARIO REGISTRADO');
 
-                return back()->with($notificacion);
-                // return view('/home')->with($notificacion);
-                //return view("mensajes.msj_usuario_creado")->with("msj", "Usuario agregado correctamente");
+                return back();
+
             }
     } else {
+            session()->put('error', 'OCURRIO UN PROBLEMA CONTACTAR AL ADMINISTRADOR');
 
-            $notificacion = [
-                'message' => 'Ha ocurrido un error',
-                'alert-type' => 'error',
-            ];
-
-            return back()->with($notificacion);
+            return back();
         }
 
 	}
