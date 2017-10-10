@@ -7,11 +7,19 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header card-header-icon" data-background-color="rose">
-                            <i class="material-icons">face</i>
+                            <i class="material-icons">face</i> <h4 class="card-title">ROLES</h4>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary btn-sm btn-round" data-toggle="modal" data-target="#adduser">
+                                <i class="material-icons">person_add</i>Agregar
+                                Rol
+                            </button>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">PANEL DE ROLES</h4>
+
                             <div class="tab-content">
+
                                 <div class="tab-pane active table-responsive">
                                     <table class="table table-hover table-striped" cellspacing="0" width="100%">
                                         <thead role="row" class="odd">
@@ -48,17 +56,20 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header card-header-icon" data-background-color="rose">
-                            <i class="material-icons">face</i>
+                            <i class="material-icons">face</i><h4 class="card-title">PERMISOS</h4>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary btn-sm btn-round" data-toggle="modal" data-target="#adduser">
+                                <i class="material-icons">person_add</i>Agregar
+                                Permiso
+                            </button>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">PANEL DE PERMISOS</h4>
+
                             <div class="tab-content">
                                 <div class="tab-pane active table-responsive">
                                     <table class="table table-hover table-striped" cellspacing="0" width="100%">
-                                        <thead>
-                                        <th colspan="5" style="text-align: center; background-color: #b8ccde;">Permisos
-                                            del Usuario {{ $rol->name }}</th>
-                                        </thead>
                                         <thead>
                                         <th>codigo</th>
                                         <th>nombre</th>
@@ -66,7 +77,7 @@
                                         <th>descripcion</th>
                                         </thead>
                                         <tbody>
-                                        @foreach($rol->permissions as $permiso)
+                                        @foreach($permisos as $permiso)
                                             <tr role="row" class="odd" id="filaP_{{ $permiso->id }}">
                                                 <td>{{ $permiso->id }}</td>
                                                 <td>

@@ -187,12 +187,7 @@
                                 <i class="material-icons">person_add</i>Agregar
                                 Usuario
                             </button>
-                            <button href="javascript:void(0);" class="btn btn-primary btn-sm btn-round"
-                                    onclick="">Roles
-                            </button>
-                            <button href="javascript:void(0);" class="btn btn-primary btn-sm btn-round"
-                                    onclick="">Permisos
-                            </button>
+
                         </div>
 
                         <div class="card-content">

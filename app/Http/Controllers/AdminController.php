@@ -175,9 +175,8 @@ class AdminController extends Controller
 	//carga el formulario para agregar un nuevo rol
     public function rolindex()
     {
-    $roles=Role::all();
+        $roles = Role::all();
         $permisos = Permission::all();
-
         return view("admin.roles")->with("roles", $roles)->with("permisos", $permisos);
 	}
 	//metodo crear rol
@@ -227,12 +226,6 @@ class AdminController extends Controller
 
 
 	//funciones para permisos
-	public function form_nuevo_permiso(){
-    //carga el formulario para agregar un nuevo permiso
-     $roles=Role::all();
-     $permisos=Permission::all();
-    return view("formularios.form_nuevo_permiso")->with("roles",$roles)->with("permisos", $permisos);
-	}
 
     public function crear_permiso(Request $request){
 
