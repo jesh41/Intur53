@@ -217,19 +217,67 @@
             language: {
                 search: "_INPUT_",
                 searchPlaceholder: "BUSQUEDA",
-                lengthMenu: "Mostrar _MENU_ usuario por pagina",
+                lengthMenu: "_MENU_ por pagina",
                 zeroRecords: "NO EXISTE EL REGISTRO SOLICITADO",
                 info: "pagina _PAGE_ de _PAGES_",
                 infoEmpty: "No hay registros",
-                infoFiltered: "(filtrado de _MAX_ total usuario)",
+                infoFiltered: "(filtrado de _MAX_ total)",
                 paginate: {
                     first: "Primero",
-                    previous: "Ant..",
-                    next: "Sig..",
+                    previous: "Ant.",
+                    next: "Sig.",
                     last: "Ultimo"
                 }
             }
         });
+        $('#datatables2').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "BUSQUEDA",
+                lengthMenu: "_MENU_ por pagina",
+                zeroRecords: "NO EXISTE EL REGISTRO SOLICITADO",
+                info: "pagina _PAGE_ de _PAGES_",
+                infoEmpty: "No hay registros",
+                infoFiltered: "(filtrado de _MAX_ total)",
+                paginate: {
+                    first: "Primero",
+                    previous: "Ant.",
+                    next: "Sig.",
+                    last: "Ultimo"
+                }
+            }
+        });
+        $('#datatables3').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "BUSQUEDA",
+                lengthMenu: " _MENU_  por pagina",
+                zeroRecords: "NO EXISTE EL REGISTRO SOLICITADO",
+                info: "pagina _PAGE_ de _PAGES_",
+                infoEmpty: "No hay registros",
+                infoFiltered: "(filtrado de _MAX_ total)",
+                paginate: {
+                    first: "Primero",
+                    previous: "Ant.",
+                    next: "Sig.",
+                    last: "Ultimo"
+                }
+            }
+        });
+
+
         var table = $('#datatables').DataTable();
         // Edit record
         table.on('click', '.edit', function () {
