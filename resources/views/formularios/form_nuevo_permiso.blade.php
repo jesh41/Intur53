@@ -60,7 +60,8 @@
 			                <div class="form-group">
 									<label class="col-sm-2" for="apellido">Permiso*</label>
 			                    <div class="col-sm-10" >
-									<input type="text" class="form-control" id="permiso_nombre" name="permiso_nombre" " required >
+									<input type="text" class="form-control" id="permiso_nombre" name="permiso_nombre"
+										   required>
 			                    </div>
 							</div><!-- /.form-group -->
 

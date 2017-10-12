@@ -222,7 +222,7 @@
                                                                 class="fa fa-user"></i>&nbsp;&nbsp;{{ $usuario->name  }}
                                                     </a></td>
                                                 <td>{{ $usuario->email }}</td>
-                                                <td class="td-actions text-right">
+                                                <td class="td-actions text-centert">
 
                                                     <button type="button" class="btn  btn-default btn-xs"
                                                             onclick=""><i

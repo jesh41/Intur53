@@ -45,16 +45,31 @@ material = {
             $page.append(image_container);
         }
     },
+    showSwal2: function (rol, permiso, token) {
 
+        swal({
+            title: 'Desea eliminar el permiso ?',
+            html: '  <form method="post" action="quitar_permiso/' + rol + '/' + permiso + '" id="form_eliminar"> ' +
+            '<input type="hidden" name="_token"  value=' + token + '>' +
+            '</form>',
+            type: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonText: "ELIMINAR",
+            confirmButtonClass: 'btn btn-success',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            cancelButtonClass: "btn btn-danger",
+            buttonsStyling: false,
+
+        }).then(function () {
+            ('form').submit();
+        }).catch(swal.noop);
+
+
+    },
     showSwal: function (type, libro, token) {
-        if (type == 'basic') {
-            swal({
-                title: "Here's a message!",
-                buttonsStyling: false,
-                confirmButtonClass: "btn btn-success"
-            });
-
-        } else if (type == 'anular') {
+        if (type == 'anular') {
             swal({
                 title: 'Desea anular el libro ' + libro + '?',
                 html: '  <form method="post" action="/anular_libro" id="form_anulacion"> ' +

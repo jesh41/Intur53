@@ -1,7 +1,7 @@
 @extends('layouts.new')
 
 @section('content')
-    <!-- Login Modal -->
+    <!-- upload Modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-login">
@@ -18,7 +18,6 @@
                         <form method="post" action="/cargar_datos" id="f_cargar_books" class="formarchivo"
                               enctype="multipart/form-data">
                             <div class="card-content">
-
 
                                 <div class="form-group form-file-upload">
                                     <input type="file" name="archivo" id="archivo" required>

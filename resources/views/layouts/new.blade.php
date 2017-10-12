@@ -205,6 +205,8 @@
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#datatables').DataTable({

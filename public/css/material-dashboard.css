@@ -11186,6 +11186,10 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     margin-top: 100px;
 }
 
+.modal .modal-dialog.modal-rol {
+    width: 360px;
+}
+
 .modal .modal-header .close {
     color: #999999;
 }

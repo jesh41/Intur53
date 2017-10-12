@@ -51,12 +51,12 @@ Route::group(['middleware' => 'auth'], function () {
         //editar acceso passs y correo
         Route::post('editar_acceso', 'AdminController@editar_acceso');
         //modulo permisos
-        Route::post('crear_permiso', 'AdminController@crear_permiso');
+        Route::post('/crear_permiso', 'AdminController@crear_permiso');
         Route::get('form_nuevo_permiso', 'AdminController@form_nuevo_permiso');
-        Route::post('asignar_permiso', 'AdminController@asignar_permiso');
+        Route::post('/asignar_permiso', 'AdminController@asignar_permiso');
         Route::get('quitar_permiso/{idrol}/{idper}', 'AdminController@quitar_permiso');
         //roles
-        Route::post('crear_rol', 'AdminController@crear_rol');//->middleware('roleshinobi:Administrador')
+        Route::post('/crear_rol', 'AdminController@crear_rol');//->middleware('roleshinobi:Administrador')
         Route::get('/roles', 'AdminController@rolindex');
         //rol borrado
         Route::get('borrar_rol/{idrol}', 'AdminController@borrar_rol');

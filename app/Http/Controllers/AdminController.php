@@ -181,18 +181,23 @@ class AdminController extends Controller
 	}
 	//metodo crear rol
 	public function crear_rol(Request $request){
-
    $rol=new Role;
    $rol->name=$request->input("rol_nombre") ;
    $rol->slug=$request->input("rol_slug") ;
    $rol->description=$request->input("rol_descripcion") ;
     if($rol->save())
     {
-        return view("mensajes.msj_rol_creado")->with("msj","Rol agregado correctamente") ;
+        session()->put('success', 'ROL CREADO');
+
+        return back();
+
     }
     else
     {
-        return view("mensajes.mensaje_error")->with("msj","...Hubo un error al agregar ;...") ;
+        session()->put('error', 'HA OCURRIDO UN PROBLEMA');
+
+        return back();
+
     }
 	}
 
@@ -228,19 +233,21 @@ class AdminController extends Controller
 	//funciones para permisos
 
     public function crear_permiso(Request $request){
-
-  
    $permiso=new Permission;
    $permiso->name=$request->input("permiso_nombre") ;
    $permiso->slug=$request->input("permiso_slug") ;
    $permiso->description=$request->input("permiso_descripcion") ;
     if($permiso->save())
     {
-        return view("mensajes.msj_permiso_creado")->with("msj","Permiso creado correctamente") ;
+        session()->put('success', 'PERMISO CREADO');
+
+        return back();
     }
     else
     {
-        return view("mensajes.mensaje_error")->with("msj","...Hubo un error al agregar ;...") ;
+        session()->put('error', 'HA OCURRIDO UN PROBLEMA');
+
+        return back();
     }
 	}
 
@@ -249,15 +256,27 @@ class AdminController extends Controller
      $roleid=$request->input("rol_sel");
      $idper=$request->input("permiso_rol");
      $rol=Role::find($roleid);
+        $permiso = Permission::find($idper);
+        $actual = $rol->getPermissions();
+        if ($permiso->slug == $actual[0]) {
+            session()->put('error', 'YA POSEE ESE PERMISO');
+
+            return back();
+        }
      $rol->assignPermission($idper);
     
     if($rol->save())
     {
-        return view("mensajes.msj_permiso_creado")->with("msj","Permiso asignado correctamente") ;
+        session()->put('success', 'PERMISO ASIGNADO');
+
+        return back();
+
     }
     else
     {
-        return view("mensajes.mensaje_error")->with("msj","...Hubo un error al agregar ;...") ;
+        session()->put('error', 'HA OCURRIDO UN PROBLEMA');
+
+        return back();
     }
     }
     public function quitar_permiso($idrole,$idper){ 
@@ -266,7 +285,9 @@ class AdminController extends Controller
     $role->revokePermission($idper);
     $role->save();
 
-    return "ok";
+        session()->put('success', 'PERMISO CREADO');
+
+        return back();
 	}
 
 
