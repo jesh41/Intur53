@@ -258,11 +258,14 @@ class AdminController extends Controller
      $rol=Role::find($roleid);
         $permiso = Permission::find($idper);
         $actual = $rol->getPermissions();
-        if ($permiso->slug == $actual[0]) {
-            session()->put('error', 'YA POSEE ESE PERMISO');
+        if (! empty($actual)) {
+            if ($permiso->slug == $actual[0]) {
+                session()->put('error', 'YA POSEE ESE PERMISO');
 
-            return back();
+                return back();
+            }
         }
+
      $rol->assignPermission($idper);
     
     if($rol->save())
