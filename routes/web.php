@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/crear_permiso', 'AdminController@crear_permiso');
         Route::get('form_nuevo_permiso', 'AdminController@form_nuevo_permiso');
         Route::post('/asignar_permiso', 'AdminController@asignar_permiso');
-        Route::get('quitar_permiso/{idrol}/{idper}', 'AdminController@quitar_permiso');
+        Route::post('/quitar_permiso', 'AdminController@quitar_permiso');
         //roles
         Route::post('/crear_rol', 'AdminController@crear_rol');//->middleware('roleshinobi:Administrador')
         Route::get('/roles', 'AdminController@rolindex');
@@ -70,8 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'permissionshinobi:book'], function () {
         ///Modulo Book
         Route::get('/book', 'BookController@index');
-        //previ
-        Route::get('form_prev_libro/{idusu}/{page?}', 'BookController@form_prev_libro');
+
         //descarga
         Route::get('descargar/{idusu}', 'BookController@descargar_libro');
     });
@@ -80,7 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('form_cargar_books', 'BookController@form_cargar_libros');
         Route::post('/cargar_datos', 'BookController@cargar_libros');
         Route::post('/anular_libro', 'BookController@anular_libro');
-        // Route::get('form_anular_libro/{idusu}', 'BookController@form_anular_libro');
+
         route::get('/ajax-submes', function () {
             $año_seleccionado = Input::get('id');
             $usuario = Auth::user()->id;

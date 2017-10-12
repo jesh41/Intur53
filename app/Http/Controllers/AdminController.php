@@ -279,15 +279,20 @@ class AdminController extends Controller
         return back();
     }
     }
-    public function quitar_permiso($idrole,$idper){ 
-    
-    $role = Role::find($idrole);
-    $role->revokePermission($idper);
-    $role->save();
 
-        session()->put('success', 'PERMISO CREADO');
+    public function quitar_permiso(Request $request)
+    {
 
+        $role = Role::find($request->input("id_rol"));
+        $role->revokePermission($request->input("id_permiso"));
+        if ($role->save()) {
+            session()->put('success', 'ROL ELIMINADO');
         return back();
+        } else {
+            session()->put('error', 'HA OCURRIDO UN ERROR');
+
+            return back();
+        }
 	}
 
 

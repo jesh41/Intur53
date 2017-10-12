@@ -49,8 +49,10 @@ material = {
 
         swal({
             title: 'Desea eliminar el permiso ?',
-            html: '  <form method="post" action="quitar_permiso/' + rol + '/' + permiso + '" id="form_eliminar"> ' +
+            html: '  <form method="post" action="/quitar_permiso" id="form_eliminar"> ' +
             '<input type="hidden" name="_token"  value=' + token + '>' +
+            '<input type="hidden" name="id_rol" value=' + rol + '>' +
+            '<input type="hidden" name="id_permiso" value=' + permiso + '>' +
             '</form>',
             type: 'warning',
             showCancelButton: true,
@@ -61,10 +63,13 @@ material = {
             allowEscapeKey: false,
             cancelButtonClass: "btn btn-danger",
             buttonsStyling: false,
-
-        }).then(function () {
-            ('form').submit();
-        }).catch(swal.noop);
+        }).then(
+            function () {
+                $('form').submit();
+            },
+            function () {
+                return false;
+            });
 
 
     },
