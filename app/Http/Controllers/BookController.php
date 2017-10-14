@@ -35,12 +35,12 @@ class BookController extends Controller
 
         if (Auth::user()->isRole('administrador'))
         {
-            $books = Book::paginate(5);
+            $books = Book::paginate(8);
         } elseif (Auth::user()->isRole('hotel'))
         {
-            $books = Book::where('user_id', Auth::user()->id)->paginate(12);
+            $books = Book::where('user_id', Auth::user()->id)->paginate(8);
         } elseif (Auth::user()->isRole('intur')) {
-            $books = Book::paginate(12);
+            $books = Book::paginate(8);
         }
       return view('/book/books')->with("books",$books);
     }

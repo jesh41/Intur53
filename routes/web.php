@@ -42,8 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         //busqueda usuarios
         Route::post('buscar_usuario', 'AdminController@buscar_usuario');
         //editar usuario
-        Route::post('editar_usuario', 'AdminController@editar_usuario');
-        Route::get('form_editar_usuario/{id}', 'AdminController@form_editar_usuario');
+        Route::post('cambiorol', 'AdminController@editar_usuario');
         //borrado usuario
         Route::post('borrar_usuario', 'AdminController@borrar_usuario');
         Route::get('confirmacion_borrado_usuario/{idusuario}', 'AdminController@confirmacion_borrado_usuario');

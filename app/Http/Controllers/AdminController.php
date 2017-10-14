@@ -99,12 +99,7 @@ class AdminController extends Controller
 
 	}
 
-	//busqueda usuarios
-	public function buscar_usuario(Request $request){
-	$dato=$request->input("dato_buscado");
-	$usuarios=User::where("name","like","%".$dato."%")->paginate(25);
-	return view('admin.listado_usuarios')->with("usuarios",$usuarios);
-      }
+
 
     public function form_editar_usuario($id){
     $usuario=User::find($id);
@@ -114,26 +109,35 @@ class AdminController extends Controller
 	}
 
 	public function editar_usuario(Request $request){
-          
+
     $idusuario=$request->input("id_usuario");
+        $rol = $request->input("id_rol");
     $usuario=User::find($idusuario);
-    $usuario->name=( $request->input("nombres") ) ;
- 
-    
-     if($request->has("rol")){
-	    $rol=$request->input("rol");
-	    $usuario->revokeAllRoles();
-	    $usuario->assignRole($rol);
-     }
-	 
-    if( $usuario->save()){
-		return view("mensajes.msj_usuario_actualizado")->with("msj","Usuario actualizado correctamente")
-	                                                   ->with("idusuario",$idusuario) ;
-    }
-    else
-    {
-		return view("mensajes.mensaje_error")->with("msj","..Hubo un error al agregar ; intentarlo nuevamente..");
-    }
+//    $usuario->name=( $request->input("nombres") ) ;
+        $rolesasignados = $usuario->getRoles();
+        if (! empty($rolesasignados)) {
+            if ($rolesasignados[0] != 'administrador') {
+
+                $usuario->revokeAllRoles();
+                $usuario->assignRole($rol);
+                $usuario->save();
+                session()->put('success', 'USUARIO ACTUALIZADO');
+
+                return back();
+            } else {
+                session()->put('warning', 'NO SE PUEDE CAMBIAR ROL ADMINISTRADOR');
+
+                return back();
+            }
+        } else {
+            $usuario->revokeAllRoles();
+            $usuario->assignRole($rol);
+            $usuario->save();
+            session()->put('success', 'USUARIO ACTUALIZADO');
+
+            return back();
+        }
+
 	}
 	//borrado usuario
 	public function borrar_usuario(Request $request){
@@ -148,12 +152,8 @@ class AdminController extends Controller
             return view("mensajes.mensaje_error")->with("msj","..Hubo un error al agregar ; intentarlo nuevamente..");
         }
         }
-        
-    public function form_borrado_usuario($id){
-  $usuario=User::find($id);
-  return view("formularios.form_borrado_usuario")->with("usuario",$usuario);
-	}
-	//accesso usuario correo y pass
+
+    //accesso usuario correo y pass
 	public function editar_acceso(Request $request){
          $idusuario=$request->input("id_usuario");
          $usuario=User::find($idusuario);
@@ -289,7 +289,7 @@ class AdminController extends Controller
         $role = Role::find($request->input("id_rol"));
         $role->revokePermission($request->input("id_permiso"));
         if ($role->save()) {
-            session()->put('success', 'ROL ELIMINADO');
+            session()->put('success', 'PERMISO ELIMINADO');
         return back();
         } else {
             session()->put('error', 'HA OCURRIDO UN ERROR');

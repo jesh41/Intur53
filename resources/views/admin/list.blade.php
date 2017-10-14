@@ -163,6 +163,56 @@
     </div>
     <!--  End Modal -->
 
+    <!-- cambio rol Modal -->
+    <div class="modal fade" id="cambiorol" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-rol">
+            <div class="modal-content">
+                <div class="card card-signup card-plain" data-background-color="red">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                                    class="material-icons">clear</i></button>
+                        <div class="card-header  text-center " data-background-color="purple">
+                            <h4 class="card-title">Cambio rol </h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="cambiorol" id="form_cambio_rol" class="formarchivo"
+                              enctype="multipart/form-data">
+                            <div class="card-content">
+
+
+                                <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">accessibility</i>
+                                        </span>
+                                    <select class="btn btn-primary btn-round" id="id_rol" name="id_rol"
+                                            required>
+                                        <option value="" selected disabled>Rol</option>
+                                        @foreach($roles as $role)
+                                            <option value={{$role->id}}>{{$role->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer text-center">
+                                <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Asignar
+                                </button>
+                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  End Modal -->
+
 
 
     <div class="content">
@@ -225,7 +275,8 @@
                                                 <td class="td-actions text-centert">
 
                                                     <button type="button" class="btn  btn-default btn-xs"
-                                                            onclick=""><i
+                                                            onclick="material.enviar({{ $usuario->id }})"
+                                                            data-toggle="modal" data-target="#cambiorol"><i
                                                                 class="fa fa-fw fa-edit"></i></button>
                                                     <button type="button" class="btn  btn-danger btn-xs"
                                                             onclick=""><i

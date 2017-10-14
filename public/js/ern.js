@@ -34,7 +34,11 @@ $(document).on("submit", ".formentrada999", function (e) {
 
 
 material = {
-
+    enviar: function (usuario) {
+        $('<input />').attr('type', 'hidden').attr('name', 'id_usuario')
+            .attr('value', usuario)
+            .appendTo('#form_cambio_rol');
+    },
 
     checkFullPageBackgroundImage: function () {
         $page = $('.full-page');
@@ -45,6 +49,7 @@ material = {
             $page.append(image_container);
         }
     },
+
     showSwal2: function (rol, permiso, token) {
 
         swal({
@@ -71,8 +76,8 @@ material = {
                 return false;
             });
 
-
     },
+
     showSwal: function (type, libro, token) {
         if (type == 'anular') {
             swal({
