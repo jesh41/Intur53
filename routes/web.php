@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('cambiorol', 'AdminController@editar_usuario_admin');
         //borrado usuario
         Route::post('borrar_usuario', 'AdminController@borrar_usuario');
-        //editar acceso passs y correo
+        //editar acceso passs y correo desde su cuenta
         Route::post('/editar_pass', 'AdminController@edit_pass');
         Route::post('/editar_info', 'AdminController@edit_info');
         //modulo permisos

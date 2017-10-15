@@ -103,6 +103,16 @@
                             </div>
                             <div class="card-content">
                                 <h4 class="card-title">Actualizar datos</h4>
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong><br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form method="post" action="/editar_info" enctype="multipart/form-data">
                                     <div class="input-group">
                                         <span class="input-group-btn input-group-s">

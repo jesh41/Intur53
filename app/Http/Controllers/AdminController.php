@@ -112,11 +112,9 @@ class AdminController extends Controller
                 $usuario->assignRole($rol);
                 $usuario->save();
                 session()->put('success', 'USUARIO ACTUALIZADO');
-
                 return back();
             } else {
                 session()->put('warning', 'NO SE PUEDE CAMBIAR ROL ADMINISTRADOR');
-
                 return back();
             }
         } else {
@@ -124,7 +122,6 @@ class AdminController extends Controller
             $usuario->assignRole($rol);
             $usuario->save();
             session()->put('success', 'USUARIO ACTUALIZADO');
-
             return back();
         }
     }
@@ -143,6 +140,35 @@ class AdminController extends Controller
             session()->put('success', 'Contraseña actualizada');
         } else {
             session()->put('error', 'Contraseña no coinciden');
+        }
+        return back();
+    }
+
+    public function edit_info(Request $request)
+    {
+        $reglas = ['email' => 'required|email|unique:users',];
+
+        $mensajes = ['email.unique' => 'El email ya se encuentra registrado',];
+
+        $validator = Validator::make($request->all(), $reglas, $mensajes);
+        if ($validator->fails()) {
+            session()->put('error', 'El email ya se encuentra registrado');
+
+            return back()->withErrors($validator->errors());;
+        }
+        $actual = $request->input("password");
+        $correo = $request->input("email");
+        $nombre = $request->input("name");
+        $a = Auth::user()->id;
+        $usuario = User::find($a);
+        //$verificacion= User::where('email', '=',$correo)->get()->first();
+        if (Hash::check($actual, $usuario->password)) {
+            $usuario->name = $nombre;
+            $usuario->email = $correo;
+            $usuario->save();
+            session()->put('success', 'Contraseña actualizada');
+        } else {
+            session()->put('error', 'Contraseña no coincide');
         }
 
         return back();
@@ -305,7 +331,6 @@ class AdminController extends Controller
         if (Auth::user()->isRole('hotel') && ! empty($hotel)) {
             $datos = Hotel::find($usuario->hotel->id);
             $indicador = true;
-
             return view('admin.edit')->with('h', $datos)->with('u', $usuario)->with('indicador', $indicador);
         } else {
 
