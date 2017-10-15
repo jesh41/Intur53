@@ -146,27 +146,31 @@ class AdminController extends Controller
 
     public function edit_info(Request $request)
     {
-        $reglas = ['email' => 'required|email|unique:users',];
+        //$reglas = ['email' => 'required|email|unique:users',];
+        //  $mensajes = ['email.unique' => 'El email ya se encuentra registrado',];
+        //    $validator = Validator::make($request->all(), $reglas, $mensajes);
+        //    if ($validator->fails()) {
+        //      session()->put('error', 'El email ya se encuentra registrado');
+        //       return back()->withErrors($validator->errors());;
+        //    }
 
-        $mensajes = ['email.unique' => 'El email ya se encuentra registrado',];
-
-        $validator = Validator::make($request->all(), $reglas, $mensajes);
-        if ($validator->fails()) {
-            session()->put('error', 'El email ya se encuentra registrado');
-
-            return back()->withErrors($validator->errors());;
-        }
         $actual = $request->input("password");
         $correo = $request->input("email");
         $nombre = $request->input("name");
         $a = Auth::user()->id;
         $usuario = User::find($a);
-        //$verificacion= User::where('email', '=',$correo)->get()->first();
+
         if (Hash::check($actual, $usuario->password)) {
+            if ($usuario->email == $correo) {
+                $usuario->name = $nombre;
+                $usuario->save();
+                session()->put('success', 'Datos Actualizados');
+            }
             $usuario->name = $nombre;
             $usuario->email = $correo;
             $usuario->save();
-            session()->put('success', 'Contraseña actualizada');
+            session()->put('success', 'Datos Actualizados');
+
         } else {
             session()->put('error', 'Contraseña no coincide');
         }
