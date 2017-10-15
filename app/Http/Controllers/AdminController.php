@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Annulment;
 use App\City;
@@ -99,25 +100,14 @@ class AdminController extends Controller
 
 	}
 
-
-
-    public function form_editar_usuario($id){
-    $usuario=User::find($id);
-    $roles=Role::all();
-    return view("formularios.form_editar_usuario")->with("usuario",$usuario)
-	                                              ->with("roles",$roles);                                 
-	}
-
-	public function editar_usuario(Request $request){
-
-    $idusuario=$request->input("id_usuario");
+    public function editar_usuario_admin(Request $request)
+    {
+        $idusuario=$request->input("id_usuario");
         $rol = $request->input("id_rol");
-    $usuario=User::find($idusuario);
-//    $usuario->name=( $request->input("nombres") ) ;
+        $usuario=User::find($idusuario);
         $rolesasignados = $usuario->getRoles();
         if (! empty($rolesasignados)) {
             if ($rolesasignados[0] != 'administrador') {
-
                 $usuario->revokeAllRoles();
                 $usuario->assignRole($rol);
                 $usuario->save();
@@ -137,13 +127,31 @@ class AdminController extends Controller
 
             return back();
         }
+    }
 
-	}
+    //cambio pass
+    public function edit_pass(Request $request)
+    {
+        $actual = $request->input("old");
+        $nuevo = $request->input("password");
+        $confi = $request->input("password_confirmation");
+        $a = Auth::user()->id;
+        $usuario = User::find($a);
+        if ($nuevo == $confi && Hash::check($actual, $usuario->password)) {
+            $usuario->password = bcrypt($nuevo);
+            $usuario->save();
+            session()->put('success', 'Contraseña actualizada');
+        } else {
+            session()->put('error', 'Contraseña no coinciden');
+        }
+
+        return back();
+    }
+
 	//borrado usuario
 	public function borrar_usuario(Request $request){
         $idusuario=$request->input("id_usuario");
         $usuario=User::find($idusuario);
-    
         if($usuario->delete()){
              return view("mensajes.msj_usuario_borrado")->with("msj","Usuario borrado correctamente") ;
         }
@@ -203,30 +211,10 @@ class AdminController extends Controller
 
 	//borrado rol
 	public function borrar_rol($idrole){
-
     $role = Role::find($idrole);
     $role->delete();
     return "ok";
 	}
-
-    //asignar rol
-	public function asignar_rol($idusu,$idrol){
-
-        $usuario=User::find($idusu);
-        $usuario->assignRole($idrol);
-        $usuario=User::find($idusu);
-        $rolesasignados=$usuario->getRoles();
-        return json_encode ($rolesasignados);
-	}
-	//quitar rol
-	public function quitar_rol($idusu,$idrol){
-
-    $usuario=User::find($idusu);
-    $usuario->revokeRole($idrol);
-    $rolesasignados=$usuario->getRoles();
-    return json_encode ($rolesasignados);
-	}
-
 
 
 

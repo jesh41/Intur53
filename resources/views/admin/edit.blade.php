@@ -48,6 +48,105 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-6">
+                        <div class="card">
+
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">update</i>
+                            </div>
+                            <form method="post" action="/editar_pass" enctype="multipart/form-data">
+                                <div class="card-content">
+                                    <h4 class="card-title">Cambiar contraseña</h4>
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">vpn_key</i>
+                                        </span>
+                                        <input type="password" class="form-control" id="old"
+                                               placeholder="contraseña actual" name="old" required>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">vpn_key</i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password"
+                                               placeholder="nueva contraseña" name="password" required>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">vpn_key</i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password_confirmation"
+                                               placeholder="repetir contraseña" name="password_confirmation" required>
+                                    </div>
+
+
+                                    <div class="footer text-center">
+                                        <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                                        <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">update</i>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Actualizar datos</h4>
+                                <form method="post" action="/editar_info" enctype="multipart/form-data">
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">email</i>
+                                        </span>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="correo" required>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">person_pin</i>
+                                        </span>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                               placeholder="nombre" required>
+                                    </div>
+
+                                    <!--      <div class="input-group" id="text-telefono">
+                                              <span class="input-group-btn input-group-s">
+                                                  <i class="material-icons">phone</i>
+                                              </span>
+                                              <input type="tel" class="form-control" placeholder="Telefono" id="telefono"
+                                                     name="telefono">
+                                          </div>
+                                          -->
+                                    <div class="input-group">
+                                        <span class="input-group-btn input-group-s">
+											<i class="material-icons">vpn_key</i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password"
+                                               placeholder="contraseña actual" name="password" required>
+                                    </div>
+
+                                    <div class="footer text-center">
+                                        <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                                        <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>

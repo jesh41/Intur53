@@ -32,26 +32,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
         Route::post('/crear_usuario', 'AdminController@crear_usuario');
-        Route::get('form_nuevo_usuario', 'AdminController@form_nuevo_usuario');
-
         route::get('/ajax-subcat', function () {
             $dep_id = Input::get('cat_id');
             $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
             return Response::json($muni);
         });
-        //busqueda usuarios
-        Route::post('buscar_usuario', 'AdminController@buscar_usuario');
         //editar usuario
-        Route::post('cambiorol', 'AdminController@editar_usuario');
+        Route::post('cambiorol', 'AdminController@editar_usuario_admin');
         //borrado usuario
         Route::post('borrar_usuario', 'AdminController@borrar_usuario');
-        Route::get('confirmacion_borrado_usuario/{idusuario}', 'AdminController@confirmacion_borrado_usuario');
-        Route::get('form_borrado_usuario/{idusu}', 'AdminController@form_borrado_usuario');
         //editar acceso passs y correo
-        Route::post('editar_acceso', 'AdminController@editar_acceso');
+        Route::post('/editar_pass', 'AdminController@edit_pass');
+        Route::post('/editar_info', 'AdminController@edit_info');
         //modulo permisos
         Route::post('/crear_permiso', 'AdminController@crear_permiso');
-        Route::get('form_nuevo_permiso', 'AdminController@form_nuevo_permiso');
         Route::post('/asignar_permiso', 'AdminController@asignar_permiso');
         Route::post('/quitar_permiso', 'AdminController@quitar_permiso');
         //roles
@@ -60,8 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         //rol borrado
         Route::get('borrar_rol/{idrol}', 'AdminController@borrar_rol');
         //asignar y quitar rol
-        Route::get('asignar_rol/{idusu}/{idrol}', 'AdminController@asignar_rol');
-        Route::get('quitar_rol/{idusu}/{idrol}', 'AdminController@quitar_rol');
+
         //bitacora
         Route::get('/bitacora', 'AdminController@bitacora');
     });
@@ -69,7 +62,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'permissionshinobi:book'], function () {
         ///Modulo Book
         Route::get('/book', 'BookController@index');
-
         //descarga
         Route::get('descargar/{idusu}', 'BookController@descargar_libro');
     });
