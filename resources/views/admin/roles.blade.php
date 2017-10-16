@@ -49,9 +49,9 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Crear
-                                </button>
-                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <a class="btn btn-primary  btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                   aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
                     </div>
@@ -110,9 +110,9 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Crear
-                                </button>
-                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <a class="btn btn-primary  btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                   aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
                     </div>
@@ -168,9 +168,9 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Crear
-                                </button>
-                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                                <button type="submit" class="btn btn-primary ">Crear</button>
+                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                   aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
                     </div>

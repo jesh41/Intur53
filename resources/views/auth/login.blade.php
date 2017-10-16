@@ -56,8 +56,8 @@
             </div>
 
             <div class="footer text-center">
-                <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Iniciar sesion</button>
-                <a class="btn btn-rose" href="{{ route('password.request') }}">
+                <button type="submit" class="btn btn-rose ">Iniciar sesion</button>
+                <a class="btn btn-rose btn-simple btn-wd " href="{{ route('password.request') }}">
                     ¿Has olvidado tu contraseña?
                 </a>
             </div>

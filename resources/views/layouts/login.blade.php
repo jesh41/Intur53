@@ -34,7 +34,7 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class=" active ">
+                <li>
                     <a href="/">
                         <i class="material-icons">fingerprint</i> Login
                     </a>

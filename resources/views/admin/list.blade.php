@@ -149,9 +149,10 @@
 
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Crear Usuario
+                                <button type="submit" class="btn btn-primary ">Crear Usuario
                                 </button>
-                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                   aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
                     </div>
@@ -199,9 +200,10 @@
 
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Asignar
+                                <button type="submit" class="btn btn-primary ">Asignar
                                 </button>
-                                <a class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                   aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
                     </div>

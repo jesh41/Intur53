@@ -75,7 +75,7 @@
 
 
                                 <div class="footer text-center">
-                                    <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">
+                                    <button type="submit" class="btn btn-rose">
                                         Recuperar Contraseña
                                     </button>
                                 </div>
