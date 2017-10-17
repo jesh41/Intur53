@@ -208,7 +208,7 @@ public function anular_libro(Request $request){
                                 $combo = "Revisar $mensaje3"."$mensaje4"."$mensaje5";
                                 session()->put('warning', $combo);
                             } else {
-                                session()->put('success', 'LIBRO ANULADO CORRECTAMENTE');
+                                session()->put('success', 'LIBRO CARGADO');
                                 //aca guardar
                                 $libro = new Book;
                                 $libro->Mes_id = $request->input("mes");
