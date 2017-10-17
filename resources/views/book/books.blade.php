@@ -131,7 +131,7 @@
                                                            class="btn  btn-info btn-sm " title="Descargar"> <i
                                                                     class="material-icons">cloud_download</i></a>
                                                     @else
-                                                        <a onclick="{{url("descargar/$book->id")}}" type="button"
+                                                        <a href="{{url("descargar/$book->id")}}" type="button"
                                                            class="btn  btn-info btn-sm " title="Descargar"> <i
                                                                     class="material-icons">cloud_download</i></a>
                                                         @can('subir')
