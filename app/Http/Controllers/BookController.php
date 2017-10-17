@@ -117,7 +117,7 @@ public function anular_libro(Request $request){
        $archivo = $request->file('archivo');      
        $extension=$archivo->getClientOriginalExtension();
 
-        if ($extension == 'xlsx')//valido el tipo de archivo
+        if ($extension == 'xlsx' or $extension == 'xls')//valido el tipo de archivo
         {
             $autor = Auth::user()->id;//id del login actual
             $nombre_original = 'user'.$autor.'.'.$extension;//renombra el archivo subido
