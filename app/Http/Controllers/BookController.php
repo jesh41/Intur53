@@ -208,6 +208,7 @@ public function anular_libro(Request $request){
                                 $combo = "Revisar $mensaje3"."$mensaje4"."$mensaje5";
                                 session()->put('warning', $combo);
                             } else {
+                                //mensaje
                                 session()->put('success', 'LIBRO CARGADO');
                                 //aca guardar
                                 $libro = new Book;
