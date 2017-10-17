@@ -59,6 +59,12 @@
                                     class="fa fa-cloud-download fa-lg"></i>
                         </button>
                     </a>
+
+                            <a href="/crear_reporte_1/1/{{$Anio}}" target="_blank">
+                                <button class="btn  btn-info btn-xs" rel="tooltip" data-placement="right"
+                                        title="Descargar"><i class="material-icons">picture_as_pdf</i>
+                                </button>
+                            </a>
                         </div>
 
 

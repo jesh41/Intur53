@@ -35,6 +35,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @role('hotel')
                                 <tr>
                                     <td>1</td>
                                     <td>Numero de Huespedes por mes y residencia</td>
@@ -54,6 +55,26 @@
                                         </button>
                                     </td>
                                 </tr>
+                                @else
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Numero de Huespedes por mes y residencia</td>
+                                        <td>
+                                            <button class="btn   btn-info btn-sm "
+                                                    onclick="material.showSwal('reporte','1','<?php echo csrf_token(); ?>')">
+                                                <i
+                                                        class="material-icons">remove_red_eye</i>
+                                            </button>
+                                        </td>
+
+                                        <td>
+                                            <button class="btn  btn-info btn-sm "
+                                                    onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">
+                                                <i
+                                                        class="material-icons">multiline_chart</i>
+                                            </button>
+                                        </td>
+                                    </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Numero de huespedes por region y sexo</td>
@@ -110,8 +131,7 @@
                                         </button>
                                     </td>
                                 </tr>
-
-
+                                    @endrole
                                 </tr>
 
                                 </tbody>

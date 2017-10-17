@@ -27,7 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//pagina inicio
 	Route::get('/home', 'HomeController@index');
     Route::get('/user', 'AdminController@edituser');
-
+    //modulo reporteria
+    Route::get('/reports', 'ReportController@index');
 
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
@@ -91,8 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => 'permissionshinobi:reportes'], function () {
-        //modulo reporteria
-        Route::get('/reports', 'ReportController@index');
+
         //reporteria parametro
         Route::get('form_year/{tipo}', 'ReportController@form_year');
         //reporteria web

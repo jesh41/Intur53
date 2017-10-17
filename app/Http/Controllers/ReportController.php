@@ -70,8 +70,12 @@ class ReportController extends Controller
         $y = $request->input("year");
 
         if ($dato == 1) {
-            $detalle = DB::select("call indicador1general($y)");
-
+            if (Auth::user()->isRole('hotel')) {
+                $hotel = Auth::user()->id;
+                $detalle = DB::select("call indicador_hotel($y,$hotel)");
+            } else {
+                $detalle = DB::select("call indicador1general($y)");
+            }
             return view('/reports/report1web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 2) {
@@ -90,7 +94,14 @@ class ReportController extends Controller
             return view('/reports/report4web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 11) {
-            $viewer = DB::select("call indicador1general($y)");
+            //validacion si es hotel
+            if (Auth::user()->isRole('hotel')) {
+                $hotel = Auth::user()->id;
+                $viewer = DB::select("call indicador_hotel($y,$hotel)");
+            } else {
+                $viewer = DB::select("call indicador1general($y)");
+            }
+
             $viewer = array_map(function ($viewer) {
                 return (array) $viewer;
             }, $viewer);
@@ -143,6 +154,7 @@ class ReportController extends Controller
         $vistaurl = "/reports/report1";
         $detalle = DB::select("call indicador1general($year)");
 
+
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
 
@@ -175,6 +187,4 @@ class ReportController extends Controller
 
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
-
-
 }
