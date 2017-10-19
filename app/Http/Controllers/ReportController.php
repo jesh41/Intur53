@@ -47,12 +47,24 @@ class ReportController extends Controller
         }
     }
 
-    // public function form_year($arg)
-    //{
-        //carga el formulario
-    // $dato = $arg;
-    //   return view("formularios.form_year")->with("arg", $dato);
-    // }
+    public function excel_reporte_1($year)
+    {
+
+        $detalle = DB::select("call indicador1general($year)");
+        $name = 'Indicador 1 '.date("Y-m-d H:i:s");
+        Excel::create($name, function ($excel) use ($detalle) {
+            $excel->sheet('Reporte 1', function ($sheet) use ($detalle) {
+                $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+                $ro = $ro->id;
+                $thoteles = DB::select("call count_user_rol($ro)");
+                $thoteles = $thoteles[0]->conteo;
+                if (empty($thoteles)) {
+                    $thoteles = 0;
+                }
+                $sheet->loadView('/excel/report1')->with("data", $detalle)->with("TH", $thoteles);;
+            });
+        })->download('xls');
+    }
 
     public function web_reporte(Request $request, $dato)
     {
@@ -153,8 +165,6 @@ class ReportController extends Controller
 
         $vistaurl = "/reports/report1";
         $detalle = DB::select("call indicador1general($year)");
-
-
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
 

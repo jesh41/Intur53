@@ -99,6 +99,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/reporte/{tipo}', 'ReportController@web_reporte');
         //modulo reporteria pdf
         Route::get('/crear_reporte_1/{tipo}/{anio}', 'ReportController@crear_reporte_porpais');
+        Route::get('/reporte_exce_1/{anio}', 'ReportController@excel_reporte_1');
+        Route::get('/reporte_exce_2/{anio}', 'ReportController@excel_reporte_2');
+        Route::get('/reporte_exce_3/{anio}', 'ReportController@excel_reporte_3');
+        Route::get('/reporte_exce_4/{anio}', 'ReportController@excel_reporte_4');
+
         Route::get('/crear_reporte_2/{tipo}/{anio}', 'ReportController@crear_reporte_por_sexo');
         Route::get('/crear_reporte_3/{tipo}/{anio}', 'ReportController@crear_reporte_por_region');
         Route::get('/crear_reporte_4/{tipo}/{anio}', 'ReportController@crear_reporte_por_estadia');
