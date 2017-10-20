@@ -60,6 +60,11 @@
                                     class="fa fa-cloud-download fa-lg"></i>
                         </button>
                     </a>
+                        <a href="{{url("/reporte_exce_2/$Anio")}}" target="_blank">
+                            <button class="btn  btn-info btn-xs" rel="tooltip" data-placement="right"
+                                    title="Descargar"><i class="material-icons">picture_as_pdf</i>
+                            </button>
+                        </a>
                     </div>
 
 

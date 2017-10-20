@@ -66,6 +66,62 @@ class ReportController extends Controller
         })->download('xls');
     }
 
+    public function excel_reporte_2($year)
+    {
+
+        $detalle = DB::select("call indicador2($year)");
+        $name = 'Indicador 2 '.date("Y-m-d H:i:s");
+        Excel::create($name, function ($excel) use ($detalle) {
+            $excel->sheet('Reporte 2', function ($sheet) use ($detalle) {
+                $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+                $ro = $ro->id;
+                $thoteles = DB::select("call count_user_rol($ro)");
+                $thoteles = $thoteles[0]->conteo;
+                if (empty($thoteles)) {
+                    $thoteles = 0;
+                }
+                $sheet->loadView('/excel/report2')->with("data", $detalle)->with("TH", $thoteles);;
+            });
+        })->download('xls');
+    }
+
+    public function excel_reporte_3($year)
+    {
+
+        $detalle = DB::select("call indicador3($year)");
+        $name = 'Indicador 3 '.date("Y-m-d H:i:s");
+        Excel::create($name, function ($excel) use ($detalle) {
+            $excel->sheet('Reporte 3', function ($sheet) use ($detalle) {
+                $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+                $ro = $ro->id;
+                $thoteles = DB::select("call count_user_rol($ro)");
+                $thoteles = $thoteles[0]->conteo;
+                if (empty($thoteles)) {
+                    $thoteles = 0;
+                }
+                $sheet->loadView('/excel/report3')->with("data", $detalle)->with("TH", $thoteles);;
+            });
+        })->download('xls');
+    }
+
+    public function excel_reporte_4($year)
+    {
+
+        $detalle = DB::select("call indicador4($year)");
+        $name = 'Indicador 4 '.date("Y-m-d H:i:s");
+        Excel::create($name, function ($excel) use ($detalle) {
+            $excel->sheet('Reporte 4', function ($sheet) use ($detalle) {
+                $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+                $ro = $ro->id;
+                $thoteles = DB::select("call count_user_rol($ro)");
+                $thoteles = $thoteles[0]->conteo;
+                if (empty($thoteles)) {
+                    $thoteles = 0;
+                }
+                $sheet->loadView('/excel/report4')->with("data", $detalle)->with("TH", $thoteles);;
+            });
+        })->download('xls');
+    }
     public function web_reporte(Request $request, $dato)
     {
 
