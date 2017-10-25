@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="card-content">
-                            <h4 class="title">GRAFICA ESTADI PROMEDIO HUESPEDES NACIONALES/EXTRANJEROS </h4>
+                            <h4 class="title">GRAFICA ESTADI PROMEDIO HUESPEDES NACIONALES/EXTRANJEROS AÑO {{$y}} </h4>
                             <div id="container"></div>
 
                         </div>

@@ -106,7 +106,6 @@ class ReportController extends Controller
 
     public function excel_reporte_4($year)
     {
-
         $detalle = DB::select("call indicador4($year)");
         $name = 'Indicador 4 '.date("Y-m-d H:i:s");
         Excel::create($name, function ($excel) use ($detalle) {
@@ -122,6 +121,7 @@ class ReportController extends Controller
             });
         })->download('xls');
     }
+
     public function web_reporte(Request $request, $dato)
     {
 
@@ -153,12 +153,10 @@ class ReportController extends Controller
         }
         if ($dato == 3) {
             $detalle = DB::select("call indicador3($y)");
-
             return view('/reports/report3web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 4) {
             $detalle = DB::select("call indicador4($y)");
-
             return view('/reports/report4web')->with("data", $detalle)->with("TH", $thoteles);
         }
         if ($dato == 11) {
@@ -176,7 +174,7 @@ class ReportController extends Controller
             $nacionales = array_column($viewer, 'Nacionales');
             $extranjeros = array_column($viewer, 'Extranjeros');
 
-            return view('/reports/report1grafica')->with('viewer', json_encode($extranjeros, JSON_NUMERIC_CHECK))->with('click', json_encode($nacionales, JSON_NUMERIC_CHECK));
+            return view('/reports/report1grafica')->with('y', $y)->with('viewer', json_encode($extranjeros, JSON_NUMERIC_CHECK))->with('click', json_encode($nacionales, JSON_NUMERIC_CHECK));
         }
         if ($dato == 22) {
             $viewer = DB::select("call indicador2($y)");
@@ -186,7 +184,7 @@ class ReportController extends Controller
             $mujer = array_column($viewer, 'Femenino');
             $hombre = array_column($viewer, 'Masculino');
 
-            return view('/reports/report2grafica')->with('viewer', json_encode($mujer, JSON_NUMERIC_CHECK))->with('click', json_encode($hombre, JSON_NUMERIC_CHECK));
+            return view('/reports/report2grafica')->with('y', $y)->with('viewer', json_encode($mujer, JSON_NUMERIC_CHECK))->with('click', json_encode($hombre, JSON_NUMERIC_CHECK));
         }
         if ($dato == 33) {
 
@@ -199,7 +197,7 @@ class ReportController extends Controller
             $negocios = array_column($viewer, 'Negocios');
             $otros = array_column($viewer, 'Otros');
 
-            return view('/reports/report3grafica')->with('tu', json_encode($turismo, JSON_NUMERIC_CHECK))->with('co', json_encode($congresos, JSON_NUMERIC_CHECK))->with('ne', json_encode($negocios, JSON_NUMERIC_CHECK))->with('ot', json_encode($otros, JSON_NUMERIC_CHECK));
+            return view('/reports/report3grafica')->with('y', $y)->with('tu', json_encode($turismo, JSON_NUMERIC_CHECK))->with('co', json_encode($congresos, JSON_NUMERIC_CHECK))->with('ne', json_encode($negocios, JSON_NUMERIC_CHECK))->with('ot', json_encode($otros, JSON_NUMERIC_CHECK));
         }
         if ($dato == 44) {
             $viewer = DB::select("call indicador4($y)");
@@ -210,7 +208,7 @@ class ReportController extends Controller
             $nacional = array_column($viewer, 'estadianac');
             $general = array_column($viewer, 'pro_general');
 
-            return view('/reports/report4grafica')->with('EX', json_encode($extranjero, JSON_NUMERIC_CHECK))->with('NA', json_encode($nacional, JSON_NUMERIC_CHECK))->with('GE', json_encode($general, JSON_NUMERIC_CHECK));
+            return view('/reports/report4grafica')->with('y', $y)->with('EX', json_encode($extranjero, JSON_NUMERIC_CHECK))->with('NA', json_encode($nacional, JSON_NUMERIC_CHECK))->with('GE', json_encode($general, JSON_NUMERIC_CHECK));
         }
 
     }

@@ -43,7 +43,7 @@
                      </div>
 
                      <div class="card-content">
-                         <h4 class="title">GRAFICA HUESPEDES POR MES Y RESIDENCIA</h4>
+                         <h4 class="title">GRAFICA HUESPEDES POR MES Y RESIDENCIA AÑO {{$y}}</h4>
                          <div id="container"></div>
 
                      </div>

@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="card-content">
-                            <h4 class="title">GRAFICA HUESPEDES POR REGION Y SEXO</h4>
+                            <h4 class="title">GRAFICA HUESPEDES POR REGION Y SEXO AÑO {{$y}}</h4>
                             <div id="container"></div>
 
                         </div>
