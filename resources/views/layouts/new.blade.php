@@ -61,6 +61,14 @@
                         </a>
                     </li>
                 @endcan
+                @role('Hotel')
+                <li>
+                    <a href="{{ url('/anulados') }}">
+                        <i class="material-icons">archive</i>
+                        <p>Anulados</p>
+                    </a>
+                </li>
+                @endrole
                 @role('administrador')
                 <li>
                     <a data-toggle="collapse" href="#menu">

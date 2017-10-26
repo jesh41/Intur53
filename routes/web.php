@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'permissionshinobi:subir'], function () {
         Route::get('form_cargar_books', 'BookController@form_cargar_libros');
         Route::post('/cargar_datos', 'BookController@cargar_libros');
+        Route::get('/anulados', 'BookController@anulados');
         Route::post('/anular_libro', 'BookController@anular_libro');
 
         route::get('/ajax-submes', function () {
