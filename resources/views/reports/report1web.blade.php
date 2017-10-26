@@ -55,14 +55,16 @@
                 </div>
                         <div class="card-footer">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
                     <a href="/crear_reporte_1/1/{{$Anio}}" target="_blank">
-                        <button class="btn  btn-info btn-xs" rel="tooltip" data-placement="right" title="Descargar"><i
-                                    class="fa fa-cloud-download fa-lg"></i>
+                        <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                data-placement="right" title="Descargar">
+                            <i class="material-icons md-36">picture_as_pdf</i>
                         </button>
                     </a>
 
                             <a href="{{url("/reporte_exce_1/$Anio")}}" target="_blank">
-                                <button class="btn  btn-info btn-xs" rel="tooltip" data-placement="right"
-                                        title="Descargar"><i class="material-icons">picture_as_pdf</i>
+                                <button class="btn btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right"
+                                        title="Descargar"><i class="material-icons">cloud_download</i>
                                 </button>
                             </a>
                         </div>

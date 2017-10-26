@@ -12,7 +12,7 @@
                             <h3 class="card-title">Vista home</h3>
                             <p>Sistema de indicadores estad&iacute;stico en hoteles Aparta Hoteles y alojamientos tur&iacute;sticos
                                 (5 a 1 Estrellas) de Managua. Tiene como objetivo crear indicadores en tiempo oportuno
-                                sobre el impacto y desarrollo del sector hotelero en la econom&iacute;a, de esta manera
+                                sobre el impacto y desarrollo del sector hotelero, de esta manera
                                 se podr&aacute; emplear de manera eficaz planes o estrategias para el mejoramiento de
                                 sus programas y mejoras en la toma de decisiones.
                     </p>
