@@ -39,7 +39,7 @@
 
         <div class="sidebar-wrapper"> <!--DIV DE MENU LATERAL-->
             <ul class="nav"> <!--LISTA DESORDENADA-->
-                <li class="active">
+                <li>
                     <a href="{{ url('/home') }}">
                         <i class="material-icons">home</i>
                         <p>Inicio</p>
