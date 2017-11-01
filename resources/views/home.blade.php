@@ -10,16 +10,17 @@
 
                         <div class="card-content">
                             <h3 class="card-title">Vista home</h3>
-                            <p>Sistema de indicadores estad&iacute;stico en hoteles Aparta Hoteles y alojamientos tur&iacute;sticos
-                                (5 a 1 Estrellas) de Managua. Tiene como objetivo crear indicadores en tiempo oportuno
-                                sobre el impacto y desarrollo del sector hotelero, de esta manera
-                                se podr&aacute; emplear de manera eficaz planes o estrategias para el mejoramiento de
-                                sus programas y mejoras en la toma de decisiones.
+                            <p>Sistema de indicadores estadisticos en hoteles, aparta hoteles y alojamientos turisticos
+                                (5 a 1 Estrellas), de managua; tiene como objetivo crear indicadores en tiempo oportuno
+                                sobre el impacto y desarrollo del sector hotelero, de esta manera se podra emplear de
+                                manera eficaz en la evaluación y monitoreo de planes o estrategiasde mercadeo , para el
+                                mejoramiento de los programas y mejoras en la toma de desiciones.
                     </p>
-                            <p style="text-align: justify;font-size:11pt"> La recopilaci&oacute;n de los libros de
-                                registros en formato Excel tendr&aacute; un impacto positivo en las estad&iacute;sticas
-                                siendo de gran utilidad para la emisi&oacute;n de informes e insumo para el bolet&iacute;n
-                                anual de la Actividad Hotelera, extendiendo el proyecto a otras ciudades y rutas tur&iacute;sticas.
+                            <p style="text-align: justify;font-size:11pt"> La recopilación de los libros de registros de
+                                huéspedes en formato excel tendrá un impacto positivo en la generación de las
+                                estadísticas, siendo de gran utilidad para la emisión de informes e insumos para el
+                                boletín anual de la actividad hotelera, extendiendo el proyecto a rutas turísticas del
+                                país.
                     </p>
                         </div>
 

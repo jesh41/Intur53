@@ -213,7 +213,17 @@
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
+<script type="text/javascript">
 
+    $(function () {
+        $('.nav a').filter(function () {
+            return this.href == location.href
+        }).parent().addClass('active').siblings().removeClass('active')
+        $('.nav a').click(function () {
+            $(this).parent().addClass('active').siblings().removeClass('active')
+        })
+    })
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
