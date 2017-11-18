@@ -135,6 +135,7 @@ material = {
                 confirmButtonText: "Procesar",
                 confirmButtonClass: 'btn btn-success',
                 cancelButtonClass: "btn btn-danger",
+                cancelButtonText: 'CANCELAR',
                 buttonsStyling: false,
                 input: 'number',
                 inputAttributes: {
