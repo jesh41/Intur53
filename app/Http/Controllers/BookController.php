@@ -35,12 +35,12 @@ class BookController extends Controller
 
         if (Auth::user()->isRole('administrador'))
         {
-            $books = Book::paginate(8);
+            $books = Book::all();
         } elseif (Auth::user()->isRole('hotel'))
         {
-            $books = Book::where('user_id', Auth::user()->id)->where('estado', 'A')->paginate(8);
+            $books = Book::where('user_id', Auth::user()->id)->where('estado', 'A');
         } elseif (Auth::user()->isRole('intur')) {
-            $books = Book::paginate(8);
+            $books = Book::all();
         }
       return view('/book/books')->with("books",$books);
     }
@@ -48,7 +48,7 @@ class BookController extends Controller
     public function anulados()
     {
         if (Auth::user()->isRole('hotel')) {
-            $books = Book::where('user_id', Auth::user()->id)->where('estado', 'U')->paginate(8);
+            $books = Book::where('user_id', Auth::user()->id)->where('estado', 'U');
         }
 
         return view('/book/book-anulados')->with("books", $books);

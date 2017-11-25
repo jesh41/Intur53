@@ -104,16 +104,17 @@
 
                             <div class="tab-content">
                                 <div class="tab-pane active table-responsive ">
-                                    <table class="table table-hover table-striped" cellspacing="0" width="100%">
+                                    <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                           cellspacing="0" width="100%" style="width:100%">
                                         <thead role="row" class="text-primary">
                                         <tr>
-                                            <th>Codigo</th>
+                                            <th>Id</th>
                                             <th>Mes</th>
                                             <th>Estado</th>
                                             <th>Año</th>
                                             <th>Fecha Elaborado</th>
                                             <th>Usuario</th>
-                                            <th class="text-right">Acciones</th>
+                                            <th>Acciones</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -125,7 +126,7 @@
                                                 <td>{{ $book->Anio }}</td>
                                                 <td>{{ Carbon\Carbon::parse($book->FechaElaborado)->format('d-m-Y')}}</td>
                                                 <td>{{ $book->user->name}}</td>
-                                                <td class="td-actions text-right">
+                                                <td>
                                                     @if ($book->estado=='U')
                                                         <a href="{{url("descargar/$book->id")}}" type="button"
                                                            class="btn  btn-info btn-sm " title="Descargar"> <i
@@ -147,7 +148,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{ $books->links() }}
+
                             </div>
                         </div>
                     </div>
