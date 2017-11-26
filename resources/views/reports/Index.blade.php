@@ -51,7 +51,7 @@
                                         <button class="btn  btn-info btn-sm "
                                                 onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">
                                             <i
-                                                    class="material-icons">multiline_chart</i>
+                                                    class="material-icons">equalizer</i>
                                         </button>
                                     </td>
                                 </tr>
@@ -71,7 +71,7 @@
                                             <button class="btn  btn-info btn-sm "
                                                     onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">
                                                 <i
-                                                        class="material-icons">multiline_chart</i>
+                                                        class="material-icons">equalizer</i>
                                             </button>
                                         </td>
                                     </tr>
@@ -89,7 +89,7 @@
                                         <button class="btn   btn-info btn-sm "
                                                 onclick="material.showSwal('reporte','22','<?php echo csrf_token(); ?>')">
                                             <i
-                                                    class="material-icons">multiline_chart</i>
+                                                    class="material-icons">equalizer</i>
                                         </button>
                                     </td>
                                 </tr>
@@ -108,7 +108,7 @@
                                         <button class="btn   btn-info btn-sm "
                                                 onclick="material.showSwal('reporte','33','<?php echo csrf_token(); ?>')">
                                             <i
-                                                    class="material-icons">multiline_chart</i>
+                                                    class="material-icons">equalizer</i>
                                         </button>
                                     </td>
                                 </tr>
@@ -127,7 +127,7 @@
                                         <button class="btn   btn-info btn-sm "
                                                 onclick="material.showSwal('reporte','44','<?php echo csrf_token(); ?>')">
                                             <i
-                                                    class="material-icons">multiline_chart</i>
+                                                    class="material-icons">equalizer</i>
                                         </button>
                                     </td>
                                 </tr>

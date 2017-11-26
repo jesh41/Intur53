@@ -36,7 +36,7 @@
                                         data-placement="right"
                                         title="Grafica">
                                 <!--    onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">-->
-                                    <i class="material-icons">multiline_chart</i>
+                                    <i class="material-icons">equalizer</i>
                                 </button>
                             </form>
 
