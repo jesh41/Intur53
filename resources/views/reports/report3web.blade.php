@@ -19,6 +19,28 @@
                         </div>
 
                         <div class="card-content">
+                            <a href="/crear_reporte_3/1/{{$Y}}" target="_blank">
+                                <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right" title="Descargar">
+                                    <i class="material-icons md-36">picture_as_pdf</i>
+                                </button>
+                            </a>
+                            <a href="{{url("/reporte_exce_3/$Y")}}" target="_blank">
+                                <button class="btn btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right"
+                                        title="Descargar"><i class="material-icons">cloud_download</i>
+                                </button>
+                            </a>
+                            <form method="post" action="/reporte/33" id="form_year">
+                                <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                                <input type="hidden" name="year" id="year" value="{{$Y}}">
+                                <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right"
+                                        title="Grafica">
+                                <!--    onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">-->
+                                    <i class="material-icons">equalizer</i>
+                                </button>
+                            </form>
                             <h4 class="title">Reporte Por region y motivo de viaje</h4>
 
                             <table class="table table-hover table-striped" cellspacing="0" width="100%">
@@ -64,22 +86,11 @@
 
                         </table>
                     </div>
-                </div>
+                        <div class="card-footer">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
 
-                    <div class="card-footer">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
-                        <a href="/crear_reporte_3/1/{{$Anio}}" target="_blank">
-                            <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
-                                    data-placement="right" title="Descargar">
-                                <i class="material-icons md-36">picture_as_pdf</i>
-                            </button>
-                        </a>
-                        <a href="{{url("/reporte_exce_3/$Anio")}}" target="_blank">
-                            <button class="btn btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
-                                    data-placement="right"
-                                    title="Descargar"><i class="material-icons">cloud_download</i>
-                            </button>
-                        </a>
+                        </div>
                     </div>
+
 
                 </div>
             </div>

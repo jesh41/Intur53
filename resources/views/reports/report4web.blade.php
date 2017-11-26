@@ -13,6 +13,28 @@
 
 
                         <div class="card-content">
+                            <a href="/crear_reporte_4/1/{{$Y}}" target="_blank">
+                                <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right" title="Descargar">
+                                    <i class="material-icons md-36">picture_as_pdf</i>
+                                </button>
+                            </a>
+                            <a href="{{url("/reporte_exce_4/$Y")}}" target="_blank">
+                                <button class="btn btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right"
+                                        title="Descargar"><i class="material-icons">cloud_download</i>
+                                </button>
+                            </a>
+                            <form method="post" action="/reporte/44" id="form_year">
+                                <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                                <input type="hidden" name="year" id="year" value="{{$Y}}">
+                                <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
+                                        data-placement="right"
+                                        title="Grafica">
+                                <!--    onclick="material.showSwal('reporte','11','<?php echo csrf_token(); ?>')">-->
+                                    <i class="material-icons">equalizer</i>
+                                </button>
+                            </form>
                             <h4 class="title">Reporte de estadia promedio por mes, residencia y total</h4>
                             <table class="table table-hover table-striped" cellspacing="0" width="100%">
                                 <thead role="row" class="text-primary">
@@ -44,20 +66,9 @@
 
                         </table>
                     </div>
-                </div>
-                    <div class="card-footer">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
-                        <a href="/crear_reporte_4/1/{{$Anio}}" target="_blank">
-                            <button class="btn  btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
-                                    data-placement="right" title="Descargar">
-                                <i class="material-icons md-36">picture_as_pdf</i>
-                            </button>
-                        </a>
-                        <a href="{{url("/reporte_exce_4/$Anio")}}" target="_blank">
-                            <button class="btn btn-info btn-just-icon btn-round" style="float: right" rel="tooltip"
-                                    data-placement="right"
-                                    title="Descargar"><i class="material-icons">cloud_download</i>
-                            </button>
-                        </a>
+                        <div class="card-footer">Generado {{date("Y-m-d H:i:s")}} Total Hoteles: {{$TH}}
+
+                        </div>
                     </div>
 
 

@@ -150,15 +150,17 @@ class ReportController extends Controller
         if ($dato == 2) {
             $detalle = DB::select("call indicador2($y)");
 
-            return view('/reports/report2web')->with("data", $detalle)->with("TH", $thoteles);
+            return view('/reports/report2web')->with("data", $detalle)->with("TH", $thoteles)->with("Y", $y);
         }
         if ($dato == 3) {
             $detalle = DB::select("call indicador3($y)");
-            return view('/reports/report3web')->with("data", $detalle)->with("TH", $thoteles);
+
+            return view('/reports/report3web')->with("data", $detalle)->with("TH", $thoteles)->with("Y", $y);
         }
         if ($dato == 4) {
             $detalle = DB::select("call indicador4($y)");
-            return view('/reports/report4web')->with("data", $detalle)->with("TH", $thoteles);
+
+            return view('/reports/report4web')->with("data", $detalle)->with("TH", $thoteles)->with("Y", $y);
         }
         if ($dato == 11) {
             //validacion si es hotel
