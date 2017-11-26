@@ -98,6 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('form_year/{tipo}', 'ReportController@form_year');
         //reporteria web
         Route::post('/reporte/{tipo}', 'ReportController@web_reporte');
+
         //modulo reporteria pdf
         Route::get('/crear_reporte_1/{tipo}/{anio}', 'ReportController@crear_reporte_porpais');
         Route::get('/reporte_exce_1/{anio}', 'ReportController@excel_reporte_1');

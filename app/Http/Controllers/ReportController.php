@@ -144,7 +144,8 @@ class ReportController extends Controller
             } else {
                 $detalle = DB::select("call indicador1general($y)");
             }
-            return view('/reports/report1web')->with("data", $detalle)->with("TH", $thoteles);
+
+            return view('/reports/report1web')->with("data", $detalle)->with("TH", $thoteles)->with("Y", $y);
         }
         if ($dato == 2) {
             $detalle = DB::select("call indicador2($y)");
@@ -167,13 +168,11 @@ class ReportController extends Controller
             } else {
                 $viewer = DB::select("call indicador1general($y)");
             }
-
             $viewer = array_map(function ($viewer) {
                 return (array) $viewer;
             }, $viewer);
             $nacionales = array_column($viewer, 'Nacionales');
             $extranjeros = array_column($viewer, 'Extranjeros');
-
             return view('/reports/report1grafica')->with('y', $y)->with('viewer', json_encode($extranjeros, JSON_NUMERIC_CHECK))->with('click', json_encode($nacionales, JSON_NUMERIC_CHECK));
         }
         if ($dato == 22) {
