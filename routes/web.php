@@ -25,13 +25,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	//pagina inicio
-	Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/user', 'AdminController@edituser');
     //modulo reporteria
-    Route::get('/reports', 'ReportController@index');
+    Route::get('/reports', 'ReportController@index')->name('reports');
 
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
-        Route::get('/listado_usuarios', 'AdminController@listado_usuarios');
+        Route::get('/listado_usuarios', 'AdminController@listado_usuarios')->name('listado');
         Route::post('/crear_usuario', 'AdminController@crear_usuario');
         route::get('/ajax-subcat', function () {
             $dep_id = Input::get('cat_id');
@@ -51,18 +51,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/quitar_permiso', 'AdminController@quitar_permiso');
         //roles
         Route::post('/crear_rol', 'AdminController@crear_rol');//->middleware('roleshinobi:Administrador')
-        Route::get('/roles', 'AdminController@rolindex');
+        Route::get('/roles', 'AdminController@rolindex')->name('rol');
         //rol borrado
         Route::get('borrar_rol/{idrol}', 'AdminController@borrar_rol');
         //asignar y quitar rol
 
         //bitacora
-        Route::get('/bitacora', 'AdminController@bitacora');
+        Route::get('/bitacora', 'AdminController@bitacora')->name('bitacora');
     });
 //grupos
     Route::group(['middleware' => 'permissionshinobi:book'], function () {
         ///Modulo Book
-        Route::get('/book', 'BookController@index');
+        Route::get('/book', 'BookController@index')->name('book');;
         //descarga
         Route::get('descargar/{idusu}', 'BookController@descargar_libro');
     });
@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'permissionshinobi:subir'], function () {
         Route::get('form_cargar_books', 'BookController@form_cargar_libros');
         Route::post('/cargar_datos', 'BookController@cargar_libros');
-        Route::get('/anulados', 'BookController@anulados');
+        Route::get('/anulados', 'BookController@anulados')->name('anulados');
         Route::post('/anular_libro', 'BookController@anular_libro');
 
         route::get('/ajax-submes', function () {

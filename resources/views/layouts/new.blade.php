@@ -39,14 +39,14 @@
 
         <div class="sidebar-wrapper"> <!--DIV DE MENU LATERAL-->
             <ul class="nav"> <!--LISTA DESORDENADA-->
-                <li>
+                <li class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">
                     <a href="{{ url('/home') }}">
                         <i class="material-icons">home</i>
                         <p>Inicio</p>
                     </a>
                 </li>
                 @can('book')
-                    <li>
+                    <li class="{{ Route::currentRouteName() == 'book' ? 'active' : '' }}">
                         <a href="{{ url('/book') }}">
                             <i class="material-icons">library_books</i>
                             <p>Libros</p>
@@ -54,7 +54,7 @@
                     </li>
                 @endcan
                 @can('reportes')
-                    <li>
+                    <li class="{{ Route::currentRouteName() == 'reports' ? 'active' : '' }}">
                         <a href="{{ url('/reports') }}">
                             <i class="material-icons">insert_chart</i>
                             <p>Reportes</p>
@@ -62,7 +62,7 @@
                     </li>
                 @endcan
                 @role('Hotel')
-                <li>
+                <li class="{{ Route::currentRouteName() == 'anulados' ? 'active' : '' }}">
                     <a href="{{ url('/anulados') }}">
                         <i class="material-icons">archive</i>
                         <p>Anulados</p>
@@ -79,19 +79,19 @@
 
                     <div class="collapse" id="menu">
                         <ul class="nav">
-                            <li>
+                            <li class="{{ Route::currentRouteName() == 'listado' ? 'active' : '' }}">
                                 <a href="/listado_usuarios">
                                     <i class="material-icons">people</i>
                                     <span class="sidebar-normal">Usuarios</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ Route::currentRouteName() == 'rol' ? 'active' : '' }}">
                                 <a href="/roles">
                                     <i class="material-icons">verified_user</i>
                                     <span class="sidebar-normal">Roles</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ Route::currentRouteName() == 'bitacora' ? 'active' : '' }}">
                                 <a href="/bitacora">
                                     <i class="material-icons">track_changes</i>
                                     <span class="sidebar-normal">Bitacora</span>
@@ -214,7 +214,7 @@
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
 <script type="text/javascript">
-
+    <!--
     $(function () {
         $('.nav a').filter(function () {
             return this.href == location.href
@@ -222,7 +222,7 @@
         $('.nav a').click(function () {
             $(this).parent().addClass('active').siblings().removeClass('active')
         })
-    })
+    })-->
 </script>
 
 <script type="text/javascript">
