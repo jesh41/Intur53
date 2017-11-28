@@ -54,7 +54,7 @@
                     </li>
                 @endcan
                 @can('reportes')
-                    <li class="{{ Route::currentRouteName() == 'reports' ? 'active' : '' }}">
+                    <li class="{{ Route::currentRouteName() == 'reports' ? 'active' : '' ||Route::currentRouteName() == 'reporte' ? 'active' : '' }}">
                         <a href="{{ url('/reports') }}">
                             <i class="material-icons">insert_chart</i>
                             <p>Reportes</p>
@@ -70,13 +70,12 @@
                 </li>
                 @endrole
                 @role('administrador')
-                <li>
+                <li class="{{ Route::currentRouteName() == 'listado' ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#menu">
                         <i class="material-icons">settings</i>
                         <p>Configuracion<b class="caret"></b>
                         </p>
                     </a>
-
                     <div class="collapse" id="menu">
                         <ul class="nav">
                             <li class="{{ Route::currentRouteName() == 'listado' ? 'active' : '' }}">
@@ -99,6 +98,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </li>
                 @endrole
             </ul> <!--CIERRE DE LISTA DESORDENADA-->
@@ -214,15 +214,7 @@
 <!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
 <!--<script src="{{ asset('js/toastr.js') }}"></script>-->
 <script type="text/javascript">
-    <!--
-    $(function () {
-        $('.nav a').filter(function () {
-            return this.href == location.href
-        }).parent().addClass('active').siblings().removeClass('active')
-        $('.nav a').click(function () {
-            $(this).parent().addClass('active').siblings().removeClass('active')
-        })
-    })-->
+
 </script>
 
 <script type="text/javascript">

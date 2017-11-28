@@ -97,7 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
         //reporteria parametro
         Route::get('form_year/{tipo}', 'ReportController@form_year');
         //reporteria web
-        Route::post('/reporte/{tipo}', 'ReportController@web_reporte');
+        Route::post('/reporte/{tipo}', 'ReportController@web_reporte')->name('reporte');
 
         //modulo reporteria pdf
         Route::get('/crear_reporte_1/{tipo}/{anio}', 'ReportController@crear_reporte_porpais');
