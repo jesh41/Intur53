@@ -70,24 +70,22 @@
                 </li>
                 @endrole
                 @role('administrador')
-
-
                 <li class="{{ Route::currentRouteName() == 'listado' ? 'active' : '' }}">
                                 <a href="/listado_usuarios">
                                     <i class="material-icons">people</i>
-                                    <span class="sidebar-normal">Usuarios</span>
+                                    <p>Usuarios</p>
                                 </a>
                             </li>
                             <li class="{{ Route::currentRouteName() == 'rol' ? 'active' : '' }}">
                                 <a href="/roles">
                                     <i class="material-icons">verified_user</i>
-                                    <span class="sidebar-normal">Roles</span>
+                                    <p>Roles</p>
                                 </a>
                             </li>
                             <li class="{{ Route::currentRouteName() == 'bitacora' ? 'active' : '' }}">
                                 <a href="/bitacora">
                                     <i class="material-icons">track_changes</i>
-                                    <span class="sidebar-normal">Bitacora</span>
+                                    <p>Bitacora</p>
                                 </a>
                             </li>
 
