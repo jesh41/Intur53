@@ -39,7 +39,7 @@
 
         <div class="sidebar-wrapper"> <!--DIV DE MENU LATERAL-->
             <ul class="nav"> <!--LISTA DESORDENADA-->
-                <li class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">
+                <li class="{{ Route::currentRouteName() == 'home' ? 'active' : '' ||Route::currentRouteName() == 'home2' ? 'active' : ''  }}">
                     <a href="{{ url('/home') }}">
                         <i class="material-icons">home</i>
                         <p>Inicio</p>
@@ -70,15 +70,9 @@
                 </li>
                 @endrole
                 @role('administrador')
+
+
                 <li class="{{ Route::currentRouteName() == 'listado' ? 'active' : '' }}">
-                    <a data-toggle="collapse" href="#menu">
-                        <i class="material-icons">settings</i>
-                        <p>Configuracion<b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="menu">
-                        <ul class="nav">
-                            <li class="{{ Route::currentRouteName() == 'listado' ? 'active' : '' }}">
                                 <a href="/listado_usuarios">
                                     <i class="material-icons">people</i>
                                     <span class="sidebar-normal">Usuarios</span>
@@ -96,10 +90,8 @@
                                     <span class="sidebar-normal">Bitacora</span>
                                 </a>
                             </li>
-                        </ul>
-                    </div>
 
-                </li>
+
                 @endrole
             </ul> <!--CIERRE DE LISTA DESORDENADA-->
         </div> <!--CIERRE DE DIV DE MENU LATERAL-->
@@ -211,14 +203,13 @@
 
 <script src="{{asset('js/highcharts.js') }}"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
-<!--<script src="{{asset('js/plusis.js') }}" type="text/javascript"></script>-->
-<!--<script src="{{ asset('js/toastr.js') }}"></script>-->
-<script type="text/javascript">
 
-</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
+        //    Activate bootstrap-select
+
+
         $('#datatables').DataTable({
             "pagingType": "full_numbers",
             "lengthMenu": [

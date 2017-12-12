@@ -20,7 +20,7 @@ Route::get('/', function () {
     } else {
         return view('home');
     }
-});
+})->name('home2');
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
