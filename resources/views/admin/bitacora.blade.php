@@ -22,8 +22,8 @@
                                             <th>id</th>
                                             <th>Book id</th>
                                             <th>Observacion</th>
-                                            <th>Elaborado</th>
-                                            <th>FechaElaborado</th>
+                                            <th>Anulado Por</th>
+                                            <th>Fecha Anulacion</th>
 
                                         </tr>
                                         </thead>
