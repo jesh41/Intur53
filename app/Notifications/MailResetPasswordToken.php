@@ -44,7 +44,7 @@ class MailResetPasswordToken extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject("Cambio de Contraseña")->line("Has olvidado tu contraseña? Acabas de solicitar cambio de contraseña.")->action('Reseteo Contraseña', url('password/reset', $this->token))->line('Gracias');
+        return (new MailMessage)->subject("Cambio de Contraseña")->line("Has olvidado tu contraseña? Acabas de solicitar cambio de contraseña.")->action('Reseteo Contraseña', url('password/reset', $this->token));
     }
 
     /**
