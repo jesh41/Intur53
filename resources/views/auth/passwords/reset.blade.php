@@ -7,6 +7,7 @@
                             <div class="card card-login card-hidden">
                                 <div class="card-header text-center" data-background-color="rose">
                                     <h4 class="card-title">Recuperar tu contraseña</h4>
+
                                 </div>
                             <input type="hidden" name="token" value="{{ $token }}">
                                 <div class="input-group">
