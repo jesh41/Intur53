@@ -10,7 +10,7 @@ class Municipio extends Model
 
     protected $table = 'municipio';
 
-    public function pais()
+    public function departamento()
     {
         return $this->hasOne('App\City', 'id', 'id_city');
     }

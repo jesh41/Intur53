@@ -24,8 +24,11 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
+
 	//pagina inicio
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/acerca', 'HomeController@acerca')->name('acerca');
+    Route::get('/ayuda', 'HomeController@ayuda')->name('ayuda');
     Route::get('/user', 'AdminController@edituser');
     //modulo reporteria
     Route::get('/reports', 'ReportController@index')->name('reports');
@@ -33,11 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios')->name('listado');
         Route::post('/crear_usuario', 'AdminController@crear_usuario');
+        //obteener municipio
         route::get('/ajax-subcat', function () {
             $dep_id = Input::get('cat_id');
             $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
             return Response::json($muni);
         });
+
         //editar usuario
         Route::post('cambiorol', 'AdminController@editar_usuario_admin');
         //borrado usuario
@@ -73,16 +78,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/anulados', 'BookController@anulados')->name('anulados');
         Route::post('/anular_libro', 'BookController@anular_libro');
 
+        //obtener meses
         route::get('/ajax-submes', function () {
             $año_seleccionado = Input::get('id');
             $usuario = Auth::user()->id;
             $mes_actual = date('m');
-
+            //valido si es esta en el año actual, solo muestre meses menores al mes actual
             if ($año_seleccionado == date('Y') && ! empty($año_seleccionado)) {
                 $months = DB::select("call validacion_mes($año_seleccionado,$usuario,$mes_actual)");
             } else {
-                if (! empty($año_seleccionado)) {
+                //valido si es un año anterior solo le muestre los meses que no ha subido
+                if ($año_seleccionado < date('Y') && ! empty($año_seleccionado)) {
                     $months = DB::select("call validacion_anio($año_seleccionado,$usuario,$mes_actual)");
+                } else {
+                    $months = null;
                 }
             }
             if (empty($months)) {

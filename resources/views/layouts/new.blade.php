@@ -88,9 +88,19 @@
                                     <p>Bitacora</p>
                                 </a>
                             </li>
-
-
                 @endrole
+                <li class="{{ Route::currentRouteName() == 'acerca' ? 'active' : '' }}">
+                    <a href="{{ url('/acerca') }}">
+                        <i class="material-icons">info_outline</i>
+                        <p>Acerca de</p>
+                    </a>
+                </li>
+                <li class="{{ Route::currentRouteName() == 'ayuda' ? 'active' : '' }}">
+                    <a href="{{ url('/ayuda') }}">
+                        <i class="material-icons">help</i>
+                        <p>Ayuda</p>
+                    </a>
+                </li>
             </ul> <!--CIERRE DE LISTA DESORDENADA-->
         </div> <!--CIERRE DE DIV DE MENU LATERAL-->
     </div> <!--CIERRE DE DIV DE BARRA LATERAL-->
@@ -283,6 +293,8 @@
         $('.card .material-datatables label .pagination').addClass('form-group');
     });
 </script>
+
+
 <script>
     $("#anio").on('change', function (e) {
         //console.log(e);

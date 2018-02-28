@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        Departamento: {{$h->city->city}}
+                        Departamento: {{$h->municipio->departamento->city}}
                     </div>
                     <div class="col-md-6">
                         Municipio: {{$h->municipio->municipio}}

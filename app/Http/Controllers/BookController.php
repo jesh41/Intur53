@@ -36,13 +36,16 @@ class BookController extends Controller
         if (Auth::user()->isRole('administrador'))
         {
             $books = Book::all();
+            $anio[0] = date('Y');
+            $anio[1] = date('Y') - 1;
         } elseif (Auth::user()->isRole('hotel'))
         {
             $books = Book::where('user_id', Auth::user()->id)->where('estado', 'A');
         } elseif (Auth::user()->isRole('intur')) {
             $books = Book::all();
         }
-      return view('/book/books')->with("books",$books);
+
+        return view('/book/books')->with("books", $books)->with("anio", $anio);
     }
 
     public function anulados()

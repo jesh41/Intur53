@@ -13,7 +13,6 @@ class Hotel extends Model
         'telefono',
         'id_cathotel',
         'id_catactivity',
-        'id_city',
         'id_municipio',
         'id_user',
     ];
@@ -28,11 +27,6 @@ class Hotel extends Model
     public function catactivity()
     {
         return $this->hasOne('App\Catactivity', 'id', 'id_catactivity');
-    }
-
-    public function city()
-    {
-        return $this->hasOne('App\City', 'id', 'id_city');
     }
 
     public function municipio()

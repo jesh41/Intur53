@@ -65,7 +65,7 @@ class AdminController extends Controller
             $hotel->nombre = $request->input("nombre-hotel");
             $hotel->direccion = $request->input("direccion");
             $hotel->telefono = $request->input("telefono");
-            $hotel->id_city = $request->input("departamento");
+                //$hotel->id_city = $request->input("departamento");
             $hotel->id_municipio = $request->input("municipio");
             $hotel->id_cathotel = $request->input("categoria");
             $hotel->id_catactivity = $request->input("actividad");

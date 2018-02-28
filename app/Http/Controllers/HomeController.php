@@ -30,7 +30,18 @@ class HomeController extends Controller
         return view('home');
     }
 
-    
+    public function acerca()
+    {
+        return view('admin.about');
+    }
+
+    public function ayuda()
+    {
+        return view('admin.help');
+    }
+
+
+
 
 
 }

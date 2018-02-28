@@ -17,8 +17,6 @@ class CreateHotelTable extends Migration
             $table->string('nombre');
             $table->string('direccion');
             $table->integer('telefono');
-            $table->integer('id_city')->unsigned()->index();
-            $table->foreign('id_city')->references('id')->on('city');
             $table->integer('id_municipio')->unsigned()->index();
             $table->foreign('id_municipio')->references('id')->on('municipio');
             $table->integer('id_cathotel')->unsigned()->index();

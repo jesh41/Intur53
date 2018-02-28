@@ -46,8 +46,9 @@
 								</span>
                                     <select class="btn btn-primary btn-round" name="anio" id="anio" required>
                                         <option value="" selected disabled>Escoger año</option>
-                                        <option value="2016">2016</option>
-                                        <option value="2017">2017</option>
+                                        @foreach($anio as $a)
+                                            <option value={{$a}}>{{$a}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
