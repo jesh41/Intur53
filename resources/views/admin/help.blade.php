@@ -9,8 +9,10 @@
                     <div class="card">
 
                         <div class="card-content">
-                            <h3 class="card-title">Vista Ayuda</h3>
-
+                            <h3 class="card-title">Ayuda</h3>
+                            Manual de usuario<br>
+                            Modulos que posee el sistema<br>
+                            En desarrollo<br>
                         </div>
 
                     </div>

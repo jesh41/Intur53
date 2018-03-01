@@ -114,6 +114,7 @@
                                             <th>Estado</th>
                                             <th>Año</th>
                                             <th>Fecha Elaborado</th>
+                                            <th>Hospedaje</th>
                                             <th>Usuario</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -125,7 +126,14 @@
                                                 <td>{{ $book->month->mes}}</td>
                                                 <td>{{ $book->estado }}</td>
                                                 <td>{{ $book->Anio }}</td>
-                                                <td>{{ Carbon\Carbon::parse($book->FechaElaborado)->format('d-m-Y')}}</td>
+                                                <td>{{ Carbon\Carbon::parse($book->FechaElaborado)->format('d-m-y')}}</td>
+                                                <td>
+                                                    @if ($book->user->hotel)
+                                                        {{ $book->user->hotel->nombre}}
+                                                    @else
+                                                        {{ $book->Observacion}}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $book->user->name}}</td>
                                                 <td>
                                                     @if ($book->estado=='U')

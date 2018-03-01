@@ -32,15 +32,16 @@ class BookController extends Controller
 
    public function index()
     {
-
-        if (Auth::user()->isRole('administrador'))
-        {
+        $anio[0] = date('Y');
+        $anio[1] = date('Y') - 1;
+        if (Auth::user()->isRole('administrador')) {
             $books = Book::all();
-            $anio[0] = date('Y');
-            $anio[1] = date('Y') - 1;
+
         } elseif (Auth::user()->isRole('hotel'))
         {
-            $books = Book::where('user_id', Auth::user()->id)->where('estado', 'A');
+            $id = Auth::user()->id;
+            $books = Book::where('user_id', $id)->where('estado', 'A')->get();
+
         } elseif (Auth::user()->isRole('intur')) {
             $books = Book::all();
         }
