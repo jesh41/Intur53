@@ -58,10 +58,6 @@ return [
             'driver' => 'local',
             'root'   => storage_path('archivos'),
         ],
-        'archivos' => [
-            'driver' => 'local',
-            'root' => storage_path('manuales'),
-        ],
 
         's3' => [
             'driver' => 's3',

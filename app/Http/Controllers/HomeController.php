@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
-use Storage;
+
 use Auth;
 
 class HomeController extends Controller
@@ -46,11 +46,11 @@ class HomeController extends Controller
     {
 
         if (Auth::user()->isRole('administrador')) {
-            $path = storage_path('manuales/manual_admin.pdf');
+            $path = public_path('manuales/manual_admin.pdf');
         } elseif (Auth::user()->isRole('hotel')) {
-            $path = storage_path('manuales/manual_hotel.pdf');
+            $path = public_path('manuales/manual_hotel.pdf');
         } elseif (Auth::user()->isRole('intur')) {
-            $path = storage_path('manuales/manual_intur.pdf');
+            $path = public_path('manuales/manual_intur.pdf');
         } else {
             return back();
         }
