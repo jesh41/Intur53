@@ -10,9 +10,16 @@
 
                         <div class="card-content">
                             <h3 class="card-title">Ayuda</h3>
-                            Manual de usuario<br>
-                            Modulos que posee el sistema<br>
-                            En desarrollo<br>
+                            Bienvenido a la seccion de ayuda<br>
+                            FAQ<br>
+                            Para decargar el manual version PDF, dar clik en el boton de descarga<br>
+                            Link de descarga<br>
+                            <a href="{{url("/descargar_manual")}}" target="_blank">
+                                <button class="btn btn-info btn-just-icon" rel="tooltip"
+                                        data-placement="right"
+                                        title="Descargar Manual"><i class="material-icons">cloud_download</i>
+                                </button>
+                            </a>
                         </div>
 
                     </div>

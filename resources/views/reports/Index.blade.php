@@ -114,7 +114,7 @@
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>Estadia promedio de Huespedes Extrajeros/Nacionales por año y mes</td>
+                                    <td>Estadia promedio de Huespedes Extranjeros/Nacionales por año y mes</td>
 
                                     <td>
                                         <button class="btn  btn-info btn-sm "

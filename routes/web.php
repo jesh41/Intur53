@@ -14,6 +14,7 @@
 use Illuminate\Support\Facades\Input;
 
 
+
 Route::get('/', function () {
     if (Auth::guest()) {
         return view('/auth/login');
@@ -29,6 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/acerca', 'HomeController@acerca')->name('acerca');
     Route::get('/ayuda', 'HomeController@ayuda')->name('ayuda');
+
+    Route::get('/descargar_manual', 'HomeController@descargarmanual');
+
     Route::get('/user', 'AdminController@edituser');
     //modulo reporteria
     Route::get('/reports', 'ReportController@index')->name('reports');
