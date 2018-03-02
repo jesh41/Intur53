@@ -46,11 +46,11 @@ class HomeController extends Controller
     {
 
         if (Auth::user()->isRole('administrador')) {
-            $path = storage_path('archivos/manual_admin.pdf');
+            $path = storage_path('manuales/manual_admin.pdf');
         } elseif (Auth::user()->isRole('hotel')) {
-            $path = storage_path('archivos/manual_hotel.pdf');
+            $path = storage_path('manuales/manual_hotel.pdf');
         } elseif (Auth::user()->isRole('intur')) {
-            $path = storage_path('archivos/manual_intur.pdf');
+            $path = storage_path('manuales/manual_intur.pdf');
         } else {
             return back();
         }
