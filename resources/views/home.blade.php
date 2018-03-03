@@ -9,7 +9,8 @@
                     <div class="card">
 
                         <div class="card-content">
-                            <h3 class="card-title">Inicio</h3>
+                            <h3 class="card-title">Bienvenido {{ Auth::user()->name }} al sistema de indicadores
+                                estadisticos hotelero</h3>
                             <p>Sistema de indicadores estadisticos en hoteles, aparta hoteles y alojamientos turisticos
                                 (5 a 1 Estrellas), de managua; tiene como objetivo crear indicadores en tiempo oportuno
                                 sobre el impacto y desarrollo del sector hotelero, de esta manera se podra emplear de

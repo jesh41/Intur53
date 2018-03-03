@@ -24,6 +24,15 @@ Route::get('/', function () {
 })->name('home2');
 
 Auth::routes();
+
+Route::get('/register', function () {
+    if (Auth::guest()) {
+        return view('/auth/login');
+    } else {
+        return view('home');
+    }
+})->name('home2');
+
 Route::group(['middleware' => 'auth'], function () {
 
 	//pagina inicio

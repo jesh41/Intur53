@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Be right back.</title>
+    <title>ERROR.</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -41,6 +41,7 @@
 <div class="container">
     <div class="content">
         <div class="title">ERROR 404</div>
+        RUTA INCORRECTA
     </div>
 </div>
 </body>
