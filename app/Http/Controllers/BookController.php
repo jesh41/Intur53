@@ -138,7 +138,7 @@ public function anular_libro(Request $request){
             $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
 
             if ($r1) {
-                //data esta leyendo 3 filas null
+                //data esta leyendo 3 filas null, validacion uno localiza hoja intur
                 $data = Excel::selectSheets('INTUR')->load($ruta, function ($reader) {
                 })->get();
                 if (! empty($data) && $data->count()) {
@@ -152,7 +152,7 @@ public function anular_libro(Request $request){
                         "fsalida",
                         "ndormidas",
                         "motivo",
-                    ];
+                    ];//validacon 2 compara encabezados
                     if ($encabezados == $excelheader) {
                         $conteo = $data->count();
                         $ultimo = Book::all()->pluck('id')->last();
@@ -166,7 +166,7 @@ public function anular_libro(Request $request){
                         $t = 0;
                         $d = 0;
                         foreach ($data->toArray() as $row) {
-                            if (! empty($row)) {
+                            if (! empty($row)) {//validacion 3, valores nulos en fila
                                 if (empty($row['identificacion']) || (empty($row['nombre'])) || (empty($row['pais'])) || (empty($row['sexo'])) || (empty($row['fentrada'])) || (empty($row['fsalida'])) || (empty($row['ndormidas'])) || (empty($row['motivo']))) {
                                     $c2[] = (string) $t + 2;
                                     $cadena = implode(',', $c2);
@@ -179,39 +179,46 @@ public function anular_libro(Request $request){
                         if (empty($mensaje)) {
                             foreach ($data->toArray() as $row) {
                                 if (! empty($row)) {
-                                    $pais = Country::where('country', 'LIKE', '%'.$row['pais'].'%')->get()->first();
-                                    $sexo = Sex::where('sexo', 'LIKE', '%'.$row['sexo'].'%')->get()->first();
-                                    $motivo = Reason::where('motivo', 'LIKE', '%'.$row['motivo'].'%')->get()->first();
+                                    $paisformat = trim($row['pais']);//limpiamos espacio derecha e izquierda
+                                    $sexoformat = preg_replace('[\s+]', "", $row['sexo']);//eliminamos los espacios en toda la cadena
+                                    $motivoformat = preg_replace('[\s+]', "", $row['motivo']);//eliminamos los espacios en toda la cadena
+
+                                    $pais = Country::where('country', 'LIKE', '%'.$paisformat.'%')->get()->first();
+                                    $sexo = Sex::where('sexo', 'LIKE', '%'.$sexoformat.'%')->get()->first();
+                                    $motivo = Reason::where('motivo', 'LIKE', '%'.$motivoformat.'%')->get()->first();
                                     $fechaentrada = str_replace('/', '-', $row['fentrada']);
                                     $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
                                     $fechasalida = str_replace('/', '-', $row['fsalida']);
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-                                    $FilasArray[] = [
-                                        'Identificacion' => $row['identificacion'],
-                                        'Nombre' => $row['nombre'],
-                                        'pais_id' => $pais->id,
-                                        'Sexo_id' => $sexo->id,
-                                        'Fechaentrada' => $fechaentrada,
-                                        'Fechasalida' => $fechasalida,
-                                        'Noches' => $row['ndormidas'],
-                                        'motivo_id' => $motivo->id,
-                                        'book_id' => $ultimo + 1,
-                                        'created_at' => date('Y-m-d H:i:s'),
-                                    ];
-                                    if ((is_null($pais))) {
+
+                                    if (is_null($pais)) {//validacion sobre pais
                                         $c3[] = (string) $d + 2;
                                         $cadena3 = implode(',', $c3);
                                         $mensaje3 = " PAIS FILA $cadena3";
                                     }
-                                    if ((is_null($sexo))) {
+                                    if (is_null($sexo)) {//validacion sobre sexo
                                         $c4[] = (string) $d + 2;
                                         $cadena4 = implode(',', $c4);
                                         $mensaje4 = " SEXO FILA $cadena4";
                                     }
-                                    if ((is_null($motivo))) {
+                                    if (is_null($motivo)) {//validacion sobre motivo
                                         $c5[] = (string) $d + 2;
                                         $cadena5 = implode(',', $c5);
                                         $mensaje5 = " MOTIVO FILA $cadena5";
+                                    }
+                                    if (! is_null($motivo) and ! is_null($sexo) and ! is_null($pais)) {
+                                        $FilasArray[] = [
+                                            'Identificacion' => $row['identificacion'],
+                                            'Nombre' => $row['nombre'],
+                                            'pais_id' => $pais->id,
+                                            'Sexo_id' => $sexo->id,
+                                            'Fechaentrada' => $fechaentrada,
+                                            'Fechasalida' => $fechasalida,
+                                            'Noches' => $row['ndormidas'],
+                                            'motivo_id' => $motivo->id,
+                                            'book_id' => $ultimo + 1,
+                                            'created_at' => date('Y-m-d H:i:s'),
+                                        ];
                                     }
                                     $d++;
                                 }
