@@ -115,7 +115,7 @@ material = {
                                 .appendTo('#form_anulacion');
                             $('form').submit();
                         } else {
-                            reject('Digitar año')
+                            reject('Escoger motivo')
                         }
                     })
                 }
