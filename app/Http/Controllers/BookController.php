@@ -32,8 +32,26 @@ class BookController extends Controller
 
    public function index()
     {
-        $anio[0] = date('Y');
-        $anio[1] = date('Y') - 1;
+
+        $i = 0;
+        $usuario = Auth::user()->id;
+        $mes_actual = date('m');
+        $anio_actual = date('Y');
+        $anio_anterior = $anio_actual - 1;
+        $valida_anio_actual = DB::select("call validacion_mes($anio_actual,$usuario,$mes_actual)");
+        $valida_anio_anterior = DB::select("call validacion_anio($anio_anterior,$usuario,$mes_actual)");
+        //valido si es esta en el año actual, solo muestre meses menores al mes actual
+        if (! empty($valida_anio_actual)) {
+            $anio[$i] = date('Y');
+            $i++;
+        }
+        if (! empty($valida_anio_anterior)) {
+            $anio[$i] = date('Y') - 1;
+            $i++;
+        }
+
+
+
         if (Auth::user()->isRole('administrador')) {
             $books = Book::all();
 
