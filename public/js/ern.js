@@ -80,13 +80,13 @@ material = {
 
     },
 
-    showSwal: function (type, libro, token) {
+    showSwal: function (type, id, token) {
         if (type == 'anular') {
             swal({
-                title: 'Desea anular el libro ' + libro + '?',
+                title: 'Desea anular el libro ' + id + '?',
                 html: '  <form method="post" action="/anular_libro" id="form_anulacion"> ' +
                 '<input type="hidden" name="_token"  value=' + token + '>' +
-                '<input type="hidden" name="id_book" value=' + libro + '>' +
+                '<input type="hidden" name="id_book" value=' + id + '>' +
                 '</form>',
                 type: 'warning',
                 showCancelButton: true,
@@ -111,7 +111,7 @@ material = {
                                 .attr('value', value)
                                 .appendTo('#form_anulacion');
                             $('<input />').attr('type', 'hidden').attr('name', 'id_book')
-                                .attr('value', libro)
+                                .attr('value', id)
                                 .appendTo('#form_anulacion');
                             $('form').submit();
                         } else {
@@ -123,10 +123,9 @@ material = {
         } else if (type == 'reporte') {
             swal({
                 title: 'Digitar Año',
-                html: '<form method="post" action="/reporte/' + libro + '" id="form_year">' +
+                html: '<form method="post" action="/reporte/' + id + '" id="form_year">' +
                 '<input type="hidden" name="_token"  value=' + token + '>' +
                 '</form>',
-
                 type: 'question',
                 showCancelButton: true,
                 showConfirmButton: true,
@@ -154,11 +153,58 @@ material = {
                         }
                     })
                 }
-            }).catch(swal.noop);//.then(function () {
-            //    swal.close()
-            //});
+            }).catch(swal.noop);
 
+        } else if (type == 'desactivar') {
+            swal({
+                title: 'Desactivar usuario',
+                html: '  <form method="post" action="/desactivar" id="form_desactivar"> ' +
+                '<input type="hidden" name="_token"  value=' + token + '>' +
+                '<input type="hidden" name="id_user" value=' + id + '>' +
+                '</form>',
+                type: 'question',
+                showCancelButton: true,
+                showConfirmButton: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                confirmButtonText: "Desactivar",
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: "btn btn-danger",
+                cancelButtonText: 'CANCELAR',
+                buttonsStyling: false,
+            }).then(
+                function () {
+                    $('form').submit();
+                },
+                function () {
+                    return false;
+                });
+        } else if (type == 'activar') {
+            swal({
+                title: 'Activar usuario',
+                html: '  <form method="post" action="/activar" id="form_activar"> ' +
+                '<input type="hidden" name="_token"  value=' + token + '>' +
+                '<input type="hidden" name="id_user" value=' + id + '>' +
+                '</form>',
+                type: 'question',
+                showCancelButton: true,
+                showConfirmButton: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                confirmButtonText: "Desactivar",
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: "btn btn-danger",
+                cancelButtonText: 'CANCELAR',
+                buttonsStyling: false,
+            }).then(
+                function () {
+                    $('form').submit();
+                },
+                function () {
+                    return false;
+                });
         }
+
 
     },
 

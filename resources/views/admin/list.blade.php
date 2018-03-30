@@ -276,13 +276,23 @@
                                                 <td>{{ $usuario->email }}</td>
                                                 <td class="td-actions text-centert">
 
-                                                    <button type="button" class="btn  btn-default btn-xs"
+                                                    <button type="button" class="btn  btn-info btn-xs"
+                                                            title="Cambiar rol"
                                                             onclick="material.enviar({{ $usuario->id }})"
                                                             data-toggle="modal" data-target="#cambiorol"><i
-                                                                class="fa fa-fw fa-edit"></i></button>
-                                                    <button type="button" class="btn  btn-danger btn-xs"
-                                                            onclick=""><i
-                                                                class="fa fa-fw fa-remove"></i></button>
+                                                                class="material-icons">mode_edit</i></button>
+                                                    @if ($usuario->active==1)
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                                title="desactivar"
+                                                                onclick="material.showSwal('desactivar','{{$usuario->id }}','<?php echo csrf_token(); ?>')">
+                                                            <i class="material-icons">clear</i></button>
+                                                    @else
+                                                        <button type="button" class="btn btn-success btn-sm"
+                                                                title="activar"
+                                                                onclick="material.showSwal('activar','{{$usuario->id }}','<?php echo csrf_token(); ?>')">
+                                                            <i class="material-icons">done</i></button>
+                                                    @endif
+
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -39,13 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/acerca', 'HomeController@acerca')->name('acerca');
     Route::get('/ayuda', 'HomeController@ayuda')->name('ayuda');
-
     Route::get('/descargar_manual', 'HomeController@descargarmanual');
-
     Route::get('/user', 'AdminController@edituser');
+
     //modulo reporteria
     Route::get('/reports', 'ReportController@index')->name('reports');
-
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios')->name('listado');
         Route::post('/crear_usuario', 'AdminController@crear_usuario');
@@ -55,7 +53,10 @@ Route::group(['middleware' => 'auth'], function () {
             $muni = \App\Municipio::where("id_city", "=", $dep_id)->get();
             return Response::json($muni);
         });
-
+        //desactivar usuario
+        Route::post('/desactivar', 'AdminController@desactivar_user');
+        //activar usuario
+        Route::post('/activar', 'AdminController@activar_user');
         //editar usuario
         Route::post('cambiorol', 'AdminController@editar_usuario_admin');
         //borrado usuario

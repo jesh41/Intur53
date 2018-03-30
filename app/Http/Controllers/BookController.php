@@ -28,9 +28,7 @@ class BookController extends Controller
         $this->middleware('auth');
     }
 
-
-
-   public function index()
+    public function index()
     {
 
         $i = 0;
@@ -75,7 +73,7 @@ class BookController extends Controller
 
         return view('/book/book-anulados')->with("books", $books);
     }
-   
+
 public function anular_libro(Request $request){
     $idbook = $request->input("id_book");
     $user = Auth::user()->id;
@@ -288,12 +286,10 @@ public function descargar_libro($id){
     $bo = book::find($id);
     $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
     Excel::create($name, function ($excel) use ($id) {
- 
             $excel->sheet('Huespedes', function($sheet) use($id) {
-
                 $sheet->row(1,['Identificacion','Nombre','Pais','Sexo','Fechaentrada','Fechasalida','Noches','Motivo']);
                 $datos =Bookdetail::where('book_id',$id)->get();
-                $data=[];
+                //    $data=[];
                 foreach ($datos as $d) {
                   $row=[];
                   $row[0]=$d->Identificacion;
@@ -306,9 +302,7 @@ public function descargar_libro($id){
                   $row[7]=$d->motivo->motivo;
                   $sheet->appendrow($row);
                 }
-                
                 $sheet->setOrientation('landscape');
- 
             });
         })->download('xls');
    }

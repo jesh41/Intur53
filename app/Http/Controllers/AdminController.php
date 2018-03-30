@@ -36,13 +36,47 @@ class AdminController extends Controller
     
     public function listado_usuarios()
     {
-    //presenta un listado de usuarios paginados de 25 a 25
+        //presenta un listado de usuarios
         $usuarios = User::all();
         $roles = Role::all();
         $departamento = City::all();
         $catho = Cathotel::all();
         $acti = Catactivity::all();
         return view("/admin/list")->with("usuarios", $usuarios)->with("roles", $roles)->with("depto", $departamento)->with("catho", $catho)->with("acti", $acti);
+    }
+
+    //funcion para desactivar usuarios
+    public function desactivar_user(Request $request)
+    {
+        $iduser = $request->input("id_user");
+        $usuario = User::find($iduser);
+        $a = Auth::user()->id;
+        if ($a == $iduser) {
+            session()->put('error', 'No puede desactivar su mismo usuario');
+        } else {
+            $usuario->active = 0;
+            $usuario->save();
+            session()->put('success', 'Usuario desactivado');
+        }
+
+        return back();
+    }
+
+    //funcion para activar usuarios
+    public function activar_user(Request $request)
+    {
+        $iduser = $request->input("id_user");
+        $usuario = User::find($iduser);
+        $a = Auth::user()->id;
+        if ($a == $iduser) {
+            session()->put('error', 'No puede activar su mismo usuario');
+        } else {
+            $usuario->active = 1;
+            $usuario->save();
+            session()->put('success', 'Usuario activado');
+        }
+
+        return back();
     }
 
 

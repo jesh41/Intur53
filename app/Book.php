@@ -12,26 +12,24 @@ class Book extends Model
     //
       protected $fillable = ['Obersevacion','Mes','Anio','FechaElaborado',];
 
-
- public function user()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-
- public function book()
+    public function book()
     {
         return $this->hasMany('App\Bookdetail');
-    }
-
-    public function annulment()
-    {
-        return $this->belongsTo('App\Annulment');
     }
 
     public function month()
     {
         return $this->hasOne('App\Month','id','Mes_id');
+    }
+
+    public function annulment()
+    {
+        return $this->belongsTo('App\Annulment');
     }
 
 
