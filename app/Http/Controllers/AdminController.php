@@ -212,33 +212,6 @@ class AdminController extends Controller
         return back();
     }
 
-	//borrado usuario
-	public function borrar_usuario(Request $request){
-        $idusuario=$request->input("id_usuario");
-        $usuario=User::find($idusuario);
-        if($usuario->delete()){
-             return view("mensajes.msj_usuario_borrado")->with("msj","Usuario borrado correctamente") ;
-        }
-        else
-        {
-            return view("mensajes.mensaje_error")->with("msj","..Hubo un error al agregar ; intentarlo nuevamente..");
-        }
-        }
-
-    //accesso usuario correo y pass
-	public function editar_acceso(Request $request){
-         $idusuario=$request->input("id_usuario");
-         $usuario=User::find($idusuario);
-         $usuario->email=$request->input("email");
-         $usuario->password= bcrypt( $request->input("password") ); 
-          if( $usuario->save()){
-        return view("mensajes.msj_usuario_actualizado")->with("msj","Usuario actualizado correctamente")->with("idusuario",$idusuario) ;
-         }
-          else
-          {
-        return view("mensajes.mensaje_error")->with("msj","...Hubo un error al agregar ; intentarlo nuevamente ...") ;
-          }
-		}
 
 
 
@@ -355,8 +328,7 @@ class AdminController extends Controller
 //bitacora
      public function bitacora()
     {
-
-        $annulments = Annulment::paginate(10);
+        $annulments = Annulment::all();
         return view('/admin/bitacora')->with("annulments",$annulments);
     }
 

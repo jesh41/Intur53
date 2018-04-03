@@ -134,8 +134,6 @@
 
 
                                 </div>
-
-
                                 <div class="input-group" id="text-direc" style="visibility:hidden">
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">edit_location</i>
@@ -143,8 +141,6 @@
                                     <textarea class="form-control" rows="2" placeholder="Direccion" id="direccion"
                                               name="direccion" maxlength="120"></textarea>
                                 </div>
-
-
                             </div>
 
                             <div class="modal-footer text-center">
@@ -156,8 +152,6 @@
                             </div>
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -199,7 +193,7 @@
                             </div>
 
                             <div class="modal-footer text-center">
-                                <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
+                            <!--<input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">-->
                                 <button type="submit" class="btn btn-primary ">Asignar
                                 </button>
                                 <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
@@ -276,11 +270,11 @@
                                                 <td>{{ $usuario->email }}</td>
                                                 <td class="td-actions text-centert">
 
-                                                    <button type="button" class="btn  btn-info btn-xs"
+                                                <!--   <button type="button" class="btn  btn-info btn-xs"
                                                             title="Cambiar rol"
                                                             onclick="material.enviar({{ $usuario->id }})"
                                                             data-toggle="modal" data-target="#cambiorol"><i
-                                                                class="material-icons">mode_edit</i></button>
+                                                                class="material-icons">mode_edit</i></button>-->
                                                     @if ($usuario->active==1)
                                                         <button type="button" class="btn btn-danger btn-sm"
                                                                 title="desactivar"

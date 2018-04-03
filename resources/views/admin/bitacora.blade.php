@@ -11,12 +11,10 @@
                         </div>
                         <div class="card-content">
                             <h4 class="card-title">Anulaciones</h4>
-
-
                             <div class="tab-content">
                                 <div class="tab-pane active table-responsive ">
-
-                                    <table class="table table-hover table-striped" cellspacing="0" width="100%">
+                                    <table id="datatables" class="table table-striped table-no-bordered table-hover"
+                                           cellspacing="0" width="100%" style="width:100%">
                                         <thead role="row" class="text-primary">
                                         <tr>
                                             <th>id</th>
@@ -40,7 +38,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{ $annulments->links() }}
+
                             </div>
                         </div>
                     </div>
