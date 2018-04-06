@@ -163,7 +163,6 @@ public function anular_libro(Request $request){
             $nombre_original = 'user'.$autor.'.'.$extension;//renombra el archivo subido
             $r1 = Storage::disk('archivos')->put($nombre_original, \File::get($archivo));//guardar en el disco
             $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
-
             if ($r1) {
                 //data esta leyendo 3 filas null, validacion uno localiza hoja intur
                 $data = Excel::selectSheets('INTUR')->load($ruta, function ($reader) {
