@@ -145,6 +145,17 @@ public function anular_libro(Request $request){
 	{
        $archivo = $request->file('archivo');      
        $extension=$archivo->getClientOriginalExtension();
+        //carga de catalogos
+        $catpais = Country::all()->toArray();
+        $catsex = Sex::all()->toArray();
+        $catreason = Reason::all()->toArray();
+        $columnapais = array_column($catpais, 'country');
+        $columnamotivo = array_column($catreason, 'motivo');
+        $columnasex = array_column($catsex, 'sexo');
+        $ultimo = Book::all()->pluck('id')->last();
+        if (is_null($ultimo)) {
+            $ultimo = 0;
+        }
 
         if ($extension == 'xlsx' or $extension == 'xls')//valido el tipo de archivo
         {
@@ -171,76 +182,78 @@ public function anular_libro(Request $request){
                     ];//validacon 2 compara encabezados
                     if ($encabezados == $excelheader) {
                         $conteo = $data->count();
-                        $ultimo = Book::all()->pluck('id')->last();
-                        if (is_null($ultimo)) {
-                            $ultimo = 0;
-                        }
                         $mensaje = null;
                         $mensaje5 = null;
                         $mensaje3 = null;
                         $mensaje4 = null;
                         $t = 0;
                         $d = 0;
-                        foreach ($data->toArray() as $row) {
-                            if (! empty($row)) {//validacion 3, valores nulos en fila
-                                if (empty($row['identificacion']) || (empty($row['nombre'])) || (empty($row['pais'])) || (empty($row['sexo'])) || (empty($row['fentrada'])) || (empty($row['fsalida'])) || (empty($row['ndormidas'])) || (empty($row['motivo']))) {
-                                    $c2[] = (string) $t + 2;
-                                    $cadena = implode(',', $c2);
-                                    $mensaje = "EXISTEN VALORES NULOS, REVISAR FILA $cadena";
-                                    session()->put('warning', $mensaje);
-                                }
-                                $t++;
-                            }
-                        }
+                        //foreach ($data->toArray() as $row) {
+                        //      if (! empty($row)) {//validacion 3, valores nulos en fila
+                        //          if (empty($row['identificacion']) || (empty($row['nombre'])) || (empty($row['pais'])) || (empty($row['sexo'])) || (empty($row['fentrada'])) || (empty($row['fsalida'])) || (empty($row['ndormidas'])) || (empty($row['motivo']))) {
+                        //             $c2[] = (string) $t + 2;
+                        //              $cadena = implode(',', $c2);
+                        //             $mensaje = "EXISTEN VALORES NULOS, REVISAR FILA $cadena";
+                        //              session()->put('warning', $mensaje);
+                        //         }
+                        //         $t++;
+                        //      }
+                        // }
                         if (empty($mensaje)) {
                             foreach ($data->toArray() as $row) {
                                 if (! empty($row)) {
-                                    $paisformat = trim($row['pais']);//limpiamos espacio derecha e izquierda
-                                    $sexoformat = preg_replace('[\s+]', "", $row['sexo']);//eliminamos los espacios en toda la cadena
-                                    $motivoformat = preg_replace('[\s+]', "", $row['motivo']);//eliminamos los espacios en toda la cadena
 
-                                    $pais = Country::where('country', 'LIKE', '%'.$paisformat.'%')->get()->first();
-                                    $sexo = Sex::where('sexo', 'LIKE', '%'.$sexoformat.'%')->get()->first();
-                                    $motivo = Reason::where('motivo', 'LIKE', '%'.$motivoformat.'%')->get()->first();
+
+                                    $paisformat = ucwords(trim($row['pais']));//limpiamos espacio derecha e izquierda
+                                    $sexoformat = strtoupper(preg_replace('[\s+]', "", $row['sexo']));//eliminamos los espacios en toda la cadena
+                                    $motivoformat = ucwords(preg_replace('[\s+]', "", $row['motivo']));//eliminamos los espacios en toda la cadena
+
+                                    $paisid = array_search($paisformat, $columnapais);
+                                    $sexoid = array_search($sexoformat, $columnasex);
+                                    $motivoid = array_search($motivoformat, $columnamotivo);
+
+                                    //$pais = Country::where('country', 'LIKE', '%'.$paisformat.'%')->get()->first();
+                                    //$sexo = Sex::where('sexo', 'LIKE', '%'.$sexoformat.'%')->get()->first();
+                                    //$motivo = Reason::where('motivo', 'LIKE', '%'.$motivoformat.'%')->get()->first();
                                     $fechaentrada = str_replace('/', '-', $row['fentrada']);
                                     $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
                                     $fechasalida = str_replace('/', '-', $row['fsalida']);
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
 
-                                    if (is_null($pais)) {//validacion sobre pais
+                                    if ($paisid === false) {//validacion sobre pais
                                         $c3[] = (string) $d + 2;
                                         $cadena3 = implode(',', $c3);
                                         $mensaje3 = " PAIS FILA $cadena3";
                                     }
-                                    if (is_null($sexo)) {//validacion sobre sexo
+                                    if ($sexoid === false) {//validacion sobre sexo
                                         $c4[] = (string) $d + 2;
                                         $cadena4 = implode(',', $c4);
                                         $mensaje4 = " SEXO FILA $cadena4";
                                     }
-                                    if (is_null($motivo)) {//validacion sobre motivo
+                                    if ($motivoid === false) {//validacion sobre motivo
                                         $c5[] = (string) $d + 2;
                                         $cadena5 = implode(',', $c5);
                                         $mensaje5 = " MOTIVO FILA $cadena5";
                                     }
-                                    if (! is_null($motivo) and ! is_null($sexo) and ! is_null($pais)) {
+                                    if ($motivoid == true and $sexoid == true and $paisid == true) {//! is_null($motivo) and ! is_null($sexo) and ! is_null($pais)) {
                                         $FilasArray[] = [
                                             'Identificacion' => $row['identificacion'],
                                             'Nombre' => $row['nombre'],
-                                            'pais_id' => $pais->id,
-                                            'Sexo_id' => $sexo->id,
+                                            'pais_id' => $paisid + 1,// $pais->id,
+                                            'Sexo_id' => $sexoid + 1,//$sexo->id,
                                             'Fechaentrada' => $fechaentrada,
                                             'Fechasalida' => $fechasalida,
                                             'Noches' => $row['ndormidas'],
-                                            'motivo_id' => $motivo->id,
+                                            'motivo_id' => $motivoid + 1,//$motivo->id,
                                             'book_id' => $ultimo + 1,
                                             'created_at' => date('Y-m-d H:i:s'),
                                         ];
                                     }
                                     $d++;
                                 }
+
                             }
                             if (! empty($c3) || ! empty($c4) || ! empty($c5)) {
-
                                 $combo = "Revisar $mensaje3"."$mensaje4"."$mensaje5";
                                 session()->put('warning', $combo);
                             } else {
@@ -272,17 +285,15 @@ public function anular_libro(Request $request){
                        {
                            session()->put('error', 'ERROR NO SE PUDO CARGAR EL ARCHIVO EN EL SERVIDOR');
                        }
-                       
         }
         else
         {
             session()->put('warning', 'ERROR Revisar que sea formato excel');
         }
-
         return back();
       }
 
-public function descargar_libro($id){
+    public function descargar_libro($id){
     $bo = book::find($id);
     $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
     Excel::create($name, function ($excel) use ($id) {
