@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
 //grupos
     Route::group(['middleware' => 'permissionshinobi:book'], function () {
         ///Modulo Book
-        Route::get('/book', 'BookController@index')->name('book');;
+        Route::get('/book', 'BookController@index')->name('book');
         //descarga
         Route::get('descargar/{idusu}', 'BookController@descargar_libro');
     });
