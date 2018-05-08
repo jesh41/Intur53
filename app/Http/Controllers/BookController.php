@@ -214,7 +214,6 @@ class BookController extends Controller
             $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
             $idfila = 0;
             $mensaje = null;
-            $response = [];
             $idarray = 0;
             if ($r1) {
                 //data esta leyendo 3 filas null, validacion uno localiza hoja intur
@@ -237,7 +236,7 @@ class BookController extends Controller
                                     $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
                                     $fechasalida = str_replace('/', '-', $row['fsalida']);
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-                                if ($paisid != false and $sexoid = ! false and $motivoid != false) {
+                                if ($paisid !== false and $sexoid !== false and $motivoid !== false) {
                                     $FilasArray[] = [
                                         'Identificacion' => $row['identificacion'],
                                         'Nombre' => $row['nombre'],
@@ -251,7 +250,15 @@ class BookController extends Controller
                                         'created_at' => date('Y-m-d H:i:s'),
                                     ];
                                 } else {
-                                    $Response[] = array('Fila' => $idfila + 2);
+                                    if ($paisid === false) {
+                                        $Response[] = ['Pais Fila' => $idfila + 2];
+                                    }
+                                    if ($sexoid === false) {
+                                        $Response[] = ['Sexo Fila' => $idfila + 2];
+                                    }
+                                    if ($motivoid === false) {
+                                        $Response[] = ['Motivo Fila' => $idfila + 2];
+                                    }
                                 }
                             } else {
                                 // session()->put('warning', 'Revisar errores');
@@ -264,15 +271,15 @@ class BookController extends Controller
                     if ($bandera_enc == true and empty($Response)) { //mensaje
                         session()->put('success', 'LIBRO CARGADO');
                         //aca guardar
-                        // $libro = new Book;
-                        //  $libro->Mes_id = $request->input("mes");
-                        //  $libro->anio = $request->input("anio");;
-                        //  $libro->estado = 'A';
-                        //   $libro->Observacion = $request->input("observacion");
-                        //  $libro->FechaElaborado = date("Y-m-d");
-                        //   $libro->user_id = $autor;
-                        //   $libro->save();
-                        //  Bookdetail::insert($FilasArray);
+                        $libro = new Book;
+                        $libro->Mes_id = $request->input("mes");
+                        $libro->anio = $request->input("anio");;
+                        $libro->estado = 'A';
+                        $libro->Observacion = $request->input("observacion");
+                        $libro->FechaElaborado = date("Y-m-d");
+                        $libro->user_id = $autor;
+                        $libro->save();
+                        Bookdetail::insert($FilasArray);
                     } else {
                         session()->put('error');
                     }
@@ -286,7 +293,7 @@ class BookController extends Controller
             session()->put('warning', 'REVISAR QUE SEA FORMATO EXCEL');
         }
 
-        if (! empty($Response)) {
+        if (!empty($Response)) {
             session()->put('error', 'Descargar errores');
             $nombre_original = 'errores_ID'.$autor.'.txt';
             $errores = Storage::disk('archivos')->put($nombre_original, serialize($Response));
@@ -300,16 +307,20 @@ class BookController extends Controller
         $autor = Auth::user()->id;
         $nombre_original = 'errores_ID'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
-        $d = File::get($ruta);
-        $Datos = unserialize($d);
-        $filename = 'Errores.txt';
-        $headers = array(
-            'Content-Type' => 'plain/txt',
-            'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-            'Content-Length' => sizeof($Datos),
-        );
+        if(File::exists($ruta)) {
+            $d = File::get($ruta);
+            $Datos = unserialize($d);
+            $filename = 'Errores.txt';
+            $headers = [
+                'Content-Type' => 'plain/txt',
+                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+                'Content-Length' => sizeof($Datos),
+            ];
 
-        return \Response::make($Datos, 200, $headers);
+            return \Response::make($Datos, 200, $headers);
+        } else {
+            return redirect('home');
+        }
     }
 
     public function descargar_libro($id){
