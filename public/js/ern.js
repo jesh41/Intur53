@@ -155,7 +155,9 @@ material = {
                 }
             }).catch(swal.noop);
 
-        } else if (type == 'desactivar') {
+        }
+
+        else if (type == 'desactivar') {
             swal({
                 title: 'Desactivar usuario',
                 html: '  <form method="post" action="/desactivar" id="form_desactivar"> ' +

@@ -94,12 +94,13 @@
                         </div>
                         <div class="card-content">
                             @can('subir')
+                                @if($anio[0]!=0)
 
-                                <!--  <button class="btn btn-primary btn-sm btn-round"style="float: right" onclick="material.showSwal('subir','0','<?php echo csrf_token(); ?>')">-->
                                     <button class="btn btn-primary btn-sm btn-round" style="float: right"
                                             data-toggle="modal" data-target="#uploadModal">
                                         <i class="material-icons">file_upload</i>Subir
                                 </button>
+                                @endif
                             @endcan
                             <h4 class="card-title">Libros</h4>
 

@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+      "barryvdh/laravel-debugbar": "~2.4",
         "caffeinated/shinobi": "^3.0.6",
         "caouecs/laravel-lang": "~3.0",
         "illuminate/config": "5.3.*",

@@ -91,6 +91,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/anulados', 'BookController@anulados')->name('anulados');
         Route::post('/anular_libro', 'BookController@anular_libro');
 
+        Route::get('/errores', 'BookController@descargar_errores');
         //obtener meses
         route::get('/ajax-submes', function () {
             $año_seleccionado = Input::get('id');

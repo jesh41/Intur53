@@ -169,7 +169,7 @@
                     <script>document.write(new Date().getFullYear())</script>
                     Desarrollado por
                     <a href="#">
-                        UNI Monografia 2017
+                        UNI Monografia 2018
                     </a>
                 </p>
             </div>
@@ -216,7 +216,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         //    Activate bootstrap-select
-
 
         $('#datatables').DataTable({
             "pagingType": "full_numbers",
@@ -406,7 +405,9 @@
     @if(Session::has('error'))
     $.notify({
         icon: "add_alert",
-        message: "{{ Session::get('error') }}"
+        message: "Revisar errores, click aca para visualizarlos",
+        url: "/errores",
+        target: "_blank"
     }, {
         type: 'danger',
         timer: 4000,
