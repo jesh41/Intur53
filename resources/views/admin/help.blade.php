@@ -16,7 +16,7 @@
                             Como anular un libro.<br>
                             Como generar un reporte.<br>
 
-                            Para decargar el manual version PDF, dar clik en el boton de descarga
+                            Para decargar el manual version PDF, dar clik en el boton descarga
                             <a href="{{url("/descargar_manual")}}" target="_blank">
                                 <button class="btn btn-info btn-just-icon" rel="tooltip"
                                         data-placement="right"
