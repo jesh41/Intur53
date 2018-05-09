@@ -184,7 +184,7 @@ class BookController extends Controller
     {
         $bandera_enca = false;
         $encabezados = ["identificacion", "nombre", "pais", "sexo", "fentrada", "fsalida", "ndormidas", "motivo",];
-        if ($encabezados = $datos) {
+        if ($encabezados == $datos) {
             $bandera_enca = true;
         }
 
@@ -222,11 +222,12 @@ class BookController extends Controller
                 if (! empty($data) && $data->count()) {
                     $excelheader = $data->first()->keys()->toArray();
                     $bandera_enc = $this->validar_encabezado($excelheader);
-                    foreach ($data->toArray() as $row) {
-                        if (! empty($row)) {
-                            $bandera_datos = $this->validar_registros($row);
-                            if ($bandera_datos['flag'] == false) {
-                                $paisformat = ucwords(trim($row['pais']));//limpiamos espacio derecha e izquierda
+                    if ($bandera_enc == true) {
+                        foreach ($data->toArray() as $row) {
+                            if (! empty($row)) {
+                                $bandera_datos = $this->validar_registros($row);
+                                if ($bandera_datos['flag'] == false) {
+                                    $paisformat = ucwords(trim($row['pais']));//limpiamos espacio derecha e izquierda
                                     $sexoformat = strtoupper(preg_replace('[\s+]', "", $row['sexo']));//eliminamos los espacios en toda la cadena
                                     $motivoformat = ucwords(preg_replace('[\s+]', "", $row['motivo']));//eliminamos los espacios en toda la cadena
                                     $paisid = array_search($paisformat, $columnapais);
@@ -236,39 +237,43 @@ class BookController extends Controller
                                     $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
                                     $fechasalida = str_replace('/', '-', $row['fsalida']);
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-                                if ($paisid !== false and $sexoid !== false and $motivoid !== false) {
-                                    $FilasArray[] = [
-                                        'Identificacion' => $row['identificacion'],
-                                        'Nombre' => $row['nombre'],
-                                        'pais_id' => $paisid + 1,// $pais->id,
-                                        'Sexo_id' => $sexoid + 1,//$sexo->id,
-                                        'Fechaentrada' => $fechaentrada,
-                                        'Fechasalida' => $fechasalida,
-                                        'Noches' => $row['ndormidas'],
-                                        'motivo_id' => $motivoid + 1,//$motivo->id,
-                                        'book_id' => $ultimo + 1,
-                                        'created_at' => date('Y-m-d H:i:s'),
-                                    ];
+                                    if ($paisid !== false and $sexoid !== false and $motivoid !== false) {
+                                        $FilasArray[] = [
+                                            'Identificacion' => $row['identificacion'],
+                                            'Nombre' => $row['nombre'],
+                                            'pais_id' => $paisid + 1,// $pais->id,
+                                            'Sexo_id' => $sexoid + 1,//$sexo->id,
+                                            'Fechaentrada' => $fechaentrada,
+                                            'Fechasalida' => $fechasalida,
+                                            'Noches' => $row['ndormidas'],
+                                            'motivo_id' => $motivoid + 1,//$motivo->id,
+                                            'book_id' => $ultimo + 1,
+                                            'created_at' => date('Y-m-d H:i:s'),
+                                        ];
+                                    } else {
+                                        if ($paisid === false) {
+                                            $Response[] = ['Pais Fila' => $idfila + 2];
+                                        }
+                                        if ($sexoid === false) {
+                                            $Response[] = ['Sexo Fila' => $idfila + 2];
+                                        }
+                                        if ($motivoid === false) {
+                                            $Response[] = ['Motivo Fila' => $idfila + 2];
+                                        }
+                                    }
                                 } else {
-                                    if ($paisid === false) {
-                                        $Response[] = ['Pais Fila' => $idfila + 2];
-                                    }
-                                    if ($sexoid === false) {
-                                        $Response[] = ['Sexo Fila' => $idfila + 2];
-                                    }
-                                    if ($motivoid === false) {
-                                        $Response[] = ['Motivo Fila' => $idfila + 2];
-                                    }
+                                    // session()->put('warning', 'Revisar errores');
+                                    $Response[] = $bandera_datos['Message'];
+                                    $Response[] = ['Fila' => $idfila + 2];
                                 }
-                            } else {
-                                // session()->put('warning', 'Revisar errores');
-                                $Response[] = $bandera_datos['Message'];
-                                $Response[] = array('Fila' => $idfila + 2);
                             }
+                            $idfila++;
                         }
-                        $idfila++;
+                    } else {
+                        session()->put('warning', 'ENCABEZADOS CON FORMATO ERRONEO');
                     }
-                    if ($bandera_enc == true and empty($Response)) { //mensaje
+
+                    if (empty($Response) and $bandera_enc == true) { //mensaje
                         session()->put('success', 'LIBRO CARGADO');
                         //aca guardar
                         $libro = new Book;
@@ -328,7 +333,16 @@ class BookController extends Controller
     $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
     Excel::create($name, function ($excel) use ($id) {
             $excel->sheet('Huespedes', function($sheet) use($id) {
-                $sheet->row(1,['Identificacion','Nombre','Pais','Sexo','Fechaentrada','Fechasalida','Noches','Motivo']);
+                $sheet->row(1, [
+                    'identificacion',
+                    'nombre',
+                    'pais',
+                    'Sexo',
+                    'fentrada',
+                    'fsalida',
+                    'ndormidas',
+                    'motivo',
+                ]);
                 $datos =Bookdetail::where('book_id',$id)->get();
                 //    $data=[];
                 foreach ($datos as $d) {
