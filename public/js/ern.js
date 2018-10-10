@@ -193,7 +193,7 @@ material = {
                 showConfirmButton: true,
                 allowOutsideClick: false,
                 allowEscapeKey: false,
-                confirmButtonText: "Desactivar",
+                confirmButtonText: "Activar",
                 confirmButtonClass: 'btn btn-success',
                 cancelButtonClass: "btn btn-danger",
                 cancelButtonText: 'CANCELAR',
