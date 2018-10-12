@@ -11,12 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* $this->call(catmestableseeder::class);
+        $this->call(catmestableseeder::class);
           $this->call(regionseeder::class);
-
           $this->call(catsex::class);
          $this->call(catreason::class);
          $this->call(activity::class);
-          $this->call(category::class);*/
+        $this->call(category::class);
     }
 }
