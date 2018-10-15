@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"/>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
     <!-- Scripts -->
@@ -211,7 +211,7 @@
 <script src="{{ asset('js/ern.js') }}"></script>
 
 <script src="{{asset('js/highcharts.js') }}"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
 <script type="text/javascript">
