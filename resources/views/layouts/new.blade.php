@@ -170,7 +170,7 @@
                     <script>document.write(new Date().getFullYear())</script>
                     Desarrollado por
                     <a href="#">
-                        UNI Monografia 2018
+                        UNI Monografia
                     </a>
                 </p>
             </div>

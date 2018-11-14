@@ -332,12 +332,12 @@ class BookController extends Controller
     $bo = book::find($id);
     $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
     Excel::create($name, function ($excel) use ($id) {
-            $excel->sheet('Huespedes', function($sheet) use($id) {
+        $excel->sheet('INTUR', function ($sheet) use ($id) {
                 $sheet->row(1, [
                     'identificacion',
                     'nombre',
                     'pais',
-                    'Sexo',
+                    'sexo',
                     'fentrada',
                     'fsalida',
                     'ndormidas',
