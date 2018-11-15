@@ -211,6 +211,7 @@
 <script src="{{ asset('js/ern.js') }}"></script>
 
 <script src="{{asset('js/highcharts.js') }}"></script>
+
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
