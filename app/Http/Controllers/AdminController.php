@@ -82,9 +82,16 @@ class AdminController extends Controller
 
 	//crea un nuevo usuario
 	public function crear_usuario(Request $request){
-    //jkhjhjkjhj
+        //$reglas = ['email' => 'required|email|unique:users',];
+        //  $mensajes = ['email.unique' => 'El email ya se encuentra registrado',];
+        //    $validator = Validator::make($request->all(), $reglas, $mensajes);
+        //    if ($validator->fails()) {
+        //      session()->put('error', 'El email ya se encuentra registrado');
+        //       return back()->withErrors($validator->errors());;
+        //    }
         $this->validate($request, [
             'email' => 'required|email|unique:users',
+            'telefono' => 'required|regex:/(01)[0-9]{9}/',
         ]);
         //test
         $usuario=new User;

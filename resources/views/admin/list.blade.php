@@ -129,7 +129,7 @@
 											<i class="material-icons">phone</i>
                                         </span>
                                         <input type="tel" class="form-control" placeholder="Telefono" id="telefono"
-                                               name="telefono">
+                                               name="telefono" required>
                                     </div>
 
 
