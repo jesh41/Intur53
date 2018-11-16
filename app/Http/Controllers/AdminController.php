@@ -91,7 +91,7 @@ class AdminController extends Controller
         //    }
         $this->validate($request, [
             'email' => 'required|email|unique:users',
-            'telefono' => 'required|regex:/(01)[0-9]{9}/',
+        //    'telefono' => 'required|regex:/(01)[0-9]{9}/',
         ]);
         //test
         $usuario=new User;
