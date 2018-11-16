@@ -23,18 +23,18 @@
                             <br>
 
                             Formato excel de los libros
-                            <a href="{{url("/descargar_manual")}}" target="_blank">
+                            <a href="{{url("/descargar_ejemplo")}}" target="_blank">
                                 <button class="btn btn-info btn-just-icon" rel="tooltip"
                                         data-placement="right"
-                                        title="Descargar Manual"><i class="material-icons">cloud_download</i>
+                                        title="Descargar ejemplo"><i class="material-icons">cloud_download</i>
                                 </button>
                             </a>
                             <br>
                             Listado de paises aceptados en la plataforma
-                            <a href="{{url("/descargar_manual")}}" target="_blank">
+                            <a href="{{url("/listado_pais")}}" target="_blank">
                                 <button class="btn btn-info btn-just-icon" rel="tooltip"
                                         data-placement="right"
-                                        title="Descargar Manual"><i class="material-icons">cloud_download</i>
+                                        title="Descargar listado pais"><i class="material-icons">cloud_download</i>
                                 </button>
                             </a>
                         </div>

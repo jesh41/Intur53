@@ -58,6 +58,16 @@ class HomeController extends Controller
         return response()->download($path);
     }
 
+    public function ejemplo()
+    {
+        $path = public_path('manuales/ejemplo.xlsx');
+        return response()->download($path);
+    }
+    public function listado_pais()
+    {
+        $path = public_path('manuales/lista_pais.xlsx');
+        return response()->download($path);
+    }
 
 
 

@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/acerca', 'HomeController@acerca')->name('acerca');
     Route::get('/ayuda', 'HomeController@ayuda')->name('ayuda');
     Route::get('/descargar_manual', 'HomeController@descargarmanual');
+    Route::get('/descargar_ejemplo', 'HomeController@ejemplo');
+    Route::get('/listado_pais', 'HomeController@listado_pais');
     Route::get('/user', 'AdminController@edituser');
 
     //modulo reporteria
