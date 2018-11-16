@@ -145,7 +145,7 @@ table {
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
                     <p> Fuente: INTUR con los datos de los hoteles de Managua</p>
-                    <p> Informe: 02.Estadia promedio Nacionales y Extranjero por mes</p>
+                    <p> Informe: 04.Estadia promedio por mes, residencia y total</p>
                     Generado {{date("Y-m-d H:i:s")}}
                 </div>
               </div><!-- /.box -->
@@ -154,7 +154,6 @@ table {
             </div>
 
 
-	
 </body>
 </html>
 
