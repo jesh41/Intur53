@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 	<meta charset="UTF-8">
 	<title>Reporte Por Residencia</title>
 <style>
@@ -105,8 +104,7 @@ table {
     <h1 style="text-align: center;"><img src="{{ url('/images/Nic.png') }}" width="131" height="85" alt="lOGO">SISTEMA
         DE ESTADISTICAS DE HOTELES EN MANAGUA <img src="{{ url('/images/Statistics512.png') }}" width="81"
                                                    height="99"></span></span></h1>
-</head>
-<body>
+</head><body>
 <?php $sumaT=0;
 $sumaC=0;
 $sumaN=0;
@@ -171,7 +169,6 @@ $sumaO=0;
             </div>
 
 
-</body>
-</html>
+</body></html>
 
 
