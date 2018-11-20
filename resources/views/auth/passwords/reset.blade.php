@@ -5,7 +5,7 @@
                         <form class="form-signin" method="POST" action="{{ route('password.request') }}">
                             {{ csrf_field() }}
                             <div class="card card-login card-hidden">
-                                <div class="card-header text-center" data-background-color="rose">
+                                <div class="card-header text-center" data-background-color="blue2">
                                     <h4 class="card-title">Recuperar tu contraseña</h4>
 
                                 </div>
@@ -76,7 +76,7 @@
 
 
                                 <div class="footer text-center">
-                                    <button type="submit" class="btn btn-rose">
+                                    <button type="submit" class="btn btn-blue2">
                                         Recuperar Contraseña
                                     </button>
                                 </div>

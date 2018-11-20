@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="card">
-                        <div class="card-header card-header-icon" data-background-color="rose">
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <i class="material-icons">signal_cellular_no_sim</i>
                         </div>
                         <div class="card-content">

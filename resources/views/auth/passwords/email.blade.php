@@ -6,7 +6,7 @@
         {{ csrf_field() }}
 
         <div class="card card-login card-hidden">
-            <div class="card-header text-center" data-background-color="rose">
+            <div class="card-header text-center" data-background-color="blue2">
                 <h4 class="card-title">Recuperar tu contraseña</h4>
             </div>
 
@@ -42,7 +42,7 @@
             </div>
 
             <div class="footer text-center">
-                <button type="submit" class="btn btn-rose">
+                <button type="submit" class="btn btn-blue2">
                     Enviar enlace de recuperación
                 </button>
             </div>

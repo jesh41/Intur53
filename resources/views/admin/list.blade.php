@@ -9,7 +9,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                     class="material-icons">clear</i></button>
-                        <div class="card-header  text-center " data-background-color="purple">
+                        <div class="card-header  text-center " data-background-color="blue2">
                             <h4 class="card-title">Crear Usuario</h4>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">accessibility</i>
                                         </span>
-                                        <select class="btn btn-primary btn-round" id="tipo-usuario" name="tipo-usuario"
+                                        <select class="btn btn-blue2 btn-round" id="tipo-usuario" name="tipo-usuario"
                                                 required>
                                             <option value="" selected disabled>Tipo Usuario</option>
                                             @foreach($roles as $role)
@@ -64,7 +64,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">home</i>
                                         </span>
-                                        <select class="btn btn-primary btn-round" id="departamento" name="departamento">
+                                        <select class="btn btn-blue2 btn-round" id="departamento" name="departamento">
                                             <option value="" selected disabled>Departamento</option>
                                             @foreach ($depto as $d)
                                                 <option value={{$d->id}}>{{$d->city}}</option>
@@ -83,7 +83,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">store</i>
                                         </span>
-                                        <select class="btn btn-primary btn-round" id="municipio" name="municipio">
+                                        <select class="btn btn-blue2 btn-round" id="municipio" name="municipio">
                                             <option value="" selected disabled>Municipio</option>
                                         </select>
                                     </div>
@@ -93,7 +93,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">local_activity</i>
                                         </span>
-                                        <select class="btn btn-primary btn-round" id="actividad" name="actividad">
+                                        <select class="btn btn-blue2 btn-round" id="actividad" name="actividad">
                                             <option value="" selected disabled>Actividad</option>
                                             @foreach ($acti as $ac)
                                                 <option value={{$ac->id}}>{{$ac->actividad}}</option>
@@ -106,7 +106,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">stars</i>
                                         </span>
-                                        <select class="btn btn-primary btn-round" id="categoria" name="categoria">
+                                        <select class="btn btn-blue2 btn-round" id="categoria" name="categoria">
                                             <option value="" selected disabled>Categoria</option>
                                             @foreach ($catho as $cath)
                                                 <option value={{$cath->id}}>{{$cath->categoria}}</option>
@@ -145,9 +145,9 @@
 
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary ">Crear Usuario
+                                <button type="submit" class="btn btn-blue2 ">Crear Usuario
                                 </button>
-                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                <a class="btn btn-blue2 btn-simple btn-wd btn-lg" data-dismiss="modal"
                                    aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
@@ -167,7 +167,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                     class="material-icons">clear</i></button>
-                        <div class="card-header  text-center " data-background-color="purple">
+                        <div class="card-header  text-center " data-background-color="blue2">
                             <h4 class="card-title">Cambio rol </h4>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">accessibility</i>
                                         </span>
-                                    <select class="btn btn-primary btn-round" id="id_rol" name="id_rol"
+                                    <select class="btn btn-blue2 btn-round" id="id_rol" name="id_rol"
                                             required>
                                         <option value="" selected disabled>Rol</option>
                                         @foreach($roles as $role)
@@ -194,9 +194,9 @@
 
                             <div class="modal-footer text-center">
                             <!--<input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">-->
-                                <button type="submit" class="btn btn-primary ">Asignar
+                                <button type="submit" class="btn btn-blue2 ">Asignar
                                 </button>
-                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                <a class="btn btn-blue2 btn-simple btn-wd btn-lg" data-dismiss="modal"
                                    aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
@@ -225,11 +225,11 @@
                         </div>
                     @endif
                     <div class="card">
-                        <div class="card-header card-header-icon" data-background-color="rose">
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <i class="material-icons">people</i> <h4 class="card-title">Usuarios</h4>
                         </div>
                         <div>
-                            <button class="btn btn-primary btn-sm btn-round" data-toggle="modal" data-target="#adduser">
+                            <button class="btn btn-blue2 btn-sm btn-round" data-toggle="modal" data-target="#adduser">
                                 <i class="material-icons">person_add</i>Agregar
                                 Usuario
                             </button>

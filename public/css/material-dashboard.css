@@ -2782,6 +2782,23 @@ NOTE: use percentage font sizes or else old IE chokes
     color: #FFFFFF;
 }
 
+.fc button.btn-blue2,
+.fc button.btn-blue2:hover,
+.fc button.btn-blue2:focus,
+.fc button.btn-blue2:active,
+.fc button.btn-blue2.active,
+.fc button.btn-blue2:active:focus,
+.fc button.btn-blue2:active:hover,
+.fc button.btn-blue2.active:focus,
+.fc button.btn-blue2.active:hover,
+.open > .fc button.btn-blue2.dropdown-toggle,
+.open > .fc button.btn-blue2.dropdown-toggle:focus,
+.open > .fc button.btn-blue2.dropdown-toggle:hover {
+    background-color: #184660;
+    color: #FFFFFF;
+}
+
+
 .fc button:focus,
 .fc button:active,
 .fc button:hover,
@@ -2789,6 +2806,12 @@ NOTE: use percentage font sizes or else old IE chokes
 .fc button.btn-primary:active,
 .fc button.btn-primary:hover {
     box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+}
+
+.fc button.btn-blue2:focus,
+.fc button.btn-blue2:active,
+.fc button.btn-blue2:hover {
+    box-shadow: 0 14px 26px -12px rgba(24, 70, 96, 0.90), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(24, 70, 96, 0.2);
 }
 
 .fc button.disabled,
@@ -6508,6 +6531,11 @@ h2.title {
     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
 }
 
+.sidebar[data-active-color="blue2"] li.active > a {
+    background-color: #184660;
+    box-shadow: 0 4px 20px 0px rgba(24, 70,96, 0.04), 0 7px 10px -5px rgba(24, 70, 96, 0.04);
+}
+
 .sidebar[data-active-color="green"] li.active > a {
     background-color: #4caf50;
     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4);
@@ -8173,6 +8201,116 @@ fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-rose.active {
 
 .close i {
     font-size: 11px;
+}
+
+.btn.btn-blue2,
+.navbar .navbar-nav > li > a.btn.btn-blue2 {
+    box-shadow: 0 2px 2px 0 rgba(24, 70, 96, 0.14), 0 3px 1px -2px rgba(24, 70, 96, 0.2), 0 1px 5px 0 rgba(24, 70, 96, 0.12);
+}
+
+.btn.btn-blue2,
+.btn.btn-blue2:hover,
+.btn.btn-blue2:focus,
+.btn.btn-blue2:active,
+.btn.btn-blue2.active,
+.btn.btn-blue2:active:focus,
+.btn.btn-blue2:active:hover,
+.btn.btn-blue2.active:focus,
+.btn.btn-blue2.active:hover,
+.open > .btn.btn-blue2.dropdown-toggle,
+.open > .btn.btn-blue2.dropdown-toggle:focus,
+.open > .btn.btn-blue2.dropdown-toggle:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2,
+.navbar .navbar-nav > li > a.btn.btn-blue2:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2:active,
+.navbar .navbar-nav > li > a.btn.btn-blue2.active,
+.navbar .navbar-nav > li > a.btn.btn-blue2:active:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2:active:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2.active:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2.active:hover,
+.open > .navbar .navbar-nav > li > a.btn.btn-blue2.dropdown-toggle,
+.open > .navbar .navbar-nav > li > a.btn.btn-blue2.dropdown-toggle:focus,
+.open > .navbar .navbar-nav > li > a.btn.btn-blue2.dropdown-toggle:hover {
+    background-color: #184660;
+    color: #FFFFFF;
+}
+
+.btn.btn-blue2:focus,
+.btn.btn-blue2:active,
+.btn.btn-blue2:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2:active,
+.navbar .navbar-nav > li > a.btn.btn-blue2:hover {
+    box-shadow: 0 14px 26px -12px rgba(24, 70, 96, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(24, 70, 96, 0.2);
+}
+
+.btn.btn-blue2.disabled,
+.btn.btn-blue2.disabled:hover,
+.btn.btn-blue2.disabled:focus,
+.btn.btn-blue2.disabled.focus,
+.btn.btn-blue2.disabled:active,
+.btn.btn-blue2.disabled.active,
+.btn.btn-blue2:disabled,
+.btn.btn-blue2:disabled:hover,
+.btn.btn-blue2:disabled:focus,
+.btn.btn-blue2:disabled.focus,
+.btn.btn-blue2:disabled:active,
+.btn.btn-blue2:disabled.active,
+.btn.btn-blue2[disabled],
+.btn.btn-blue2[disabled]:hover,
+.btn.btn-blue2[disabled]:focus,
+.btn.btn-blue2[disabled].focus,
+.btn.btn-blue2[disabled]:active,
+.btn.btn-blue2[disabled].active,
+fieldset[disabled] .btn.btn-blue2,
+fieldset[disabled] .btn.btn-blue2:hover,
+fieldset[disabled] .btn.btn-blue2:focus,
+fieldset[disabled] .btn.btn-blue2.focus,
+fieldset[disabled] .btn.btn-blue2:active,
+fieldset[disabled] .btn.btn-blue2.active,
+.navbar .navbar-nav > li > a.btn.btn-blue2.disabled,
+.navbar .navbar-nav > li > a.btn.btn-blue2.disabled:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2.disabled:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2.disabled.focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2.disabled:active,
+.navbar .navbar-nav > li > a.btn.btn-blue2.disabled.active,
+.navbar .navbar-nav > li > a.btn.btn-blue2:disabled,
+.navbar .navbar-nav > li > a.btn.btn-blue2:disabled:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2:disabled:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2:disabled.focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2:disabled:active,
+.navbar .navbar-nav > li > a.btn.btn-blue2:disabled.active,
+.navbar .navbar-nav > li > a.btn.btn-blue2[disabled],
+.navbar .navbar-nav > li > a.btn.btn-blue2[disabled]:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2[disabled]:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2[disabled].focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2[disabled]:active,
+.navbar .navbar-nav > li > a.btn.btn-blue2[disabled].active,
+fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-blue2,
+fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-blue2:hover,
+fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-blue2:focus,
+fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-blue2.focus,
+fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-blue2:active,
+fieldset[disabled] .navbar .navbar-nav > li > a.btn.btn-blue2.active {
+    box-shadow: none;
+}
+
+.btn.btn-blue2.btn-simple,
+.navbar .navbar-nav > li > a.btn.btn-blue2.btn-simple {
+    background-color: transparent;
+    color: #184660;
+    box-shadow: none;
+}
+
+.btn.btn-blue2.btn-simple:hover,
+.btn.btn-blue2.btn-simple:focus,
+.btn.btn-blue2.btn-simple:active,
+.navbar .navbar-nav > li > a.btn.btn-blue2.btn-simple:hover,
+.navbar .navbar-nav > li > a.btn.btn-blue2.btn-simple:focus,
+.navbar .navbar-nav > li > a.btn.btn-blue2.btn-simple:active {
+    background-color: transparent;
+    color: #184660;
 }
 
 body {
@@ -10978,8 +11116,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-    background-color: #9c27b0;
-    border-color: #9c27b0;
+    background-color: #184660;
+    border-color: #184660;
     color: #FFFFFF;
     box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
 }
@@ -11738,6 +11876,47 @@ fieldset[disabled] .navbar .btn-link:focus {
 .navbar.navbar-warning .dropdown-menu .active > a:focus {
     color: #ffffff;
 }
+.navbar.navbar-blue2 {
+    background-color: #184660;
+    color: #ffffff;
+}
+
+.navbar.navbar-blue2 .navbar-form .form-group input.form-control::-moz-placeholder,
+.navbar.navbar-blue2 .navbar-form input.form-control::-moz-placeholder {
+    color: #ffffff;
+}
+
+.navbar.navbar-blue2 .navbar-form .form-group input.form-control:-ms-input-placeholder,
+.navbar.navbar-blue2 .navbar-form input.form-control:-ms-input-placeholder {
+    color: #ffffff;
+}
+
+.navbar.navbar-blue2 .navbar-form .form-group input.form-control::-webkit-input-placeholder,
+.navbar.navbar-blue2 .navbar-form input.form-control::-webkit-input-placeholder {
+    color: #ffffff;
+}
+
+.navbar.navbar-blue2 .dropdown-menu {
+    border-radius: 3px !important;
+}
+
+.navbar.navbar-blue2 .dropdown-menu li > a:hover,
+.navbar.navbar-blue2 .dropdown-menu li > a:focus {
+    color: #FFFFFF;
+    background-color: #184660;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+}
+
+.navbar.navbar-blue2 .dropdown-menu .active > a {
+    background-color: #184660;
+    color: #ffffff;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+}
+
+.navbar.navbar-blue2 .dropdown-menu .active > a:hover,
+.navbar.navbar-blue2 .dropdown-menu .active > a:focus {
+    color: #ffffff;
+}
 
 .navbar.navbar-danger {
     background-color: #f44336;
@@ -12489,6 +12668,14 @@ footer .btn {
 
 .card [data-icon-bg-color="blue"] i {
     color: #00bcd4;
+}
+.card [data-background-color="blue2"] {
+    background: rgba(24, 70, 96,1.0);
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(24, 70, 96, 0.4);
+}
+
+.card [data-icon-bg-color="blue2"] i {
+    color: #184660;
 }
 
 .card [data-background-color="green"] {

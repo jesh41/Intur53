@@ -5,7 +5,7 @@
     <form class="form-signin" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
         <div class="card card-login card-hidden">
-            <div class="card-header text-center" data-background-color="rose">
+            <div class="card-header text-center" data-background-color="blue2">
                 <h4 class="card-title">Login</h4>
             </div>
             <div class="card-content">
@@ -56,8 +56,8 @@
             </div>
 
             <div class="footer text-center">
-                <button type="submit" class="btn btn-rose ">Iniciar sesion</button>
-                <a class="btn btn-rose btn-simple btn-wd " href="{{ route('password.request') }}">
+                <button type="submit" class="btn btn-blue2 ">Iniciar sesion</button>
+                <a class="btn btn-blue2 btn-simple btn-wd " href="{{ route('password.request') }}">
                     ¿Has olvidado tu contraseña?
                 </a>
             </div>

@@ -10,7 +10,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                     class="material-icons">clear</i></button>
-                        <div class="card-header  text-center " data-background-color="purple">
+                        <div class="card-header  text-center " data-background-color="blue2">
                             <h4 class="card-title">Subir Libro</h4>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
 								<span class="input-group-addon">
 									<i class="material-icons">today</i>
 								</span>
-                                    <select class="btn btn-primary btn-round" name="anio" id="anio" required>
+                                    <select class="btn btn-blue2 btn-round" name="anio" id="anio" required>
                                         <option value="" selected disabled>Escoger año</option>
                                         @foreach($anio as $a)
                                             <option value={{$a}}>{{$a}}</option>
@@ -57,7 +57,7 @@
 								<span class="input-group-addon">
 									<i class="material-icons">date_range</i>
 								</span>
-                                    <select class="btn btn-primary btn-round" name="mes" id="mes" required>
+                                    <select class="btn btn-blue2 btn-round" name="mes" id="mes" required>
                                         <option value="" selected disabled>Escoger mes</option>
                                     </select>
                                 </div>
@@ -65,9 +65,9 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary ">Cargar Datos
+                                <button type="submit" class="btn btn-blue2 ">Cargar Datos
                                 </button>
-                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                <a class="btn btn-blue2 btn-simple btn-wd btn-lg" data-dismiss="modal"
                                    aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
@@ -89,14 +89,14 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="card">
-                        <div class="card-header card-header-icon" data-background-color="rose">
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <i class="material-icons">book</i>
                         </div>
                         <div class="card-content">
                             @can('subir')
                                 @if($anio[0]!=0)
 
-                                    <button class="btn btn-primary btn-sm btn-round" style="float: right"
+                                    <button class="btn btn-blue2 btn-sm btn-round" style="float: right"
                                             data-toggle="modal" data-target="#uploadModal">
                                         <i class="material-icons">file_upload</i>Subir
                                 </button>

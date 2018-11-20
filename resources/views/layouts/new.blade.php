@@ -31,7 +31,7 @@
 
 <div id="wrapper">
     <!-- Sidebar -->
-    <div class="sidebar" data-active-color="rose" data-background-color="white"> <!--DIV DE BARRA LATERAL-->
+    <div class="sidebar" data-active-color="blue2" data-background-color="white"> <!--DIV DE BARRA LATERAL-->
         <div class="logo"> <!--DIV PARA ACOMODAR LOGO EN LATERAL-->
             <a href="{{ url('/') }}"> <!--REDIRECCION A HOME-->
                 <img src="{{asset('images/Logo.jpg') }}" class="img-responsive" alt="">
@@ -108,7 +108,7 @@
 
     <div class="main-panel"> <!--Panel Central-->
         <!--Navbar-->
-        <nav class="navbar navbar-rose navbar-absolute">
+        <nav class="navbar navbar-blue2 navbar-absolute">
             <div class="container-fluid">
                 <div class="navbar-minimize">
                     <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">

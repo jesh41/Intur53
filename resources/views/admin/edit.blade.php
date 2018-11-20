@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="card">
-                        <div class="card-header card-header-icon" data-background-color="rose">
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <i class="material-icons">info</i>
                         </div>
                         <div class="card-content">
@@ -53,7 +53,7 @@
                     <div class="col-md-6">
                         <div class="card">
 
-                            <div class="card-header card-header-icon" data-background-color="rose">
+                            <div class="card-header card-header-icon" data-background-color="blue2">
                                 <i class="material-icons">update</i>
                             </div>
                             <form method="post" action="/editar_pass" enctype="multipart/form-data">
@@ -98,7 +98,7 @@
 
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-icon" data-background-color="rose">
+                            <div class="card-header card-header-icon" data-background-color="blue2">
                                 <i class="material-icons">update</i>
                             </div>
                             <div class="card-content">

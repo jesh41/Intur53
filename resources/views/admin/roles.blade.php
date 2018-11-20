@@ -10,7 +10,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                     class="material-icons">clear</i></button>
-                        <div class="card-header  text-center " data-background-color="purple">
+                        <div class="card-header  text-center " data-background-color="blue2">
                             <h4 class="card-title">Crear Rol</h4>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary">Crear</button>
-                                <a class="btn btn-primary  btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                <button type="submit" class="btn btn-blue2">Crear</button>
+                                <a class="btn btn-blue2  btn-simple btn-wd btn-lg" data-dismiss="modal"
                                    aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
@@ -70,7 +70,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                     class="material-icons">clear</i></button>
-                        <div class="card-header  text-center " data-background-color="purple">
+                        <div class="card-header  text-center " data-background-color="blue2">
                             <h4 class="card-title">Crear Permiso</h4>
                         </div>
                     </div>
@@ -110,8 +110,8 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary">Crear</button>
-                                <a class="btn btn-primary  btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                <button type="submit" class="btn btn-blue2">Crear</button>
+                                <a class="btn btn-blue2  btn-simple btn-wd btn-lg" data-dismiss="modal"
                                    aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
@@ -132,7 +132,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                     class="material-icons">clear</i></button>
-                        <div class="card-header  text-center " data-background-color="purple">
+                        <div class="card-header  text-center " data-background-color="blue2">
                             <h4 class="card-title">Asignar permiso</h4>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">verified_user</i>
                                         </span>
-                                    <select class="btn btn-primary btn-round" id="rol_sel" name="rol_sel">
+                                    <select class="btn btn-blue2 btn-round" id="rol_sel" name="rol_sel">
                                         <option value="" selected disabled>Rol</option>
                                         @foreach($roles as $rol)
                                             <option value={{$rol->id}}>{{$rol->name}}</option>
@@ -157,7 +157,7 @@
                                         <span class="input-group-btn input-group-s">
 											<i class="material-icons">group_work</i>
                                         </span>
-                                    <select class="btn btn-primary btn-round" id="permiso_rol" name="permiso_rol">
+                                    <select class="btn btn-blue2 btn-round" id="permiso_rol" name="permiso_rol">
                                         <option value="" selected disabled>Permiso</option>
                                         @foreach($permisos as $permiso)
                                             <option value={{$permiso->id}}>{{$permiso->name}}</option>
@@ -168,8 +168,8 @@
                             </div>
                             <div class="modal-footer text-center">
                                 <input type="hidden" name="_token" id="_token" value="<?= csrf_token(); ?>">
-                                <button type="submit" class="btn btn-primary ">Crear</button>
-                                <a class="btn btn-primary btn-simple btn-wd btn-lg" data-dismiss="modal"
+                                <button type="submit" class="btn btn-blue2 ">Crear</button>
+                                <a class="btn btn-blue2 btn-simple btn-wd btn-lg" data-dismiss="modal"
                                    aria-hidden="true">Cancelar</a>
                             </div>
                         </form>
@@ -190,11 +190,11 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="card">
-                        <div class="card-header card-header-icon" data-background-color="rose">
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <h4 class="card-title">ROLES Y PERMISOS</h4>
                         </div>
                         <div>
-                            <button class="btn btn-primary btn-sm btn-round" data-toggle="modal"
+                            <button class="btn btn-blue2 btn-sm btn-round" data-toggle="modal"
                                     data-target="#RelacionModal">
                                 CREAR RELACION
                             </button>
@@ -242,12 +242,12 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-icon" data-background-color="rose">
+                            <div class="card-header card-header-icon" data-background-color="blue2">
                                 <h4 class="card-title">ROLES</h4>
                             </div>
 
                             <div>
-                                <button class="btn btn-primary btn-sm btn-round" data-toggle="modal"
+                                <button class="btn btn-blue2 btn-sm btn-round" data-toggle="modal"
                                         data-target="#RolModal">
                                     Agregar Rol
                                 </button>
@@ -288,12 +288,12 @@
 
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-icon" data-background-color="rose">
+                            <div class="card-header card-header-icon" data-background-color="blue2">
                                 <h4 class="card-title">PERMISOS</h4>
                             </div>
 
                             <div>
-                                <button class="btn btn-primary btn-sm btn-round" data-toggle="modal"
+                                <button class="btn btn-blue2 btn-sm btn-round" data-toggle="modal"
                                         data-target="#PermisoModal">
                                     Agregar Permiso
                                 </button>
