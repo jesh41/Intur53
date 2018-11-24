@@ -80,7 +80,7 @@
                 </div>
 
 
-                <div class="col-md-5 col-md-offset-1">
+                <div class="col-md-5 ">
                     <div class="card">
                         <div class="card-header" data-background-color="blue2">
                             <h4 class="card-title">Anulaciones de libros{{$year}}</h4>
@@ -96,22 +96,14 @@
 
                                 </thead>
                                 <tbody>
-                                <?php foreach($data as $dato){ ?>
+
 
                                 <tr>
-                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->mes; ?></td>
-                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->vivos; ?></td>
-                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->anulados; ?></td>
-                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->total; ?></td>
 
                                 </tr>
-                                <?php $s1 = $s1 + $dato->vivos; ?>
-                                <?php $s2 = $s2 + $dato->anulados; ?>
-                                <?php  } ?>
+
                                 <tr class="info">
                                     <td  style="text-align: center; vertical-align: middle;">GRAN TOTAL</td>
-
-
                                 </tr>
 
                                 </tbody>
