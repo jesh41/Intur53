@@ -202,14 +202,15 @@ class BookController extends Controller
             $catsex = Sex::all()->toArray();
             $catreason = Reason::all()->toArray();
             $columnapais = array_column($catpais, 'country');
+            $columnaalias = array_column($catpais, 'alias');
             $columnamotivo = array_column($catreason, 'motivo');
             $columnasex = array_column($catsex, 'sexo');
             $ultimo = Book::all()->pluck('id')->last();
             if (is_null($ultimo)) {
                 $ultimo = 0;
             }
-            $autor = Auth::user()->id;//id del login actual
-            $nombre_original = 'user'.$autor.'.'.$extension;//renombra el archivo subido
+            $autor = ucwords(trim(Auth::user()->name));//id del login actual
+            $nombre_original = 'usuario'.$autor.'.'.$extension;//renombra el archivo subido
             $r1 = Storage::disk('archivos')->put($nombre_original, \File::get($archivo));//guardar en el disco
             $ruta = storage_path('archivos')."/".$nombre_original;//ubicaion donde se guardo
             $idfila = 0;
@@ -231,6 +232,11 @@ class BookController extends Controller
                                     $sexoformat = strtoupper(preg_replace('[\s+]', "", $row['sexo']));//eliminamos los espacios en toda la cadena
                                     $motivoformat = ucwords(preg_replace('[\s+]', "", $row['motivo']));//eliminamos los espacios en toda la cadena
                                     $paisid = array_search($paisformat, $columnapais);
+                                    if ($paisid ===  false)
+                                    {
+                                        $paisid = array_search($paisformat, $columnaalias);
+                                    }
+
                                     $sexoid = array_search($sexoformat, $columnasex);
                                     $motivoid = array_search($motivoformat, $columnamotivo);
                                     $fechaentrada = str_replace('/', '-', $row['fentrada']);
@@ -282,7 +288,7 @@ class BookController extends Controller
                         $libro->estado = 'A';
                         $libro->Observacion = $request->input("observacion");
                         $libro->FechaElaborado = date("Y-m-d");
-                        $libro->user_id = $autor;
+                        $libro->user_id = Auth::user()->id;
                         $libro->save();
                         Bookdetail::insert($FilasArray);
                     } else {

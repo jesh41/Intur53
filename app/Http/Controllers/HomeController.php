@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use DB;
 
 use Auth;
 
@@ -29,7 +30,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $year=date("Y");
+        $detalle = DB::select("call dash($year)");
+        $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+        $ro = $ro->id;
+        $thoteles = DB::select("call count_user_rol($ro)");
+        $thoteles = $thoteles[0]->conteo;
+        if (empty($thoteles)) {
+            $thoteles = 0;
+        }
+        return view('home')->with("data", $detalle)->with("year", $year)->with("TH", $thoteles);
     }
 
     public function acerca()
