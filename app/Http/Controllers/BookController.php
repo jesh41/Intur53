@@ -51,7 +51,6 @@ class BookController extends Controller
         //}
 
         if (Auth::user()->isRole('administrador')) {
-
             $books = Book::all();
         } elseif (Auth::user()->isRole('hotel')) {
             $id = Auth::user()->id;
@@ -202,6 +201,9 @@ class BookController extends Controller
         if ($extension == 'xlsx' or $extension == 'xls')//valido el tipo de archivo
         {
             //carga de catalogos
+            $ventrada=false;
+            $vsalida=false;
+            $mes=$request->input("mes");
             $catpais = Country::all()->toArray();
             $catsex = Sex::all()->toArray();
             $catreason = Reason::all()->toArray();
@@ -240,14 +242,24 @@ class BookController extends Controller
                                     {
                                         $paisid = array_search($paisformat, $columnaalias);
                                     }
-
                                     $sexoid = array_search($sexoformat, $columnasex);
                                     $motivoid = array_search($motivoformat, $columnamotivo);
                                     $fechaentrada = str_replace('/', '-', $row['fentrada']);
                                     $fechaentrada = Carbon::parse($fechaentrada)->format('Y-m-d');
                                     $fechasalida = str_replace('/', '-', $row['fsalida']);
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
-                                    if ($paisid !== false and $sexoid !== false and $motivoid !== false) {
+                                    $mentrada=date("m",  strtotime($fechaentrada));
+                                    $msalida=date("m", strtotime($fechasalida));
+                                    if ($mentrada==$mes)
+                                    {
+                                        $ventrada=true;
+                                    }
+                                    if ($msalida==$mes)
+                                    {
+                                        $vsalida=True;
+                                    }
+
+                                    if ($paisid !== false and $sexoid !== false and $motivoid !== false and $ventrada!==false and $vsalida!==false) {
                                         $FilasArray[] = [
                                             'Identificacion' => $row['identificacion'],
                                             'Nombre' => $row['nombre'],
@@ -269,6 +281,12 @@ class BookController extends Controller
                                         }
                                         if ($motivoid === false) {
                                             $Response[] = ['Motivo Fila' => $idfila + 2];
+                                        }
+                                        if ($ventrada === false) {
+                                            $Response[] = ['Fecha entrada Fila' => $idfila + 2];
+                                        }
+                                        if ($vsalida === false) {
+                                            $Response[] = ['Fecha Salida Fila' => $idfila + 2];
                                         }
                                     }
                                 } else {
@@ -319,7 +337,7 @@ class BookController extends Controller
 
     Public function descargar_errores()
     {
-        $autor = Auth::user()->id;
+        $autor = Auth::user()->name;
         $nombre_original = 'errores_ID'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
         if(File::exists($ruta)) {
@@ -331,7 +349,6 @@ class BookController extends Controller
                 'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
                 'Content-Length' => sizeof($Datos),
             ];
-
             return \Response::make($Datos, 200, $headers);
         } else {
             return redirect('home');
