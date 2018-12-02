@@ -19,10 +19,10 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="card">
                         <div class="card-header card-header-icon" data-background-color="blue2">
-                            <i class="material-icons">signal_cellular_no_sim</i>
+                            <h4 class="card-title">Detalle Anulaciones de libros</h4>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Detalle Anulaciones</h4>
+                            <h4 class="card-title"></h4>
                             <div class="tab-content">
                                 <div class="tab-pane active table-responsive ">
                                     <table id="datatables3" class="table table-striped table-no-bordered table-hover"
@@ -64,12 +64,21 @@
 
 
 
-                <div class="col-md-5 col-md-offset-1">
+                <div class="col-md-6 col-md-offset-1">
                     <div class="card">
-                        <div class="card-header" data-background-color="blue2">
+
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <h4 class="card-title">Anulaciones de libros {{$year}}</h4>
-                            <p class="category">  </p>
                         </div>
+                        <div>
+                            <a href="/crear_reporte_anulaciones/1/{{$year}}" target="_blank">
+                                <button class="btn  btn-info btn-just-icon btn-round" rel="tooltip"
+                                        data-placement="right" title="Descargar PDF">
+                                    <i class="material-icons md-36">picture_as_pdf</i>
+                                </button>
+                            </a>
+                        </div>
+
                         <div class="card-content table-responsive table-full-width">
                             <table class="table" >
                                 <thead class="text-danger">
@@ -83,7 +92,14 @@
                                 <tbody>
                                 <?php foreach($data2 as $dato){ ?>
                                 <tr>
-                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->hotel; ?></td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                    @if ($dato->hotel)
+                                        {{ $dato->hotel}}
+                                    @else
+                                           -
+                                    @endif
+                                    </td>
+
                                     <td style="text-align: center; vertical-align: middle;"><?= $dato->usuario; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"><?= $dato->incorrecto; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"><?= $dato->desactualizado; ?></td>
@@ -93,26 +109,37 @@
                                 <?php $s4 = $s4 + $dato->desactualizado; ?>
                                 <?php  } ?>
                                 <tr class="info">
+
                                     <td colspan="2" style="text-align: center; vertical-align: middle;" >GRAN TOTAL</td>
                                     <td style="text-align: center; vertical-align: middle;"> <?php echo $s3; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"> <?php echo $s4; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"> <?php echo $s3+$s4; ?></td>
-
                                 </tr>
+
 
                                 </tbody>
                             </table>
+
 
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-5 ">
+                <div class="col-md-4 ">
                     <div class="card">
-                        <div class="card-header" data-background-color="blue2">
+                        <div class="card-header card-header-icon" data-background-color="blue2">
                             <h4 class="card-title">Estado de los libros del {{$year}}</h4>
                             <p class="category"> Hoteles registrados: {{$TH}} </p>
                         </div>
+                        <div>
+                            <a href="/crear_reporte_Libros/1/{{$year}}" target="_blank">
+                                <button class="btn  btn-info btn-just-icon btn-round" rel="tooltip"
+                                        data-placement="right" title="Descargar PDF">
+                                    <i class="material-icons md-36">picture_as_pdf</i>
+                                </button>
+                            </a>
+                        </div>
+
                         <div class="card-content table-responsive table-full-width">
                             <table class="table" >
                                 <thead class="text-danger">

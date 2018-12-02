@@ -30,11 +30,11 @@ class ReportController extends Controller
         return view('/reports/Index');
     }
 
-    public function crearPDF($datos, $vistaurl, $tipo)
+    public function crearPDF($datos, $vistaurl, $tipo,$year)
     {
         $data = $datos;
         $date = date('Y-m-d');
-        $view = \View::make($vistaurl, compact('data', 'date'))->render();
+        $view = \View::make($vistaurl, compact('data', 'date','year'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
 
@@ -251,4 +251,25 @@ class ReportController extends Controller
 
         return $this->crearPDF($detalle, $vistaurl, $tipo);
     }
+
+    public function crear_pdf_anulaciones( $tipo,$year)
+    {
+        //falta capturar y mandar el parametro
+
+        $vistaurl = "/reports/anulaciones";
+        $data = DB::select("call anulaciones_anual($year)");
+
+        return $this->crearPDF($data, $vistaurl,$tipo,$year);
+    }
+
+    public function crear_pdf_libros( $tipo,$year)
+    {
+        //falta capturar y mandar el parametro
+
+        $vistaurl = "/reports/libros";
+        $data = DB::select("call dash($year)");
+
+        return $this->crearPDF($data, $vistaurl,$tipo,$year);
+    }
+
 }
