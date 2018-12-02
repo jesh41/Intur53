@@ -22,6 +22,7 @@
                                             <th>Observacion</th>
                                             <th>Anulado Por</th>
                                             <th>Fecha Anulacion</th>
+                                            <th>Accion</th>
 
                                         </tr>
                                         </thead>
@@ -33,6 +34,9 @@
                                                 <td>{{ $annulment->observacion }}</td>
                                                 <td>{{ $annulment->Elaborado }}</td>
                                                 <td>{{ $annulment->created_at }}</td>
+                                                <td><a href="{{url("descargar/$annulment->book_id")}}" type="button"
+                                                       class="btn  btn-info btn-sm " title="Descargar"> <i
+                                                                class="material-icons">cloud_download</i></a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

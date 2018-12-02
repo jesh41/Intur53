@@ -19,29 +19,25 @@
                                            cellspacing="0" width="100%" style="width:100%">
                                         <thead role="row" class="text-primary">
                                         <tr>
-                                            <th>Codigo</th>
-                                            <th>Mes</th>
-                                            <th>Estado</th>
-                                            <th>Año</th>
-                                            <th>Fecha Elaborado</th>
-                                            <th>Usuario</th>
-                                            <th class="text-right">Acciones</th>
+                                            <th>id</th>
+                                            <th>Book id</th>
+                                            <th>Observacion</th>
+                                            <th>Anulado Por</th>
+                                            <th>Fecha Anulacion</th>
+                                            <th>Accion</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($books as $book)
+                                        @foreach($anulados as $annulment)
                                             <tr role="row" class="odd">
-                                                <td>{{ $book->id }}</td>
-                                                <td>{{ $book->month->mes}}</td>
-                                                <td>{{ $book->estado }}</td>
-                                                <td>{{ $book->Anio }}</td>
-                                                <td>{{ Carbon\Carbon::parse($book->FechaElaborado)->format('d-m-Y')}}</td>
-                                                <td>{{ $book->user->name}}</td>
-                                                <td class="td-actions text-right">
-                                                    <a href="{{url("descargar/$book->id")}}" type="button"
+                                                <td>{{ $annulment->id }}</td>
+                                                <td>{{ $annulment->book_id }}</td>
+                                                <td>{{ $annulment->observacion }}</td>
+                                                <td>{{ $annulment->Elaborado }}</td>
+                                                <td>{{ $annulment->created_at }}</td>
+                                                <td><a href="{{url("descargar/$annulment->book_id")}}" type="button"
                                                        class="btn  btn-info btn-sm " title="Descargar"> <i
-                                                                class="material-icons">cloud_download</i></a>
-                                                </td>
+                                                                class="material-icons">cloud_download</i></a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

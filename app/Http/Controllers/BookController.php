@@ -37,26 +37,27 @@ class BookController extends Controller
         $usuario = Auth::user()->id;
         $mes_actual = date('m');
         $anio_actual = date('Y');
-        $anio_anterior = $anio_actual - 1;
+      //  $anio_anterior = $anio_actual - 1;
         $valida_anio_actual = DB::select("call validacion_mes($anio_actual,$usuario,$mes_actual)");
-        $valida_anio_anterior = DB::select("call validacion_anio($anio_anterior,$usuario,$mes_actual)");
+       // $valida_anio_anterior = DB::select("call validacion_anio($anio_anterior,$usuario,$mes_actual)");
         //valido si es esta en el año actual, solo muestre meses menores al mes actual
         if (! empty($valida_anio_actual)) {
             $anio[$i] = date('Y');
             $i++;
         }
-        if (! empty($valida_anio_anterior)) {
-            $anio[$i] = date('Y') - 1;
-            $i++;
-        }
+        //if (! empty($valida_anio_anterior)) {
+          //  $anio[$i] = date('Y') - 1;
+           // $i++;
+        //}
 
         if (Auth::user()->isRole('administrador')) {
+
             $books = Book::all();
         } elseif (Auth::user()->isRole('hotel')) {
             $id = Auth::user()->id;
             $books = Book::where('user_id', $id)->where('estado', 'A')->get();
         } elseif (Auth::user()->isRole('intur')) {
-            $books = Book::all();
+            $books = Book::where('estado', 'A')->get();
         }
 
         return view('/book/books')->with("books", $books)->with("anio", $anio);
@@ -65,10 +66,13 @@ class BookController extends Controller
     public function anulados()
     {
         if (Auth::user()->isRole('hotel')) {
-            $books = Book::where('user_id', Auth::user()->id)->where('estado', 'U');
+            //$id = Auth::user()->id;
+            //$books = Book::where('user_id', $id)->where('estado', 'U')->get();
+            $name=Auth::user()->name;
+            $anulados = Annulment::where('Elaborado',$name)->get();
         }
 
-        return view('/book/book-anulados')->with("books", $books);
+        return view('/book/book-anulados')->with("anulados", $anulados);
     }
 
     public function anular_libro(Request $request)
