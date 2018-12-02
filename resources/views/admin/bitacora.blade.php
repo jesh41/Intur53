@@ -74,6 +74,7 @@
                             <table class="table" >
                                 <thead class="text-danger">
                                 <th style="text-align: center; vertical-align: middle;">Hotel</th>
+                                <th style="text-align: center; vertical-align: middle;">Usuario</th>
                                 <th style="text-align: center; vertical-align: middle;">Incorrecto</th>
                                 <th style="text-align: center; vertical-align: middle;">Desactualizado</th>
                                 <th style="text-align: center; vertical-align: middle;">Total</th>
@@ -82,7 +83,8 @@
                                 <tbody>
                                 <?php foreach($data2 as $dato){ ?>
                                 <tr>
-                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->name; ?></td>
+                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->hotel; ?></td>
+                                    <td style="text-align: center; vertical-align: middle;"><?= $dato->usuario; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"><?= $dato->incorrecto; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"><?= $dato->desactualizado; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"><?= $dato->total; ?></td>
@@ -91,7 +93,7 @@
                                 <?php $s4 = $s4 + $dato->desactualizado; ?>
                                 <?php  } ?>
                                 <tr class="info">
-                                    <td  style="text-align: center; vertical-align: middle;">GRAN TOTAL</td>
+                                    <td colspan="2" style="text-align: center; vertical-align: middle;" >GRAN TOTAL</td>
                                     <td style="text-align: center; vertical-align: middle;"> <?php echo $s3; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"> <?php echo $s4; ?></td>
                                     <td style="text-align: center; vertical-align: middle;"> <?php echo $s3+$s4; ?></td>
