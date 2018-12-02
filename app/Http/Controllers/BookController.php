@@ -146,7 +146,7 @@ class BookController extends Controller
     {
 
         $reglas = [
-            'identificacion' => 'required',
+           // 'identificacion' => 'required',
             'nombre' => 'required',
             'pais' => 'required',
             'sexo' => 'required',
@@ -156,7 +156,7 @@ class BookController extends Controller
             'motivo' => 'required|string',
         ];
         $mensajes = [
-            'identificacion.required' => 'Ingresar identificacion es obligatorio',
+           // 'identificacion.required' => 'Ingresar identificacion es obligatorio',
             'nombre.required' => 'Ingresar nombre es obligatorio',
             'pais.required' => 'Ingresar pais es obligatorio',
             'sexo.required' => 'Ingresar sexo es obligatorio',
@@ -258,10 +258,14 @@ class BookController extends Controller
                                     {
                                         $vsalida=True;
                                     }
+                                    if(empty($row['identificacion'])){
+                                        $axuiden="S/I";
+                                    }
+                                    else{$axuiden=$row['identificacion'];}
 
                                     if ($paisid !== false and $sexoid !== false and $motivoid !== false and $ventrada!==false and $vsalida!==false) {
                                         $FilasArray[] = [
-                                            'Identificacion' => $row['identificacion'],
+                                            'Identificacion' => $axuiden,
                                             'Nombre' => $row['nombre'],
                                             'pais_id' => $paisid + 1,// $pais->id,
                                             'Sexo_id' => $sexoid + 1,//$sexo->id,
@@ -388,6 +392,8 @@ class BookController extends Controller
             });
         })->download('xls');
    }
+
+
 
 
 
