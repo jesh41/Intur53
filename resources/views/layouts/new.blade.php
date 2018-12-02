@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="https://www.intur.gob.ni/wp-content/uploads/2015/09/favicon1.ico" />
     <title>Intur-Hotel</title>
     <!-- Styles -->
     <!-- Bootstrap core CSS     -->
@@ -269,8 +270,8 @@
         $('#datatables3').DataTable({
             "pagingType": "full_numbers",
             "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
+                [5, 25, 50, -1],
+                [5, 25, 50, "All"]
             ],
             responsive: true,
             language: {

@@ -30,16 +30,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $year=date("Y");
-        $detalle = DB::select("call dash($year)");
-        $ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
-        $ro = $ro->id;
-        $thoteles = DB::select("call count_user_rol($ro)");
-        $thoteles = $thoteles[0]->conteo;
-        if (empty($thoteles)) {
-            $thoteles = 0;
-        }
-        return view('home')->with("data", $detalle)->with("year", $year)->with("TH", $thoteles);
+        //$year=date("Y");
+        //$detalle = DB::select("call dash($year)");
+        //$detalle2 = DB::select("call anulaciones_anual($year)");
+        //$ro = Role::where('name', 'LIKE', "%".'otel'."%")->get()->first();
+        //$ro = $ro->id;
+        //$thoteles = DB::select("call count_user_rol($ro)");
+        //$thoteles = $thoteles[0]->conteo;
+        //if (empty($thoteles)) {
+        //    $thoteles = 0;
+        //}
+        return view('home');//->with("data", $detalle)->with("year", $year)->with("TH", $thoteles)->with("data2",$detalle2);
     }
 
     public function acerca()

@@ -51,7 +51,8 @@ class BookController extends Controller
         //}
 
         if (Auth::user()->isRole('administrador')) {
-            $books = Book::all();
+           // $books = Book::all();
+            $books = Book::where('estado', 'A')->get();
         } elseif (Auth::user()->isRole('hotel')) {
             $id = Auth::user()->id;
             $books = Book::where('user_id', $id)->where('estado', 'A')->get();
@@ -261,7 +262,7 @@ class BookController extends Controller
                                     if(empty($row['identificacion'])){
                                         $axuiden="S/I";
                                     }
-                                    else{$axuiden=$row['identificacion'];}
+                                    else{$axuiden=ucwords(trim($row['identificacion']));}
 
                                     if ($paisid !== false and $sexoid !== false and $motivoid !== false and $ventrada!==false and $vsalida!==false) {
                                         $FilasArray[] = [

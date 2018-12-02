@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="shortcut icon" href="https://www.intur.gob.ni/wp-content/uploads/2015/09/favicon1.ico" />
     <title>{{ config('app.name', 'INTUR') }}</title>
 
     <!-- Styles -->
