@@ -219,7 +219,7 @@ class ReportController extends Controller
 
         $vistaurl = "/reports/report1";
         $detalle = DB::select("call indicador1general($year)");
-        return $this->crearPDF($detalle, $vistaurl, $tipo);
+        return $this->crearPDF($detalle, $vistaurl, $tipo,$year);
     }
 
     public function crear_reporte_por_sexo($tipo, $year)
@@ -229,7 +229,7 @@ class ReportController extends Controller
         $vistaurl = "/reports/report2";
         $detalle = DB::select("call indicador2($year)");
 
-        return $this->crearPDF($detalle, $vistaurl, $tipo);
+        return $this->crearPDF($detalle, $vistaurl, $tipo,$year);
     }
 
     public function crear_reporte_por_region($tipo, $year)
@@ -239,7 +239,7 @@ class ReportController extends Controller
         $vistaurl = "/reports/report3";
         $detalle = DB::select("call indicador3($year)");
 
-        return $this->crearPDF($detalle, $vistaurl, $tipo);
+        return $this->crearPDF($detalle, $vistaurl, $tipo,$year);
     }
 
     public function crear_reporte_por_estadia($tipo, $year)
@@ -249,7 +249,7 @@ class ReportController extends Controller
         $vistaurl = "/reports/report4";
         $detalle = DB::select("call indicador4($year)");
 
-        return $this->crearPDF($detalle, $vistaurl, $tipo);
+        return $this->crearPDF($detalle, $vistaurl, $tipo,$year);
     }
 
     public function crear_pdf_anulaciones( $tipo,$year)

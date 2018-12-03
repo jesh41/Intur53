@@ -99,9 +99,9 @@ table {
     background-color: #dd4b39 !important;
 }
 </style>
-    <h1 style="text-align: center;"><img src="{{ url('/images/Nic.png') }}" width="131" height="85" alt="lOGO"> SISTEMA
+    <h4 style="text-align: left;"><img src="{{ url('/images/Nic.png') }}" width="131" height="85" alt="lOGO"> SISTEMA
         DE ESTADISTICAS DE HOTELES EN MANAGUA <img src="{{ url('/images/Statistics512.png') }}" width="81"
-                                                   height="99"></h1>
+                                                   height="99"></h4>
 </head><body>
 <?php $sumanac=0;
 $sumaext=0;
