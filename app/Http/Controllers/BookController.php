@@ -204,6 +204,7 @@ class BookController extends Controller
             //carga de catalogos
             $ventrada=false;
             $vsalida=false;
+            $fechamayor=false;
             $mes=$request->input("mes");
             $catpais = Country::all()->toArray();
             $catsex = Sex::all()->toArray();
@@ -251,20 +252,25 @@ class BookController extends Controller
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
                                     $mentrada=date("m",  strtotime($fechaentrada));
                                     $msalida=date("m", strtotime($fechasalida));
+                                    if(strtotime($fechaentrada)<strtotime($fechaentrada)){
+                                        $fechamayor=true;
+                                    }else{$fechamayor=false;}
+
+
                                     if ($mentrada==$mes)
                                     {
                                         $ventrada=true;
-                                    }
+                                    }else{$ventrada=false;}
                                     if ($msalida==$mes)
                                     {
                                         $vsalida=True;
-                                    }
+                                    }else{$vsalida=false;}
                                     if(empty($row['identificacion'])){
                                         $axuiden="S/I";
                                     }
                                     else{$axuiden=ucwords(trim($row['identificacion']));}
 
-                                    if ($paisid !== false and $sexoid !== false and $motivoid !== false and $ventrada!==false and $vsalida!==false) {
+                                    if ($paisid !== false and $sexoid !== false and $motivoid !== false and $ventrada!==false and $vsalida!==false and $fechamayor!==false) {
                                         $FilasArray[] = [
                                             'Identificacion' => $axuiden,
                                             'Nombre' => $row['nombre'],
@@ -292,6 +298,9 @@ class BookController extends Controller
                                         }
                                         if ($vsalida === false) {
                                             $Response[] = ['Fecha Salida Fila' => $idfila + 2];
+                                        }
+                                        if ($fechamayor===false){
+                                            $Response[] = ['Fecha entrada es mayor o igual a la fecha de salida, Fila ' => $idfila + 2];
                                         }
                                     }
                                 } else {
@@ -333,7 +342,7 @@ class BookController extends Controller
 
         if (!empty($Response)) {
             session()->put('error', 'Descargar errores');
-            $nombre_original = 'errores_ID'.$autor.'.txt';
+            $nombre_original = 'errores_'.$autor.'.txt';
             $errores = Storage::disk('archivos')->put($nombre_original, serialize($Response));
         }
 
@@ -343,12 +352,12 @@ class BookController extends Controller
     Public function descargar_errores()
     {
         $autor = Auth::user()->name;
-        $nombre_original = 'errores_ID'.$autor.'.txt';
+        $nombre_original = 'errores_'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
         if(File::exists($ruta)) {
             $d = File::get($ruta);
             $Datos = unserialize($d);
-            $filename = 'Errores.txt';
+            $filename = $nombre_original;
             $headers = [
                 'Content-Type' => 'plain/txt',
                 'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
