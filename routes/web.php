@@ -46,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //modulo reporteria
     Route::get('/reports', 'ReportController@index')->name('reports');
+    //editar acceso passs y correo desde su cuenta
+    Route::post('/editar_pass', 'AdminController@edit_pass');
+    Route::post('/editar_info', 'AdminController@edit_info');
     Route::group(['middleware' => 'roleshinobi:Administrador'], function () {
         Route::get('/listado_usuarios', 'AdminController@listado_usuarios')->name('listado');
         Route::post('/crear_usuario', 'AdminController@crear_usuario');
@@ -62,9 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
         //editar usuario
         Route::post('cambiorol', 'AdminController@editar_usuario_admin');
 
-        //editar acceso passs y correo desde su cuenta
-        Route::post('/editar_pass', 'AdminController@edit_pass');
-        Route::post('/editar_info', 'AdminController@edit_info');
+
         //modulo permisos
         Route::post('/crear_permiso', 'AdminController@crear_permiso');
         Route::post('/asignar_permiso', 'AdminController@asignar_permiso');
