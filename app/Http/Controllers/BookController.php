@@ -354,55 +354,54 @@ class BookController extends Controller
         $autor = Auth::user()->name;
         $nombre_original = 'errores_'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
-        if(File::exists($ruta)) {
-            $d = File::get($ruta);
+     //   if(File::exists($ruta)) {
+        //    $d = File::get($ruta);
             $datos = unserialize($d);
           // $datos=(object) $datos;
-            foreach( $datos as $billdate => $Error) {
-                foreach( $Error as $k => $Fila) {
-
-                    $dt2=$Fila;
-
-                }
-            }
-
-
-
-
-            Excel::create($nombre_original, function ($excel) use ($datos) {
-                $excel->sheet('ERRORES', function ($sheet) use ($datos) {
-                    $sheet->row(1, [
-                        'Error',
-                        'Fila',
-                    ]);
-                    foreach ($datos as $key => $value ) {
-                        $row=[];
-                        $row[0]=$d;
-                        $row[1]=$d;
-                        $sheet->appendrow($row);
-                    }
-                    $sheet->setOrientation('landscape');
-                });
-            })->download('xls');
-
-        } else {
-            return redirect('home');
-        }
-
-
-        //if(File::exists($ruta)) {
-        //    $d = File::get($ruta);
-        //    $Datos = unserialize($d);
-        //    $filename = $nombre_original;
-        //    $headers = [
-        //        'Content-Type' => 'plain/txt',
-        //        'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-        //        'Content-Length' => sizeof($Datos),
-        //    ];
-        //    return \Response::make($Datos, 200, $headers);
+        //    foreach( $datos as $billdate => $Error) {
+        //        foreach( $Error as $k => $Fila) {
+        //
+        //            $dt2=$Fila;
+        //
+        //        }
+        //    }
+        //
+        //
+        //
+        //
+        //    Excel::create($nombre_original, function ($excel) use ($datos) {
+        //        $excel->sheet('ERRORES', function ($sheet) use ($datos) {
+        //            $sheet->row(1, [
+        //                'Error',
+        //                'Fila',
+        //            ]);
+        //            foreach ($datos as $key => $value ) {
+        //                $row=[];
+        //                $row[0]=$d;
+        //                $row[1]=$d;
+        //                $sheet->appendrow($row);
+        //            }
+        //            $sheet->setOrientation('landscape');
+        //        });
+        //    })->download('xls');
+        //
         //} else {
         //    return redirect('home');
         //}
+
+        if(File::exists($ruta)) {
+            $d = File::get($ruta);
+            $Datos = unserialize($d);
+            $filename = $nombre_original;
+            $headers = [
+                'Content-Type' => 'plain/txt',
+                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+                'Content-Length' => sizeof($Datos),
+            ];
+            return \Response::make($Datos, 200, $headers);
+        } else {
+            return redirect('home');
+        }
 
 
 
