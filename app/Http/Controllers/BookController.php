@@ -342,7 +342,7 @@ class BookController extends Controller
 
         if (!empty($Response)) {
             session()->put('error', 'Descargar errores');
-            $nombre_original = 'errores_'.$autor.'.txt';
+            $nombre_original = 'erroresusuario'.$autor.'.txt';
             $errores = Storage::disk('archivos')->put($nombre_original, serialize($Response));
         }
 
@@ -352,43 +352,8 @@ class BookController extends Controller
     Public function descargar_errores()
     {
         $autor = Auth::user()->name;
-        $nombre_original = 'errores_'.$autor.'.txt';
+        $nombre_original = 'erroresusuario'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
-     //   if(File::exists($ruta)) {
-        //    $d = File::get($ruta);
-         //   $datos = unserialize($d);
-          // $datos=(object) $datos;
-        //    foreach( $datos as $billdate => $Error) {
-        //        foreach( $Error as $k => $Fila) {
-        //
-        //            $dt2=$Fila;
-        //
-        //        }
-        //    }
-        //
-        //
-        //
-        //
-        //    Excel::create($nombre_original, function ($excel) use ($datos) {
-        //        $excel->sheet('ERRORES', function ($sheet) use ($datos) {
-        //            $sheet->row(1, [
-        //                'Error',
-        //                'Fila',
-        //            ]);
-        //            foreach ($datos as $key => $value ) {
-        //                $row=[];
-        //                $row[0]=$d;
-        //                $row[1]=$d;
-        //                $sheet->appendrow($row);
-        //            }
-        //            $sheet->setOrientation('landscape');
-        //        });
-        //    })->download('xls');
-        //
-        //} else {
-        //    return redirect('home');
-        //}
-
         if(File::exists($ruta)) {
             $d = File::get($ruta);
             $Datos = unserialize($d);
@@ -410,7 +375,6 @@ class BookController extends Controller
     public function descargar_libro($id){
     $bo = book::find($id);
     $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
-
     Excel::create($name, function ($excel) use ($id) {
         $excel->sheet('INTUR', function ($sheet) use ($id) {
                 $sheet->row(1, [
@@ -424,7 +388,6 @@ class BookController extends Controller
                     'motivo',
                 ]);
                 $datos =Bookdetail::where('book_id',$id)->get();
-
                 foreach ($datos as $d) {
                   $row=[];
                   $row[0]=$d->Identificacion;
