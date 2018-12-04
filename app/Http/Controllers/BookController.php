@@ -342,7 +342,7 @@ class BookController extends Controller
 
         if (!empty($Response)) {
             session()->put('error', 'Descargar errores');
-            $nombre_original = 'erroresusuario'.$autor.'.txt';
+            $nombre_original = 'errores_ID'.$autor.'.txt';
             $errores = Storage::disk('archivos')->put($nombre_original, serialize($Response));
         }
 
@@ -352,7 +352,7 @@ class BookController extends Controller
     Public function descargar_errores()
     {
         $autor = Auth::user()->name;
-        $nombre_original = 'erroresusuario'.$autor.'.txt';
+        $nombre_original = 'errores_ID'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
         if(File::exists($ruta)) {
             $d = File::get($ruta);
