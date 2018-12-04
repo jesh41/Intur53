@@ -356,7 +356,7 @@ class BookController extends Controller
         $ruta = storage_path('archivos')."/".$nombre_original;
      //   if(File::exists($ruta)) {
         //    $d = File::get($ruta);
-            $datos = unserialize($d);
+         //   $datos = unserialize($d);
           // $datos=(object) $datos;
         //    foreach( $datos as $billdate => $Error) {
         //        foreach( $Error as $k => $Fila) {
