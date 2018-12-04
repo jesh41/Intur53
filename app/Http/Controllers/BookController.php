@@ -364,9 +364,10 @@ class BookController extends Controller
                 'Content-Length' => sizeof($Datos),
             ];
             return \Response::make($Datos, 200, $headers);
-        } else {
-            return redirect('home');
         }
+        //else {
+          //  return redirect('home');
+        //}
 
 
 
