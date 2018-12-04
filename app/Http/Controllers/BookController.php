@@ -252,7 +252,7 @@ class BookController extends Controller
                                     $fechasalida = Carbon::parse($fechasalida)->format('Y-m-d');
                                     $mentrada=date("m",  strtotime($fechaentrada));
                                     $msalida=date("m", strtotime($fechasalida));
-                                    if(strtotime($fechaentrada)<strtotime($fechaentrada)){
+                                    if(strtotime($fechaentrada)<strtotime($fechasalida)){
                                         $fechamayor=true;
                                     }else{$fechamayor=false;}
 
@@ -285,22 +285,22 @@ class BookController extends Controller
                                         ];
                                     } else {
                                         if ($paisid === false) {
-                                            $Response[] = ['Pais Fila' => $idfila + 2];
+                                            $Response[] = ['Error' => 'Revisar pais','Fila' => $idfila + 2];
                                         }
                                         if ($sexoid === false) {
-                                            $Response[] = ['Sexo Fila' => $idfila + 2];
+                                            $Response[] = ['Error' => 'Revisar sexo','Fila' => $idfila + 2];
                                         }
                                         if ($motivoid === false) {
-                                            $Response[] = ['Motivo Fila' => $idfila + 2];
+                                            $Response[] = ['Error' => 'Revisar motivo','Fila' => $idfila + 2];
                                         }
                                         if ($ventrada === false) {
-                                            $Response[] = ['Fecha entrada Fila' => $idfila + 2];
+                                            $Response[] = ['Error' => 'Fecha entrada no pertenece al mes','Fila' => $idfila + 2];
                                         }
                                         if ($vsalida === false) {
-                                            $Response[] = ['Fecha Salida Fila' => $idfila + 2];
+                                            $Response[] = ['Error' => 'Fecha de salida no pertenece al mes','Fila' => $idfila + 2];
                                         }
                                         if ($fechamayor===false){
-                                            $Response[] = ['Fecha entrada es mayor o igual a la fecha de salida, Fila ' => $idfila + 2];
+                                            $Response[] = ['Error' => 'Fecha de entrada es mayor o igual a la fecha de salida','Fila' => $idfila + 2];
                                         }
                                     }
                                 } else {
@@ -356,22 +356,62 @@ class BookController extends Controller
         $ruta = storage_path('archivos')."/".$nombre_original;
         if(File::exists($ruta)) {
             $d = File::get($ruta);
-            $Datos = unserialize($d);
-            $filename = $nombre_original;
-            $headers = [
-                'Content-Type' => 'plain/txt',
-                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-                'Content-Length' => sizeof($Datos),
-            ];
-            return \Response::make($Datos, 200, $headers);
+            $datos = unserialize($d);
+          // $datos=(object) $datos;
+            foreach( $datos as $billdate => $Error) {
+                foreach( $Error as $k => $Fila) {
+
+                    $dt2=$Fila;
+
+                }
+            }
+
+
+
+
+            Excel::create($nombre_original, function ($excel) use ($datos) {
+                $excel->sheet('ERRORES', function ($sheet) use ($datos) {
+                    $sheet->row(1, [
+                        'Error',
+                        'Fila',
+                    ]);
+                    foreach ($datos as $key => $value ) {
+                        $row=[];
+                        $row[0]=$d;
+                        $row[1]=$d;
+                        $sheet->appendrow($row);
+                    }
+                    $sheet->setOrientation('landscape');
+                });
+            })->download('xls');
+
         } else {
             return redirect('home');
         }
+
+
+        //if(File::exists($ruta)) {
+        //    $d = File::get($ruta);
+        //    $Datos = unserialize($d);
+        //    $filename = $nombre_original;
+        //    $headers = [
+        //        'Content-Type' => 'plain/txt',
+        //        'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+        //        'Content-Length' => sizeof($Datos),
+        //    ];
+        //    return \Response::make($Datos, 200, $headers);
+        //} else {
+        //    return redirect('home');
+        //}
+
+
+
     }
 
     public function descargar_libro($id){
     $bo = book::find($id);
     $name = 'Huespedes'.$bo->Anio.$bo->month->mes;
+
     Excel::create($name, function ($excel) use ($id) {
         $excel->sheet('INTUR', function ($sheet) use ($id) {
                 $sheet->row(1, [
@@ -385,7 +425,7 @@ class BookController extends Controller
                     'motivo',
                 ]);
                 $datos =Bookdetail::where('book_id',$id)->get();
-                //    $data=[];
+
                 foreach ($datos as $d) {
                   $row=[];
                   $row[0]=$d->Identificacion;
