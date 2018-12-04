@@ -351,7 +351,8 @@ class BookController extends Controller
 
     Public function descargar_errores()
     {
-        $autor = Auth::user()->name;
+        //$autor = Auth::user()->name;
+        $autor = ucwords(trim(Auth::user()->name));
         $nombre_original = 'errores_ID'.$autor.'.txt';
         $ruta = storage_path('archivos')."/".$nombre_original;
         if(File::exists($ruta)) {
@@ -365,9 +366,9 @@ class BookController extends Controller
             ];
             return \Response::make($Datos, 200, $headers);
         }
-        //else {
-          //  return redirect('home');
-        //}
+        {
+          return redirect('home');
+        }
 
 
 
